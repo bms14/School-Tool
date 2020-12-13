@@ -2,10 +2,8 @@
 
 <script>
 export default {
-  name: "Home",
-  components: {
-    
-  },
+  name: "ListUser",
+  components: {},
 };
 </script>
 
