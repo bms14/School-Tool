@@ -1,5 +1,6 @@
 <template>
-  <div id="login">
+<div class="row justify-content-center">
+  <div id="login" class="col-6">
     <form>
       <label for="txtEmail">Email: </label>
       <input
@@ -20,6 +21,7 @@
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
   </div>
+</div>
 </template>
 
 <script>
