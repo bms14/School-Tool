@@ -1,5 +1,6 @@
 <template>
-  <div id="login">
+ <div class="row justify-content-center">
+  <div id="login" class="col-6">
     <form @submit.prevent="register" class="form-group">
       <label for="txtName">Nome: </label>
       <input
@@ -31,7 +32,7 @@
       /><br />
       <label for="sltCourse">Curso: </label>
       <select class="form-control" id="sltCourse" v-model="course">
-        <option disabled>---</option>
+        <option disabled value="">---</option>
         <option value="">Design</option>
         <option value="">Fotografia</option>
         <option value="">Multimédia</option>
@@ -48,6 +49,7 @@
       <input type="submit" class="btn btn-primary" value="REGISTAR" />
     </form>
   </div>
+ </div>
 </template>
 
 <script>
