@@ -1,9 +1,23 @@
 <template>
   <div id="login">
     <form>
-      Username: <input type="text" id="txtUsername" v-model="username" /><br />
-      Password : <input type="password" id="txtPassword" v-model="password" />
-      <input type="submit" value="LOGIN" />
+      <label for="txtEmail">Email: </label>
+      <input
+        type="email"
+        class="form-control"
+        id="txtEmail"
+        placeholder="Introduza o Email"
+        v-model="email"
+      />
+      <label for="txtPassword">Password: </label>
+      <input
+        type="password"
+        class="form-control"
+        id="txtPassword"
+        placeholder="Introduza a Password"
+        v-model="password"
+      /><br />
+      <button type="submit" class="btn btn-primary">Login</button>
     </form>
   </div>
 </template>
@@ -13,7 +27,7 @@ export default {
   name: "Login",
   data() {
     return {
-      username: "",
+      email: "",
       password: ""
     };
   },
@@ -28,8 +42,8 @@ export default {
       } catch (error) {
         alert(error);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
