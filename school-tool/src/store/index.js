@@ -6,11 +6,14 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     users: [
-      {name: 'admin', email: 'admin', password: 'admin'}
+      {name: 'admin', email: 'admin', password: 'admin'},
+      {name: 'student', email: 'student@esmad.ipp.pt', password: 'pass', course: 'Design'}
     ],
     loggedUser: ''
   },
-  getters: {},
+  getters: {
+    getLoggedUser: (state) => state.loggedUser
+  },
   actions: {
     login(context, payload){
       //verificar se user existe
@@ -22,7 +25,19 @@ export default new Vuex.Store({
         //login sem sucesso      
         throw Error ('Login inválido!')
       }
-    } 
+    },
+    register(context, payload){
+       //verificar se user existe
+       const user = context.state.users.find( user => user.email === payload.email)
+       if(user == undefined && payload.password === payload.password2){
+         //registo com sucesso
+         context.commit('REGISTER', {name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, type: payload.type})
+        } else if(user == undefined && payload.password !== payload.password2) {
+          throw Error ('As passwords não são iguais!')
+        } else {
+          throw Error ('Email já registado!')
+        }
+    }
   },
   mutations: {
     LOGIN(state, user){
@@ -30,6 +45,9 @@ export default new Vuex.Store({
     },
     LOGOUT(state){
       state.loggedUser = ''
+    },
+    REGISTER (state, user){
+      state.users.push(user)
     }
   }
 });
