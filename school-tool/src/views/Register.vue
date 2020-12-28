@@ -8,6 +8,7 @@
           class="form-control"
           id="txtName"
           v-model="name"
+          placeholder="Name"
         /><br />
         <label for="txtEmail">Email</label>
         <input
@@ -15,13 +16,15 @@
           class="form-control"
           id="txtMail"
           v-model="email"
+          placeholder="Email"
         /><br />
         <label for="txtPassword">Password</label>
         <input
           type="password"
           class="form-control"
           id="txtPassword"
-          v-model="password"
+          v-model="Password"
+          placeholder="password"
         /><br />
         <label for="txtPassword">Confirmar Password</label>
         <input
@@ -29,10 +32,11 @@
           class="form-control"
           id="txtPassword2"
           v-model="password2"
+          placeholder="Confirmar password"
         /><br />
         <label for="sltCourse">Curso</label>
         <select class="form-control" id="sltCourse" v-model="course">
-          <option disabled value="">---</option>
+          <option disabled value="">Curso</option>
           <option value="Design">Design</option>
           <option value="Fotografia">Fotografia</option>
           <option value="Multimédia">Multimédia</option>
@@ -80,7 +84,7 @@ export default {
       } catch (error) {
         alert(error);
       }
-    },
+    }
   },
 };
 </script>

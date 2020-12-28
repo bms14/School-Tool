@@ -7,12 +7,14 @@ export default new Vuex.Store({
   state: {
     users: [
       {name: 'admin', email: 'admin', password: 'admin'},
-      {name: 'student', email: 'student@esmad.ipp.pt', password: 'pass', course: 'Design'}
+      {name: 'student', email: 'student@esmad.ipp.pt', password: 'pass', course: 'Design', birthDate: '2020-01-01', type: 'student'},
+      {name: 'teacher', email: 'teacher@esmad.ipp.pt', password: 'pass', course: 'Design', birthDate: '2020-01-02', type: 'teacher'}
     ],
     loggedUser: ''
   },
   getters: {
-    getLoggedUser: (state) => state.loggedUser
+    getLoggedUser: (state) => state.loggedUser,
+    isLoggedUser: (state) => state.loggedUser == '' ? false : true
   },
   actions: {
     login(context, payload){
@@ -25,6 +27,10 @@ export default new Vuex.Store({
         //login sem sucesso      
         throw Error ('Login inválido!')
       }
+    },
+    logout(context){
+      context.commit('LOGOUT')
+
     },
     register(context, payload){
        //verificar se user existe
