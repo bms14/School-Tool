@@ -1,10 +1,10 @@
 <template>
 <div class="row justify-content-center">
   <div id="login" class="col-6">
-    <form>
+    <form @submit.prevent="login ">
       <label for="txtEmail">Email: </label>
       <input
-        type="email"
+        type="text"
         class="form-control"
         id="txtEmail"
         placeholder="Introduza o Email"
@@ -38,9 +38,9 @@ export default {
       try {
         //chamar a ação login que está na store
         //this.$store.dispacth("login",{username: this.username, password: this.password});
-        this.$store.dispacth("login", this.$data);
-        //saltar para a view home
-        this.$store.push({ name: "Home" });
+        this.$store.dispatch("login", this.$data);
+        //saltar para a view homepage  
+        this.$router.push({ name: "Homepage" });
       } catch (error) {
         alert(error);
       }

@@ -62,6 +62,7 @@ export default {
       password: "",
       course: "",
       birthDate: "",
+      type: "student"
     };
   },
   methods: {
