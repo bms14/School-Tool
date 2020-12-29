@@ -2,23 +2,22 @@
   <div id="profile">
       <div id="name">
           Nome: <br>
-          {{getUser.name}}
+          <p>{{getUser.name}}</p>
       </div>
       <div id="birthDate">
           Data de nascimento: <br>
-          {{getUser.birthDate}}
+          <p>{{getUser.birthDate}}</p>
       </div>
       <div id="email">
           Email: <br>
-          {{getUser.email}}
+          <p>{{getUser.email}}</p>
       </div>
       <div id="course">
           Curso: <br>
-          {{getUser.course}}
+          <p>{{getUser.course}}</p>
       </div>
-      <div id="name">
-          Nome: <br>
-          {{getUser.name}}
+      <div id="foto">
+          <img width="200px" height="150px" :src="getUser.photo" />
       </div>
   </div>
 </template>

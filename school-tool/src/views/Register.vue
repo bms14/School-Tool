@@ -9,6 +9,7 @@
           id="txtName"
           v-model="name"
           placeholder="Name"
+          required
         /><br />
         <label for="txtEmail">Email</label>
         <input
@@ -17,6 +18,7 @@
           id="txtMail"
           v-model="email"
           placeholder="Email"
+          required
         /><br />
         <label for="txtPassword">Password</label>
         <input
@@ -25,6 +27,7 @@
           id="txtPassword"
           v-model="password"
           placeholder="password"
+          required
         /><br />
         <label for="txtPassword">Confirmar Password</label>
         <input
@@ -33,9 +36,10 @@
           id="txtPassword2"
           v-model="password2"
           placeholder="Confirmar password"
+          required
         /><br />
         <label for="sltCourse">Curso</label>
-        <select class="form-control" id="sltCourse" v-model="course">
+        <select class="form-control" id="sltCourse" v-model="course" required>
           <option disabled value="">Curso</option>
           <option value="Design">Design</option>
           <option value="Fotografia">Fotografia</option>
@@ -52,6 +56,16 @@
           id="txtDate"
           class="form-control"
           v-model="birthDate"
+          required
+        /><br />
+        <label for="txtLink">Link Foto: </label>
+        <input
+          type="link"
+          class="form-control"
+          id="txtLink"
+          v-model="photo"
+          placeholder="Foto"
+          required
         /><br />
         <input type="submit" class="btn btn-primary" value="REGISTAR" />
       </form>
@@ -70,6 +84,7 @@ export default {
       password2: "",
       course: "",
       birthDate: "",
+      photo: "",
       type: "student"
     };
   },
