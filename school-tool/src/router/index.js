@@ -39,17 +39,26 @@ const routes = [
   {
     path: "/addActivity",
     name: "AddActivity",
-    component: AddActivity
+    component: AddActivity,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: "/list",
     name: "ListActivity",
-    component: ListActivity
+    component: ListActivity,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: "/activity/:id",
     name: "activity",
-    component: Activity
+    component: Activity,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: "/profile",

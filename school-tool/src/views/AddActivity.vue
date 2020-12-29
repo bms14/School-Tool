@@ -114,7 +114,7 @@ export default {
         date: null,
         hour: null,
         numPeople: null,
-        certificate:  document.querySelector('input[name="certificate"]:checked').value,
+        certificate: "",
         description: "",
         image: "",
       },
@@ -143,7 +143,7 @@ export default {
         date: null,
         hour: null,
         numPeople: null,
-        certificate: document.querySelector('input[name="certificate"]:checked').value,
+        certificate: "",
         description: "",
         image: "",
       };
