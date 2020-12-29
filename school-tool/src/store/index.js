@@ -7,8 +7,8 @@ export default new Vuex.Store({
   state: {
     users: [
       {name: 'admin', email: 'admin', password: 'admin'},
-      {name: 'student', email: 'student@esmad.ipp.pt', password: 'pass', course: 'Design', birthDate: '2020-01-01', type: 'student'},
-      {name: 'teacher', email: 'teacher@esmad.ipp.pt', password: 'pass', course: 'Design', birthDate: '2020-01-02', type: 'teacher'}
+      {name: 'student', email: 'student@esmad.ipp.pt', password: 'pass', course: 'Design', birthDate: '2020-01-01',photo: "https://uniarea.com/wp-content/uploads/2019/09/img.jpg" ,type: 'student'},
+      {name: 'teacher', email: 'teacher@esmad.ipp.pt', password: 'pass', course: 'Design', birthDate: '2020-01-02',photo: "https://blog.academia.com.br/wp-content/uploads/2019/02/273098-entenda-qual-e-o-papel-do-professor-na-educacao-dos-alunos.jpg", type: 'teacher'}
     ],
     loggedUser: localStorage.getItem('loggedUser') ? JSON.parse(localStorage.getItem('loggedUser')) : ''
   },
@@ -38,7 +38,7 @@ export default new Vuex.Store({
        const user = context.state.users.find( user => user.email === payload.email)
        if(user == undefined && payload.password === payload.password2){
          //registo com sucesso
-         context.commit('REGISTER', {name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, type: payload.type})
+         context.commit('REGISTER', {name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, photo: payload.photo ,type: payload.type})
         } else if(user == undefined && payload.password != payload.password2) {
           throw Error ('As passwords não são iguais!')
         } else {
@@ -47,13 +47,13 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    LOGIN(state, user){
+    LOGIN(state, user) {
       state.loggedUser  = user
     },
-    LOGOUT(state){
+    LOGOUT(state) {
       state.loggedUser = ''
     },
-    REGISTER (state, user){
+    REGISTER (state, user) {
       state.users.push(user)
     }
   }

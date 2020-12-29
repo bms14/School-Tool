@@ -8,6 +8,7 @@ import Homepage from "../views/Homepage.vue";
 import AddActivity from "../views/AddActivity.vue";
 import ListActivity from "../views/ListActivity.vue";
 import Activity from "../views/Activity.vue";
+import Profile from "../views/Profile.vue";
 
 Vue.use(VueRouter);
 
@@ -50,7 +51,14 @@ const routes = [
     name: "activity",
     component: Activity
   },
-
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile,
+    meta: {
+      requiresAuth: true
+    }
+  }
 ];
 
 const router = new VueRouter({
@@ -58,8 +66,8 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if(to.meta.requiresAuth && !Store.getters.isLoggedUser){
-    next(to='/login');
+  if (to.meta.requiresAuth && !Store.getters.isLoggedUser) {
+    next(to = '/login');
   } else {
     next();
   }
