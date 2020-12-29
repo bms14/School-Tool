@@ -5,6 +5,7 @@ import Landing from "../views/Landing.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Homepage from "../views/Homepage.vue";
+import Profile from "../views/Profile.vue";
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,14 @@ const routes = [
     path: "/homepage",
     name: "Homepage",
     component: Homepage,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile,
     meta: {
       requiresAuth: true
     }
