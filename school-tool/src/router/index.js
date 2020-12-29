@@ -5,6 +5,9 @@ import Landing from "../views/Landing.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Homepage from "../views/Homepage.vue";
+import AddActivity from "../views/AddActivity.vue";
+import ListActivity from "../views/ListActivity.vue";
+import Activity from "../views/Activity.vue";
 
 Vue.use(VueRouter);
 
@@ -31,7 +34,23 @@ const routes = [
     meta: {
       requiresAuth: true
     }
-  }
+  },
+  {
+    path: "/addActivity",
+    name: "AddActivity",
+    component: AddActivity
+  },
+  {
+    path: "/list",
+    name: "ListActivity",
+    component: ListActivity
+  },
+  {
+    path: "/activity/:id",
+    name: "activity",
+    component: Activity
+  },
+
 ];
 
 const router = new VueRouter({
