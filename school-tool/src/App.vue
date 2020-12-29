@@ -1,17 +1,25 @@
 <template>
   <div id="app">
-    <Navbar/> 
+    <div v-if="!this.$store.getters.isLoggedUser">
+      <NavbarLanding/> 
+    </div>
+    <div v-else>
+      <Navbar/>
+    </div>
     <router-view />
   </div>
 </template>
 
 <script>
 
-import Navbar from "@/components/NavbarLanding.vue"
+import NavbarLanding from "@/components/NavbarLanding.vue"
+import Navbar from "@/components/Navbar.vue"
+
 
 export default {
   name: 'App',
   components: {
+     NavbarLanding,
      Navbar
   }
 }
