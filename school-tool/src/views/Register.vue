@@ -67,7 +67,7 @@
           placeholder="Foto"
           required
         /><br />
-        <input type="submit" class="btn btn-primary" value="REGISTAR" />
+        <input type="submit" class="btn btn-primary" @click="registUser" value="REGISTAR" />
       </form>
     </div>
   </div>
@@ -100,7 +100,20 @@ export default {
         alert(error);
       }
     }
-  },
+    /* registUser(event) {
+      event.preventDefault();
+      let users = [];
+      if (localStorage.getItem("users"))
+        users = JSON.parse(localStorage.getItem("users"));
+
+      if(this.$data.password == this.$data.password2){
+        users.push({name: this.$data.name, email: this.$data.email, password: this.$data.password, course: this.$data.course, birthDate: this.$data.birthDate, photo: this.$data.photo ,type: this.$data.type})
+      }
+      localStorage.setItem("users", JSON.stringify(users));
+      alert("Registo efetuado com sucesso!");
+      this.$router.push({ name: "Login" });
+    } */
+  }
 };
 </script>
 
