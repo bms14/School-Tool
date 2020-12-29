@@ -66,8 +66,8 @@
         <br />
         <div class="form-group">
           <label for="certificate">Tem direito a certificado?</label><br />
-          <input type="radio" name="certificate" value="Sim" /> Sim
-          <input type="radio" name="certificate" value="Não" /> Não<br />
+          <input type="radio" v-model="new_activity.certificate" value="Sim" /> Sim
+          <input type="radio" v-model="new_activity.certificate" value="Não" /> Não<br />
         </div>
         <br />
         <div class="form-group">
