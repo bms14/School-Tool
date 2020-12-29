@@ -10,7 +10,7 @@ export default new Vuex.Store({
       {name: 'student', email: 'student@esmad.ipp.pt', password: 'pass', course: 'Design', birthDate: '2020-01-01', type: 'student'},
       {name: 'teacher', email: 'teacher@esmad.ipp.pt', password: 'pass', course: 'Design', birthDate: '2020-01-02', type: 'teacher'}
     ],
-    loggedUser: ''
+    loggedUser: localStorage.getItem('loggedUser') ? JSON.parse(localStorage.getItem('loggedUser')) : ''
   },
   getters: {
     getLoggedUser: (state) => state.loggedUser,
@@ -23,6 +23,7 @@ export default new Vuex.Store({
       if(user !=undefined){
         //login com sucesso
         context.commit('LOGIN', user)
+        localStorage.setItem('loggedUser', JSON.stringify(user))
       } else {
         //login sem sucesso      
         throw Error ('Login inválido!')
@@ -30,7 +31,7 @@ export default new Vuex.Store({
     },
     logout(context){
       context.commit('LOGOUT')
-
+      localStorage.removeItem('loggedUser')
     },
     register(context, payload){
        //verificar se user existe
@@ -38,7 +39,7 @@ export default new Vuex.Store({
        if(user == undefined && payload.password === payload.password2){
          //registo com sucesso
          context.commit('REGISTER', {name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, type: payload.type})
-        } else if(user == undefined && payload.password !== payload.password2) {
+        } else if(user == undefined && payload.password != payload.password2) {
           throw Error ('As passwords não são iguais!')
         } else {
           throw Error ('Email já registado!')

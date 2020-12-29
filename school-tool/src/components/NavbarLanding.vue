@@ -6,7 +6,7 @@
       <router-link to="/register">Register</router-link> |
     </span >
     <span v-else>
-      <router-link @click.native="logout" to="/landingpage">Logout</router-link> 
+      <router-link @click.native="logout" to="/">Logout</router-link> 
     </span>
   </div>
 </template>

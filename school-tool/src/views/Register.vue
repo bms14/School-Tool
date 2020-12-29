@@ -1,4 +1,4 @@
-<template>
+<template>  
   <div class="row justify-content-center">
     <div id="login" class="col-6">
       <form @submit.prevent="register" class="form-group">
@@ -23,7 +23,7 @@
           type="password"
           class="form-control"
           id="txtPassword"
-          v-model="Password"
+          v-model="password"
           placeholder="password"
         /><br />
         <label for="txtPassword">Confirmar Password</label>
