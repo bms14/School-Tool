@@ -17,7 +17,17 @@
           <p>{{getUser.course}}</p>
       </div>
       <div id="foto">
-          <img width="200px" height="150px" :src="getUser.photo" />
+          <img width="200px" height="150px" :src="getUser.photo" /><br>
+          <input
+            type="file"
+            class="form-control-file"
+            id="profileImage"
+            name="img"
+            accept="image/*"
+          /> <br>
+          <button type="submit" class="btn btn-primary">
+          Editar
+        </button>
       </div>
   </div>
 </template>
