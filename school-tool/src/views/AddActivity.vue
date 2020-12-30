@@ -83,11 +83,10 @@
         <div class="form-group">
           <label for="activityImage">Imagem ilustrativa:</label><br />
           <input
-            type="file"
+            type="url"
             class="form-control-file"
             id="activityImage"
-            name="img"
-            accept="image/*"
+            v-model="new_activity.image"
           />
         </div>
         <br />
