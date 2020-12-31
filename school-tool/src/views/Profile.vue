@@ -23,7 +23,6 @@
           <input
             type="password"
             placeholder="Insira a nova password"
-            v-model="password"
           /><br/><br/>
           <button type="submit" class="btn btn-primary">Atualizar</button>
         </div>
@@ -58,17 +57,6 @@
 <script>
 export default {
   name: "Profile",
-  data() {
-    return {
-      name: this.getUser.name,
-      email: this.getUser.email,
-      password: "",
-      course: this.getUser.course,
-      birthDate: this.getUser.birthDate,
-      photo: this.getUser.photo,
-      type: "student",
-    };
-  },
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
