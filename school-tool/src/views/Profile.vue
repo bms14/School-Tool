@@ -1,39 +1,7 @@
 <template>
   <div id="profile">
     <h1>Perfil</h1>
-    <div id="info" class="container">
-      <div id="firstLine">
-        <div id="name">
-          <h5>Nome</h5>
-          <p>{{ getUser.name }}</p>
-        </div>
-        <div id="birthDate">
-          <h5>Data de nascimento</h5>
-          <p>{{ getUser.birthDate }}</p>
-        </div>
-      </div>
-      <div id="secondLine">
-        <div id="email">
-          <h5>Email</h5>
-          <p>{{ getUser.email }}</p>
-        </div>
-
-        <div id="pass">
-          <h5>Deseja alterar a password?</h5>
-          <input
-            type="password"
-            placeholder="Insira a nova password"
-            v-model="password"
-          /><br/><br/>
-          <button type="submit" class="btn btn-primary">Atualizar</button>
-        </div>
-      </div>
-      <div id="thirdLine">
-        <div id="course">
-          <h5>Curso</h5>
-          <p>{{ getUser.course }}</p>
-        </div>
-      </div>
+    <div id="info">
       <div id="foto">
         <img
           width="150px"
@@ -42,8 +10,70 @@
           class="rounded-circle"
         /><br />
       </div>
+      <br />
+      <div id="oneline" class="row">
+        <div id="name" class="col">
+          <h5>Nome</h5>
+          <p>{{ getUser.name }}</p>
+        </div>
+        <div id="birthDate" class="col">
+          <h5>Data de nascimento</h5>
+          <p>{{ getUser.birthDate }}</p>
+        </div>
+      </div>
+      <div id="line" class="row">
+        <div id="email" class="col">
+          <h5>Email</h5>
+          <p>{{ getUser.email }}</p>
+        </div>
+        <div id="pass" class="col">
+          <h5>Deseja alterar a password?</h5>
+          <input
+            type="password"
+            class="input"
+            placeholder="Insira a nova password"
+          />
+          <button type="submit" class="btn">Atualizar</button>
+        </div>
+      </div>
+      <div id="line">
+        <div id="course">
+          <h5>Curso</h5>
+          <p>{{ getUser.course }}</p>
+        </div>
+      </div>
+      <div id="line" >
+        <h5>Interesses</h5>
+        <div id="interests" class="interests">
+          <label class="check" for="interests"></label>
+          <input
+            type="radio"
+            
+            value="animation"
+            required /><span class="checkmark"></span>Animação
+          <input
+            type="radio"
+            
+            value="design" /><span class="checkmark"></span>Design
+          <input
+            type="radio"
+            
+            value="maths"
+            required /><span class="checkmark"></span>Matemática
+          <input
+            type="radio"
+            
+            value="multimedia" /><span class="checkmark"></span>Multimédia
+          <input
+            type="radio"
+      
+            value="programing"
+            required /><span class="checkmark"></span>Programação
+          <button type="submit" class="btn">Guardar</button>
+        </div>
+      </div>
     </div>
-    <div id="gamification" class="container">
+    <!-- <div id="gamification" class="container">
       <img
         id="gamepad"
         width="35px"
@@ -51,14 +81,14 @@
         src="../assets/console.png"
       />
       <h3 id="headerGamification">Gamificação</h3>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 export default {
   name: "Profile",
-  data() {
+  /* data() {
     return {
       name: this.getUser.name,
       email: this.getUser.email,
@@ -68,7 +98,7 @@ export default {
       photo: this.getUser.photo,
       type: "student",
     };
-  },
+  }, */
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
@@ -78,34 +108,74 @@ export default {
 </script>
 
 <style>
-#info {
+#profile {
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  margin: 50px auto;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
+  padding: 30px;
   border-radius: 25px;
-  border: 1px solid #707070;
-  width: 1300px;
-  height: 400px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
 }
-#firstLine,
-#secondLine,
-#thirdLine {
-  justify-content: space-around;
+#profile h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #fec107;
+  text-transform: uppercase;
+  text-align: center;
 }
-#gamification {
-  border-radius: 25px;
-  border: 1px solid #707070;
-  width: 1300px;
-  height: 300px;
+#profile #info #line,
+#oneline h5,
+p {
+  text-align: left;
 }
-#gamepad {
+#profile #pass .btn {
+  width: 30%;
+  margin-left: 7px;
+  padding: 8px 0px;
+  font-size: 15px;
+  background: #fec107;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+#profile #pass .btn:hover {
+  background: #ffd658;
+}
+#profile #interests .btn {
+  width: 20%;
+  margin-left: 7px;
+  padding: 8px 0px;
+  font-size: 15px;
+  background: #fec107;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+#profile #interests .btn:hover {
+  background: #ffd658;
+}
+#profile #interests input[type="radio"]:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
   position: relative;
-  top: 19px;
-  left: -600px;
+  background-color: #ffa500;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
 }
-#headerGamification {
-  position: relative;
-  top: -10px;
-  left: -493px;
+
+@media (max-width: 420px) {
+  #profile #info #oneline{
+    flex-direction: column;
+  }
+  
 }
 </style>
