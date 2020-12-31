@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper">
-    <h2> Nova Atividade</h2>
+    <h2>Nova Atividade</h2>
     <form @submit.prevent="submitActivity">
       <div class="form-group">
         <label for="activityName">Nome:</label>
         <input
-          v-model="new_activity.name"
+          v-model="name"
           type="text"
           class="input"
           id="activityName"
@@ -16,9 +16,13 @@
       <div class="form-group">
         <label for="activityType">Tipo: </label>
         <div class="custom_select">
-          <select v-model="new_activity.type" id="activityType" required>
+          <select v-model="type" id="activityType" required>
             <option disabled value="">Selecione</option>
-            <option :value="type" :key="i" v-for="(type, i) in types">
+            <option
+              :value="type"
+              :key="i"
+              v-for="(type, i) in this.$store.state.activityType"
+            >
               {{ type }}
             </option>
           </select>
@@ -27,9 +31,9 @@
       <div class="form-group">
         <label for="activityLocal">Local: </label>
         <div class="custom_select">
-          <select v-model="new_activity.local" id="activityLocal" required>
+          <select v-model="local" id="activityLocal" required>
             <option disabled value="">Selecione</option>
-            <option :value="local" :key="i" v-for="(local, i) in locals">
+            <option :value="local" :key="i" v-for="(local, i) in this.$store.state.locals">
               {{ local }}
             </option>
           </select>
@@ -38,13 +42,7 @@
       <br />
       <div class="form-group">
         <label for="txtDate">Data:</label>
-        <input
-          type="date"
-          id="txtDate"
-          class="input"
-          v-model="new_activity.date"
-          required
-        />
+        <input type="date" id="txtDate" class="input" v-model="date" required />
       </div>
       <div class="form-group">
         <label for="txtHour">Horário:</label>
@@ -52,7 +50,7 @@
           type="time"
           id="txtHour"
           class="input"
-          v-model="new_activity.hour"
+          v-model="hour"
           min="09:00"
           max="19:30"
           required
@@ -62,7 +60,7 @@
       <div class="form-group">
         <label for="activityNum">Número de participantes:</label><br />
         <input
-          v-model="new_activity.numPeople"
+          v-model="numPeople"
           type="number"
           class="input"
           id="activityNum"
@@ -75,18 +73,15 @@
       <div class="form-group certificate">
         <p>Tem direito a certificado?</p>
         <label class="check" for="certificate">
-          <input
-            type="radio"
-            v-model="new_activity.certificate"
-            value="Sim"
-            required /><span class="checkmark"></span
+          <input type="radio" v-model="certificate" value="Sim" required /><span
+            class="checkmark"
+          ></span
         ></label>
         <p>Sim</p>
         <label class="check" for="certificate">
-          <input
-            type="radio"
-            v-model="new_activity.certificate"
-            value="Não" /><span class="checkmark"></span
+          <input type="radio" v-model="certificate" value="Não" /><span
+            class="checkmark"
+          ></span
         ></label>
         <p>Não</p>
       </div>
@@ -94,7 +89,7 @@
       <div class="form-group">
         <label for="activityDescription">Descrição:</label>
         <textarea
-          v-model="new_activity.description"
+          v-model="description"
           class="input"
           id="activityDescription"
           rows="4"
@@ -104,12 +99,7 @@
       <br />
       <div class="form-group">
         <label for="activityImage">Imagem ilustrativa: </label>
-        <input
-          type="url"
-          class="input"
-          id="activityImage"
-          v-model="new_activity.image"
-        />
+        <input type="url" class="input" id="activityImage" v-model="image" />
       </div>
       <br />
       <div class="form-group">
@@ -121,54 +111,34 @@
 
 <script>
 export default {
-  name: "AddActivity",
+  name: "submitActivity",
   data() {
     return {
-      types: ["Conferências", "Workshop", "Concursos", "Seminários"],
-      locals: ["ESMAD", "Online"],
-      new_activity: {
-        id: 0,
-        name: "",
-        type: "",
-        local: "",
-        date: null,
-        hour: null,
-        numPeople: null,
-        certificate: "",
-        description: "",
-        image: "",
-      },
+      id: 0,
+      name: "",
+      type: "",
+      local: "",
+      date: null,
+      hour: null,
+      numPeople: null,
+      certificate: "",
+      description: "",
+      image: "",
+      concluded: false
     };
   },
   methods: {
-    submitActivity(event) {
-      event.preventDefault();
-
-      let activities = [];
-      if (localStorage.getItem("activities"))
-        activities = JSON.parse(localStorage.getItem("activities"));
-
-      this.new_activity.id =
-        activities.length > 0 ? activities[activities.length - 1].id + 1 : 1;
-
-      activities.push(this.new_activity);
-      localStorage.setItem("activities", JSON.stringify(activities));
-      alert("Atividade inserida com sucesso!");
-
-      this.new_activity = {
-        id: 0,
-        name: "",
-        type: "",
-        local: "",
-        date: null,
-        hour: null,
-        numPeople: null,
-        certificate: "",
-        description: "",
-        image: "",
-      };
-    },
-  },
+    submitActivity() {
+      try {
+        //this.$store.dispacth("login",{username: this.username, password: this.password});
+        this.$store.dispatch("submitActivity", this.$data);
+        //saltar para a view home
+        this.$router.push({ name: "Homepage" });
+      } catch (error) {
+        alert(error);
+      }
+    }
+  }
 };
 </script>
 

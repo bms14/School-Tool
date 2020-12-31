@@ -12,11 +12,16 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     users: localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [],
-    loggedUser: localStorage.getItem('loggedUser') ? JSON.parse(localStorage.getItem('loggedUser')) : ''
+    loggedUser: localStorage.getItem('loggedUser') ? JSON.parse(localStorage.getItem('loggedUser')) : '',
+    activityType: ["Conferência", "Workshop", "Concurso", "Seminário","Projeto Extracurriculare", "Visita a Empresa "],
+    locals: ["ESMAD", "Online", "Outros"],
+    activities: localStorage.getItem('activities') ? JSON.parse(localStorage.getItem('activities')) : []
   },
   getters: {
     getLoggedUser: (state) => state.loggedUser,
-    isLoggedUser: (state) => state.loggedUser == '' ? false : true
+    isLoggedUser: (state) => state.loggedUser == '' ? false : true,
+    getActivityType: (state) => state.activityType,
+    getLocals: (state) => state.locals
   },
   actions: {
     login(context, payload){
@@ -38,7 +43,7 @@ export default new Vuex.Store({
     register(context, payload){
        //verificar se user existe
        const user = context.state.users.find( user => user.email === payload.email)
-        if(user == undefined && payload.password === payload.password2){
+        if(user == undefined ){
           context.commit('REGISTER', {name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, photo: payload.photo ,type: payload.type})
           localStorage.setItem("users",JSON.stringify(context.state.users))
         } else if(user == undefined && payload.password != payload.password2) {
@@ -46,10 +51,16 @@ export default new Vuex.Store({
         } else {
           throw Error ('Email já registado!')
         }
-    }/*  ,
-    editPassword(context, payload){
-      
-    }  */
+    } ,
+    submitActivity(context, payload){
+      const activity = context.state.activities.find( activity => activity.name === activity.name)
+        if(activity == undefined){
+          context.commit('ACTIVITY', payload)
+          localStorage.setItem("activities",JSON.stringify(context.state.activities))
+        } else {
+          throw Error ('Atividade já inserida!')
+        }
+    }   
   },
   mutations: {
     LOGIN(state, user) {
@@ -61,8 +72,8 @@ export default new Vuex.Store({
     REGISTER (state, user) {
       state.users.push(user)
     },
-    /* PASSWORD (state, user){
-
-    }  */
+    ACTIVITY (state, activity){
+      state.activities.push(activity)
+    }  
   }
 });
