@@ -12,9 +12,9 @@
         <router-link :to='{name: "ListActivity"}'>Catálogo</router-link>
       </div> -->
       <router-link @click.native="logout" to="/"><ion-icon name="log-out-outline"></ion-icon></router-link> |
-      <router-link to="/profile"><ion-icon name="person-outline"></ion-icon>Perfil</router-link>|
-      <router-link to="/addActivity"><ion-icon name="clipboard-outline"></ion-icon>Adicionar atividade</router-link>|
-      <router-link :to='{name: "ListActivity"}'><ion-icon name="home-outline"></ion-icon>Página principal</router-link>
+      <router-link to="/profile"><ion-icon name="person-outline"></ion-icon> Perfil</router-link> |
+      <router-link to="/addActivity"><ion-icon name="clipboard-outline"></ion-icon> Adicionar atividade</router-link> |
+      <router-link :to='{name: "ListActivity"}'><ion-icon name="home-outline"></ion-icon> Página principal</router-link>
   </div>
 </template>
 

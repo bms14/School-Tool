@@ -46,7 +46,10 @@ export default new Vuex.Store({
         } else {
           throw Error ('Email já registado!')
         }
-    }
+    }/*  ,
+    editPassword(context, payload){
+      
+    }  */
   },
   mutations: {
     LOGIN(state, user) {
@@ -57,6 +60,9 @@ export default new Vuex.Store({
     },
     REGISTER (state, user) {
       state.users.push(user)
-    }
+    },
+    /* PASSWORD (state, user){
+
+    }  */
   }
 });

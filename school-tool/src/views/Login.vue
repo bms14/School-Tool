@@ -39,7 +39,7 @@ export default {
         //chamar a ação login que está na store
         //this.$store.dispacth("login",{username: this.username, password: this.password});
         this.$store.dispatch("login", this.$data);
-        //saltar para a view homepage  
+        //saltar para a view homepage
         this.$router.push({ name: "Homepage" });
       } catch (error) {
         alert(error);
