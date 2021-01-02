@@ -85,7 +85,8 @@ export default {
       course: "",
       birthDate: "",
       photo: "",
-      type: "student"
+      type: "student",
+      interests:""
     };
   },
   methods: {

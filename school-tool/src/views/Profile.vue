@@ -42,34 +42,38 @@
           <p>{{ getUser.course }}</p>
         </div>
       </div>
-      <div id="line" >
+      <div id="line">
         <h5>Interesses</h5>
-        <div id="interests" class="interests">
+        <div id="interests" class=" interests">
+          <form class="flex-container">
           <label class="check" for="interests"></label>
           <input
             type="radio"
             
             value="animation"
-            required /><span class="checkmark"></span>Animação
+            required> Animação
           <input
             type="radio"
             
-            value="design" /><span class="checkmark"></span>Design
+            value="design"> Design
           <input
             type="radio"
             
             value="maths"
-            required /><span class="checkmark"></span>Matemática
+            required > Matemática
           <input
             type="radio"
             
-            value="multimedia" /><span class="checkmark"></span>Multimédia
+            value="multimedia" > Multimédia
           <input
             type="radio"
       
             value="programing"
-            required /><span class="checkmark"></span>Programação
-          <button type="submit" class="btn">Guardar</button>
+            > Programação 
+            
+            <button type="submit" class="btn">Guardar</button>
+            </form>
+          
         </div>
       </div>
     </div>
@@ -130,7 +134,7 @@ export default {
 p {
   text-align: left;
 }
-#profile #pass .btn {
+#profile #pass .btn,#interests .btn {
   width: 30%;
   margin-left: 7px;
   padding: 8px 0px;
@@ -141,23 +145,7 @@ p {
   border-radius: 3px;
   outline: none;
 }
-#profile #pass .btn:hover {
-  background: #ffd658;
-}
-#profile #interests .btn {
-  width: 20%;
-  margin-left: 7px;
-  padding: 8px 0px;
-  font-size: 15px;
-  background: #fec107;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 3px;
-  outline: none;
-}
-#profile #interests .btn:hover {
-  background: #ffd658;
-}
+
 #profile #interests input[type="radio"]:checked:after {
   width: 15px;
   height: 15px;
@@ -172,10 +160,16 @@ p {
   border: 2px solid white;
 }
 
+
 @media (max-width: 420px) {
   #profile #info #oneline{
     flex-direction: column;
   }
-  
+  .flex-container { 
+   display: flex;
+   flex-flow: column wrap;
+  }
 }
+
+
 </style>
