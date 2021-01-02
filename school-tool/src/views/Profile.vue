@@ -1,7 +1,7 @@
 <template>
   <div id="profile">
-    <h1>Perfil</h1>
     <div id="info">
+      <h1>Perfil</h1>
       <div id="foto">
         <img
           width="150px"
@@ -77,16 +77,12 @@
         </div>
       </div>
     </div>
-    <!-- <div id="gamification" class="container">
-      <img
-        id="gamepad"
-        width="35px"
-        height="25px"
-        src="../assets/console.png"
-      />
-      <h3 id="headerGamification">Gamificação</h3>
-    </div> -->
+    <div id="gamification">
+      <h1>Gamificação</h1>
+      
+    </div>
   </div>
+  
 </template>
 
 <script>
@@ -112,7 +108,7 @@ export default {
 </script>
 
 <style>
-#profile {
+#info,#gamification {
   max-width: 700px;
   width: 100%;
   background: #fff;
