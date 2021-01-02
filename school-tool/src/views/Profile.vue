@@ -88,17 +88,22 @@
 <script>
 export default {
   name: "Profile",
-  /* data() {
+  data() {
     return {
-      name: this.getUser.name,
-      email: this.getUser.email,
-      password: "",
-      course: this.getUser.course,
-      birthDate: this.getUser.birthDate,
-      photo: this.getUser.photo,
-      type: "student",
+      password: "" //,
+      //photo: ""
     };
-  }, */
+  },
+  methods: {
+    /* register() {
+      try {
+        //this.$store.dispacth("login",{username: this.username, password: this.password});
+        this.$store.dispatch("editPassword", this.$data);
+      } catch (error) {
+        alert(error);
+      }
+    } */
+  },
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;

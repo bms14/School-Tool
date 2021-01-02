@@ -60,7 +60,15 @@ export default new Vuex.Store({
         } else {
           throw Error ('Atividade já inserida!')
         }
-    }   
+    },
+    /* editPassword(context, payload){
+      context.state.users.map(
+        name => {
+            if (context.state.users.name === context.state.loggedUser.name) {
+              context.commit('PASSWORD', payload)
+            }
+        }
+      )} */
   },
   mutations: {
     LOGIN(state, user) {
@@ -74,6 +82,10 @@ export default new Vuex.Store({
     },
     ACTIVITY (state, activity){
       state.activities.push(activity)
-    }  
+    },
+    /* PASSWORD(state, payload ) {
+      state.users.password = payload.password
+      //this.state.users.photo = payload.photo
+    }  */
   }
 });
