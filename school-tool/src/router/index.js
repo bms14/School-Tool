@@ -9,6 +9,7 @@ import AddActivity from "../views/AddActivity.vue";
 import ListActivity from "../views/ListActivity.vue";
 import Activity from "../views/Activity.vue";
 import Profile from "../views/Profile.vue";
+import Forum from "../views/Forum.vue";
 
 Vue.use(VueRouter);
 
@@ -64,6 +65,14 @@ const routes = [
     path: "/profile",
     name: "Profile",
     component: Profile,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/forum",
+    name: "Forum",
+    component: Forum,
     meta: {
       requiresAuth: true
     }

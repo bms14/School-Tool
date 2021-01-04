@@ -86,6 +86,8 @@ export default {
       birthDate: "",
       photo: "",
       type: "student",
+      profileType: "Iniciante",
+      points: 100,
       interests: ""
     };
   },

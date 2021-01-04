@@ -15,7 +15,8 @@
       <router-link to="/homepage"><ion-icon name="home-outline"></ion-icon> Página Principal</router-link> | 
       <router-link to="/profile"><ion-icon name="person-outline"></ion-icon> Perfil</router-link> |
       <router-link to="/addActivity"><ion-icon name="clipboard-outline"></ion-icon> Adicionar atividade</router-link> |
-      <router-link :to='{name: "ListActivity"}'><ion-icon name="home-outline"></ion-icon> Catálogo</router-link>
+      <router-link :to='{name: "ListActivity"}'><ion-icon name="home-outline"></ion-icon> Catálogo</router-link> |
+      <router-link to="/forum"><ion-icon name="clipboard-outline"></ion-icon> Forum</router-link> 
   </div>
 </template>
 

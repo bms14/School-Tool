@@ -27,13 +27,19 @@
           <p>{{ getUser.email }}</p>
         </div>
         <div id="pass" class="col">
-          <h5>Deseja alterar a password?</h5>
+          <form @submit.prevent="editPassword" class="form-group">
+            <h5>Deseja alterar a password?</h5>
           <input
             type="password"
             class="input"
+            v-model="password"
             placeholder="Insira a nova password"
           />
-          <button type="submit" class="btn">Atualizar</button>
+          <button type="submit" class="btn">
+            Atualizar
+          </button>
+          </form>
+          
         </div>
       </div>
       <div id="line">
@@ -95,14 +101,13 @@ export default {
     };
   },
   methods: {
-    /* register() {
-      try {
-        //this.$store.dispacth("login",{username: this.username, password: this.password});
+    editPassword() {
+      //try {
         this.$store.dispatch("editPassword", this.$data);
-      } catch (error) {
-        alert(error);
-      }
-    } */
+     // } catch (error) {
+      //  alert(error);
+      //}
+    } 
   },
   computed: {
     getUser() {
