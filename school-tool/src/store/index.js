@@ -12,7 +12,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     users: localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [],
-    loggedUser: localStorage.getItem('loggedUser') ? JSON.parse(localStorage.getItem('loggedUser')) : '',
+    loggedUser: sessionStorage.getItem('loggedUser') ? JSON.parse(sessionStorage.getItem('loggedUser')) : '',
     activityType: ["Conferência", "Workshop", "Concurso", "Seminário", "Projeto Extracurriculare", "Visita a Empresa "],
     locals: ["ESMAD", "Online", "Outros"],
     activities: localStorage.getItem('activities') ? JSON.parse(localStorage.getItem('activities')) : [],
@@ -39,14 +39,14 @@ export default new Vuex.Store({
       if (payload.email == 'admin' && payload.password == 'admin') {
         let user =  {name: 'admin', password: 'admin', type: 'admin'}
         context.commit('LOGIN', user)
-        localStorage.setItem('loggedUser', JSON.stringify(user))
+        sessionStorage.setItem('loggedUser', JSON.stringify(user))
       } else {
         //verificar se user existe
         const user = context.state.users.find(user => user.email === payload.email && user.password === payload.password)
         if (user != undefined) {
           //login com sucesso
           context.commit('LOGIN', user)
-          localStorage.setItem('loggedUser', JSON.stringify(user))
+          sessionStorage.setItem('loggedUser', JSON.stringify(user))
         } else {
           //login sem sucesso      
           throw Error('Login inválido!')
