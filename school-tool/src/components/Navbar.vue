@@ -19,7 +19,7 @@
       <router-link to="/adminlistcomments">Forum</router-link>
     </div>
     <div v-else>
-      n
+      
       <router-link @click.native="logout" to="/"
         ><ion-icon name="log-out-outline"></ion-icon
       ></router-link>
