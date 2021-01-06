@@ -62,8 +62,19 @@ export default new Vuex.Store({
       }
     },
     editPassword(context, payload) {
-      context.commit('PASSWORD', payload)
-      localStorage.setItem("users", JSON.stringify(context.state.users))
+      if(payload.password != this.state.loggedUser.password){
+        context.commit('PASSWORD', payload)
+        localStorage.setItem("users", JSON.stringify(context.state.users))
+      } else {
+        throw Error ("A password tem que ser diferente da atual!")
+      }
+    }, editPhoto(context, payload) {
+      if(payload.photo != this.state.loggedUser.photo){
+        context.commit('PHOTO', payload)
+        localStorage.setItem("users", JSON.stringify(context.state.users))
+      } else {
+        throw Error ("A foto de perfil tem que ser diferente da atual!")
+      }
     }
   },
   mutations: {
@@ -80,14 +91,26 @@ export default new Vuex.Store({
       state.activities.push(activity)
     },
     PASSWORD(state, payload) {
-      //state.users.password = payload.password
-      //this.state.users.photo = payload.photo
       state.users.map(
         user => {
           if (user.name === state.loggedUser.name) {
-            state.user.password = payload.password
+            user.password = payload.password
+            localStorage.setItem("loggedUser", JSON.stringify(user))
           }
         }
-      )}
+      )
+      state.loggedUser.password = payload.password
+    },
+    PHOTO(state, payload) {
+      state.users.map(
+        user => {
+          if (user.photo === state.loggedUser.photo) {
+            user.photo = payload.photo
+            localStorage.setItem("loggedUser", JSON.stringify(user))
+          }
+        }
+      )
+      state.loggedUser.photo = payload.photo
+    }
   }
 });
