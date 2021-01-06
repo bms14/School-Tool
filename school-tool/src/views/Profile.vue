@@ -128,11 +128,10 @@ export default {
   text-transform: uppercase;
   text-align: center;
 }
-#profile #info #line,
-#oneline h5,
-p {
+ #profile #info #line,
+#oneline h5, #oneline p {
   text-align: left;
-}
+} 
 #profile #pass .btn,
 #interests .btn,
 #foto .btn {
