@@ -30,13 +30,13 @@ export default {
   data() {
     return {
       email: "",
-      password: "",
+      password: ""
     };
   },
   methods: {
     login() {
       try {
-        if (this.$data.email == "admin" && this.$data.password == "admin") {
+        if (this.email == "admin" && this.password == "admin") {
           this.$store.dispatch("login", this.$data);
           this.$router.push({ name: "HomeAdmin" });
         } else {

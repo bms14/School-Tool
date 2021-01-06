@@ -113,7 +113,7 @@ const routes = [
       requiresAuth: true
     }
   }
-  
+
 ];
 
 const router = new VueRouter({

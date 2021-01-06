@@ -38,6 +38,7 @@ export default new Vuex.Store({
     login(context, payload) {
       if (payload.email == 'admin' && payload.password == 'admin') {
         let user =  {name: 'admin', password: 'admin', type: 'admin'}
+        context.commit('LOGIN', user)
         localStorage.setItem('loggedUser', JSON.stringify(user))
       } else {
         //verificar se user existe
