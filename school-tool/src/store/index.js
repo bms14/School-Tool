@@ -53,7 +53,7 @@ export default new Vuex.Store({
       }
     },
     submitActivity(context, payload) {
-      const activity = context.state.activities.find(activity => activity.name === activity.name)
+      const activity = context.state.activities.find(activity => activity.name === payload .name)
       if (activity == undefined) {
         context.commit('ACTIVITY', payload)
         localStorage.setItem("activities", JSON.stringify(context.state.activities))
