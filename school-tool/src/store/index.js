@@ -21,7 +21,12 @@ export default new Vuex.Store({
     getLoggedUser: (state) => state.loggedUser,
     isLoggedUser: (state) => state.loggedUser == '' ? false : true,
     getActivityType: (state) => state.activityType,
-    getLocals: (state) => state.locals
+    getLocals: (state) => state.locals,
+    getNextActivityId: (state) => {
+      return state.activities.length > 0
+        ? state.activities[state.activities.length - 1].id + 1
+        : 1;
+    }
   },
   actions: {
     login(context, payload) {

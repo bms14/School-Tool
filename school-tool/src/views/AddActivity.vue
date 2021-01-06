@@ -114,7 +114,7 @@ export default {
   name: "submitActivity",
   data() {
     return {
-      id: 0,
+      id: this.$store.getters.getNextTaskId,
       name: "",
       type: "",
       local: "",
