@@ -10,6 +10,10 @@ import ListActivity from "../views/ListActivity.vue";
 import Activity from "../views/Activity.vue";
 import Profile from "../views/Profile.vue";
 import Forum from "../views/Forum.vue";
+import HomeAdmin from "../views/HomeAdmin.vue";
+import AdminListUser from "../views/AdminListUser.vue";
+import AdminListActivity from "../views/AdminListActivity.vue";
+import AdminListComments from "../views/AdminListComments.vue";
 
 Vue.use(VueRouter);
 
@@ -76,7 +80,40 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: "/homeadmin",
+    name: "HomeAdmin",
+    component: HomeAdmin,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/adminlistuser",
+    name: "AdminListUser",
+    component: AdminListUser,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/adminlistactivity",
+    name: "AdminListActivity",
+    component: AdminListActivity,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/adminlistcomments",
+    name: "AdminListComments",
+    component: AdminListComments,
+    meta: {
+      requiresAuth: true
+    }
   }
+  
 ];
 
 const router = new VueRouter({

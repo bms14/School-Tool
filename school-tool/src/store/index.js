@@ -15,30 +15,41 @@ export default new Vuex.Store({
     loggedUser: localStorage.getItem('loggedUser') ? JSON.parse(localStorage.getItem('loggedUser')) : '',
     activityType: ["Conferência", "Workshop", "Concurso", "Seminário", "Projeto Extracurriculare", "Visita a Empresa "],
     locals: ["ESMAD", "Online", "Outros"],
-    activities: localStorage.getItem('activities') ? JSON.parse(localStorage.getItem('activities')) : []
+    activities: localStorage.getItem('activities') ? JSON.parse(localStorage.getItem('activities')) : [],
+    comments: []
   },
   getters: {
     getLoggedUser: (state) => state.loggedUser,
     isLoggedUser: (state) => state.loggedUser == '' ? false : true,
     getActivityType: (state) => state.activityType,
     getLocals: (state) => state.locals,
+    getLoggedUserType: (state) => state.loggedUser.type,
     getNextActivityId: (state) => {
       return state.activities.length > 0
         ? state.activities[state.activities.length - 1].id + 1
         : 1;
-    }
+    },
+    getNumUsers: (state) => {return state.users.length},
+    getNumActivities: (state) => {return state.activities.length},
+    getNumComments: (state) => {return state.comments.length},
+
   },
   actions: {
     login(context, payload) {
-      //verificar se user existe
-      const user = context.state.users.find(user => user.email === payload.email && user.password === payload.password)
-      if (user != undefined) {
-        //login com sucesso
-        context.commit('LOGIN', user)
+      if (payload.email == 'admin' && payload.password == 'admin') {
+        let user =  {name: 'admin', password: 'admin', type: 'admin'}
         localStorage.setItem('loggedUser', JSON.stringify(user))
       } else {
-        //login sem sucesso      
-        throw Error('Login inválido!')
+        //verificar se user existe
+        const user = context.state.users.find(user => user.email === payload.email && user.password === payload.password)
+        if (user != undefined) {
+          //login com sucesso
+          context.commit('LOGIN', user)
+          localStorage.setItem('loggedUser', JSON.stringify(user))
+        } else {
+          //login sem sucesso      
+          throw Error('Login inválido!')
+        }
       }
     },
     logout(context) {
@@ -58,7 +69,7 @@ export default new Vuex.Store({
       }
     },
     submitActivity(context, payload) {
-      const activity = context.state.activities.find(activity => activity.name === payload .name)
+      const activity = context.state.activities.find(activity => activity.name === payload.name)
       if (activity == undefined) {
         context.commit('ACTIVITY', payload)
         localStorage.setItem("activities", JSON.stringify(context.state.activities))
@@ -67,18 +78,19 @@ export default new Vuex.Store({
       }
     },
     editPassword(context, payload) {
-      if(payload.password != this.state.loggedUser.password){
+      if (payload.password != this.state.loggedUser.password) {
         context.commit('PASSWORD', payload)
         localStorage.setItem("users", JSON.stringify(context.state.users))
       } else {
-        throw Error ("A password tem que ser diferente da atual!")
+        throw Error("A password tem que ser diferente da atual!")
       }
     }, editPhoto(context, payload) {
-      if(payload.photo != this.state.loggedUser.photo){
+      if (payload.photo != this.state.loggedUser.photo) {
         context.commit('PHOTO', payload)
         localStorage.setItem("users", JSON.stringify(context.state.users))
+        
       } else {
-        throw Error ("A foto de perfil tem que ser diferente da atual!")
+        throw Error("A foto de perfil tem que ser diferente da atual!")
       }
     }
   },
