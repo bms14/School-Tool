@@ -63,7 +63,7 @@ export default new Vuex.Store({
     },
     logout(context) {
       context.commit('LOGOUT')
-      localStorage.removeItem('loggedUser')
+      sessionStorage.removeItem('loggedUser')
     },
     register(context, payload) {
       //verificar se user existe
