@@ -10,13 +10,15 @@
             :src="getUser.photo"
             class="rounded-circle"
           /><br />
-          <input
-            type="link"
-            class="input"
-            v-model="photo"
-            placeholder="Insira um novo link"
-          />
-          <button type="submit" class="btn">Atualizar</button>
+          <div>
+            <input
+              type="link"
+              class="input"
+              v-model="photo"
+              placeholder="Insira um novo link"
+            />
+            <button type="submit" class="btn">Atualizar</button>
+          </div>
         </form>
       </div>
       <br />
@@ -64,14 +66,18 @@
             <input type="radio" value="maths" required /> Matemática
             <input type="radio" value="multimedia" /> Multimédia
             <input type="radio" value="programing" /> Programação
-            <br>
+            <br />
             <button type="submit" class="btn">Guardar</button>
           </form>
         </div>
       </div>
     </div>
     <div id="gamification">
-      <h1>Gamificação</h1>
+      <h1><ion-icon name="game-controller-outline"></ion-icon> Gamificação</h1>
+      <p>Tipo de perfil: <span>Iniciante</span> <button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
+      <p>Pontos: <span>1</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
+      <p>Conquistas: <span>3</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
+      <p>Certificados: <span>2</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
     </div>
   </div>
 </template>
@@ -128,10 +134,12 @@ export default {
   text-transform: uppercase;
   text-align: center;
 }
- #profile #info #line,
-#oneline h5, #oneline p {
+#profile #info #line,
+#oneline h5,
+#oneline p,
+#gamification p {
   text-align: left;
-} 
+}
 #profile #pass .btn,
 #interests .btn,
 #foto .btn {
@@ -139,13 +147,34 @@ export default {
   margin-left: 7px;
   padding: 8px 0px;
   font-size: 15px;
-  background: #fec107;
+  border-color: #fec107;
+  border-width: 2px;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+#profile #pass .btn:hover,
+#interests .btn:hover,
+#foto .btn:hover {
+  width: 90px;
+  margin-left: 7px;
+  padding: 8px 0px;
+  font-size: 15px;
+  background-color: #fec107;
   color: #fff;
   cursor: pointer;
   border-radius: 3px;
   outline: none;
 }
-
+#infobtn {
+  background: none;
+  border: none;
+}
+#gamification ion-icon {
+  color: #fec107;
+  top: 4px;
+  position: relative;
+}
 
 #profile #interests input[type="radio"]:checked:after {
   width: 15px;

@@ -68,7 +68,7 @@
 export default {
   name: "ActivityCard",
   props: {
-    activity: Object,
+    activity: Object
   },
   computed: {
     getDescription() {
