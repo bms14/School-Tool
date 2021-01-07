@@ -13,7 +13,7 @@ export default new Vuex.Store({
   state: {
     users: localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [],
     loggedUser: sessionStorage.getItem('loggedUser') ? JSON.parse(sessionStorage.getItem('loggedUser')) : '',
-    activityType: ["Conferência", "Workshop", "Concurso", "Seminário", "Projeto Extracurriculare", "Visita a Empresa "],
+    activityType: ["Conferência", "Workshop", "Concurso", "Seminário", "Projeto Extracurricular", "Visita a Empresa "],
     locals: ["ESMAD", "Online", "Outros"],
     activities: localStorage.getItem('activities') ? JSON.parse(localStorage.getItem('activities')) : [],
     comments: []
