@@ -77,29 +77,7 @@
       <p>Pontos: <span>1</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
       <p>Conquistas: <span>3</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
       <p>Certificados: <span>2</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
-    </div> <button type="button" class="btn btn-outline-danger" id="logout" data-toggle="modal"
-                    data-target="#modalLogout">Logout</button>
-    <div class="modal" id="modalLogout" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Logout</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Tens a certeza que queres sair?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Não</button>
-                    <a href="">
-                        <button type="button" id="btnLogout" class="btn btn-danger">Sim, tenho!</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+   
   </div>
 </template>
 
