@@ -74,10 +74,10 @@
     </div>
     <div id="gamification">
       <h1><ion-icon name="game-controller-outline"></ion-icon> Gamificação</h1>
-      <p>Tipo de perfil: <span>Iniciante</span> <button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
-      <p>Pontos: <span>1</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
-      <p>Conquistas: <span>3</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
-      <p>Certificados: <span>2</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
+      <p>Tipo de perfil: <span>{{ getUser.profileType }}</span> <button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
+      <p>Pontos: <span>{{ getUser.points }}</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
+      <p>Conquistas: <span>{{ getUser.achievements }}</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
+      <p>Certificados: <span>{{ getUser.certificates }}</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
     </div>
   </div>
 </template>

@@ -88,7 +88,9 @@ export default {
       type: "student",
       profileType: "Iniciante",
       points: 100,
-      interests: ""
+      interests: "",
+      achievements:0,
+      certificates:0,
     };
   },
   methods: {

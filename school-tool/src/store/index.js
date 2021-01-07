@@ -61,7 +61,7 @@ export default new Vuex.Store({
       //verificar se user existe
       const user = context.state.users.find(user => user.email === payload.email)
       if (user == undefined) {
-        context.commit('REGISTER', { name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, photo: payload.photo, type: payload.type, profileType: payload.profileType, points: payload.points })
+        context.commit('REGISTER', { name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, photo: payload.photo, type: payload.type, profileType: payload.profileType, points: payload.points, achievements: payload.achievements, certificates: payload.certificates })
         localStorage.setItem("users", JSON.stringify(context.state.users))
       } else if (user == undefined && payload.password != payload.password2) {
         throw Error('As passwords não são iguais!')
