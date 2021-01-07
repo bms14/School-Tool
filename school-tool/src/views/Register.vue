@@ -90,6 +90,8 @@ export default {
       profileType: "Iniciante",
       points: 100,
       interests: "",
+      achievements:0,
+      certificates:0,
       blocked: false
     };
   },

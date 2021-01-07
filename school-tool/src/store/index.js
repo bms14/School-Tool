@@ -71,7 +71,7 @@ export default new Vuex.Store({
       if (user == undefined && payload.password != payload.password2) {
         throw Error('As passwords não são iguais!')
       } else if (user == undefined) {
-        context.commit('REGISTER', {id: payload.id, name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, photo: payload.photo, type: payload.type, profileType: payload.profileType, points: payload.points, interests: payload.interests, blocked: payload.blocked })
+        context.commit('REGISTER', {id: payload.id, name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, photo: payload.photo, type: payload.type, profileType: payload.profileType, points: payload.points, interests: payload.interests, achievements: payload.achievements, certificates: payload.certificates, blocked: payload.blocked })
         localStorage.setItem("users", JSON.stringify(context.state.users))
       } else {
         throw Error('Email já registado!')
