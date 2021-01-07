@@ -9,7 +9,7 @@
           <input type="text" v-model="filterName" id="txtFilterName" />
         </div>
         <table>
-          <tr v-for="user in filteredUsers" :key="user.name">
+          <tr v-for="user in filteredUsers" :key="user.id">
             <td>
               <img
                 width="50px"
@@ -21,10 +21,22 @@
             <td>{{ user.name }}</td>
             <td>{{ user.type }}</td>
             <td>
-              <button @click="editUser(user.name)">EDITAR</button>
-              <button @click="promoteUser(user.name)">PROMOVER</button>
-              <button @click="blockUser(user.name)">BLOQUEAR</button>
-              <button @click="removeUser(user.name)">REMOVER</button>
+              <button @click="editUser(user.id)">EDITAR</button>
+            </td>
+            <td v-if="user.type == 'Estudante'">
+              <button @click="promoteUser(user.id)">PROMOVER</button>
+            </td>
+            <td v-else>
+              <button @click="demoteUser(user.id)">DESPROMOVER</button>
+            </td>
+            <td v-if="user.blocked == false">
+              <button @click="blockUser(user.id)">BLOQUEAR</button>
+            </td>
+            <td v-else>
+              <button @click="unblockUser(user.id)">DESBLOQUEAR</button>
+            </td>
+            <td>
+              <button @click="removeUser(user.id)">REMOVER</button>
             </td>
           </tr>
         </table>
@@ -38,8 +50,37 @@ export default {
   name: "AdminListUser",
   data() {
     return {
-      filterName: ""
+      filterName: "",
     };
+  },
+  methods: {
+    editUser() {
+    },
+    promoteUser(id) {
+      if (confirm("Tem a certeza que pretende promover?")) {
+        this.$store.dispatch("promoteUser", id);
+      }
+    },
+    demoteUser(id) {
+      if (confirm("Tem a certeza que pretende despromover?")) {
+        this.$store.dispatch("demoteUser", id);
+      }
+    },
+    blockUser(id) {
+      if (confirm("Tem a certeza que pretende bloquear?")) {
+        this.$store.dispatch("blockUser", id);
+      }
+    },
+    unblockUser(id) {
+      if (confirm("Tem a certeza que pretende desbloquear?")) {
+        this.$store.dispatch("unblockUser", id);
+      }
+    },
+    removeUser(id) {
+      if (confirm("Tem a certeza que pretende remover?")) {
+        this.$store.dispatch("removeUser", id);
+      }
+    },
   },
   computed: {
     getUser() {
@@ -56,9 +97,9 @@ export default {
           user.name.includes(this.filterName)
         );
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
     
 <style>
