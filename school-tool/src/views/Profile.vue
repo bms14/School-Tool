@@ -10,14 +10,15 @@
             :src="getUser.photo"
             class="rounded-circle"
           /><br />
-          <div >
-          <input
-            type="link"
-            class="input"
-            v-model="photo"
-            placeholder="Insira um novo link"
-          />
-          <button type="submit" class="btn">Atualizar</button></div>
+          <div>
+            <input
+              type="link"
+              class="input"
+              v-model="photo"
+              placeholder="Insira um novo link"
+            />
+            <button type="submit" class="btn">Atualizar</button>
+          </div>
         </form>
       </div>
       <br />
@@ -65,7 +66,7 @@
             <input type="radio" value="maths" required /> Matemática
             <input type="radio" value="multimedia" /> Multimédia
             <input type="radio" value="programing" /> Programação
-            <br>
+            <br />
             <button type="submit" class="btn">Guardar</button>
           </form>
         </div>
@@ -133,10 +134,12 @@ export default {
   text-transform: uppercase;
   text-align: center;
 }
- #profile #info #line,
-#oneline h5, #oneline p, #gamification p {
+#profile #info #line,
+#oneline h5,
+#oneline p,
+#gamification p {
   text-align: left;
-} 
+}
 #profile #pass .btn,
 #interests .btn,
 #foto .btn {
@@ -158,20 +161,19 @@ export default {
   padding: 8px 0px;
   font-size: 15px;
   background-color: #fec107;
-  color:#fff;
+  color: #fff;
   cursor: pointer;
   border-radius: 3px;
   outline: none;
 }
-#infobtn{
+#infobtn {
   background: none;
   border: none;
 }
 #gamification ion-icon {
   color: #fec107;
-  top: 4px ;
+  top: 4px;
   position: relative;
-  
 }
 
 #profile #interests input[type="radio"]:checked:after {
