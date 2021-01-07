@@ -23,7 +23,7 @@ const routes = [
     name: "Landing",
     component: Landing,
     meta: {
-      authDone: true
+      userAuthDone: true
     }
   },
   {
@@ -31,7 +31,7 @@ const routes = [
     name: "Login",
     component: Login,
     meta: {
-      authDone: true
+      userAuthDone: true
     }
   },
   {
@@ -39,7 +39,7 @@ const routes = [
     name: "Register",
     component: Register,
     meta: {
-      authDone: true
+      userAuthDone: true
     }
   },
   {
@@ -47,7 +47,8 @@ const routes = [
     name: "Homepage",
     component: Homepage,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      notAdmin: true
     }
   },
   {
@@ -55,7 +56,8 @@ const routes = [
     name: "AddActivity",
     component: AddActivity,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      notAdmin: true
     }
   },
   {
@@ -63,7 +65,8 @@ const routes = [
     name: "ListActivity",
     component: ListActivity,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      notAdmin: true
     }
   },
   {
@@ -71,7 +74,8 @@ const routes = [
     name: "activity",
     component: Activity,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      notAdmin: true
     }
   },
   {
@@ -79,7 +83,8 @@ const routes = [
     name: "Profile",
     component: Profile,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      notAdmin: true
     }
   },
   {
@@ -87,7 +92,8 @@ const routes = [
     name: "Forum",
     component: Forum,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      notAdmin: true
     }
   },
   {
@@ -137,10 +143,11 @@ router.beforeEach((to, from, next) => {
   }
 });
 router.beforeEach((to, from, next) => {
-  if (to.meta.authDone && Store.getters.isLoggedUser) {
+  if (to.meta.userAuthDone && Store.getters.isLoggedUser) {
     next(to = '/homepage');
   } else {
     next();
   }
 });
+
 export default router;
