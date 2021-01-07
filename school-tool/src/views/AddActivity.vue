@@ -144,15 +144,6 @@ export default {
 </script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  background: #e9e9e9;
-  padding: 0 10px;
-}
 .wrapper {
   max-width: 500px;
   width: 100%;
