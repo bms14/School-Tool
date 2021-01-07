@@ -1,8 +1,11 @@
 <template>
   <div class="home">
-    <img alt="logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to School Tool " />
+    
+ <!--    <img class="bg" src="../assets/bg.jpeg" /> -->
+    
+<HelloWorld msg="Welcome to School Tool " />
   </div>
+  
 </template>
 
 <script>
@@ -16,3 +19,23 @@ export default {
   }
 };
 </script>
+<style >
+
+.bg{ 
+
+
+
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+</style>

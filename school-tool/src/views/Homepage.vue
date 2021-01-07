@@ -5,25 +5,25 @@
 
    
   <div>
-  <b-carousel
+ <b-carousel
     id="carousel-fade"
     style="text-shadow: 0px 0px 2px #000"
     fade
     indicators
-    img-width="1024"
+    img-width="1600"
     img-height="480"
   >
     <b-carousel-slide
-      caption="First slide"
-      img-src="https://picsum.photos/1024/480/?image=10"
+      
+      img-src="https://picsum.photos/1600/480/?image=10"
     ></b-carousel-slide>
     <b-carousel-slide
-      caption="Second Slide"
-      img-src="https://picsum.photos/1024/480/?image=12"
+     
+      img-src="https://picsum.photos/1600/480/?image=12"
     ></b-carousel-slide>
     <b-carousel-slide
-      caption="Third Slide"
-      img-src="https://picsum.photos/1024/480/?image=22"
+     
+      img-src="https://picsum.photos/1600/480/?image=22"
     ></b-carousel-slide>
   </b-carousel>
 </div>
@@ -62,8 +62,8 @@
       <!-- <label for="txtDate">Data:</label>
       <input type="date" id="txtDate" class="input" /> -->
       <hr />
-
       <div class="card-columns" v-if="filterActivities.length > 0">
+        
         <ActivityCard
           v-for="(activity, i) in filterActivities"
           :activity="activity"
@@ -90,6 +90,7 @@ export default {
       filterType: "",
       filterLocal: "",
       search: "",
+      
     };
   },
 
