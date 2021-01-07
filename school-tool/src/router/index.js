@@ -21,17 +21,26 @@ const routes = [
   {
     path: "/",
     name: "Landing",
-    component: Landing
+    component: Landing,
+    meta: {
+      authDone: true
+    }
   },
   {
     path: "/login",
     name: "Login",
-    component: Login
+    component: Login,
+    meta: {
+      authDone: true
+    }
   },
   {
     path: "/register",
     name: "Register",
-    component: Register
+    component: Register,
+    meta: {
+      authDone: true
+    }
   },
   {
     path: "/homepage",
@@ -127,5 +136,11 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
-
+router.beforeEach((to, from, next) => {
+  if (to.meta.authDone && Store.getters.isLoggedUser) {
+    next(to = '/homepage');
+  } else {
+    next();
+  }
+});
 export default router;
