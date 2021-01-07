@@ -102,8 +102,8 @@
         <input type="url" class="input" id="activityImage" v-model="image" />
       </div>
       <br />
-      <div class="form-group">
-        <button type="submit" class="btn">Inserir</button>
+      <div class="form-group justify-content-center">
+        <button type="submit" class="btn">Adicionar</button>
       </div>
     </form>
   </div>
@@ -259,19 +259,26 @@ body {
 }
 
 .wrapper form .form-group .btn {
-  width: 100%;
-  padding: 8px 10px;
+  width: 90px;
+  padding: 8px 0px;
   font-size: 15px;
-  border: 0px;
-  background: #fec107;
-  color: #fff;
+  border-color: #fec107;
+  border-width: 2px;
   cursor: pointer;
   border-radius: 3px;
   outline: none;
 }
 .wrapper form .form-group .btn:hover {
-  background: #ffd658;
+  width: 90px;
+  padding: 8px 0px;
+  font-size: 15px;
+  background-color: #fec107;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
 }
+
 .wrapper form .form-group:last-child {
   margin-bottom: 0;
 }
