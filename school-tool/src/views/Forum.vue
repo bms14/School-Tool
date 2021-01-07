@@ -1,59 +1,73 @@
 <template>
-<div class="container">
-  <div class="row justify-content-start">
-    <div class="col-4">
-      <table class="table" id="table">
-        <thead id="thead">
-          <tr>
-            <th scope="col">Atividades</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <button type="button" id="button" class="btn btn-outline-dark">
-              Workshop ##
-            </button>
-          </tr>
-          <tr>
-            <button type="button" id="button" class="btn btn-outline-dark">
-              Workshop ##
-            </button>
-          </tr>
-          <tr>
-            <button type="button" id="button" class="btn btn-outline-dark">
-              Workshop ##
-            </button>
-          </tr>
-          <tr>
-            <button type="button" id="button" class="btn btn-outline-dark">
-              Workshop ##
-            </button>
-          </tr>
-          <tr>
-            <th scope="row" id="spacetosearch"></th>
-          </tr>
-          <tr>
-            <input
-              class="form-control me-2"
-              id="search"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-4">
-      <h1>My First Bootstrap Page</h1>
-        <p>
-          This container has a dark background color and a white text, and some
-          extra padding and margins.
-        </p>
+  <div class="container">
+    <div class="row justify-content-start">
+      <div class="col-4">
+        <table class="table" id="table">
+          <thead id="thead">
+            <tr>
+              <th scope="col">Atividades</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <button type="button" id="button" class="btn btn-outline-dark">
+                Workshop ##
+              </button>
+            </tr>
+            <tr>
+              <button type="button" id="button" class="btn btn-outline-dark">
+                Workshop ##
+              </button>
+            </tr>
+            <tr>
+              <button type="button" id="button" class="btn btn-outline-dark">
+                Workshop ##
+              </button>
+            </tr>
+            <tr>
+              <button type="button" id="button" class="btn btn-outline-dark">
+                Workshop ##
+              </button>
+            </tr>
+            <tr>
+              <th scope="row" id="spacetosearch"></th>
+            </tr>
+            <tr>
+              <input
+                class="form-control me-2"
+                id="search"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-6 bg-white text-black" id="chat">
+        <p id="message">Local onde entra a primeira mensagem</p>
+        <div class="row">
+          <div class="mb-3">
+            <form class="d-flex">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Deixar comentário do workshop"
+              />
+              <button class="btn btn-outline-dark" type="submit">
+                <ion-icon name="navigate"></ion-icon>
+              </button>
+            </form>
+            <form class="d-flex">
+              <ion-icon id="icon1" name="document-attach"></ion-icon>
+              <ion-icon id="icon2" name="happy"></ion-icon>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-<!-- 
+  <!-- 
   <div class="row">
     <div class="container col-xs-6 .col-md-4" id="main-container">
       <table class="table" id="table">
@@ -124,6 +138,7 @@ export default {
 #table {
   width: 250px;
   background-color: #b8b9b9;
+  border-radius: 15px 15px 15px 15px;
 }
 #thead {
   background-color: #707071;
@@ -145,7 +160,22 @@ export default {
   border-right: 0px;
   border-color: #707071;
 }
-#container-chat {
-  background-color: blue;
+#chat {
+  border-radius: 15px 15px 15px 15px;
+  margin: 0;
+  padding: 0;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+#message {
+  margin-bottom: auto;
+}
+#icon1 {
+  margin-left: 20px;
+}
+#icon2 {
+  margin-left: 10px;
 }
 </style>

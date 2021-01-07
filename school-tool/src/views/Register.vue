@@ -78,6 +78,7 @@ export default {
   name: "Register",
   data() {
     return {
+      id: this.$store.getters.getNextUserId,
       name: "",
       email: "",
       password: "",
@@ -85,12 +86,13 @@ export default {
       course: "",
       birthDate: "",
       photo: "",
-      type: "student",
+      type: "Estudante",
       profileType: "Iniciante",
       points: 100,
       interests: "",
       achievements:0,
       certificates:0,
+      blocked: false
     };
   },
   methods: {

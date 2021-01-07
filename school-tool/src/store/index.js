@@ -24,29 +24,37 @@ export default new Vuex.Store({
     getActivityType: (state) => state.activityType,
     getLocals: (state) => state.locals,
     getLoggedUserType: (state) => state.loggedUser.type,
+    getNextUserId: (state) => {
+      return state.users.length == 0
+        ?  1
+        : state.users[state.users.length - 1].id + 1;
+    },
     getNextActivityId: (state) => {
       return state.activities.length > 0
         ? state.activities[state.activities.length - 1].id + 1
         : 1;
     },
-    getNumUsers: (state) => {return state.users.length},
-    getNumActivities: (state) => {return state.activities.length},
-    getNumComments: (state) => {return state.comments.length},
+    getNumUsers: (state) => { return state.users.length },
+    getNumActivities: (state) => { return state.activities.length },
+    getNumComments: (state) => { return state.comments.length },
 
   },
   actions: {
     login(context, payload) {
       if (payload.email == 'admin' && payload.password == 'admin') {
-        let user =  {name: 'admin', password: 'admin', type: 'admin'}
+        let user = { name: 'admin', password: 'admin', type: 'admin' }
         context.commit('LOGIN', user)
         sessionStorage.setItem('loggedUser', JSON.stringify(user))
       } else {
         //verificar se user existe
         const user = context.state.users.find(user => user.email === payload.email && user.password === payload.password)
-        if (user != undefined) {
+        if (user != undefined && user.blocked != true) {
           //login com sucesso
           context.commit('LOGIN', user)
           sessionStorage.setItem('loggedUser', JSON.stringify(user))
+        } else if (user != undefined && user.blocked == true){
+          //login sem sucesso      
+          throw Error('User Bloqueado!')
         } else {
           //login sem sucesso      
           throw Error('Login inválido!')
@@ -60,11 +68,11 @@ export default new Vuex.Store({
     register(context, payload) {
       //verificar se user existe
       const user = context.state.users.find(user => user.email === payload.email)
-      if (user == undefined) {
-        context.commit('REGISTER', { name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, photo: payload.photo, type: payload.type, profileType: payload.profileType, points: payload.points, achievements: payload.achievements, certificates: payload.certificates })
-        localStorage.setItem("users", JSON.stringify(context.state.users))
-      } else if (user == undefined && payload.password != payload.password2) {
+      if (user == undefined && payload.password != payload.password2) {
         throw Error('As passwords não são iguais!')
+      } else if (user == undefined) {
+        context.commit('REGISTER', {id: payload.id, name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, photo: payload.photo, type: payload.type, profileType: payload.profileType, points: payload.points, interests: payload.interests, achievements: payload.achievements, certificates: payload.certificates, blocked: payload.blocked })
+        localStorage.setItem("users", JSON.stringify(context.state.users))
       } else {
         throw Error('Email já registado!')
       }
@@ -85,14 +93,35 @@ export default new Vuex.Store({
       } else {
         throw Error("A password tem que ser diferente da atual!")
       }
-    }, editPhoto(context, payload) {
+    },
+    editPhoto(context, payload) {
       if (payload.photo != this.state.loggedUser.photo) {
         context.commit('PHOTO', payload)
         localStorage.setItem("users", JSON.stringify(context.state.users))
-        
+
       } else {
         throw Error("A foto de perfil tem que ser diferente da atual!")
       }
+    },
+    removeUser(context, id) {
+      context.commit('REMOVE_USER', id)
+      localStorage.setItem("users", JSON.stringify(context.state.users))
+    },
+    promoteUser(context, id) {
+      context.commit('PROMOTE_USER', id)
+      localStorage.setItem("users", JSON.stringify(context.state.users))
+    },
+    demoteUser(context, id) {
+      context.commit('DEMOTE_USER', id)
+      localStorage.setItem("users", JSON.stringify(context.state.users))
+    },
+    blockUser(context, id) {
+      context.commit('BLOCK_USER', id)
+      localStorage.setItem("users", JSON.stringify(context.state.users))
+    },
+    unblockUser(context, id) {
+      context.commit('UNBLOCK_USER', id)
+      localStorage.setItem("users", JSON.stringify(context.state.users))
     }
   },
   mutations: {
@@ -113,7 +142,7 @@ export default new Vuex.Store({
         user => {
           if (user.name === state.loggedUser.name) {
             user.password = payload.password
-            localStorage.setItem("loggedUser", JSON.stringify(user))
+            sessionStorage.setItem("loggedUser", JSON.stringify(user))
           }
         }
       )
@@ -124,11 +153,46 @@ export default new Vuex.Store({
         user => {
           if (user.photo === state.loggedUser.photo) {
             user.photo = payload.photo
-            localStorage.setItem("loggedUser", JSON.stringify(user))
+            sessionStorage.setItem("loggedUser", JSON.stringify(user))
           }
         }
       )
       state.loggedUser.photo = payload.photo
-    }
+    },
+    REMOVE_USER(state, id) {
+      state.users = state.users.filter(user => user.id != id)
+    },
+    PROMOTE_USER(state, id) {
+      state.users.map(
+        user => {
+          if (user.id === id) 
+            user.type = 'Docente'
+        }
+      )
+    },
+    DEMOTE_USER(state, id) {
+      state.users.map(
+        user => {
+          if (user.id === id)
+            user.type = 'Estudante'
+        }
+      )
+    },
+    BLOCK_USER(state, id) {
+      state.users.map(
+        user => {
+          if (user.id === id) 
+            user.blocked = true
+        }
+      )
+    },
+    UNBLOCK_USER(state, id) {
+      state.users.map(
+        user => {
+          if (user.id === id) 
+            user.blocked = false
+        }
+      )
+    },
   }
 });

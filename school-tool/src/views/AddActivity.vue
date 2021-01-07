@@ -138,7 +138,8 @@ export default {
         alert(error);
       }
     }
-  }
+  },
+  computed: {}
 };
 </script>
 
