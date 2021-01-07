@@ -10,14 +10,15 @@
             :src="getUser.photo"
             class="rounded-circle"
           /><br />
-          <div >
-          <input
-            type="link"
-            class="input"
-            v-model="photo"
-            placeholder="Insira um novo link"
-          />
-          <button type="submit" class="btn">Atualizar</button></div>
+          <div>
+            <input
+              type="link"
+              class="input"
+              v-model="photo"
+              placeholder="Insira um novo link"
+            />
+            <button type="submit" class="btn">Atualizar</button>
+          </div>
         </form>
       </div>
       <br />
@@ -65,7 +66,7 @@
             <input type="radio" value="maths" required /> Matemática
             <input type="radio" value="multimedia" /> Multimédia
             <input type="radio" value="programing" /> Programação
-            <br>
+            <br />
             <button type="submit" class="btn">Guardar</button>
           </form>
         </div>
@@ -73,32 +74,69 @@
     </div>
     <div id="gamification">
       <h1><ion-icon name="game-controller-outline"></ion-icon> Gamificação</h1>
-      <p>Tipo de perfil: <span>Iniciante</span> <button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
-      <p>Pontos: <span>1</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
-      <p>Conquistas: <span>3</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
-      <p>Certificados: <span>2</span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></p>
-    </div> <button type="button" class="btn btn-outline-danger" id="logout" data-toggle="modal"
-                    data-target="#modalLogout">Logout</button>
+      <p>
+        Tipo de perfil: <span>Iniciante</span>
+        <button id="infobtn">
+          <ion-icon name="information-circle-outline"></ion-icon>
+        </button>
+      </p>
+      <p>
+        Pontos: <span>1</span
+        ><button id="infobtn">
+          <ion-icon name="information-circle-outline"></ion-icon>
+        </button>
+      </p>
+      <p>
+        Conquistas: <span>3</span
+        ><button id="infobtn">
+          <ion-icon name="information-circle-outline"></ion-icon>
+        </button>
+      </p>
+      <p>
+        Certificados: <span>2</span
+        ><button id="infobtn">
+          <ion-icon name="information-circle-outline"></ion-icon>
+        </button>
+      </p>
+    </div>
+    <button
+      type="button"
+      class="btn btn-outline-danger"
+      id="logout"
+      data-toggle="modal"
+      data-target="#modalLogout"
+    >
+      Logout
+    </button>
     <div class="modal" id="modalLogout" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Logout</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Tens a certeza que queres sair?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Não</button>
-                    <a href="">
-                        <button type="button" id="btnLogout" class="btn btn-danger">Sim, tenho!</button>
-                    </a>
-                </div>
-            </div>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Logout</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Tens a certeza que queres sair?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+              Não
+            </button>
+            <a href="">
+              <button type="button" id="btnLogout" class="btn btn-danger">
+                Sim, tenho!
+              </button>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </template>
@@ -155,10 +193,12 @@ export default {
   text-transform: uppercase;
   text-align: center;
 }
- #profile #info #line,
-#oneline h5, #oneline p, #gamification p {
+#profile #info #line,
+#oneline h5,
+#oneline p,
+#gamification p {
   text-align: left;
-} 
+}
 #profile #pass .btn,
 #interests .btn,
 #foto .btn {
@@ -180,20 +220,19 @@ export default {
   padding: 8px 0px;
   font-size: 15px;
   background-color: #fec107;
-  color:#fff;
+  color: #fff;
   cursor: pointer;
   border-radius: 3px;
   outline: none;
 }
-#infobtn{
+#infobtn {
   background: none;
   border: none;
 }
 #gamification ion-icon {
   color: #fec107;
-  top: 4px ;
+  top: 4px;
   position: relative;
-  
 }
 
 #profile #interests input[type="radio"]:checked:after {
