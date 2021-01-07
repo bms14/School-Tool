@@ -44,7 +44,7 @@
           </tbody>
         </table>
       </div>
-      <div class="col-6 bg-white text-black" id="chat">
+      <div class="col-6 bg-white text-black"  style="border:3px solid #cecece;" id="chat">
         <p id="message">Local onde entra a primeira mensagem</p>
         <div class="row">
           <div class="mb-3">
