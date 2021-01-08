@@ -11,7 +11,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    users: localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [],
+    users: localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [{ name: 'admin', password: 'admin', type: 'admin' }],
     loggedUser: sessionStorage.getItem('loggedUser') ? JSON.parse(sessionStorage.getItem('loggedUser')) : '',
     activityType: ["Conferência", "Workshop", "Concurso", "Seminário", "Projeto Extracurricular", "Visita a Empresa "],
     locals: ["ESMAD", "Online", "Outros"],
