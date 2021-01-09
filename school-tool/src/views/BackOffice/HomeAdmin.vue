@@ -7,11 +7,7 @@
         <br />
         <h3>Users</h3>
         <div class="card-body">
-          <img
-            class="card-img-top"
-            src="../assets/user.png"
-            style="width: 50px"
-          />
+          
           <br /><br />
           <h3 class="card-title">{{ getNumUsers }}</h3>
           <button @click="seeUsers" class="btn btn-primary">Ver Users</button>
@@ -21,11 +17,7 @@
         <br />
         <h3>Comentários</h3>
         <div class="card-body">
-          <img
-            class="card-img-top"
-            src="../assets/comment.png"
-            style="width: 50px"
-          />
+          
           <br /><br />
           <h3 class="card-title">{{ getNumComments }}</h3>
           <button @click="seeActivities" class="btn btn-primary">
@@ -37,11 +29,7 @@
         <br />
         <h3>Atividades</h3>
         <div class="card-body">
-          <img
-            class="card-img-top"
-            src="../assets/clipboard.png"
-            style="width: 50px"
-          />
+          
           <br /><br />
           <h3 class="card-title">{{ getNumActivities }}</h3>
           <button @click="seeComments" class="btn btn-primary">
