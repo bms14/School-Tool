@@ -11,7 +11,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    users: localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [{ name: 'admin', password: 'admin', type: 'admin' }],
+    users: localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [],
     loggedUser: sessionStorage.getItem('loggedUser') ? JSON.parse(sessionStorage.getItem('loggedUser')) : '',
     activityType: ["Conferência", "Workshop", "Concurso", "Seminário", "Projeto Extracurricular", "Visita a Empresa "],
     locals: ["ESMAD", "Online", "Outros"],
@@ -103,6 +103,10 @@ export default new Vuex.Store({
         throw Error("A foto de perfil tem que ser diferente da atual!")
       }
     },
+    updateUser(context, payload){
+      context.commit('UPDATE_USER', payload)
+      localStorage.setItem("users", JSON.stringify(context.state.users))
+    },
     removeUser(context, id) {
       context.commit('REMOVE_USER', id)
       localStorage.setItem("users", JSON.stringify(context.state.users))
@@ -158,6 +162,18 @@ export default new Vuex.Store({
         }
       )
       state.loggedUser.photo = payload.photo
+    },
+    UPDATE_USER(state, payload) {
+      state.users.map(
+        user => {
+          if (user.id === payload.id) {
+            user.name = payload.name
+            user.email = payload.email
+            user.course = payload.course
+            user.birthDate = payload.birthDate
+          }
+        }
+      )
     },
     REMOVE_USER(state, id) {
       state.users = state.users.filter(user => user.id != id)

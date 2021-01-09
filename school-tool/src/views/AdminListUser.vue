@@ -3,12 +3,14 @@
     <h1>Users</h1>
     <div id="listUsers">
       <div v-if="getNumUsers == 0">NÃO EXISTEM USERS</div>
-      <div v-else>
-        <div id="filterCastles">
+      <div v-else class="row justify-content-center">
+        <div id="filterUsers">
           <label for="txtFilterName">NOME:</label>
           <input type="text" v-model="filterName" id="txtFilterName" />
         </div>
-        <table>
+        <br />
+        <br />
+        <table >
           <tr v-for="user in filteredUsers" :key="user.id">
             <td>
               <img
@@ -21,22 +23,22 @@
             <td>{{ user.name }}</td>
             <td>{{ user.type }}</td>
             <td>
-              <button @click="editUser(user.id)">EDITAR</button>
+              <button @click="editUser(user.id)" class="btn btn-secondary">EDITAR</button>
             </td>
             <td v-if="user.type == 'Estudante'">
-              <button @click="promoteUser(user.id)">PROMOVER</button>
+              <button @click="promoteUser(user.id)" class="btn btn-success">PROMOVER</button>
             </td>
             <td v-else>
-              <button @click="demoteUser(user.id)">DESPROMOVER</button>
+              <button @click="demoteUser(user.id)" class="btn btn-success">DESPROMOVER</button>
             </td>
             <td v-if="user.blocked == false">
-              <button @click="blockUser(user.id)">BLOQUEAR</button>
+              <button @click="blockUser(user.id)" class="btn btn-warning">BLOQUEAR</button>
             </td>
             <td v-else>
-              <button @click="unblockUser(user.id)">DESBLOQUEAR</button>
+              <button @click="unblockUser(user.id)" class="btn btn-warning">DESBLOQUEAR</button>
             </td>
             <td>
-              <button @click="removeUser(user.id)">REMOVER</button>
+              <button @click="removeUser(user.id)" class="btn btn-danger">REMOVER</button>
             </td>
           </tr>
         </table>
@@ -50,11 +52,12 @@ export default {
   name: "AdminListUser",
   data() {
     return {
-      filterName: "",
+      filterName: ""
     };
   },
   methods: {
-    editUser() {
+    editUser(id) {
+      this.$router.push({ name: "EditUserAdmin", params: { id: id } });
     },
     promoteUser(id) {
       if (confirm("Tem a certeza que pretende promover?")) {
@@ -93,7 +96,7 @@ export default {
       if (!this.filterName) {
         return this.$store.state.users;
       } else {
-        return this.$store.state.users.filter(user =>
+        return this.$store.state.users.filter((user) =>
           user.name.includes(this.filterName)
         );
       }

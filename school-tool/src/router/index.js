@@ -14,6 +14,7 @@ import HomeAdmin from "../views/HomeAdmin.vue";
 import AdminListUser from "../views/AdminListUser.vue";
 import AdminListActivity from "../views/AdminListActivity.vue";
 import AdminListComments from "../views/AdminListComments.vue";
+import EditUserAdmin from "../views/EditUserAdmin.vue";
 
 Vue.use(VueRouter);
 
@@ -124,6 +125,14 @@ const routes = [
     path: "/adminlistcomments",
     name: "AdminListComments",
     component: AdminListComments,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/edituseradmin",
+    name: "EditUserAdmin",
+    component: EditUserAdmin,
     meta: {
       requiresAuth: true
     }

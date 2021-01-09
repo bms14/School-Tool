@@ -124,7 +124,8 @@ export default {
       certificate: "",
       description: "",
       image: "",
-      concluded: false
+      concluded: false,
+      full: false
     };
   },
   methods: {
