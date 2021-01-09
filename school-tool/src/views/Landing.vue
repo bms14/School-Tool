@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
+ <div class="home">
     
  <!--    <img class="bg" src="../assets/bg.jpeg" /> -->
-    
-<HelloWorld msg="Welcome to School Tool " />
+      
+      <HelloWorld msg="Welcome to School Tool " />
   </div>
   
 </template>
@@ -22,9 +22,9 @@ export default {
 <style >
 
 .bg{ 
-
-
-
+    
+    
+    
   min-height: 100%;
   min-width: 1024px;
 	
@@ -32,10 +32,10 @@ export default {
   width: 100%;
   height: auto;
 	
-  /* Set up positioning */
+   /* Set up positioning */
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0; 
 }
 
 </style>
