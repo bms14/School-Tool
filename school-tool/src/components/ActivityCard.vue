@@ -48,20 +48,6 @@
   </b-card>
 </b-col>
  -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </template>
 
 <script>
