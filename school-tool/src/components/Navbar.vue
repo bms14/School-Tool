@@ -16,7 +16,7 @@
       <router-link to="/homeadmin">Página Inicial</router-link> |
       <router-link to="/adminlistuser">Users</router-link> |
       <router-link to="/adminlistactivity">Atividades</router-link> |
-      <router-link to="/adminlistcomments">Forum</router-link>
+      <router-link to="/adminlistcomments">Comentários</router-link>
     </div>
     <div v-else>
       
