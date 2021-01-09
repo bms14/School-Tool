@@ -48,11 +48,13 @@
         <p id="message">Local onde entra a primeira mensagem</p>
         <div class="row">
           <div class="mb-3">
-            <form class="d-flex">
+            <form class="d-flex" @submit.prevent="sendComment()">
               <input
                 class="form-control me-2"
                 type="search"
+                id="txtComment"
                 placeholder="Deixar comentário do workshop"
+                v-model="form.comment"
               />
               <button class="btn btn-outline-dark" type="submit">
                 <ion-icon name="navigate"></ion-icon>
@@ -125,7 +127,24 @@
 
 <script>
 export default {
-  name: "Forum",
+  data: function() {
+    return{
+      comment:[],
+      form:{
+        id:"",
+        comment:""
+      }
+    }
+  },
+  methods:{
+    sendComment(){
+      this.form.id = this.getCommentLoggedUser;
+      this.$store.commit("New_Comment", {
+        id: this.form.id,
+        comment: this.form.comment
+      });
+    }
+  },
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
