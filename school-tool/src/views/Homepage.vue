@@ -1,8 +1,8 @@
 <template>
-  <div id="homepage" class="container">
+  <div id="homepage" >
     <!-- <h1>Authenticaded area</h1>
       <h2>Hello {{getUser}}</h2> -->
-
+<div class="container">
  <b-carousel
     id="carousel-fade"
     style="text-shadow: 0px 0px 2px #000; width:100%"
@@ -68,6 +68,7 @@
       <div v-else>
         <p>NÃO HÁ ATIVIDADES!</p>
       </div>
+    </div>
     </div>
   </div>
 </template>
@@ -213,4 +214,8 @@ export default {
 };
 </script>
 <style>
+.container{
+position: absolute;
+  right: 0;
+}
 </style>
