@@ -1,9 +1,6 @@
 <template>
- <div class="home">
-    
- <!--    <img class="bg" src="../assets/bg.jpeg" /> -->
-      
-      <HelloWorld msg="Welcome to School Tool " />
+  <div >
+    <HelloWorld msg="Welcome to School Tool " />
   </div>
   
 </template>
@@ -22,10 +19,7 @@ export default {
 <style >
 
 .bg{ 
-    
-    
-    
-  min-height: 100%;
+    min-height: 100%;
   min-width: 1024px;
 	
   /* Set up proportionate scaling */

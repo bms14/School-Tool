@@ -1,8 +1,6 @@
 <template>
-  <div id="editUser">
-    <div>
+  <div id="editUser" class="center">
       <h2>Editar user: {{ user.name }}</h2>
-      <br />
       <div class="row justify-content-center">
         <div class="col-6">
           <form @submit.prevent="updateUser" class="form-group">
@@ -10,31 +8,31 @@
             <input
               type="text"
               id="txtId"
-              class="form-group"
+              class="form-control"
               v-model="user.id"
               readonly
               disabled
             />
-            <br />
-            <label for="txtName">NOME DO USER: </label>
+            
+            <label for="txtName">Nome: </label>
             <input
               type="text"
               id="txtName"
-              class="form-group"
+              class="form-control"
               v-model="frm.name"
               required
             />
-            <br />
-            <label for="txtEmail">EMAIL DO USER: </label>
+            
+            <label for="txtEmail">Email: </label>
             <input
               type="email"
               id="txtEmail"
-              class="form-group"
+              class="form-control"
               v-model="frm.email"
               required
             />
-            <br />
-            <label for="sltCourse">Curso</label>
+            
+            <label for="sltCourse">Curso:</label>
             <select
               class="form-control"
               id="sltCourse"
@@ -52,24 +50,24 @@
                 Tecnologias e Sistemas de informação para Web
               </option>
             </select>
-            <br />
-            <label for="txtDate">Data de nascimento</label>
+            
+            <label for="txtDate">Data de nascimento:</label>
             <input
               type="date"
               id="txtDate"
               class="form-control"
               v-model="frm.birthDate"
               required
-            /><br />
+            />
+            <br>
             <input
               type="submit"
-              class="btn btn-primary"
+              class="btn"
               value="ATUALIZAR USER"
             />
           </form>
         </div>
       </div>
-    </div>
     <br />
     <a role="button" class="btn btn-outline-dark" @click="goBack">Retroceder</a>
   </div>
@@ -121,4 +119,49 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#editUser {
+  max-width: 500px;
+  width: 100%;
+  background: #fff;
+  margin: 50px auto;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
+  padding: 30px;
+  border-radius: 25px;
+}
+#editUser h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #fec107;
+  text-transform: uppercase;
+  text-align: center;
+}
+#editUser form {
+  width: 100%; 
+} 
+#editUser form .form-group {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+ #editUser form label {
+  width: 200px;
+  color: #757575;
+  margin-right: 10px;
+  font-size: 14px;
+}
+#editUser form input.btn {
+  font-size: 15px;
+  border-color: #fec107;
+  border-width: 2px;
+  cursor: pointer;
+}
+#editUser form input.btn:hover {
+  font-size: 15px;
+  background-color: #fec107;
+  color: #ffff;
+  border-width: 2px;
+  cursor: pointer;
+}
+</style>
