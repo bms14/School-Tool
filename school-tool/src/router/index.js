@@ -15,6 +15,7 @@ import AdminListUser from "../views/BackOffice/AdminListUser.vue";
 import AdminListActivity from "../views/BackOffice/AdminListActivity.vue";
 import AdminListComments from "../views/BackOffice/AdminListComments.vue";
 import EditUserAdmin from "../views/BackOffice/EditUserAdmin.vue";
+import SeeActivityAdmin from "../views/BackOffice/SeeActivityAdmin.vue";
 
 Vue.use(VueRouter);
 
@@ -133,6 +134,14 @@ const routes = [
     path: "/edituseradmin",
     name: "EditUserAdmin",
     component: EditUserAdmin,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/seeactivityadmin",
+    name: "SeeActivityAdmin",
+    component: SeeActivityAdmin,
     meta: {
       requiresAuth: true
     }

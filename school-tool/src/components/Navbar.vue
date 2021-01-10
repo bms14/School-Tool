@@ -18,6 +18,27 @@
       <router-link to="/adminlistactivity">Atividades</router-link> |
       <router-link to="/adminlistcomments">Comentários</router-link>
     </div>
+    <div v-else-if="getUser.type == 'Estudante'">
+      <div class="container">
+        <div class="sidenav">
+          <router-link :to="{ name: 'Landing' }">
+            <img
+              class="img-fluid"
+              id="logo"
+              src="../assets/logo1.png"
+              alt="SchoolTool"
+            />
+          </router-link>
+          <router-link :to= "{ name : 'Homepage'}">Página inicial</router-link>
+          <router-link :to= "{ name : 'Profile'}">Perfil</router-link>
+          <router-link :to= "{ name : 'Forum'}">Fórum</router-link>
+          <router-link :to= "{ name : 'Activity'}">Minhas atividades</router-link>
+          <router-link >Notificações</router-link>
+          <a id="bottom-item1" href="#contact">João Silva</a>
+          <a id="bottom-item2" @click="logout()">Logout</a>
+        </div>
+      </div>
+    </div>
     <div v-else>
       <div class="container">
         <div class="sidenav">
@@ -33,6 +54,7 @@
           <router-link :to= "{ name : 'Profile'}">Perfil</router-link>
           <router-link :to= "{ name : 'Forum'}">Fórum</router-link>
           <router-link :to= "{ name : 'Activity'}">Minhas atividades</router-link>
+          <router-link to="/addActivity">Adicionar atividade</router-link>
           <router-link >Notificações</router-link>
           <a id="bottom-item1" href="#contact">João Silva</a>
           <a id="bottom-item2" @click="logout()">Logout</a>

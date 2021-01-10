@@ -24,7 +24,7 @@
   width: 50px;" name="clipboard-outline"></ion-icon>
           <h3>Atividades</h3> 
           <br />
-          <h3 class="card-title">{{ getNumComments }}</h3>
+          <h3 class="card-title">{{ getNumActivities }}</h3>
           <button @click="seeActivities" class="btn">
             Ver detalhes
           </button>
@@ -40,7 +40,7 @@
   width: 50px;" name="chatbubbles-outline"></ion-icon>
           <h3>Comentários</h3>
           <br />
-          <h3 class="card-title">{{ getNumActivities }}</h3>
+          <h3 class="card-title">{{ getNumComments }}</h3>
           <button @click="seeComments" class="btn">
             Ver detalhes
           </button>

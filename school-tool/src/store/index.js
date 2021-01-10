@@ -126,7 +126,11 @@ export default new Vuex.Store({
     unblockUser(context, id) {
       context.commit('UNBLOCK_USER', id)
       localStorage.setItem("users", JSON.stringify(context.state.users))
-    }
+    },
+    removeActivity(context, id) {
+      context.commit('REMOVE_ACTIVITY', id)
+      localStorage.setItem("activities", JSON.stringify(context.state.activities))
+    },
   },
   mutations: {
     LOGIN(state, user) {
@@ -209,6 +213,9 @@ export default new Vuex.Store({
             user.blocked = false
         }
       )
+    },
+    REMOVE_ACTIVITY(state, id) {
+      state.activities = state.activities.filter(activity => activity.id != id)
     },
   }
 });
