@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <div v-if="!this.$store.getters.isLoggedUser">
-      <NavbarLanding/> 
+    <div v-if="!this.$store.getters.isLoggedUser" class="navLanding" >
+      <NavbarLanding  /> 
+      <img src="./assets/bg.jpeg" id="bg" />
     </div>
     <div v-else>
       <Navbar/>
@@ -21,19 +22,33 @@ export default {
   components: {
      NavbarLanding,
      Navbar
-  }
+  },
 }
 </script>
 
 <style>
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 #app {
+  background-color: #DCDCDC;
+  height: 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  
 }
-
+#bg{
+width: 100%;
+}
+.navLanding{
+  width: 100%;
+  
+}
 #nav {
   padding: 30px;
 }

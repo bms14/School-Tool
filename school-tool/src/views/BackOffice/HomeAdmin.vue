@@ -1,42 +1,52 @@
 <template>
   <div id="adminHome">
     <h1>Admin</h1>
-    <h3 id="stats">Estatísticas Totais:</h3>
-    <div class="d-flex justify-content-center">
-      <div id="card" class="card" style="width: 18rem">
+    <h4 id="stats">Estatísticas atualizadas ao segundo!</h4>
+    <div class="card-group d-flex justify-content-center row row-cols-1 row-cols-sm-3 row-cols-md-3 ">
+      <div class="col">
+      <div id="card" class="card" style="width:85%">
         <br />
-        <h3>Users</h3>
         <div class="card-body">
-          
-          <br /><br />
+          <ion-icon style="color: #fec107;height: 50px;
+  width: 50px;" name="person-outline"></ion-icon>
+          <h3>Users</h3>
+          <br />
           <h3 class="card-title">{{ getNumUsers }}</h3>
-          <button @click="seeUsers" class="btn btn-primary">Ver Users</button>
+          <button @click="seeUsers" class="btn">Ver detalhes</button>
         </div>
       </div>
-      <div id="card" class="card" style="width: 18rem">
+      </div>
+       <div class="col">
+      <div id="card" class="card" style="width:85%" >
         <br />
-        <h3>Comentários</h3>
         <div class="card-body">
-          
-          <br /><br />
+          <ion-icon style="color: #fec107;height: 50px;
+  width: 50px;" name="chatbubbles-outline"></ion-icon>
+          <h3>Atividades</h3> 
+          <br />
           <h3 class="card-title">{{ getNumComments }}</h3>
-          <button @click="seeActivities" class="btn btn-primary">
-            Ver Atividades
+          <button @click="seeActivities" class="btn">
+            Ver detalhes
           </button>
         </div>
       </div>
-      <div id="card" class="card" style="width: 18rem">
+       </div>
+        <div class="col">
+      <div id="card" class="card" style="width:85%">
         <br />
-        <h3>Atividades</h3>
+        
         <div class="card-body">
-          
-          <br /><br />
+          <ion-icon style="color: #fec107;height: 50px;
+  width: 50px;" name="clipboard-outline"></ion-icon>
+          <h3>Comentários</h3>
+          <br />
           <h3 class="card-title">{{ getNumActivities }}</h3>
-          <button @click="seeComments" class="btn btn-primary">
-            Ver Comentários
+          <button @click="seeComments" class="btn">
+            Ver detalhes
           </button>
         </div>
       </div>
+        </div>
     </div>
   </div>
 </template>
@@ -73,6 +83,10 @@ export default {
 </script>
 
 <style>
+#adminHome{
+ background-color: #DCDCDC;
+  height: 100%;
+}
 #card {
   top: 20px;
   margin: auto;
@@ -82,8 +96,15 @@ export default {
 }
 #card .btn {
   font-size: 15px;
-  background: #fec107;
-  color: #fff;
+  border-color: #fec107;
+  border-width: 2px;
+  cursor: pointer;
+}
+#card .btn:hover {
+  font-size: 15px;
+  background-color: #fec107;
+  color: #ffff;
+  border-width: 2px;
   cursor: pointer;
 }
 </style>
