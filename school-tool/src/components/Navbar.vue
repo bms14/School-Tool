@@ -29,13 +29,13 @@
               alt="SchoolTool"
             />
           </router-link>
-          <a href="#services">Página principal</a>
-          <a href="#services">Perfil</a>
-          <a href="#clients">Fórum</a>
-          <a href="#contact">Minhas atividades</a>
-          <a href="#contact">Notificações</a>
+          <router-link :to= "{ name : 'Homepage'}">Página inicial</router-link>
+          <router-link :to= "{ name : 'Profile'}">Perfil</router-link>
+          <router-link :to= "{ name : 'Forum'}">Fórum</router-link>
+          <router-link :to= "{ name : 'Activity'}">Minhas atividades</router-link>
+          <router-link >Notificações</router-link>
           <a id="bottom-item1" href="#contact">João Silva</a>
-          <a id="bottom-item2" href="#contact">Logout</a>
+          <a id="bottom-item2" @click="logout()">Logout</a>
         </div>
       </div>
     </div>
@@ -99,6 +99,7 @@ body {
   color: white;
   position: fixed;
   bottom: 30px;
+  cursor: pointer;
 }
 #bottom-item2 {
   padding: 6px 8px 6px 16px;
@@ -108,6 +109,7 @@ body {
   color: white;
   position: fixed;
   bottom: 10px;
+  cursor: pointer;
 }
 .main {
   margin-left: 100px; /* Same as the width of the sidenav */
