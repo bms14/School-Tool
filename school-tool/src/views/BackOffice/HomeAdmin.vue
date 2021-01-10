@@ -21,7 +21,7 @@
         <br />
         <div class="card-body">
           <ion-icon style="color: #fec107;height: 50px;
-  width: 50px;" name="chatbubbles-outline"></ion-icon>
+  width: 50px;" name="clipboard-outline"></ion-icon>
           <h3>Atividades</h3> 
           <br />
           <h3 class="card-title">{{ getNumComments }}</h3>
@@ -37,7 +37,7 @@
         
         <div class="card-body">
           <ion-icon style="color: #fec107;height: 50px;
-  width: 50px;" name="clipboard-outline"></ion-icon>
+  width: 50px;" name="chatbubbles-outline"></ion-icon>
           <h3>Comentários</h3>
           <br />
           <h3 class="card-title">{{ getNumActivities }}</h3>

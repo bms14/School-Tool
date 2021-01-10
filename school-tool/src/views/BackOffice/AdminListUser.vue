@@ -30,7 +30,7 @@
               <button @click="promoteUser(user.id)" class="btn"><ion-icon name="analytics-outline"></ion-icon> PROMOVER</button>
             </td>
             <td v-else>
-              <button @click="demoteUser(user.id)" class="btn">DESPROMOVER</button>
+              <button @click="demoteUser(user.id)" class="btn"><ion-icon name="analytics-outline"></ion-icon> DESPROMOVER</button>
             </td>
             <td v-if="user.blocked == false">
               <button @click="blockUser(user.id)" class="btn"><ion-icon name="close-outline"></ion-icon> BLOQUEAR</button>
@@ -54,7 +54,7 @@ export default {
   name: "AdminListUser",
   data() {
     return {
-      filterName: ""
+      filterName: "",
     };
   },
   methods: {
