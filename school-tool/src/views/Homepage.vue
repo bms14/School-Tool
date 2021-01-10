@@ -3,15 +3,11 @@
     <!-- <h1>Authenticaded area</h1>
       <h2>Hello {{getUser}}</h2> -->
 
-   
-  <div>
  <b-carousel
     id="carousel-fade"
     style="text-shadow: 0px 0px 2px #000"
     fade
     indicators
-    img-width="1600"
-    img-height="480"
   >
     <b-carousel-slide
       
@@ -26,7 +22,6 @@
       img-src="https://picsum.photos/1600/480/?image=22"
     ></b-carousel-slide>
   </b-carousel>
-</div>
 
 
     <h1>O que te apetece fazer hoje?</h1>
@@ -217,3 +212,5 @@ export default {
   },
 };
 </script>
+<style>
+</style>
