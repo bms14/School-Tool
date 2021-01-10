@@ -16,34 +16,28 @@
       <router-link to="/homeadmin">Página Inicial</router-link> |
       <router-link to="/adminlistuser">Users</router-link> |
       <router-link to="/adminlistactivity">Atividades</router-link> |
-      <router-link to="/adminlistcomments">Forum</router-link>
+      <router-link to="/adminlistcomments">Comentários</router-link>
     </div>
     <div v-else>
-      
-      <router-link @click.native="logout" to="/"
-        ><ion-icon name="log-out-outline"></ion-icon
-      ></router-link>
-      |
-      <router-link to="/homepage"
-        ><ion-icon name="home-outline"></ion-icon> Página Principal</router-link
-      >
-      |
-      <router-link to="/profile"
-        ><ion-icon name="person-outline"></ion-icon> Perfil</router-link
-      >
-      |
-      <router-link to="/addActivity"
-        ><ion-icon name="clipboard-outline"></ion-icon> Adicionar
-        atividade</router-link
-      >
-      |
-      <router-link :to="{ name: 'ListActivity' }"
-        ><ion-icon name="home-outline"></ion-icon> Catálogo</router-link
-      >
-      |
-      <router-link to="/forum"
-        ><ion-icon name="chatbubbles-outline"></ion-icon> Forum</router-link
-      >
+      <div class="container">
+        <div class="sidenav">
+          <router-link :to="{ name: 'Landing' }">
+            <img
+              class="img-fluid"
+              id="logo"
+              src="../assets/logo1.png"
+              alt="SchoolTool"
+            />
+          </router-link>
+          <a href="#services">Página principal</a>
+          <a href="#services">Perfil</a>
+          <a href="#clients">Fórum</a>
+          <a href="#contact">Minhas atividades</a>
+          <a href="#contact">Notificações</a>
+          <a id="bottom-item1" href="#contact">João Silva</a>
+          <a id="bottom-item2" href="#contact">Logout</a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -65,4 +59,67 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+#logo {
+  background-color: #707071;
+  margin-left: -5px;
+}
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #b8b9b9;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  text-align: left;
+  font-size: 15px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+#bottom-item1 {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  text-align: left;
+  font-size: 15px;
+  color: white;
+  position: fixed;
+  bottom: 30px;
+}
+#bottom-item2 {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  text-align: left;
+  font-size: 15px;
+  color: white;
+  position: fixed;
+  bottom: 10px;
+}
+.main {
+  margin-left: 100px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+</style>
