@@ -1,5 +1,5 @@
 <template>
-  <div id="homepage">
+  <div id="homepage" class="container">
     <!-- <h1>Authenticaded area</h1>
       <h2>Hello {{getUser}}</h2> -->
 
