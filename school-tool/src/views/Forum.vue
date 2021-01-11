@@ -44,7 +44,11 @@
           </tbody>
         </table>
       </div>
-      <div class="col-6 bg-white text-black"  style="border:3px solid #cecece;" id="chat">
+      <div
+        class="col-6 bg-white text-black"
+        style="border: 3px solid #cecece"
+        id="chat"
+      >
         <p id="message">Local onde entra a primeira mensagem</p>
         <div class="row">
           <div class="mb-3">
@@ -127,27 +131,37 @@
 
 <script>
 export default {
-  data: function() {
-    return{
-      comment:[],
-      form:{
-        id:"",
-        comment:""
-      }
-    }
+  data: function () {
+    return {
+      comment: [],
+      filterName: "",
+      form: {
+        id: "",
+        comment: "",
+      },
+    };
   },
-  methods:{
-    sendComment(){
-      this.form.id = this.getCommentLoggedUser;
+  methods: {
+    sendComment() {
+      this.form.id = this.getLoggedUser.id;
       this.$store.commit("New_Comment", {
         id: this.form.id,
-        comment: this.form.comment
+        comment: this.form.comment,
       });
-    }
+    },
   },
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
+    },
+    filteredUsers() {
+      if (!this.filterName) {
+        return this.$store.state.users;
+      } else {
+        return this.$store.state.users.filter((user) =>
+          user.name.includes(this.filterName)
+        );
+      }
     },
   },
 };
