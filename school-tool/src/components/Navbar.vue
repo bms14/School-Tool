@@ -50,14 +50,27 @@
               alt="SchoolTool"
             />
           </router-link>
-          <router-link :to= "{ name : 'Homepage'}">Página inicial</router-link>
-          <router-link :to= "{ name : 'Profile'}">Perfil</router-link>
-          <router-link :to= "{ name : 'Forum'}">Fórum</router-link>
-          <router-link :to= "{ name : 'Activity'}">Minhas atividades</router-link>
-          <router-link to="/addActivity">Adicionar atividade</router-link>
-          <router-link >Notificações</router-link>
-          <a id="bottom-item1" href="#contact">João Silva</a>
-          <a id="bottom-item2" @click="logout()">Logout</a>
+          <router-link :to="{ name: 'Homepage' }"
+            ><ion-icon name="home-outline"></ion-icon>Página
+            inicial</router-link
+          >
+          <router-link :to="{ name: 'Profile' }"
+            ><ion-icon name="person-circle-outline"></ion-icon
+            >Perfil</router-link
+          >
+          <router-link :to="{ name: 'Forum' }"
+            ><ion-icon name="chatbubble-ellipses-outline"></ion-icon
+            >Fórum</router-link
+          >
+          <router-link :to="{ name: 'Activity' }"
+            ><ion-icon name="book-outline"></ion-icon>Minhas
+            atividades</router-link
+          >
+          <router-link>Notificações</router-link>
+          <a id="bottom-item1" @click="getUser()">João Silva</a>
+          <a id="bottom-item2" @click="logout()"
+            ><ion-icon name="exit-outline"></ion-icon>Logout</a
+          >
         </div>
       </div>
     </div>
@@ -105,7 +118,7 @@ body {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   text-align: left;
-  font-size: 15px;
+  font-size: 14px;
   color: white;
   display: block;
 }
@@ -117,7 +130,7 @@ body {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   text-align: left;
-  font-size: 15px;
+  font-size: 14px;
   color: white;
   position: fixed;
   bottom: 30px;
@@ -127,7 +140,7 @@ body {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   text-align: left;
-  font-size: 15px;
+  font-size: 14px;
   color: white;
   position: fixed;
   bottom: 10px;
