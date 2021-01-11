@@ -29,13 +29,27 @@
               alt="SchoolTool"
             />
           </router-link>
-          <router-link :to= "{ name : 'Homepage'}"><ion-icon name="home-outline"></ion-icon>Página inicial</router-link>
-          <router-link :to= "{ name : 'Profile'}"><ion-icon name="person-circle-outline"></ion-icon>Perfil</router-link>
-          <router-link :to= "{ name : 'Forum'}"><ion-icon name="chatbubble-ellipses-outline"></ion-icon>Fórum</router-link>
-          <router-link :to= "{ name : 'Activity'}"><ion-icon name="book-outline"></ion-icon>Minhas atividades</router-link>
-          <router-link >Notificações</router-link>
+          <router-link :to="{ name: 'Homepage' }"
+            ><ion-icon name="home-outline"></ion-icon>Página
+            inicial</router-link
+          >
+          <router-link :to="{ name: 'Profile' }"
+            ><ion-icon name="person-circle-outline"></ion-icon
+            >Perfil</router-link
+          >
+          <router-link :to="{ name: 'Forum' }"
+            ><ion-icon name="chatbubble-ellipses-outline"></ion-icon
+            >Fórum</router-link
+          >
+          <router-link :to="{ name: 'Activity' }"
+            ><ion-icon name="book-outline"></ion-icon>Minhas
+            atividades</router-link
+          >
+          <router-link>Notificações</router-link>
           <a id="bottom-item1" @click="getUser()">João Silva</a>
-          <a id="bottom-item2" @click="logout()"><ion-icon name="exit-outline"></ion-icon>Logout</a>
+          <a id="bottom-item2" @click="logout()"
+            ><ion-icon name="exit-outline"></ion-icon>Logout</a
+          >
         </div>
       </div>
     </div>
