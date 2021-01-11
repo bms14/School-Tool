@@ -16,7 +16,8 @@ export default new Vuex.Store({
     activityType: ["Conferência", "Workshop", "Concurso", "Seminário", "Projeto Extracurricular", "Visita a Empresa "],
     locals: ["ESMAD", "Online", "Outros"],
     activities: localStorage.getItem('activities') ? JSON.parse(localStorage.getItem('activities')) : [],
-    comments: []
+    comments: localStorage.getItem('comments') ? JSON.parse(localStorage.getItem('comments')) : [],
+    enrollments: localStorage.getItem('enrollments') ? JSON.parse(localStorage.getItem('enrollments')) : []
   },
   getters: {
     getLoggedUser: (state) => state.loggedUser,
