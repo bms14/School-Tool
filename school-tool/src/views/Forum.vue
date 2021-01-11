@@ -154,15 +154,23 @@ export default {
     getUser() {
       return this.$store.getters.getLoggedUser;
     },
-    filteredUsers() {
-      if (!this.filterName) {
-        return this.$store.state.users;
+    filteredActivities() {
+      if (!this.filterActivity) {
+        return this.$store.state.activities;
       } else {
-        return this.$store.state.users.filter((user) =>
-          user.name.includes(this.filterName)
+        return this.$store.state.activities.filter((activity) =>
+          activity.name.includes(this.filterActivity)
         );
       }
     },
+  },
+  created() {
+    let activities = [];
+    if (localStorage.getItem("activities")) {
+      activities = JSON.parse(localStorage.getItem("activities"));
+    }
+    this.activity = activities.find((g) => g.id == this.$route.params.id);
+    console.log(this.activity);
   },
 };
 </script>
