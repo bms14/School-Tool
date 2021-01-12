@@ -89,8 +89,8 @@ export default new Vuex.Store({
     },
     submitEnrollment(context, payload) {
       const activity = context.state.activities.find(activity => activity.id === payload.id)
-      const user = context.state.enrollments.find(user => user.name === payload.name)
-      if (user == undefined) {
+      const enrollment = context.state.enrollments.find(enrollment => enrollment.name === payload.name && enrollment.id === payload.id)
+      if (enrollment == undefined) {
         let num = 0;
         for (let i = 0; i < context.state.enrollments.length; i++) {
           if (context.state.enrollments[i].id == activity.id) {
