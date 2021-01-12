@@ -16,11 +16,12 @@
               <img
                 width="80px"
                 height="80px"
-                :src="activity.photo"
+                :src="activity.image"
                 class="rounded-circle"
               />
             </td>
             <td>{{ activity.name }}</td>
+            <td>{{ activity.description }}</td>
             
 
             <td>
@@ -44,17 +45,19 @@ export default {
   name: "AdminListActivities",
   data() {
     return {
-      filterName: "",
+      filterName: ""
     };
   },
-  /* methods: {
+  methods: {
     seeActivity(id){
-
+      this.$router.push({ name: "SeeActivityAdmin", params: { id: id } });
     },
     removeActivity(id){
-
+      if (confirm("Tem a certeza que pretende remover?")) {
+        this.$store.dispatch("removeActivity", id);
+      }
     }
-  }, */
+  }, 
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
