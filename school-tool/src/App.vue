@@ -1,8 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" class="view">
     <div v-if="!this.$store.getters.isLoggedUser" class="navLanding" >
       <NavbarLanding  /> 
-      <img src="./assets/bg.jpeg" id="bg" />
     </div>
     <div v-else>
       <Navbar/>
@@ -42,6 +41,13 @@ html, body {
   color: #2c3e50;
   
 }
+.view {
+    background-image: url('./assets/bg.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: calc(100vh - 60px);
+  }
 #bg{
 width: 100%;
 }
