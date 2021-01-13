@@ -181,7 +181,7 @@ body {
   bottom: 30px;
   cursor: pointer;
 }
-#bottom-item2 {
+/* #bottom-item2 {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   text-align: left;
@@ -190,7 +190,7 @@ body {
   position: fixed;
   bottom: 10px;
   cursor: pointer;
-}
+} */
 .main {
   margin-left: 100px; /* Same as the width of the sidenav */
   font-size: 20px; /* Increased text to enable scrolling */
