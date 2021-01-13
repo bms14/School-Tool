@@ -29,6 +29,15 @@ export default {
   position: fixed;
   top: 0;
   left: 0; 
-}
 
+
+
+    /* Center and scale the image nicely */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 </style>

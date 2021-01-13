@@ -61,7 +61,7 @@
                 ></b-nav-item
               >
               <b-nav-item
-                ><router-link :to="{ name: 'Activity' }"
+                ><router-link :to="{ name: 'ListActivity' }"
                   >Minhas atividades</router-link
                 ></b-nav-item
               >
