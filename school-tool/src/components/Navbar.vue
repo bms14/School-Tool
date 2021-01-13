@@ -19,6 +19,51 @@
       <router-link to="/adminlistcomments">Comentários</router-link>
     </div>
     <div v-else-if="getUser.type == 'Estudante'">
+        <b-navbar toggleable="lg" variant="secondary">
+          <b-img src="../assets/logo1.png" fluid
+            ><router-link :to="{ name: 'Landing' }"></router-link
+          ></b-img>
+          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+          <b-collapse id="nav-collapse" is-nav>
+            <b-navbar-nav>
+              <b-nav-item
+                ><router-link :to="{ name: 'Homepage' }"
+                  >Página inicial</router-link
+                ></b-nav-item
+              >
+              <b-nav-item
+                ><router-link :to="{ name: 'Profile' }"
+                  >Perfil</router-link
+                ></b-nav-item
+              >
+              <b-nav-item
+                ><router-link :to="{ name: 'Forum' }"
+                  >Fórum</router-link
+                ></b-nav-item
+              >
+              <b-nav-item
+                ><router-link :to="{ name: 'Activity' }"
+                  >Minhas atividades</router-link
+                ></b-nav-item
+              >
+              <!-- <router-link >Notificações</router-link>
+          <a id="bottom-item1" href="#contact">João Silva</a> -->
+              <b-nav-item id="bottom-item2" @click="logout()"
+                >Logout</b-nav-item
+              >
+            </b-navbar-nav>
+          </b-collapse>
+        </b-navbar>
+      
+    </div>
+    <!-- div v-if="getUser.type == 'admin'">
+      <router-link @click.native="logout" to="/">Logout</router-link> |
+      <router-link to="/homeadmin">Página Inicial</router-link> |
+      <router-link to="/adminlistuser">Users</router-link> |
+      <router-link to="/adminlistactivity">Atividades</router-link> |
+      <router-link to="/adminlistcomments">Comentários</router-link>
+    </div>
+    <div v-else-if="getUser.type == 'Estudante'">
       <div class="container">
         <div class="sidenav">
           <router-link :to="{ name: 'Landing' }">
@@ -38,7 +83,7 @@
           <a id="bottom-item2" @click="logout()">Logout</a>
         </div>
       </div>
-    </div>
+    </div> -->
     <div v-else>
       <div class="container">
         <div class="sidenav">
