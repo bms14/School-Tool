@@ -1,14 +1,6 @@
 <template>
-<<<<<<< HEAD
-  <div class="home">
-    <div class="bg">
-      <HelloWorld msg="Welcome to School Tool " />
-    </div>
-    <!--  <img class="bg" alt="logo" src="../assets/bg.jpeg" /> -->
-=======
   <div >
     <HelloWorld msg="Welcome to School Tool " />
->>>>>>> 25c93c274c293cfaa8d6ba03d03722c469b34442
   </div>
 </template>
 
@@ -37,7 +29,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0; 
-}
+
 
     /* Center and scale the image nicely */
     position: fixed;
