@@ -42,7 +42,7 @@
                 ></b-nav-item
               >
               <b-nav-item
-                ><router-link :to="{ name: 'Activity' }"
+                ><router-link :to="{ name: 'ListActivity' }"
                   >Minhas atividades</router-link
                 ></b-nav-item
               >
@@ -107,7 +107,7 @@
             ><ion-icon name="chatbubble-ellipses-outline"></ion-icon
             >Fórum</router-link
           >
-          <router-link :to="{ name: 'ListActivity' }"
+          <router-link :to="{ name: 'Activity' }"
             ><ion-icon name="book-outline"></ion-icon>Minhas
             atividades</router-link
           >
