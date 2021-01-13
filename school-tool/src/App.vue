@@ -1,53 +1,59 @@
 <template>
-  <div id="app">
-    <div v-if="!this.$store.getters.isLoggedUser" class="navLanding" >
-      <NavbarLanding  /> 
-      <img src="./assets/bg.jpeg" id="bg" />
+  <div id="app" class="view ">
+    <div v-if="!this.$store.getters.isLoggedUser" class="navLanding">
+      <NavbarLanding />
     </div>
     <div v-else>
-      <Navbar/>
+      <Navbar />
     </div>
     <router-view />
   </div>
 </template>
 
 <script>
-
-import NavbarLanding from "@/components/NavbarLanding.vue"
-import Navbar from "@/components/Navbar.vue"
-
+import NavbarLanding from "@/components/NavbarLanding.vue";
+import Navbar from "@/components/Navbar.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-     NavbarLanding,
-     Navbar
+    NavbarLanding,
+    Navbar,
   },
-}
+};
 </script>
 
 <style>
-html, body {
+html,
+body {
   height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 #app {
-  background-color: #DCDCDC;
+  background-color: #dcdcdc;
   height: 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  
 }
-#bg{
-width: 100%;
-}
-.navLanding{
+
+ .view {
+  background-image: url("./assets/fundo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center left;
+  min-height: 100%;
+  height: calc(100vh - 60px);
+} 
+
+.navLanding {
   width: 100%;
-  
 }
 #nav {
   padding: 30px;

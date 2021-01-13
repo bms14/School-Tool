@@ -2,7 +2,6 @@
   <div >
     <HelloWorld msg="Welcome to School Tool " />
   </div>
-  
 </template>
 
 <script>
@@ -12,8 +11,8 @@ import HelloWorld from "@/components/HelloWorld.vue";
 export default {
   name: "Home",
   components: {
-    HelloWorld
-  }
+    HelloWorld,
+  },
 };
 </script>
 <style >

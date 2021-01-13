@@ -27,7 +27,7 @@ export default new Vuex.Store({
     getLoggedUserType: (state) => state.loggedUser.type,
     getNextUserId: (state) => {
       return state.users.length == 0
-        ?  1
+        ? 1
         : state.users[state.users.length - 1].id + 1;
     },
     getNextActivityId: (state) => {
@@ -53,7 +53,7 @@ export default new Vuex.Store({
           //login com sucesso
           context.commit('LOGIN', user)
           sessionStorage.setItem('loggedUser', JSON.stringify(user))
-        } else if (user != undefined && user.blocked == true){
+        } else if (user != undefined && user.blocked == true) {
           //login sem sucesso      
           throw Error('User Bloqueado!')
         } else {
@@ -72,7 +72,7 @@ export default new Vuex.Store({
       if (user == undefined && payload.password != payload.password2) {
         throw Error('As passwords não são iguais!')
       } else if (user == undefined) {
-        context.commit('REGISTER', {id: payload.id, name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, photo: payload.photo, type: payload.type, profileType: payload.profileType, points: payload.points, interests: payload.interests, achievements: payload.achievements, certificates: payload.certificates, blocked: payload.blocked })
+        context.commit('REGISTER', { id: payload.id, name: payload.name, email: payload.email, password: payload.password, course: payload.course, birthDate: payload.birthDate, photo: payload.photo, type: payload.type, profileType: payload.profileType, points: payload.points, interests: payload.interests, achievements: payload.achievements, certificates: payload.certificates, blocked: payload.blocked })
         localStorage.setItem("users", JSON.stringify(context.state.users))
       } else {
         throw Error('Email já registado!')
@@ -86,6 +86,31 @@ export default new Vuex.Store({
       } else {
         throw Error('Atividade já inserida!')
       }
+    },
+    submitEnrollment(context, payload) {
+      const activity = context.state.activities.find(activity => activity.id === payload.id)
+      const enrollment = context.state.enrollments.find(enrollment => enrollment.name === payload.name && enrollment.id === payload.id)
+      if (enrollment == undefined) {
+        let num = 0;
+        for (let i = 0; i < context.state.enrollments.length; i++) {
+          if (context.state.enrollments[i].id == activity.id) {
+            num++
+          }
+        }
+        if (num < activity.numPeople - 1) {
+          console.log(num);
+          context.commit('ENROLLMENT', payload)
+          localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
+        } else if (num == activity.numPeople - 1) {
+          console.log('nice');
+          context.commit('LASTENROLLMENT', payload)
+          localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
+          localStorage.setItem("activities", JSON.stringify(context.state.activities))
+        }
+      } else {
+        throw Error('Já está Inscrito na atividade!')
+      }
+
     },
     editPassword(context, payload) {
       if (payload.password != this.state.loggedUser.password) {
@@ -104,7 +129,7 @@ export default new Vuex.Store({
         throw Error("A foto de perfil tem que ser diferente da atual!")
       }
     },
-    updateUser(context, payload){
+    updateUser(context, payload) {
       context.commit('UPDATE_USER', payload)
       localStorage.setItem("users", JSON.stringify(context.state.users))
     },
@@ -127,7 +152,11 @@ export default new Vuex.Store({
     unblockUser(context, id) {
       context.commit('UNBLOCK_USER', id)
       localStorage.setItem("users", JSON.stringify(context.state.users))
-    }
+    },
+    removeActivity(context, id) {
+      context.commit('REMOVE_ACTIVITY', id)
+      localStorage.setItem("activities", JSON.stringify(context.state.activities))
+    },
   },
   mutations: {
     LOGIN(state, user) {
@@ -141,6 +170,22 @@ export default new Vuex.Store({
     },
     ACTIVITY(state, activity) {
       state.activities.push(activity)
+    },
+    ENROLLMENT(state, payload) {
+      state.enrollments.push(payload)
+      console.log('try');
+    },
+    LASTENROLLMENT(state, payload) {
+      state.enrollments.push(payload)
+      state.activities.map(
+        activity => {
+          if (activity.id === payload.id) {
+            activity.full = true
+            console.log(payload.id);
+            console.log(activity.id);
+          }
+        }
+      )
     },
     PASSWORD(state, payload) {
       state.users.map(
@@ -182,7 +227,7 @@ export default new Vuex.Store({
     PROMOTE_USER(state, id) {
       state.users.map(
         user => {
-          if (user.id === id) 
+          if (user.id === id)
             user.type = 'Docente'
         }
       )
@@ -198,7 +243,7 @@ export default new Vuex.Store({
     BLOCK_USER(state, id) {
       state.users.map(
         user => {
-          if (user.id === id) 
+          if (user.id === id)
             user.blocked = true
         }
       )
@@ -206,10 +251,13 @@ export default new Vuex.Store({
     UNBLOCK_USER(state, id) {
       state.users.map(
         user => {
-          if (user.id === id) 
+          if (user.id === id)
             user.blocked = false
         }
       )
+    },
+    REMOVE_ACTIVITY(state, id) {
+      state.activities = state.activities.filter(activity => activity.id != id)
     },
   }
 });

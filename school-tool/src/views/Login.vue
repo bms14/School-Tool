@@ -22,6 +22,30 @@
       </form>
     </div>
   </div>
+  <!-- <b-content>
+    <b-container class="fill-height" fluid>
+      <b-row align="center" juistify="center">
+        <b-col cols="12" sm="8" md="8">
+          <b-card class="elevation-12">
+            <b-row>
+              <b-col cols="12" md="8">
+                <b-card-text class="mt-2">
+                  <img class="text-center display-2 teal--text text--accent-3" src="https://picsum.photos/1600/480/?image=10">
+                </b-card-text>
+              </b-col>
+            </b-row>
+
+          </b-card>
+
+        </b-col>
+
+      </b-row> -->
+
+  <!--   </b-container>
+  </b-content>
+ -->
+
+
 </template>
 
 <script>
