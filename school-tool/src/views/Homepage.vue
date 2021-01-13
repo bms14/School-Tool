@@ -221,9 +221,4 @@ export default {
   },
 };
 </script>
-<style>
-.container{
-position: absolute;
-  right: 0;
-}
-</style>
+<style></style>
