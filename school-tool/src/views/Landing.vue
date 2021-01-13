@@ -29,9 +29,8 @@ export default {
   position: fixed;
   top: 0;
   left: 0; 
-}
 
-<<<<<<< HEAD
+
 
     /* Center and scale the image nicely */
     position: fixed;
@@ -42,6 +41,3 @@ export default {
     background-size: cover;
   }
 </style>
-=======
-</style>
->>>>>>> dcd828299afc44f811c10cc5aca21ddd71ed1d7c
