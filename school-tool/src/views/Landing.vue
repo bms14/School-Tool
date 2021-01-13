@@ -1,11 +1,10 @@
 <template>
   <div class="home">
-    
- <!--    <img class="bg" src="../assets/bg.jpeg" /> -->
-    
-<HelloWorld msg="Welcome to School Tool " />
+    <div class="bg">
+      <HelloWorld msg="Welcome to School Tool " />
+    </div>
+    <!--  <img class="bg" alt="logo" src="../assets/bg.jpeg" /> -->
   </div>
-  
 </template>
 
 <script>
@@ -15,27 +14,28 @@ import HelloWorld from "@/components/HelloWorld.vue";
 export default {
   name: "Home",
   components: {
-    HelloWorld
-  }
+    HelloWorld,
+  },
 };
 </script>
-<style >
+<style>
+  body, html {
+    height: 100%;
+  }
+  .bg {
+    /* The image used */
+    background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).jpg");
 
-.bg{ 
+    /* Full height */
+    min-height: 100%;
+    height: auto;
 
-
-
-  min-height: 100%;
-  min-width: 1024px;
-	
-  /* Set up proportionate scaling */
-  width: 100%;
-  height: auto;
-	
-  /* Set up positioning */
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
+    /* Center and scale the image nicely */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 </style>
