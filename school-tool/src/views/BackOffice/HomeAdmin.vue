@@ -3,7 +3,7 @@
     <h1>Admin</h1>
     <h4 id="stats">Estatísticas atualizadas ao segundo!</h4>
     <b-card-group deck>
-      <b-card border-variant="warning" align="center" title="Users"
+      <b-card border-variant="warning" align="center" title="Utilizadores"
         ><ion-icon
           style="color: #fec107; height: 50px; width: 50px"
           name="person-outline"
