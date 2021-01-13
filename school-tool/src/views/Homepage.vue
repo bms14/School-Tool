@@ -1,17 +1,13 @@
 <template>
-  <div id="homepage">
+  <div id="homepage" >
     <!-- <h1>Authenticaded area</h1>
       <h2>Hello {{getUser}}</h2> -->
-
-   
-  <div>
+<div class="container">
  <b-carousel
     id="carousel-fade"
-    style="text-shadow: 0px 0px 2px #000"
+    style="text-shadow: 0px 0px 2px #000; width:100%"
     fade
     indicators
-    img-width="1600"
-    img-height="480"
   >
     <b-carousel-slide
       
@@ -26,7 +22,6 @@
       img-src="https://picsum.photos/1600/480/?image=22"
     ></b-carousel-slide>
   </b-carousel>
-</div>
 
 
     <h1>O que te apetece fazer hoje?</h1>
@@ -74,6 +69,7 @@
         <p>NÃO HÁ ATIVIDADES!</p>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
@@ -95,8 +91,16 @@ export default {
   },
 
   created() {
+    /* let helper = []
     if (localStorage.getItem("activities")) {
-      this.activities = JSON.parse(localStorage.getItem("activities"));
+      helper = JSON.parse(localStorage.getItem("activities"));
+    } */
+    let helper = this.$store.state.activities
+    for (let i = 0; i < helper.length; i++) {
+      if(helper[i].full == false){
+        this.activities.push(helper[i])
+      }
+      
     }
   },
   methods: {
@@ -217,3 +221,9 @@ export default {
   },
 };
 </script>
+<style>
+.container{
+position: absolute;
+  right: 0;
+}
+</style>

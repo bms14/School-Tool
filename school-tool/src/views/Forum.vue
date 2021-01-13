@@ -44,15 +44,21 @@
           </tbody>
         </table>
       </div>
-      <div class="col-6 bg-white text-black"  style="border:3px solid #cecece;" id="chat">
+      <div
+        class="col-6 bg-white text-black"
+        style="border: 3px solid #cecece"
+        id="chat"
+      >
         <p id="message">Local onde entra a primeira mensagem</p>
         <div class="row">
           <div class="mb-3">
-            <form class="d-flex">
+            <form class="d-flex" @submit.prevent="sendComment()">
               <input
                 class="form-control me-2"
                 type="search"
+                id="txtComment"
                 placeholder="Deixar comentário do workshop"
+                v-model="form.comment"
               />
               <button class="btn btn-outline-dark" type="submit">
                 <ion-icon name="navigate"></ion-icon>
@@ -125,10 +131,37 @@
 
 <script>
 export default {
-  name: "Forum",
+  data: function () {
+    return {
+      comment: [],
+      filterName: "",
+      form: {
+        id: "",
+        comment: "",
+      },
+    };
+  },
+  methods: {
+    sendComment() {
+      this.form.id = this.getLoggedUser.id;
+      this.$store.commit("New_Comment", {
+        id: this.form.id,
+        comment: this.form.comment,
+      });
+    },
+  },
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
+    },
+    filteredUsers() {
+      if (!this.filterName) {
+        return this.$store.state.users;
+      } else {
+        return this.$store.state.users.filter((user) =>
+          user.name.includes(this.filterName)
+        );
+      }
     },
   },
 };

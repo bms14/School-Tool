@@ -74,11 +74,29 @@
     </div>
     <div id="gamification">
       <h1><ion-icon name="game-controller-outline"></ion-icon> Gamificação</h1>
-      <h6>Tipo de perfil: <span>{{ getUser.profileType }} </span> <button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></h6>
-      <h6>Pontos: <span>{{ getUser.points }} </span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></h6>
-      <h6>Conquistas: <span>{{ getUser.achievements }} </span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></h6>
-      <h6>Certificados: <span>{{ getUser.certificates }} </span><button id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></h6>
+      <h6>Tipo de perfil: <span>{{ getUser.profileType }} </span> <button v-b-modal.modal-1 id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></h6>
+      <h6>Pontos: <span>{{ getUser.points }} </span><button v-b-modal.modal-2 id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></h6>
+      <h6>Conquistas: <span>{{ getUser.achievements }} </span><button v-b-modal.modal-3 id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></h6>
+      <h6>Certificados: <span>{{ getUser.certificates }} </span><button v-b-modal.modal-4 id="infobtn"><ion-icon name="information-circle-outline"></ion-icon></button></h6>
     </div>
+    <b-modal id="modal-1" header-text-variant="warning" centered title="TIPO DE PERFIL" >
+    <h5>Iniciante: </h5>
+    <p>Utilizador com menos de 1000 pontos inclusive.</p>
+    <h5>Intermédio: </h5>
+    <p>Utilizador com mais de 1000 pontos e menos de 3500 inclusive.</p>
+    <h5>Avançado: </h5>
+    <p>Utilizador com mais de 3500 pontos inclusive.</p>
+    </b-modal>
+    <b-modal id="modal-2" centered title="PONTOS ACUMULADOS">
+    <p class="my-4">Hello from modal!</p>
+    </b-modal>
+    <b-modal id="modal-3" centered title="CONQUISTAS">
+    <p class="my-4">Hello from modal!</p>
+    </b-modal>
+    <b-modal id="modal-4" centered title="CERTIFICADOS">
+    <p class="my-4">Hello from modal!</p>
+    </b-modal>
+
   </div>
 </template>
 
