@@ -1,8 +1,8 @@
 <template>
   <div id="adminListUser">
-    <h1>Users</h1>
+    <h1>Utilizadores</h1>
     <div id="listUsers">
-      <div v-if="getNumUsers == 0">NÃO EXISTEM USERS</div>
+      <div v-if="getNumUsers == 0">NÃO EXISTEM UTILIZADORES</div>
       <div v-else class="justify-content-center row ">
         <div id="filterUsers">
           <label for="txtFilterName">NOME:</label>

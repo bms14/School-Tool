@@ -1,22 +1,41 @@
 <template>
   <div id="nav">
-    <!-- <div v-if="getUser.type == 'student'"> navbar estudante 
-        <router-link @click.native="logout" to="/">Logout</router-link> |
-        <router-link to="/profile">Perfil</router-link>|
-        <router-link :to='{name: "ListActivity"}'>Catálogo</router-link>
-      </div>
-      <div v-else> navbar docente 
-        <router-link @click.native="logout" to="/">Logout</router-link> |
-        <router-link to="/profile">Perfil</router-link>|
-        <router-link to="/addActivity">Adicionar atividade</router-link>|
-        <router-link :to='{name: "ListActivity"}'>Catálogo</router-link>
-      </div> -->
     <div v-if="getUser.type == 'admin'">
-      <router-link @click.native="logout" to="/">Logout</router-link> |
-      <router-link to="/homeadmin">Página Inicial</router-link> |
-      <router-link to="/adminlistuser">Users</router-link> |
-      <router-link to="/adminlistactivity">Atividades</router-link> |
-      <router-link to="/adminlistcomments">Comentários</router-link>
+      <b-navbar toggleable="lg" variant="secondary">
+          <b-img src="../assets/logo1.png" fluid
+            ><router-link :to="{ name: 'Landing' }"></router-link
+          ></b-img>
+          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+          <b-collapse id="nav-collapse" is-nav>
+            <b-navbar-nav>
+              <b-nav-item
+                ><router-link to="/homeadmin"
+                  >Página inicial</router-link
+                ></b-nav-item
+              >
+              <b-nav-item
+                ><router-link to="/adminlistuser"
+                  >Utilizadores</router-link
+                ></b-nav-item
+              >
+              <b-nav-item
+                ><router-link to="/adminlistactivity"
+                  >Atividades</router-link
+                ></b-nav-item
+              >
+              <b-nav-item
+                ><router-link to="/adminlistcomments"
+                  >Comentários</router-link
+                ></b-nav-item
+              >
+              <!-- <router-link >Notificações</router-link>
+          <a id="bottom-item1" href="#contact">João Silva</a> -->
+              <b-nav-item id="bottom-item2" @click="logout()"
+                >Logout</b-nav-item
+              >
+            </b-navbar-nav>
+          </b-collapse>
+        </b-navbar>
     </div>
     <div v-else-if="getUser.type == 'Estudante'">
         <b-navbar toggleable="lg" variant="secondary">
@@ -54,70 +73,43 @@
             </b-navbar-nav>
           </b-collapse>
         </b-navbar>
-      
     </div>
-    <!-- div v-if="getUser.type == 'admin'">
-      <router-link @click.native="logout" to="/">Logout</router-link> |
-      <router-link to="/homeadmin">Página Inicial</router-link> |
-      <router-link to="/adminlistuser">Users</router-link> |
-      <router-link to="/adminlistactivity">Atividades</router-link> |
-      <router-link to="/adminlistcomments">Comentários</router-link>
-    </div>
-    <div v-else-if="getUser.type == 'Estudante'">
-      <div class="container">
-        <div class="sidenav">
-          <router-link :to="{ name: 'Landing' }">
-            <img
-              class="img-fluid"
-              id="logo"
-              src="../assets/logo1.png"
-              alt="SchoolTool"
-            />
-          </router-link>
-          <router-link :to= "{ name : 'Homepage'}">Página inicial</router-link>
-          <router-link :to= "{ name : 'Profile'}">Perfil</router-link>
-          <router-link :to= "{ name : 'Forum'}">Fórum</router-link>
-          <router-link :to= "{ name : 'Activity'}">Minhas atividades</router-link>
-          <router-link >Notificações</router-link>
-          <a id="bottom-item1" href="#contact">João Silva</a>
-          <a id="bottom-item2" @click="logout()">Logout</a>
-        </div>
-      </div>
-    </div> -->
     <div v-else>
-      <div class="container">
-        <div class="sidenav">
-          <router-link :to="{ name: 'Landing' }">
-            <img
-              class="img-fluid"
-              id="logo"
-              src="../assets/logo1.png"
-              alt="SchoolTool"
-            />
-          </router-link>
-          <router-link :to="{ name: 'Homepage' }"
-            ><ion-icon name="home-outline"></ion-icon>Página
-            inicial</router-link
-          >
-          <router-link :to="{ name: 'Profile' }"
-            ><ion-icon name="person-circle-outline"></ion-icon
-            >Perfil</router-link
-          >
-          <router-link :to="{ name: 'Forum' }"
-            ><ion-icon name="chatbubble-ellipses-outline"></ion-icon
-            >Fórum</router-link
-          >
-          <router-link :to="{ name: 'AddActivity' }"
-            ><ion-icon name="book-outline"></ion-icon>Minhas
-            atividades</router-link
-          >
-          <router-link>Notificações</router-link>
-          <a id="bottom-item1" @click="getUser()">João Silva</a>
-          <a id="bottom-item2" @click="logout()"
-            ><ion-icon name="exit-outline"></ion-icon>Logout</a
-          >
-        </div>
-      </div>
+      <b-navbar toggleable="lg" variant="secondary">
+          <b-img src="../assets/logo1.png" fluid
+            ><router-link :to="{ name: 'Landing' }"></router-link
+          ></b-img>
+          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+          <b-collapse id="nav-collapse" is-nav>
+            <b-navbar-nav>
+              <b-nav-item
+                ><router-link :to="{ name: 'Homepage' }"
+                  >Página inicial</router-link
+                ></b-nav-item
+              >
+              <b-nav-item
+                ><router-link :to="{ name: 'Profile' }"
+                  >Perfil</router-link
+                ></b-nav-item
+              >
+              <b-nav-item
+                ><router-link :to="{ name: 'Forum' }"
+                  >Fórum</router-link
+                ></b-nav-item
+              >
+              <b-nav-item
+                ><router-link :to="{ name: 'AddActivity' }"
+                  >Adicionar atividade</router-link
+                ></b-nav-item
+              >
+              <!-- <router-link >Notificações</router-link>
+          <a id="bottom-item1" href="#contact">João Silva</a> -->
+              <b-nav-item id="bottom-item2" @click="logout()"
+                >Logout</b-nav-item
+              >
+            </b-navbar-nav>
+          </b-collapse>
+        </b-navbar>
     </div>
   </div>
 </template>
@@ -142,6 +134,7 @@ export default {
 <style>
 body {
   font-family: "Lato", sans-serif;
+  background-color: #b8b9b9;
 }
 #logo {
   background-color: #707071;
