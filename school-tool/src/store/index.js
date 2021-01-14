@@ -88,12 +88,12 @@ export default new Vuex.Store({
       }
     },
     submitEnrollment(context, payload) {
-      const activity = context.state.activities.find(activity => activity.id === payload.id)
-      const enrollment = context.state.enrollments.find(enrollment => enrollment.name === payload.name && enrollment.id === payload.id)
+      const activity = context.state.activities.find(activity => activity.id === payload.idActivity)
+      const enrollment = context.state.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
       if (enrollment == undefined) {
         let num = 0;
         for (let i = 0; i < context.state.enrollments.length; i++) {
-          if (context.state.enrollments[i].id == activity.id) {
+          if (context.state.enrollments[i].idActivity == activity.id) {
             num++
           }
         }

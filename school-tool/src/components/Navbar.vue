@@ -107,7 +107,7 @@
             ><ion-icon name="chatbubble-ellipses-outline"></ion-icon
             >Fórum</router-link
           >
-          <router-link :to="{ name: 'Activity' }"
+          <router-link :to="{ name: 'AddActivity' }"
             ><ion-icon name="book-outline"></ion-icon>Minhas
             atividades</router-link
           >

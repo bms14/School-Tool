@@ -57,8 +57,8 @@ export default {
     newEnrollment(id) {
       try {
         this.$store.dispatch("submitEnrollment", {
-        id: id,
-        name: this.$store.getters.getLoggedUser.name
+        idActivity: id,
+        idUser: this.$store.getters.getLoggedUser.id
       });
       } catch (error) {
         alert(error)
