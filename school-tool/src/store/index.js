@@ -102,7 +102,7 @@ export default new Vuex.Store({
           context.commit('ENROLLMENT', payload)
           localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
         } else if (num == activity.numPeople - 1) {
-          console.log('nice');
+         
           context.commit('LASTENROLLMENT', payload)
           localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
           localStorage.setItem("activities", JSON.stringify(context.state.activities))
@@ -111,6 +111,15 @@ export default new Vuex.Store({
         throw Error('Já está Inscrito na atividade!')
       }
 
+    },
+    cancelEnrollment(context, payload) {
+      
+      const enrollment = context.state.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
+      if (enrollment != undefined)
+      {
+        context.commit('CANCEL_ENROLLMENT', payload)
+        localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
+      }
     },
     editPassword(context, payload) {
       if (payload.password != this.state.loggedUser.password) {
@@ -174,6 +183,10 @@ export default new Vuex.Store({
     ENROLLMENT(state, payload) {
       state.enrollments.push(payload)
       console.log('try');
+    },
+    CANCEL_ENROLLMENT(state, payload) {
+      
+      state.enrollments = state.enrollments.filter(enrollment => enrollment.id != payload.id)
     },
     LASTENROLLMENT(state, payload) {
       state.enrollments.push(payload)
