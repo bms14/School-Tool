@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div id="content" class="wrapper">
     <h2>Nova Atividade</h2>
     <form @submit.prevent="submitActivity">
       <div class="form-group">

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="content">
     <div v-if="activity">
       <h2>{{ activity.name }}</h2>
       <img :src="activity.image" width="350" height="270" /> <br />

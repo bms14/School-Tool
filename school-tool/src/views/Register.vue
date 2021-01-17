@@ -188,7 +188,7 @@ export default {
       type: "Estudante",
       profileType: "Iniciante",
       points: 100,
-      interests: "",
+      interests: [],
       achievements:0,
       certificates:0,
       blocked: false,

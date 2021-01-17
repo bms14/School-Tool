@@ -10,35 +10,36 @@
         </div>
         <br />
         <br />
-        <table>
+        <table class="d-flex justify-content-center table-responsive">
+          <td class="table-bordered">
           <tr v-for="activity in filteredActivities" :key="activity.id">
             <td>
               <img
-                width="80px"
-                height="80px"
+                width="50px"
+                height="50px"
                 :src="activity.image"
                 class="rounded-circle"
               />
             </td>
             <td>{{ activity.name }}</td>
-            <td>{{ activity.description }}</td>
-            
-
+            <td>{{ activity.type }}</td>
             <td>
-              <button @click="seeActivity(activity.id)" class="btn btn-danger">
-                VER DETALHES
+              <button @click="seeActivity(activity.id)" class="btn">
+                 VER DETALHES 
               </button>
-              <button @click="removeActivity(activity.id)" class="btn btn-danger">
-                REMOVER
+            </td>
+            <td>
+              <button @click="removeActivity(activity.id)" class="btn">
+                 REMOVER 
               </button>
             </td>
           </tr>
+          </td>
         </table>
       </div>
     </div>
   </div>
 </template>
-
 
 <script>
 export default {
