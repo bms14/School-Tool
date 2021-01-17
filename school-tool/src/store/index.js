@@ -14,7 +14,7 @@ export default new Vuex.Store({
     users: localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [],
     loggedUser: sessionStorage.getItem('loggedUser') ? JSON.parse(sessionStorage.getItem('loggedUser')) : '',
     activityType: ["Conferência", "Workshop", "Concurso", "Seminário", "Projeto Extracurricular", "Visita a Empresa "],
-    locals: ["ESMAD", "Online", "Outros"],
+    locals: ["ESMAD", "Online", "Outros"], 
     activities: localStorage.getItem('activities') ? JSON.parse(localStorage.getItem('activities')) : [],
     comments: localStorage.getItem('comments') ? JSON.parse(localStorage.getItem('comments')) : [],
     enrollments: localStorage.getItem('enrollments') ? JSON.parse(localStorage.getItem('enrollments')) : []
@@ -25,6 +25,7 @@ export default new Vuex.Store({
     getActivityType: (state) => state.activityType,
     getActivities: (state) => state.activities,
     getLocals: (state) => state.locals,
+    getInterests: (state) => state.interests,
     getLoggedUserType: (state) => state.loggedUser.type,
     getNextUserId: (state) => {
       return state.users.length == 0
@@ -89,12 +90,12 @@ export default new Vuex.Store({
       }
     },
     submitEnrollment(context, payload) {
-      const activity = context.state.activities.find(activity => activity.id === payload.id)
-      const enrollment = context.state.enrollments.find(enrollment => enrollment.name === payload.name && enrollment.id === payload.id)
+      const activity = context.state.activities.find(activity => activity.id === payload.idActivity)
+      const enrollment = context.state.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
       if (enrollment == undefined) {
         let num = 0;
         for (let i = 0; i < context.state.enrollments.length; i++) {
-          if (context.state.enrollments[i].id == activity.id) {
+          if (context.state.enrollments[i].idActivity == activity.id) {
             num++
           }
         }
@@ -103,7 +104,7 @@ export default new Vuex.Store({
           context.commit('ENROLLMENT', payload)
           localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
         } else if (num == activity.numPeople - 1) {
-          console.log('nice');
+         
           context.commit('LASTENROLLMENT', payload)
           localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
           localStorage.setItem("activities", JSON.stringify(context.state.activities))
@@ -112,6 +113,15 @@ export default new Vuex.Store({
         throw Error('Já está Inscrito na atividade!')
       }
 
+    },
+    cancelEnrollment(context, payload) {
+      
+      const enrollment = context.state.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
+      if (enrollment != undefined)
+      {
+        context.commit('CANCEL_ENROLLMENT', payload)
+        localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
+      }
     },
     editPassword(context, payload) {
       if (payload.password != this.state.loggedUser.password) {
@@ -128,6 +138,12 @@ export default new Vuex.Store({
 
       } else {
         throw Error("A foto de perfil tem que ser diferente da atual!")
+      }
+    },
+    addInterests(context, payload) {
+      if (payload.interests != this.state.loggedUser.interests) {
+        context.commit('INTERESTS', payload)
+        localStorage.setItem("users", JSON.stringify(context.state.users))
       }
     },
     updateUser(context, payload) {
@@ -160,6 +176,10 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    SET_ACTIVITIES(state, payload) {
+      state.activities = payload.activities;
+      localStorage.setItem("activities", JSON.stringify(state.activities));
+    },
     LOGIN(state, user) {
       state.loggedUser = user
     },
@@ -175,6 +195,10 @@ export default new Vuex.Store({
     ENROLLMENT(state, payload) {
       state.enrollments.push(payload)
       console.log('try');
+    },
+    CANCEL_ENROLLMENT(state, payload) {
+      
+      state.enrollments = state.enrollments.filter(enrollment => enrollment.id != payload.id)
     },
     LASTENROLLMENT(state, payload) {
       state.enrollments.push(payload)
@@ -209,6 +233,9 @@ export default new Vuex.Store({
         }
       )
       state.loggedUser.photo = payload.photo
+    },
+    INTERESTS(state,payload){
+      state.users.push(payload)
     },
     UPDATE_USER(state, payload) {
       state.users.map(

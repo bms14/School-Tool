@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+<div id="content">
+  <div id="content" class="container">
     <div class="row justify-content-start">
       <div class="col-4">
         <table class="table" id="table">
@@ -112,6 +113,7 @@
     </div>
   </div>
   -->
+  </div>
 </template>
 
 <script>

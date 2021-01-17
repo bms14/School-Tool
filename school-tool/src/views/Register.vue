@@ -1,5 +1,103 @@
-<template>  
-  <div class="row justify-content-center">
+<template> 
+
+ <div class="register">
+    <b-container class="d-flex justify-content-center">
+      <b-card class="registerCard">
+        <b-row>
+          <b-form @submit.prevent="register">
+              <b-row>
+              <b-input-group class="mb-3">
+                <b-input-group-prepend>
+                  <b-input-group-text class="iconPrepend">
+                    <i class="fas fa-user"></i>
+                  </b-input-group-text>
+                </b-input-group-prepend>
+                <b-form-input
+                  type="text"
+                  id="txtName"
+                  placeholder="Nome"
+                  v-model="name"
+                >
+                </b-form-input>
+              </b-input-group>
+            </b-row>
+            <b-row>
+           
+              <b-input-group class="mb-3">
+                <b-input-group-prepend>
+                  <b-input-group-text class="iconPrepend">
+                    <i class="fas fa-envelope"></i>
+                  </b-input-group-text>
+                </b-input-group-prepend>
+                <b-form-input
+                  type="text"
+                  id="txtEmail"
+                  placeholder="Email"
+                  v-model="email"
+                >
+                </b-form-input>
+              </b-input-group>
+            </b-row>
+            <b-row>
+              <b-input-group class="mb-3">
+                <b-input-group-prepend>
+                  <b-input-group-text class="iconPrepend">
+                    <i class="fas fa-lock"></i>
+                  </b-input-group-text>
+                </b-input-group-prepend>
+                <b-form-input
+                  type="password"
+                  id="txtPassword"
+                  placeholder="Password"
+                  v-model="password"
+                ></b-form-input>
+              </b-input-group>
+            </b-row>
+             <b-row>
+              <b-input-group class="mb-3">
+                <b-input-group-prepend>
+                  <b-input-group-text class="iconPrepend">
+                    <i class="fas fa-lock"></i>
+                  </b-input-group-text>
+                </b-input-group-prepend>
+                <b-form-input
+                  type="password"
+                  id="txtPassword2"
+                  placeholder="Confirmar Password"
+                  v-model="password2"
+                ></b-form-input>
+              </b-input-group>
+            </b-row>
+            <b-row>
+              <b-input-group class="mb-3">
+                <b-input-group-prepend>
+                  <b-input-group-text class="iconPrepend">
+                    <i class="fas fa-lock"></i>
+                  </b-input-group-text>
+                </b-input-group-prepend>
+                <b-form-select v-model="course" :options="options" >{{ course }}</b-form-select>
+                 
+              </b-input-group>
+            </b-row>
+            <b-button type="submit" class="btn btn-primary">Login</b-button>
+          </b-form>
+        </b-row>
+      </b-card>
+    </b-container>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- <div class="row justify-content-center">
     <div id="login" class="col-6">
       <form @submit.prevent="register" class="form-group">
         <label for="txtName">Nome</label>
@@ -70,13 +168,14 @@
         <input type="submit" class="btn btn-primary" value="REGISTAR" />
       </form>
     </div>
-  </div>
+  </div>  -->
 </template>
 
 <script>
 export default {
   name: "Register",
   data() {
+    
     return {
       id: this.$store.getters.getNextUserId,
       name: "",
@@ -89,12 +188,24 @@ export default {
       type: "Estudante",
       profileType: "Iniciante",
       points: 100,
-      interests: "",
+      interests: [],
       achievements:0,
       certificates:0,
-      blocked: false
+      blocked: false,
+      options: [
+          { value: null, text: 'Please select some item' },
+          { value: 'a', text: 'This is option a' },
+          { value: 'b', text: 'Default Selected Option b' },
+          { value: 'c', text: 'This is option c' },
+          { value: 'd', text: 'This one is disabled', disabled: true },
+          { value: 'e', text: 'This is option e' },
+          { value: 'e', text: 'This is option f' }
+        ],
+     
     };
+    
   },
+   
   methods: {
     register() {
       try {

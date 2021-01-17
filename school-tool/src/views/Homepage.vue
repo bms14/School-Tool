@@ -1,8 +1,5 @@
 <template>
-  <div id="homepage" >
-    <!-- <h1>Authenticaded area</h1>
-      <h2>Hello {{getUser}}</h2> -->
-<div class="container">
+  <div id="content">
  <b-carousel
     id="carousel-fade"
     style="text-shadow: 0px 0px 2px #000; width:100%"
@@ -70,7 +67,6 @@
       </div>
     </div>
     </div>
-  </div>
 </template>
 
 <script>
