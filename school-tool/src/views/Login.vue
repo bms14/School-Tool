@@ -1,51 +1,60 @@
 <template>
-  <div class="row justify-content-center">
-    <div id="login" class="col-6">
-      <form @submit.prevent="login">
-        <label for="txtEmail">Email: </label>
-        <input
-          type="text"
-          class="form-control"
-          id="txtEmail"
-          placeholder="Introduza o Email"
-          v-model="email"
-        />
-        <label for="txtPassword">Password: </label>
-        <input
-          type="password"
-          class="form-control"
-          id="txtPassword"
-          placeholder="Introduza a Password"
-          v-model="password"
-        /><br />
-        <button type="submit" class="btn btn-primary">Login</button>
-      </form>
-    </div>
-  </div>
-  <!-- <b-content>
-    <b-container class="fill-height" fluid>
-      <b-row align="center" juistify="center">
-        <b-col cols="12" sm="8" md="8">
-          <b-card class="elevation-12">
+  <div class="login">
+    <b-container class="d-flex justify-content-center">
+      <b-card class="loginCard">
+         <b-card-title>
+            <img src="../assets/logo1.png" class="logoImg" />
+          </b-card-title>
+        <b-row>
+          <b-form @submit.prevent="login">
             <b-row>
-              <b-col cols="12" md="8">
-                <b-card-text class="mt-2">
-                  <img class="text-center display-2 teal--text text--accent-3" src="https://picsum.photos/1600/480/?image=10">
-                </b-card-text>
-              </b-col>
+              <b-input-group class="mb-3">
+                <b-input-group-prepend>
+                  <b-input-group-text class="iconPrepend">
+                    <i class="fas fa-envelope"></i>
+                  </b-input-group-text>
+                </b-input-group-prepend>
+                <b-form-input
+                  type="text"
+                  id="txtEmail"
+                  class="loginInput"
+                  prepend-icon="email"
+                  placeholder="Introduza o Email"
+                  v-model="email"
+                >
+                </b-form-input>
+              </b-input-group>
             </b-row>
-
-          </b-card>
-
-        </b-col>
-
-      </b-row> -->
-
-  <!--   </b-container>
-  </b-content>
- -->
-
-
+            <b-row>
+              <b-input-group class="mb-3">
+                <b-input-group-prepend>
+                  <b-input-group-text class="iconPrepend">
+                    <i class="fas fa-lock"></i>
+                  </b-input-group-text>
+                </b-input-group-prepend>
+                <b-form-input
+                  type="password"
+                  id="txtPassword"
+                  class="loginInput"
+                  placeholder="Introduza a Password"
+                  v-model="password"
+                ></b-form-input>
+              </b-input-group>
+            </b-row>
+            <b-button type="submit" class="btn btn-primary btnSubmit">Login</b-button>
+          </b-form>
+           <p class="registerMsg">
+              Ainda não tens conta?
+              <span
+                ><router-link to="/register" class="registerAnchor"
+                  >Registar</router-link
+                ></span
+              >
+            </p>
+        </b-row>
+      </b-card>
+    </b-container>
+  </div>
 </template>
 
 <script>
@@ -54,7 +63,7 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
     };
   },
   methods: {
@@ -75,4 +84,48 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.loginCard {
+ 
+  box-shadow: 0 0 15px #917910;
+  width: 20vw !important;
+  margin-top: 10vw;
+}
+.logoImg {
+  width: 200px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.iconPrepend {
+  background-color: #bb9a188a !important;
+  color: #332d2dd8 !important;
+}
+.loginInput:focus {
+  box-shadow: none !important;
+  border: 1px solid #bb9a188a !important;
+}
+.btnSubmit {
+  border-radius: 35px !important;
+  background-color:  #ffffffd8 !important;
+  color: #d6ad0a !important;
+  width: 100px;
+  border: 1px solid #e0b91def !important;
+}
+.btnSubmit:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.btnSubmit:hover {
+ background-color:  #d6ad0a !important;
+  color: #ffffff !important;
+}
+.registerMsg {
+  padding-top: 15px;
+  font-size: 13px;
+}
+.registerAnchor:hover {
+  color: #b19001;
+  transition: 0.5s ease-in-out;
+  text-decoration: none !important;
+}
+</style>
