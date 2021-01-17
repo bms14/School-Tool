@@ -3,7 +3,7 @@
     <div v-if="!this.$store.getters.isLoggedUser" class="navLanding">
       <NavbarLanding />
     </div>
-    <div v-else >
+    <div v-else>
       <Navbar />
     </div>
     <router-view />
@@ -19,6 +19,70 @@ export default {
   components: {
     NavbarLanding,
     Navbar,
+  },
+  data: function () {
+    return {
+      activities: [],
+    };
+  },
+  created() {
+    this.setStorage();
+  },
+  methods: {
+    setStorage() {
+      if (JSON.parse(localStorage.getItem("activities"))) {
+        this.$store.commit("SET_ACTIVITIES", {
+          activities: JSON.parse(localStorage.getItem("activities")),
+        });
+      } else {
+        this.$store.commit("SET_ACTIVITIES", {
+          activities: [
+            {
+              id: 1,
+              name: "Ergonomia cognitiva",
+              type: "Workshop",
+              local: "ESMAD",
+              date: "2021-01-28",
+              hour: "16:27",
+              numPeople: 15,
+              certificate: "Sim",
+              description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+              image: "https://www2.ifsc.usp.br/portal-ifsc/site-antigo/images/stories/imagens/Seminario-_logo_geral.jpg",
+              concluded: false,
+              full: false,
+            },
+            {
+              id: 2,
+              name: "Tudo sobre JavaScript",
+              type: "Seminário",
+              local: "ESMAD",
+              date: "2021-01-30",
+              hour: "16:27",
+              numPeople: 30,
+              certificate: "Não",
+              description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+              image: "https://www2.ifsc.usp.br/portal-ifsc/site-antigo/images/stories/imagens/Seminario-_logo_geral.jpg",
+              concluded: false,
+              full: false,
+            },
+            {
+              id: 3,
+              name: "EsmadPlus",
+              type: "Conferência",
+              local: "Online",
+              date: "2021-03-28",
+              hour: "16:27",
+              numPeople: 40,
+              certificate: "Não",
+              description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+              image: "https://www2.ifsc.usp.br/portal-ifsc/site-antigo/images/stories/imagens/Seminario-_logo_geral.jpg",
+              concluded: false,
+              full: false,
+            },
+          ],
+        });
+      }
+    },
   },
 };
 </script>
@@ -36,7 +100,6 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: center left;
-  
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -45,14 +108,13 @@ body {
   text-align: center;
   color: #2c3e50;
 }
-#content{
+#content {
   background-color: #e9e8e8;
   height: 100%;
 }
 .navLanding {
   width: 100%;
 }
-
 
 #nav a {
   font-weight: bold;

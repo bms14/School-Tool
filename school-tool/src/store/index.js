@@ -166,6 +166,10 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    SET_ACTIVITIES(state, payload) {
+      state.activities = payload.activities;
+      localStorage.setItem("activities", JSON.stringify(state.activities));
+    },
     LOGIN(state, user) {
       state.loggedUser = user
     },
