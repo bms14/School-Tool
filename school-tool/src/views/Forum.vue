@@ -9,25 +9,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <button type="button" id="button" class="btn btn-outline-dark">
-                Workshop ##
-              </button>
-            </tr>
-            <tr>
-              <button type="button" id="button" class="btn btn-outline-dark">
-                Workshop ##
-              </button>
-            </tr>
-            <tr>
-              <button type="button" id="button" class="btn btn-outline-dark">
-                Workshop ##
-              </button>
-            </tr>
-            <tr>
-              <button type="button" id="button" class="btn btn-outline-dark">
-                Workshop ##
-              </button>
+            <tr v-for="activity in getActivities" :key="activity.id">
+                <button type="button" id="button" class="btn btn-outline-dark">
+                  {{ activity.name }}
+                </button>
             </tr>
             <tr>
               <th scope="row" id="spacetosearch"></th>
@@ -134,6 +119,7 @@ export default {
   data: function () {
     return {
       comment: [],
+      activities: [],
       filterName: "",
       form: {
         id: "",
@@ -151,8 +137,8 @@ export default {
     },
   },
   computed: {
-    getUser() {
-      return this.$store.getters.getLoggedUser;
+    getActivities() {
+      return  this.$store.state.activities;
     },
     filteredActivities() {
       if (!this.filterActivity) {

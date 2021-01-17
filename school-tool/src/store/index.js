@@ -23,6 +23,7 @@ export default new Vuex.Store({
     getLoggedUser: (state) => state.loggedUser,
     isLoggedUser: (state) => state.loggedUser == '' ? false : true,
     getActivityType: (state) => state.activityType,
+    getActivities: (state) => state.activities,
     getLocals: (state) => state.locals,
     getLoggedUserType: (state) => state.loggedUser.type,
     getNextUserId: (state) => {
