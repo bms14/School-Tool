@@ -14,7 +14,7 @@ export default new Vuex.Store({
     users: localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [],
     loggedUser: sessionStorage.getItem('loggedUser') ? JSON.parse(sessionStorage.getItem('loggedUser')) : '',
     activityType: ["Conferência", "Workshop", "Concurso", "Seminário", "Projeto Extracurricular", "Visita a Empresa "],
-    locals: ["ESMAD", "Online", "Outros"],
+    locals: ["ESMAD", "Online", "Outros"], 
     activities: localStorage.getItem('activities') ? JSON.parse(localStorage.getItem('activities')) : [],
     comments: localStorage.getItem('comments') ? JSON.parse(localStorage.getItem('comments')) : [],
     enrollments: localStorage.getItem('enrollments') ? JSON.parse(localStorage.getItem('enrollments')) : []
@@ -24,6 +24,7 @@ export default new Vuex.Store({
     isLoggedUser: (state) => state.loggedUser == '' ? false : true,
     getActivityType: (state) => state.activityType,
     getLocals: (state) => state.locals,
+    getInterests: (state) => state.interests,
     getLoggedUserType: (state) => state.loggedUser.type,
     getNextUserId: (state) => {
       return state.users.length == 0
@@ -129,6 +130,12 @@ export default new Vuex.Store({
         throw Error("A foto de perfil tem que ser diferente da atual!")
       }
     },
+    addInterests(context, payload) {
+      if (payload.interests != this.state.loggedUser.interests) {
+        context.commit('INTERESTS', payload)
+        localStorage.setItem("users", JSON.stringify(context.state.users))
+      }
+    },
     updateUser(context, payload) {
       context.commit('UPDATE_USER', payload)
       localStorage.setItem("users", JSON.stringify(context.state.users))
@@ -208,6 +215,9 @@ export default new Vuex.Store({
         }
       )
       state.loggedUser.photo = payload.photo
+    },
+    INTERESTS(state,payload){
+      state.users.push(payload)
     },
     UPDATE_USER(state, payload) {
       state.users.map(

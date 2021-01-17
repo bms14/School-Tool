@@ -1,9 +1,9 @@
 <template>
-  <div id="app" class="view ">
+  <div id="app">
     <div v-if="!this.$store.getters.isLoggedUser" class="navLanding">
       <NavbarLanding />
     </div>
-    <div v-else>
+    <div v-else >
       <Navbar />
     </div>
     <router-view />
@@ -31,33 +31,28 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background-image: url("./assets/fundo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center left;
+  
 }
 #app {
-  background-color: #dcdcdc;
-  height: 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
-
- .view {
-  background-image: url("./assets/fundo.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center left;
-  min-height: 100%;
-  height: calc(100vh - 60px);
-} 
-
+#content{
+  background-color: #e9e8e8;
+  height: 100%;
+}
 .navLanding {
   width: 100%;
 }
-#nav {
-  padding: 30px;
-}
+
 
 #nav a {
   font-weight: bold;

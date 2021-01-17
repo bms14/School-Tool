@@ -1,9 +1,11 @@
 <template>
+<div id="content">
   <div class="card-columns" v-if="activities.length > 0">
     <ActivityCard v-for="(activity, i) in activities" :activity="activity" :key="i"></ActivityCard>
   </div>
   <div v-else>
     <p>NÃO HÁ ATIVIDADES!</p>
+  </div>
   </div>
 </template>
 
