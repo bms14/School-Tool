@@ -193,11 +193,11 @@ export default {
       certificates:0,
       blocked: false,
       options: [
-          { value: null, text: 'Please select some item' },
+          { value: null, text: 'Please select some item', disabled: true },
           { value: 'a', text: 'This is option a' },
           { value: 'b', text: 'Default Selected Option b' },
           { value: 'c', text: 'This is option c' },
-          { value: 'd', text: 'This one is disabled', disabled: true },
+          { value: 'd', text: 'This one is disabled' },
           { value: 'e', text: 'This is option e' },
           { value: 'e', text: 'This is option f' }
         ],

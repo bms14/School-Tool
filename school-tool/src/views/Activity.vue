@@ -73,20 +73,25 @@ export default {
       }
       this.subscribed = "true";
     },
-    removeEnrollment(id) {
-      this.$store.dispatch("cancelEnrollment",{
-       idActivity: id,
-          idUser: this.$store.getters.getLoggedUser.id,});
-      this.subscribed = "false";
+    removeEnrollment(payload) {
+      /* let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
+       enr.filter(enrollment => 
+           enrollment.idActivity != payload.id) 
+        
+            this.subscribed = "false"; */
+             this.$store.dispatch("cancelEnrollment",payload)
+    }
+          
+  
     },
-     checkSubscription(payload){
+    /*  checkSubscription(payload){
        const enrollment = this.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
       if(enrollment == undefined){
         return this.subscribed="false"
       }
       else{
         return this.subscribed= "true"
-      } 
+      }  */
      /*  let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
       this.activities.filter(activity => {
         
@@ -102,9 +107,9 @@ export default {
       return this.subscribed; */
       
       
-    },
+   
  
-  },
+ /*  }, */
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;

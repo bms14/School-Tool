@@ -113,7 +113,7 @@ export default new Vuex.Store({
       }
 
     },
-    cancelEnrollment(context, payload) {
+     cancelEnrollment(context, payload) {
       
       const enrollment = context.state.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
       if (enrollment != undefined)
@@ -121,7 +121,7 @@ export default new Vuex.Store({
         context.commit('CANCEL_ENROLLMENT', payload)
         localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
       }
-    },
+    }, 
     editPassword(context, payload) {
       if (payload.password != this.state.loggedUser.password) {
         context.commit('PASSWORD', payload)
@@ -195,9 +195,9 @@ export default new Vuex.Store({
       state.enrollments.push(payload)
       console.log('try');
     },
-    CANCEL_ENROLLMENT(state, payload) {
+    CANCEL_ENROLLMENT(state, id) {
       
-      state.enrollments = state.enrollments.filter(enrollment => enrollment.id != payload.id)
+      state.enrollments = state.enrollments.filter(enrollment => enrollment.idActivity != id)
     },
     LASTENROLLMENT(state, payload) {
       state.enrollments.push(payload)
