@@ -1,11 +1,10 @@
-<template> 
-
- <div class="register">
+<template>
+  <div class="register">
     <b-container class="d-flex justify-content-center">
       <b-card class="registerCard">
         <b-row>
           <b-form @submit.prevent="register">
-              <b-row>
+            <b-row>
               <b-input-group class="mb-3">
                 <b-input-group-prepend>
                   <b-input-group-text class="iconPrepend">
@@ -22,7 +21,6 @@
               </b-input-group>
             </b-row>
             <b-row>
-           
               <b-input-group class="mb-3">
                 <b-input-group-prepend>
                   <b-input-group-text class="iconPrepend">
@@ -53,7 +51,7 @@
                 ></b-form-input>
               </b-input-group>
             </b-row>
-             <b-row>
+            <b-row>
               <b-input-group class="mb-3">
                 <b-input-group-prepend>
                   <b-input-group-text class="iconPrepend">
@@ -68,96 +66,82 @@
                 ></b-form-input>
               </b-input-group>
             </b-row>
-            <b-button type="submit" class="btn btn-primary">Login</b-button>
+            <b-row>
+              <b-form-group
+                id="input-group-3"
+                class="mb-3"
+                label="Curso:"
+                label-for="input-3"
+              >
+                <b-form-select id="input-3" v-model="course" required>
+                  <b-form-select-option disabled value=""
+                    >Curso</b-form-select-option
+                  >
+                  <b-form-select-option value="Design"
+                    >Design</b-form-select-option
+                  >
+                  <b-form-select-option value="Fotografia"
+                    >Fotografia</b-form-select-option
+                  >
+                  <b-form-select-option value="Multimédia"
+                    >Multimédia</b-form-select-option
+                  >
+                  <b-form-select-option
+                    value="Tecnologia da Comunicação Audiovisual"
+                    >Tecnologia da Comunicação Audiovisual</b-form-select-option
+                  >
+                  <b-form-select-option
+                    value="Tecnologias e Sistemas de informação para Web"
+                  >
+                    Tecnologias e Sistemas de informação para Web
+                  </b-form-select-option>
+                </b-form-select>
+              </b-form-group>
+            </b-row>
+            <b-row class="mb-3">
+              <label for="example-datepicker">Data de nascimento:</label>
+              <b-input-group class="mb-3">
+                <b-input-group-append>
+        <b-form-datepicker
+          v-model="birthDate"
+          button-only
+          aria-controls="birthDate"
+          left
+          class="iconPrepend"
+        ></b-form-datepicker>
+      </b-input-group-append>
+      <b-form-input
+        id="birthDate"
+        v-model="birthDate"
+        type="text"
+        placeholder="YYYY-MM-DD"
+        autocomplete="off"
+      ></b-form-input>
+    </b-input-group>
+            </b-row>
+            <b-row>
+              <b-input-group class="mb-3">
+                <b-input-group-prepend>
+                  <b-input-group-text class="iconPrepend">
+                    <i class="fas fa-link"></i>
+                  </b-input-group-text>
+                </b-input-group-prepend>
+                <b-form-input
+                  type="link"
+                  id="txtLink"
+                  placeholder="Insira um link"
+                  v-model="photo"
+                ></b-form-input>
+              </b-input-group>
+            </b-row>
+            <b-button type="submit" variant="outline-warning" class="btn"
+              >Register</b-button
+            >
           </b-form>
         </b-row>
       </b-card>
     </b-container>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-   <!-- <div class="row justify-content-center">
-    <div id="login" class="col-6">
-      <form @submit.prevent="register" class="form-group">
-        <label for="txtName">Nome</label>
-        <input
-          type="text"
-          class="form-control"
-          id="txtName"
-          v-model="name"
-          placeholder="Name"
-          required
-        /><br />
-        <label for="txtEmail">Email</label>
-        <input
-          type="email"
-          class="form-control"
-          id="txtMail"
-          v-model="email"
-          placeholder="Email"
-          required
-        /><br />
-        <label for="txtPassword">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="txtPassword"
-          v-model="password"
-          placeholder="password"
-          required
-        /><br />
-        <label for="txtPassword">Confirmar Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="txtPassword2"
-          v-model="password2"
-          placeholder="Confirmar password"
-          required
-        /><br />
-        <label for="sltCourse">Curso</label>
-        <select class="form-control" id="sltCourse" v-model="course" required>
-          <option disabled value="">Curso</option>
-          <option value="Design">Design</option>
-          <option value="Fotografia">Fotografia</option>
-          <option value="Multimédia">Multimédia</option>
-          <option value="Tecnologia da Comunicação Audiovisual">Tecnologia da Comunicação Audiovisual</option>
-          <option value="Tecnologias e Sistemas de informação para Web">
-            Tecnologias e Sistemas de informação para Web
-          </option>
-        </select>
-        <br />
-        <label for="txtDate">Data de nascimento</label>
-        <input
-          type="date"
-          id="txtDate"
-          class="form-control"
-          v-model="birthDate"
-          required
-        /><br />
-        <label for="txtLink">Link Foto: </label>
-        <input
-          type="link"
-          class="form-control"
-          id="txtLink"
-          v-model="photo"
-          placeholder="Foto"
-          required
-        /><br />
-        <input type="submit" class="btn btn-primary" value="REGISTAR" />
-      </form>
-    </div>
-  </div>  -->
 </template>
 
 <script>
@@ -177,9 +161,9 @@ export default {
       profileType: "Iniciante",
       points: 100,
       interests: [],
-      achievements:0,
-      certificates:0,
-      blocked: false
+      achievements: 0,
+      certificates: 0,
+      blocked: false,
     };
   },
   methods: {
@@ -193,8 +177,8 @@ export default {
       } catch (error) {
         alert(error);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

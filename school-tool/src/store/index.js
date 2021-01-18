@@ -13,7 +13,7 @@ export default new Vuex.Store({
   state: {
     users: localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [],
     loggedUser: sessionStorage.getItem('loggedUser') ? JSON.parse(sessionStorage.getItem('loggedUser')) : '',
-    activityType: ["Conferência", "Workshop", "Concurso", "Seminário", "Projeto Extracurricular", "Visita a Empresa "],
+    activityType: ["Conferência", "Workshop", "Concurso", "Seminário", "Projeto Extracurricular", "Visita a Empresa"],
     locals: ["ESMAD", "Online", "Outros"], 
     activities: localStorage.getItem('activities') ? JSON.parse(localStorage.getItem('activities')) : [],
     comments: localStorage.getItem('comments') ? JSON.parse(localStorage.getItem('comments')) : [],
@@ -220,8 +220,8 @@ export default new Vuex.Store({
       )
       state.loggedUser.photo = payload.photo
     },
-    INTERESTS(state,payload){
-      state.users.push(payload)
+    INTERESTS(state,interest){
+      state.users.push(interest)
     },
     UPDATE_USER(state, payload) {
       state.users.map(

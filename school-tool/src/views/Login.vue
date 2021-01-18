@@ -41,7 +41,7 @@
                 ></b-form-input>
               </b-input-group>
             </b-row>
-            <b-button type="submit" class="btn btn-primary btnSubmit">Login</b-button>
+            <b-button type="submit" variant="outline-warning" class="btn btnSubmit">Login</b-button>
           </b-form>
            <p class="registerMsg">
               Ainda não tens conta?
@@ -85,10 +85,8 @@ export default {
 </script>
 
 <style>
-.loginCard {
- 
+ .loginCard {
   box-shadow: 0 0 15px #917910;
-  width: 20vw !important;
   margin-top: 10vw;
 }
 .logoImg {
@@ -104,21 +102,6 @@ export default {
   box-shadow: none !important;
   border: 1px solid #bb9a188a !important;
 }
-.btnSubmit {
-  border-radius: 35px !important;
-  background-color:  #ffffffd8 !important;
-  color: #d6ad0a !important;
-  width: 100px;
-  border: 1px solid #e0b91def !important;
-}
-.btnSubmit:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-.btnSubmit:hover {
- background-color:  #d6ad0a !important;
-  color: #ffffff !important;
-}
 .registerMsg {
   padding-top: 15px;
   font-size: 13px;
@@ -127,5 +110,5 @@ export default {
   color: #b19001;
   transition: 0.5s ease-in-out;
   text-decoration: none !important;
-}
+} 
 </style>
