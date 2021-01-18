@@ -96,9 +96,9 @@
         <b-row>
           <h6>
             Tipo de perfil: <span>{{ getUser.profileType }} </span>
-            <button v-b-modal.modal-1 id="infobtn">
+            <b-button v-b-modal.modal-1 id="infobtn">
               <ion-icon name="information-circle-outline"></ion-icon>
-            </button>
+            </b-button>
           </h6>
           <h6>
             Pontos: <span>{{ getUser.points }} </span
@@ -125,12 +125,19 @@
           centered
           title="TIPO DE PERFIL"
         >
-          <h5>Iniciante:</h5>
-          <p>Utilizador com menos de 1000 pontos inclusive.</p>
-          <h5>Intermédio:</h5>
-          <p>Utilizador com mais de 1000 pontos e menos de 3500 inclusive.</p>
-          <h5>Avançado:</h5>
-          <p>Utilizador com mais de 3500 pontos inclusive.</p>
+          <h6 slot="header" class="modal-title">Type your modal title</h6>
+
+  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
+    blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
+    ocean.</p>
+  <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
+    paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+
+
+  <template slot="footer">
+    <base-button type="primary">Save changes</base-button>
+    <base-button type="link" class="ml-auto" @click="modals.classic = false">Close</base-button>
+  </template>
         </b-modal>
         <b-modal id="modal-2" centered title="PONTOS ACUMULADOS">
           <p class="my-4">Hello from modal!</p>

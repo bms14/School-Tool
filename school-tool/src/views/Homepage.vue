@@ -1,72 +1,78 @@
 <template>
   <div id="content">
- <b-carousel
-    id="carousel-fade"
-    style="text-shadow: 0px 0px 2px #000; width:100%"
-    fade
-    indicators
-  >
-    <b-carousel-slide
-      
-      img-src="https://picsum.photos/1600/480/?image=10"
-    ></b-carousel-slide>
-    <b-carousel-slide
-     
-      img-src="https://picsum.photos/1600/480/?image=12"
-    ></b-carousel-slide>
-    <b-carousel-slide
-     
-      img-src="https://picsum.photos/1600/480/?image=22"
-    ></b-carousel-slide>
-  </b-carousel>
+    <b-carousel
+      id="carousel-fade"
+      style="text-shadow: 0px 0px 2px #000; width: 100%"
+      fade
+      indicators
+    >
+      <b-carousel-slide
+        img-src="https://picsum.photos/1600/480/?image=10"
+      ></b-carousel-slide>
+      <b-carousel-slide
+        img-src="https://picsum.photos/1600/480/?image=12"
+      ></b-carousel-slide>
+      <b-carousel-slide
+        img-src="https://picsum.photos/1600/480/?image=22"
+      ></b-carousel-slide>
+    </b-carousel>
+    <b-container>
+      <h1>O que te apetece fazer hoje?</h1>
+      <div>
+        <b-row>
+          <b-input-group class="mb-3 col-sm">
+            <b-form-input
+              type="text"
+              id="txtName"
+              placeholder="Pesquise..."
+              v-model="search"
+            >
+            </b-form-input>
+          </b-input-group>
+          <b-form-group class="mb-3 col-sm" >
+            <b-form-select id="input-3" v-model="filterType">
+              <b-form-select-option value="">
+                Escolha um tipo
+              </b-form-select-option>
+              <b-form-select-option
+                :value="type"
+                :key="i"
+                v-for="(type, i) in this.$store.getters.getActivityType"
+                >{{ type }}</b-form-select-option
+              >
+            </b-form-select>
+          </b-form-group>
+          <b-form-group class="mb-3 col-sm">
+            <b-form-select id="input-3" v-model="filterLocal">
+              <b-form-select-option value=""> Todas </b-form-select-option>
+              <b-form-select-option
+                :value="local"
+                :key="i"
+                v-for="(local, i) in this.$store.getters.getLocals"
+                >{{ local }}</b-form-select-option
+              >
+            </b-form-select>
+          </b-form-group>
 
-
-    <h1>O que te apetece fazer hoje?</h1>
-    <br />
-
-    <div>
-      <input type="text" placeholder="Pesquise..." v-model="search" />
-      <label>Tipo: </label>
-      <select v-model="filterType">
-        <option value="">Todas</option>
-        <option
-          :value="type"
-          :key="i"
-          v-for="(type, i) in this.$store.getters.getActivityType"
-        >
-          {{ type }}
-        </option>
-      </select>
-
-      <label>Local: </label>
-      <select v-model="filterLocal">
-        <option value="">Todas</option>
-        <option
-          :value="local"
-          :key="i"
-          v-for="(local, i) in this.$store.getters.getLocals"
-        >
-          {{ local }}
-        </option>
-      </select>
-
-      <button @click="sortByDate">ORDENAR POR DATA</button>
-      <!-- <label for="txtDate">Data:</label>
-      <input type="date" id="txtDate" class="input" /> -->
-      <hr />
-      <div class="card-columns" v-if="filterActivities.length > 0">
+          <b-button class="mb-3 col-sm" variant="outline-warning" @click="sortByDate"
+            >ORDENAR POR DATA</b-button
+          >
+        </b-row>
+        <hr />
         
-        <ActivityCard
-          v-for="(activity, i) in filterActivities"
-          :activity="activity"
-          :key="i"
-        ></ActivityCard>
+        <b-card-group deck v-if="filterActivities.length > 0">
+          <ActivityCard
+            v-for="(activity, i) in filterActivities"
+            :activity="activity"
+            :key="i"
+          ></ActivityCard>
+        </b-card-group>
+        <div v-else>
+          <p>NÃO HÁ ATIVIDADES!</p>
+        </div>
       </div>
-      <div v-else>
-        <p>NÃO HÁ ATIVIDADES!</p>
-      </div>
-    </div>
-    </div>
+    </b-container>
+  </div>
 </template>
 
 <script>
@@ -82,7 +88,6 @@ export default {
       filterType: "",
       filterLocal: "",
       search: "",
-      
     };
   },
 
@@ -91,16 +96,14 @@ export default {
     if (localStorage.getItem("activities")) {
       helper = JSON.parse(localStorage.getItem("activities"));
     } */
-    let helper = this.$store.state.activities
+    let helper = this.$store.state.activities;
     for (let i = 0; i < helper.length; i++) {
-      if(helper[i].full == false){
-        this.activities.push(helper[i])
+      if (helper[i].full == false) {
+        this.activities.push(helper[i]);
       }
-      
     }
   },
   methods: {
-   
     sortByDate() {
       this.activities = this.activities.sort(this.compareDates);
     },
@@ -109,7 +112,6 @@ export default {
       if (a.date < b.date) return -1;
       if (a.date == b.date) return 0;
     },
-    
   },
   computed: {
     getUser() {
@@ -217,4 +219,8 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+#content {
+  background-color: #dcdcdc;
+  height: 100%;
+}</style>

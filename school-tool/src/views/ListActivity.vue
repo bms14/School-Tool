@@ -59,4 +59,8 @@ export default {
 </script>
 
 <style>
+#content{
+ background-color: #dcdcdc;
+  height: 100%;
+}
 </style>
