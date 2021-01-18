@@ -1,7 +1,6 @@
 <template>
   <div id="content">
     <div v-if="activity">
-<<<<<<< HEAD
       <b-button variant="light" type="button" @click="goBack"
       >Retroceder</b-button>
       <b-container id="activity">
@@ -49,34 +48,6 @@
           </b-button>
         </b-card>
       </b-container>
-=======
-      <h2>{{ activity.name }}</h2>
-      <img :src="activity.image" width="350" height="270" /> <br />
-      <b>Descrição:</b>
-      <p>{{ activity.description }}</p>
-      <b>Local:</b>
-      <p>{{ activity.local }}</p>
-      <b>Data:</b>
-      <p>{{ activity.date }}</p>
-      <b>Hora:</b>
-      <p>{{ activity.hour }}</p>
-      <b>Tipo:</b>
-      <p>{{ activity.type }}</p>
-      <b>Certificado:</b>
-      <p>{{ activity.certificate }}</p>
-      <b>Nº de participantes:</b>
-      <p>{{ activity.numPeople }}</p>
-      <div v-if="subscribed == 'false' ">
-        <button @click="newEnrollment(activity.id)" class="btn btn-primary">
-          Inscrever
-        </button>
-      </div>
-      <div v-else>
-        <button @click="removeEnrollment(activity.id)" class="btn btn-primary">
-          Desinscrever
-        </button>
-      </div>
->>>>>>> de7e5d1135b2faaf96edc7bd5e21ab1f531a06bf
     </div>
     <p v-else>Atividade não se encontra disponível!</p>
   </div>
@@ -119,9 +90,6 @@ export default {
       } catch (error) {
         alert(error);
       }
-<<<<<<< HEAD
-    },
-=======
       this.subscribed = "true";
     },
     removeEnrollment(id) {
@@ -155,16 +123,11 @@ export default {
       
     },
  
->>>>>>> de7e5d1135b2faaf96edc7bd5e21ab1f531a06bf
   },
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
     },
-<<<<<<< HEAD
-=======
-   
->>>>>>> de7e5d1135b2faaf96edc7bd5e21ab1f531a06bf
   },
 };
 </script>
