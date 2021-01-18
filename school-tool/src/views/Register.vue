@@ -148,6 +148,7 @@
 export default {
   name: "Register",
   data() {
+    
     return {
       id: this.$store.getters.getNextUserId,
       name: "",
@@ -165,7 +166,9 @@ export default {
       certificates: 0,
       blocked: false,
     };
+    
   },
+   
   methods: {
     register() {
       try {
