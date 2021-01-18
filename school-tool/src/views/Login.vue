@@ -87,10 +87,6 @@ export default {
 <style>
  .loginCard {
   box-shadow: 0 0 15px #917910;
-<<<<<<< HEAD
- 
-=======
->>>>>>> b3b5d6534117dc4f3f842f25e866809f2580429a
   margin-top: 10vw;
 }
 .logoImg {
