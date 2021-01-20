@@ -150,7 +150,7 @@ export default {
         return this.$store.state.activities;
       } else {
         return this.$store.state.activities.filter((activity) =>
-          activity.name.includes(this.filterActivity)
+          activity.name.toLowerCase().includes(this.filterActivity.toLowerCase())
         );
       }
     },
