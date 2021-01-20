@@ -1,65 +1,65 @@
 <template>
-<div id="content">
-  <div id="content" class="container">
-    <div class="row justify-content-start">
-      <div class="col-4">
-        <table class="table" id="table">
-          <thead id="thead">
-            <tr>
-              <th scope="col">Atividades</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="activity in getActivities" :key="activity.id">
+  <div id="content">
+    <div id="content" class="container">
+      <div class="row justify-content-start">
+        <div class="col-4">
+          <table class="table" id="table">
+            <thead id="thead">
+              <tr>
+                <th scope="col">Atividades</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="activity in filteredActivities" :key="activity.id">
                 <button type="button" id="button" class="btn btn-outline-dark">
                   {{ activity.name }}
                 </button>
-            </tr>
-            <tr>
-              <th scope="row" id="spacetosearch"></th>
-            </tr>
-            <tr>
-              <input
-                class="form-control me-2"
-                id="search"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div
-        class="col-6 bg-white text-black"
-        style="border: 3px solid #cecece"
-        id="chat"
-      >
-        <p id="message">Local onde entra a primeira mensagem</p>
-        <div class="row">
-          <div class="mb-3">
-            <form class="d-flex" @submit.prevent="sendComment()">
-              <input
-                class="form-control me-2"
-                type="search"
-                id="txtComment"
-                placeholder="Deixar comentário do workshop"
-                v-model="form.comment"
-              />
-              <button class="btn btn-outline-dark" type="submit">
-                <ion-icon name="navigate"></ion-icon>
-              </button>
-            </form>
-            <form class="d-flex">
-              <ion-icon id="icon1" name="document-attach"></ion-icon>
-              <ion-icon id="icon2" name="happy"></ion-icon>
-            </form>
+              </tr>
+              <tr>
+                <th scope="row" id="spacetosearch"></th>
+              </tr>
+              <tr>
+                <input
+                  class="form-control me-2"
+                  id="search"
+                  type="text"
+                  placeholder="Search"
+                  v-model="filterActivity"
+                />
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div
+          class="col-6 bg-white text-black"
+          style="border: 3px solid #cecece"
+          id="chat"
+        >
+          <p id="message">Local onde entra a primeira mensagem</p>
+          <div class="row">
+            <div class="mb-3">
+              <form class="d-flex" @submit.prevent="sendComment()">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  id="txtComment"
+                  placeholder="Deixar comentário do workshop"
+                  v-model="form.comment"
+                />
+                <button class="btn btn-outline-dark" type="submit">
+                  <ion-icon name="navigate"></ion-icon>
+                </button>
+              </form>
+              <form class="d-flex">
+                <ion-icon id="icon1" name="document-attach"></ion-icon>
+                <ion-icon id="icon2" name="happy"></ion-icon>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- 
+    <!-- 
   <div class="row">
     <div class="container col-xs-6 .col-md-4" id="main-container">
       <table class="table" id="table">
@@ -112,17 +112,17 @@
       </p>
     </div>
   </div>
-  -->
-  </div>
+  --></div>
 </template>
 
 <script>
 export default {
-  data: function () {
+  name: "AdminListUser",
+  data() {
     return {
+      filterActivity: "",
       comment: [],
       activities: [],
-      filterName: "",
       form: {
         id: "",
         comment: "",
@@ -139,8 +139,11 @@ export default {
     },
   },
   computed: {
+    getUser() {
+      return this.$store.state.getLoggedUser;
+    },
     getActivities() {
-      return  this.$store.state.activities;
+      return this.$store.state.activities;
     },
     filteredActivities() {
       if (!this.filterActivity) {
