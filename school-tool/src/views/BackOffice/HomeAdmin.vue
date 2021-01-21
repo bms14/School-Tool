@@ -65,6 +65,6 @@ export default {
 <style>
 #adminHome {
   background-color: #dcdcdc;
-  height: 100%;
+  min-height: 100vh;
 }
 </style>

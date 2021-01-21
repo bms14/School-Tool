@@ -1,6 +1,6 @@
 <template>
    <div id="adminListComments">
-    <h1>Admin</h1>
+    <h1>Comentários</h1>
     <p>Número de Comentários: {{ getNumComments }}</p>
   </div>
 </template>
@@ -20,5 +20,8 @@ computed: {
 </script>
 
 <style>
-
+#adminListComments {
+  background-color: #dcdcdc;
+  min-height: 100vh;
+}
 </style>

@@ -54,7 +54,7 @@
             </b-form-select>
           </b-form-group>
 
-          <b-button class="mb-3 col-sm" variant="outline-warning" @click="sortByDate"
+          <b-button class="mb-3 col-sm" variant="secondary" @click="sortByDate"
             >ORDENAR POR DATA</b-button
           >
         </b-row>
@@ -222,5 +222,5 @@ export default {
 <style>
 #content {
   background-color: #dcdcdc;
-  height: 100%;
+  min-height: 100vh;
 }</style>

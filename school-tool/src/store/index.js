@@ -13,7 +13,39 @@ export default new Vuex.Store({
   state: {
     users: localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [],
     loggedUser: sessionStorage.getItem('loggedUser') ? JSON.parse(sessionStorage.getItem('loggedUser')) : '',
-    activityType: ["Conferência", "Workshop", "Concurso", "Seminário", "Projeto Extracurricular", "Visita a Empresa"],
+    activityType:[
+      {
+        id:"1",
+        name:"Conferência",
+        points:100
+      },
+      {
+        id:"2",
+        name:"Workshop",
+        points:150
+      },
+      {
+        id:"3",
+        name:"Concurso",
+        points:150
+      },
+      {
+        id:"4",
+        name:"Seminário",
+        points:100
+      },
+      {
+        id:"5",
+        name:"Projeto Extracurricular",
+        points:200
+      },
+      {
+        id:"6",
+        name:"Visita a Empresa",
+        points:200
+      },
+
+    ],
     locals: ["ESMAD", "Online", "Outros"], 
     activities: localStorage.getItem('activities') ? JSON.parse(localStorage.getItem('activities')) : [],
     comments: localStorage.getItem('comments') ? JSON.parse(localStorage.getItem('comments')) : [],
@@ -141,7 +173,7 @@ export default new Vuex.Store({
       }
     },
     addInterests(context, payload) {
-      if (payload.interests != this.state.loggedUser.interests) {
+      if (payload.myInterests != this.state.loggedUser.interests) {
         context.commit('INTERESTS', payload)
         localStorage.setItem("users", JSON.stringify(context.state.users))
       }
@@ -234,8 +266,16 @@ export default new Vuex.Store({
       )
       state.loggedUser.photo = payload.photo
     },
-    INTERESTS(state,interest){
-      state.users.push(interest)
+    INTERESTS(state,payload){
+      state.users.map(
+        user => {
+          if (user.name === state.loggedUser.name) {
+            user.interests = payload.myInterests
+            sessionStorage.setItem("loggedUser", JSON.stringify(user))
+          }
+        }
+      )
+      state.loggedUser.interests = payload.myInterests
     },
     UPDATE_USER(state, payload) {
       state.users.map(

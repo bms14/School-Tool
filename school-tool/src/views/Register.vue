@@ -70,12 +70,10 @@
               <b-form-group
                 id="input-group-3"
                 class="mb-3"
-                label="Curso:"
-                label-for="input-3"
               >
                 <b-form-select id="input-3" v-model="course" required>
                   <b-form-select-option disabled value=""
-                    >Curso</b-form-select-option
+                    >Selecione um curso</b-form-select-option
                   >
                   <b-form-select-option value="Design"
                     >Design</b-form-select-option
@@ -99,7 +97,6 @@
               </b-form-group>
             </b-row>
             <b-row class="mb-3">
-              <label for="example-datepicker">Data de nascimento:</label>
               <b-input-group class="mb-3">
                 <b-input-group-append>
         <b-form-datepicker
@@ -114,7 +111,7 @@
         id="birthDate"
         v-model="birthDate"
         type="text"
-        placeholder="YYYY-MM-DD"
+        placeholder="Data de nascimento"
         autocomplete="off"
       ></b-form-input>
     </b-input-group>
