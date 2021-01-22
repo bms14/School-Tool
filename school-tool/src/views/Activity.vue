@@ -41,7 +41,7 @@
           </b-row>
           <b-button
             @click="newEnrollment(activity.id)"
-            variant="outline-warning"
+            variant="secondary"
             class="btn"
           >
             Inscrever

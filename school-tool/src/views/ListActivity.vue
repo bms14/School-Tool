@@ -1,15 +1,17 @@
 <template>
 <div id="content">
-  <div class="card-columns" v-if="activities.length > 0">
+  <b-container>
+    <b-card-group deck v-if="activities.length > 0">
     <ActivityCard
       v-for="(activity, i) in subActivity"
       :activity="activity"
       :key="i"
     ></ActivityCard>
-  </div>
+  </b-card-group>
   <div v-else>
-    <p>NÃO HÁ ATIVIDADES!</p>
+    <p>NÃO ESTÁ INSCRITO EM ATIVIDADES!</p>
   </div>
+  </b-container>
   </div>
 </template>
 

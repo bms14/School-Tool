@@ -1,10 +1,7 @@
 <template>
   <div id="adminListActivities">
     <b-container>
-       <b-card>
-         <b-row>
       <h1>Atividades</h1>
-     </b-row>
         <b-row>
           <div id="listActivities">
             <div v-if="getNumActivities == 0">NÃO EXISTEM ATIVIDADES</div>
@@ -27,11 +24,11 @@
                       />
                     </td>
                     <td>{{ activity.name }}</td>
-                    <td>{{ activity.type }}</td>
+                    <td>{{ activity.type}}</td>
                     <td>
                       <b-button
                         @click="seeActivity(activity.id)"
-                        variant="outline-warning"
+                        variant="info"
                       >
                         VER DETALHES
                       </b-button>
@@ -39,7 +36,7 @@
                     <td>
                       <b-button
                         @click="removeActivity(activity.id)"
-                        variant="outline-warning"
+                        variant="danger"
                       >
                         REMOVER
                       </b-button>
@@ -50,7 +47,6 @@
             </div>
           </div>
         </b-row>
-      </b-card>
     </b-container>
   </div>
 </template>
@@ -77,6 +73,7 @@ export default {
     getUser() {
       return this.$store.getters.getLoggedUser;
     },
+    
     getNumActivities() {
       return this.$store.getters.getNumActivities;
     },

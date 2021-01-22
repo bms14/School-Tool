@@ -54,7 +54,7 @@ export default new Vuex.Store({
   getters: {
     getLoggedUser: (state) => state.loggedUser,
     isLoggedUser: (state) => state.loggedUser == '' ? false : true,
-    getActivityType: (state) => state.activityType,
+    getActivityType: (state) => state.activityType.name,
     getActivities: (state) => state.activities,
     getLocals: (state) => state.locals,
     getInterests: (state) => state.interests,
@@ -155,28 +155,9 @@ export default new Vuex.Store({
         localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
       }
     }, 
-    editPassword(context, payload) {
-      if (payload.password != this.state.loggedUser.password) {
-        context.commit('PASSWORD', payload)
-        localStorage.setItem("users", JSON.stringify(context.state.users))
-      } else {
-        throw Error("A password tem que ser diferente da atual!")
-      }
-    },
-    editPhoto(context, payload) {
-      if (payload.photo != this.state.loggedUser.photo) {
-        context.commit('PHOTO', payload)
-        localStorage.setItem("users", JSON.stringify(context.state.users))
-
-      } else {
-        throw Error("A foto de perfil tem que ser diferente da atual!")
-      }
-    },
-    addInterests(context, payload) {
-      if (payload.myInterests != this.state.loggedUser.interests) {
-        context.commit('INTERESTS', payload)
-        localStorage.setItem("users", JSON.stringify(context.state.users))
-      }
+    editProfile(context, payload) {
+      context.commit('PROFILE', payload)
+      localStorage.setItem("users", JSON.stringify(context.state.users))
     },
     updateUser(context, payload) {
       context.commit('UPDATE_USER', payload)
@@ -244,38 +225,21 @@ export default new Vuex.Store({
         }
       )
     },
-    PASSWORD(state, payload) {
+    PROFILE(state, payload) {
       state.users.map(
         user => {
-          if (user.name === state.loggedUser.name) {
-            user.password = payload.password
+          if (user.id === state.loggedUser.id) {
+            user.password = payload.frm.password
+            user.photo = payload.frm.photo
+            console.log(payload.frm.photo);
+            user.interests = payload.frm.interests
             sessionStorage.setItem("loggedUser", JSON.stringify(user))
           }
         }
       )
-      state.loggedUser.password = payload.password
-    },
-    PHOTO(state, payload) {
-      state.users.map(
-        user => {
-          if (user.photo === state.loggedUser.photo) {
-            user.photo = payload.photo
-            sessionStorage.setItem("loggedUser", JSON.stringify(user))
-          }
-        }
-      )
-      state.loggedUser.photo = payload.photo
-    },
-    INTERESTS(state,payload){
-      state.users.map(
-        user => {
-          if (user.name === state.loggedUser.name) {
-            user.interests = payload.myInterests
-            sessionStorage.setItem("loggedUser", JSON.stringify(user))
-          }
-        }
-      )
-      state.loggedUser.interests = payload.myInterests
+      state.loggedUser.password = payload.frm.password
+      state.loggedUser.photo = payload.frm.photo
+      state.loggedUser.interests = payload.frm.interests
     },
     UPDATE_USER(state, payload) {
       state.users.map(

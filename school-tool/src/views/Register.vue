@@ -2,6 +2,9 @@
   <div class="register">
     <b-container class="d-flex justify-content-center">
       <b-card class="registerCard">
+        <b-card-title>
+            <img src="../assets/logo1.png" class="logoImg" />
+          </b-card-title>
         <b-row>
           <b-form @submit.prevent="register">
             <b-row>
@@ -67,10 +70,7 @@
               </b-input-group>
             </b-row>
             <b-row>
-              <b-form-group
-                id="input-group-3"
-                class="mb-3"
-              >
+              <b-form-group id="input-group-3" class="mb-3">
                 <b-form-select id="input-3" v-model="course" required>
                   <b-form-select-option disabled value=""
                     >Selecione um curso</b-form-select-option
@@ -99,22 +99,22 @@
             <b-row class="mb-3">
               <b-input-group class="mb-3">
                 <b-input-group-append>
-        <b-form-datepicker
-          v-model="birthDate"
-          button-only
-          aria-controls="birthDate"
-          left
-          class="iconPrepend"
-        ></b-form-datepicker>
-      </b-input-group-append>
-      <b-form-input
-        id="birthDate"
-        v-model="birthDate"
-        type="text"
-        placeholder="Data de nascimento"
-        autocomplete="off"
-      ></b-form-input>
-    </b-input-group>
+                  <b-form-datepicker
+                    v-model="birthDate"
+                    button-only
+                    aria-controls="birthDate"
+                    left
+                    class="iconPrepend"
+                  ></b-form-datepicker>
+                </b-input-group-append>
+                <b-form-input
+                  id="birthDate"
+                  v-model="birthDate"
+                  type="text"
+                  placeholder="Data de nascimento"
+                  autocomplete="off"
+                ></b-form-input>
+              </b-input-group>
             </b-row>
             <b-row>
               <b-input-group class="mb-3">
@@ -124,7 +124,7 @@
                   </b-input-group-text>
                 </b-input-group-prepend>
                 <b-form-input
-                  type="link"
+                  type="url"
                   id="txtLink"
                   placeholder="Insira um link"
                   v-model="photo"
@@ -145,7 +145,6 @@
 export default {
   name: "Register",
   data() {
-    
     return {
       id: this.$store.getters.getNextUserId,
       name: "",
@@ -163,19 +162,17 @@ export default {
       certificates: 0,
       blocked: false,
       options: [
-          { value: null, text: 'Please select some item', disabled: true },
-          { value: 'a', text: 'This is option a' },
-          { value: 'b', text: 'Default Selected Option b' },
-          { value: 'c', text: 'This is option c' },
-          { value: 'd', text: 'This one is disabled' },
-          { value: 'e', text: 'This is option e' },
-          { value: 'e', text: 'This is option f' }
-        ],
-     
+        { value: null, text: "Please select some item", disabled: true },
+        { value: "a", text: "This is option a" },
+        { value: "b", text: "Default Selected Option b" },
+        { value: "c", text: "This is option c" },
+        { value: "d", text: "This one is disabled" },
+        { value: "e", text: "This is option e" },
+        { value: "e", text: "This is option f" },
+      ],
     };
-    
   },
-   
+
   methods: {
     register() {
       try {
@@ -192,4 +189,31 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.registerCard {
+  box-shadow: 0 0 15px #917910;
+  margin-top: 10vw;
+}
+.logoImg {
+  width: 200px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.iconPrepend {
+  background-color: #bb9a188a !important;
+  color: #332d2dd8 !important;
+}
+.loginInput:focus {
+  box-shadow: none !important;
+  border: 1px solid #bb9a188a !important;
+}
+.registerMsg {
+  padding-top: 15px;
+  font-size: 13px;
+}
+.registerAnchor:hover {
+  color: #b19001;
+  transition: 0.5s ease-in-out;
+  text-decoration: none !important;
+}
+</style>

@@ -1,22 +1,24 @@
 <template>
-   <div id="adminListComments">
-    <h1>Comentários</h1>
-    <p>Número de Comentários: {{ getNumComments }}</p>
+  <div id="adminListComments">
+    <b-container>
+      <h1>Comentários</h1>
+      <p>Número de Comentários: {{ getNumComments }}</p>
+    </b-container>
   </div>
 </template>
 
 <script>
 export default {
-name: 'AdminListComments',
-computed: {
+  name: "AdminListComments",
+  computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
     },
     getNumComments() {
       return this.$store.getters.getNumComments;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>

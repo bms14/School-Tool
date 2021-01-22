@@ -3,8 +3,8 @@
     <b-container id="info">
       <b-card class="profileCard">
         <h1>Perfil</h1>
-        <b-row>
-          <b-form @submit.prevent="editPhoto">
+        <b-form @submit.prevent="editProfile">
+          <b-row>
             <b-img
               id="foto"
               center
@@ -16,84 +16,71 @@
                 <b-form-input
                   type="url"
                   class="input"
-                  v-model="photo"
+                  v-model="frm.photo"
                   placeholder="Insira um novo link"
                 />
-                <b-button variant="outline-warning" type="submit" class="btn"
-                  >Atualizar</b-button
-                >
               </b-input-group>
             </b-row>
-          </b-form>
-          <b-row>
-            <div id="name" class="col">
-              <h5>Nome</h5>
-              <p>{{ getUser.name }}</p>
-            </div>
-            <div id="birthDate" class="col">
-              <h5>Data de nascimento</h5>
-              <p>{{ getUser.birthDate }}</p>
-            </div>
-          </b-row>
-          <b-row>
-            <div id="email" class="col">
-              <b-form-group>
-                <h5>E-mail</h5>
-                <p>{{ getUser.email }}</p>
-              </b-form-group>
-            </div>
-            <div id="pass" class="col">
-              <b-form @submit.prevent="editPassword">
+
+            <b-row>
+              <div id="name" class="col">
+                <h5>Nome</h5>
+                <p>{{ getUser.name }}</p>
+              </div>
+              <div id="birthDate" class="col">
+                <h5>Data de nascimento</h5>
+                <p>{{ getUser.birthDate }}</p>
+              </div>
+            </b-row>
+            <b-row>
+              <div id="email" class="col">
+                <b-form-group>
+                  <h5>E-mail</h5>
+                  <p>{{ getUser.email }}</p>
+                </b-form-group>
+              </div>
+              <div id="pass" class="col">
                 <b-row>
                   <b-input-group class="mb-3">
-                    <h5>Deseja alterar a password?</h5>
+                    <b-row>
+                    <h5>Deseja alterar a password? </h5>
+                    </b-row>
+                    <b-row>
                     <b-form-group>
                       <b-form-input
                         type="password"
                         id="txtPassword"
                         placeholder="Password"
-                        v-model="password"
+                        v-model="frm.password"
                       />
-                      <b-button
-                        variant="outline-warning"
-                        type="submit"
-                        class="btn"
-                        >Atualizar</b-button
-                      >
                     </b-form-group>
+                    </b-row>
                   </b-input-group>
                 </b-row>
-              </b-form>
-            </div>
-          </b-row>
-          <b-row>
-            <div id="course">
-              <h5>Curso</h5>
-              <p>{{ getUser.course }}</p>
-            </div>
-            <b-form  @submit.prevent="addInterests" >
-              <b-form-group
-                class="mb-3"
-                id="input-group-4"
-                v-slot="{ ariaDescribedby }"
-              >
+              </div>
+            </b-row>
+            <b-row>
+              <div id="course">
+                <h5>Curso</h5>
+                <p>{{ getUser.course }}</p>
+              </div>
+              <b-form>
                 <b-row>
                   <h5>Interesses</h5>
                   <b-form-checkbox-group
                     id="checkboxes-4"
-                    :aria-describedby="ariaDescribedby"
-                    v-model="myInterests"
+                    v-model="frm.interests"
                     :options="interests"
                   >
-                  </b-form-checkbox-group>  
+                  </b-form-checkbox-group>
                 </b-row>
-                <b-button variant="outline-warning" type="submit" class="btn"
-                  >Guardar</b-button
-                >
-              </b-form-group>
-            </b-form>
+              </b-form>
+            </b-row>
           </b-row>
-        </b-row>
+          <b-button variant="secondary" type="submit" class="btn"
+            >Atualizar</b-button
+          >
+        </b-form>
       </b-card>
       <b-card class="gamificationCard" id="gamification">
         <h1>GAMIFICAÇÃO</h1>
@@ -163,9 +150,6 @@ export default {
   name: "Profile",
   data() {
     return {
-      password: "",
-      photo: "",
-      myInterests: [],
       interests: [
         "Animação",
         "Design",
@@ -173,23 +157,24 @@ export default {
         "Multimédia",
         "Programação",
       ],
+      frm: {
+        password: "",
+        photo: "",
+        interests: []
+      }
     };
   },
-  created(){
-     let user = this.getUser;
-     this.myInterests = user.interests; 
+  created() {
+    this.frm.password = this.getUser.password;
+    this.frm.photo = this.getUser.photo;
+    this.frm.interests = this.getUser.interests;
+    
   },
   methods: {
-    editPassword() {
+    editProfile() {
       try {
-        this.$store.dispatch("editPassword", this.$data);
-      } catch (error) {
-        alert(error);
-      }
-    },
-    editPhoto() {
-      try {
-        this.$store.dispatch("editPhoto", this.$data);
+        this.$store.dispatch("editProfile", this.$data);
+        console.log(this.getUser.photo);
       } catch (error) {
         alert(error);
       }
@@ -212,7 +197,7 @@ export default {
 
 <style>
 #content {
-  padding-top: 20px;
+  padding-top: 80px;
 }
 .gamificationCard {
   margin-top: 20px;

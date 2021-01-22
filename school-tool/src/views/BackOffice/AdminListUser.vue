@@ -1,7 +1,6 @@
 <template>
   <div id="adminListUser">
     <b-container class="d-flex justify-content-center">
-      <b-card>
       <b-row>
         <h1>Utilizadores</h1>
         <b-row>
@@ -28,34 +27,34 @@
                     <td>{{ user.name }}</td>
                     <td class="text-info">{{ user.type }}</td>
                     <td>
-                      <b-button @click="editUser(user.id)" variant="outline-warning">
+                      <b-button @click="editUser(user.id)" variant="info">
                         <ion-icon name="create-outline"></ion-icon> EDITAR
                       </b-button>
                     </td>
                     <td v-if="user.type == 'Estudante'">
-                      <b-button @click="promoteUser(user.id)" variant="outline-warning">
+                      <b-button @click="promoteUser(user.id)" variant="success">
                         <ion-icon name="analytics-outline"></ion-icon> PROMOVER
                       </b-button>
                     </td>
                     <td v-else>
-                      <b-button @click="demoteUser(user.id)" variant="outline-warning">
+                      <b-button @click="demoteUser(user.id)" variant="secondary">
                         <ion-icon name="analytics-outline"></ion-icon>
                         DESPROMOVER
                       </b-button>
                     </td>
                     <td v-if="user.blocked == false">
-                      <b-button @click="blockUser(user.id)" variant="outline-warning">
+                      <b-button @click="blockUser(user.id)" variant="warning">
                         <ion-icon name="close-outline"></ion-icon> BLOQUEAR
                       </b-button>
                     </td>
                     <td v-else>
-                      <b-button @click="unblockUser(user.id)" variant="outline-warning">
+                      <b-button @click="unblockUser(user.id)" variant="warning">
                         <ion-icon name="close-circle-outline"></ion-icon>
                         DESBLOQUEAR
                       </b-button>
                     </td>
                     <td>
-                      <b-button @click="removeUser(user.id)" variant="outline-warning">
+                      <b-button @click="removeUser(user.id)" variant="danger">
                         <ion-icon name="trash-outline"></ion-icon> REMOVER
                       </b-button>
                     </td>
@@ -66,7 +65,6 @@
           </div>
         </b-row>
       </b-row>
-      </b-card>
     </b-container>
   </div>
 </template>

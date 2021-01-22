@@ -1,6 +1,8 @@
 <template>
   <div >
+    <b-container>
     <HelloWorld msg="Welcome to School Tool " />
+    </b-container>
   </div>
 </template>
 

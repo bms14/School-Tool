@@ -17,7 +17,7 @@
       <b>Data: </b> {{ activity.date }} 
      <b> Hora: </b> {{ activity.hour }} 
     </b-card-text>
-    <b-button @click="seeDetails" variant="outline-warning" class="mr-2">Ver Detalhes</b-button>  
+    <b-button @click="seeDetails" variant="info" class="mr-2">Ver Detalhes</b-button>  
   </b-card>
   </b-container>
   </div>
