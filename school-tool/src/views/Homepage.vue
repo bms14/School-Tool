@@ -1,5 +1,5 @@
 <template>
-  <div id="content">
+  <div id="content" class="home">
     <b-carousel
       id="carousel-fade"
       style="text-shadow: 0px 0px 2px #000; width: 100%"
@@ -7,13 +7,13 @@
       indicators
     >
       <b-carousel-slide
-        img-src="https://picsum.photos/1600/480/?image=10"
+        img-src="https://www.infofranchising.pt/wp-content/uploads/Healthcare-City-incubadora-de-startups-Infofranchising-1600x480.jpg"
       ></b-carousel-slide>
       <b-carousel-slide
-        img-src="https://picsum.photos/1600/480/?image=12"
+        img-src="https://cdn-images-1.medium.com/fit/t/1600/480/1*x7aNvTeRRyDeT_retYd7NQ.jpeg"
       ></b-carousel-slide>
       <b-carousel-slide
-        img-src="https://picsum.photos/1600/480/?image=22"
+        img-src="https://dynamitesports.com/wp-content/uploads/2015/06/recruiting_seminar.jpg"
       ></b-carousel-slide>
     </b-carousel>
     <b-container>
@@ -34,7 +34,7 @@
           <b-form-group class="mb-3 col-sm" >
             <b-form-select id="input-3" v-model="filterType">
               <b-form-select-option value="">
-                Escolha um tipo
+                Selecionar um tipo
               </b-form-select-option>
               <b-form-select-option
                 :value="type"
@@ -46,7 +46,7 @@
           </b-form-group>
           <b-form-group class="mb-3 col-sm">
             <b-form-select id="input-3" v-model="filterLocal">
-              <b-form-select-option value=""> Todas </b-form-select-option>
+              <b-form-select-option value="">Selecionar um local</b-form-select-option>
               <b-form-select-option
                 :value="local"
                 :key="i"
@@ -56,7 +56,7 @@
             </b-form-select>
           </b-form-group>
 
-          <b-button class="mb-3 col-sm" variant="outline-warning" @click="sortByDate"
+          <b-button class="mb-3 col-sm" variant="secondary" @click="sortByDate"
             >ORDENAR POR DATA</b-button
           >
         </b-row>
@@ -222,7 +222,8 @@ export default {
 };
 </script>
 <style>
-#content {
+#content.home {
+  padding-top: 60px;
   background-color: #dcdcdc;
-  height: 100%;
+  min-height: 100vh;
 }</style>

@@ -3,7 +3,7 @@
     <b-container class="d-flex justify-content-center">
       <b-card class="loginCard">
          <b-card-title>
-            <img src="../assets/logo1.png" class="logoImg" />
+            <img src="../assets/logo_sembg.png" class="logoImg" />
           </b-card-title>
         <b-row>
           <b-form @submit.prevent="login">
@@ -20,7 +20,7 @@
                   class="loginInput"
                   prepend-icon="email"
                   placeholder="Introduza o Email"
-                  v-model="email"
+                  v-model="email" required
                 >
                 </b-form-input>
               </b-input-group>
@@ -37,7 +37,7 @@
                   id="txtPassword"
                   class="loginInput"
                   placeholder="Introduza a Password"
-                  v-model="password"
+                  v-model="password" required
                 ></b-form-input>
               </b-input-group>
             </b-row>
@@ -87,7 +87,7 @@ export default {
 <style>
  .loginCard {
   box-shadow: 0 0 15px #917910;
-  margin-top: 10vw;
+  margin-top: 5vw;
 }
 .logoImg {
   width: 200px;

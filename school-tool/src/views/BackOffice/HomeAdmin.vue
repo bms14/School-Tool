@@ -1,5 +1,6 @@
 <template>
   <div id="adminHome">
+    <b-container>
     <h1>Admin</h1>
     <h4 id="stats">Estatísticas atualizadas ao segundo!</h4>
     <b-card-group deck>
@@ -28,6 +29,7 @@
         <b-button variant="outline-warning" @click="seeComments">Ver detalhes</b-button>
       </b-card>
     </b-card-group>
+    </b-container>
   </div>
 </template>
 
@@ -65,6 +67,6 @@ export default {
 <style>
 #adminHome {
   background-color: #dcdcdc;
-  height: 100%;
+  min-height: 100vh;
 }
 </style>

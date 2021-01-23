@@ -3,8 +3,8 @@
     <b-container id="info">
       <b-card class="profileCard">
         <h1>Perfil</h1>
-        <b-row>
-          <b-form @submit.prevent="editPhoto">
+        <b-form @submit.prevent="editProfile">
+          <b-row>
             <b-img
               id="foto"
               center
@@ -14,82 +14,73 @@
             <b-row>
               <b-input-group class="mb-3 mt-3">
                 <b-form-input
-                  type="link"
+                  type="url"
                   class="input"
-                  v-model="photo"
+                  v-model="frm.photo"
                   placeholder="Insira um novo link"
                 />
-                <b-button variant="outline-warning" type="submit" class="btn"
-                  >Atualizar</b-button
-                >
               </b-input-group>
             </b-row>
-          </b-form>
-          <b-row>
-            <div id="name" class="col">
-              <h5>Nome</h5>
-              <p>{{ getUser.name }}</p>
-            </div>
-            <div id="birthDate" class="col">
-              <h5>Data de nascimento</h5>
-              <p>{{ getUser.birthDate }}</p>
-            </div>
-          </b-row>
-          <b-row>
-            <div id="email" class="col">
-              <b-form-group>
-                <h5>E-mail</h5>
-                <p>{{ getUser.email }}</p>
-              </b-form-group>
-            </div>
-            <div id="pass" class="col">
-              <b-form @submit.prevent="editPassword">
+
+            <b-row>
+              <div id="name" class="col">
+                <h5>Nome</h5>
+                <p>{{ getUser.name }}</p>
+              </div>
+              <div id="birthDate" class="col">
+                <h5>Data de nascimento</h5>
+                <p>{{ getUser.birthDate }}</p>
+              </div>
+            </b-row>
+            <b-row>
+              <div id="email" class="col">
+                <b-form-group>
+                  <h5>E-mail</h5>
+                  <p>{{ getUser.email }}</p>
+                </b-form-group>
+              </div>
+              <div id="pass" class="col">
                 <b-row>
-                <b-input-group class="mb-3">
-                  <h5>Deseja alterar a password?</h5>
-                  <b-form-group>
-                    <b-form-input
-                      type="password"
-                      id="txtPassword"
-                      placeholder="Password"
-                      v-model="password"
-                    />
-                    <b-button
-                      variant="outline-warning"
-                      type="submit"
-                      class="btn"
-                      >Atualizar</b-button
-                    >
-                  </b-form-group>
-                </b-input-group>
+                  <b-input-group class="mb-3">
+                    <b-row>
+                    <h5>Deseja alterar a password? </h5>
+                    </b-row>
+                    <b-row>
+                    <b-form-group>
+                      <b-form-input
+                        type="password"
+                        id="txtPassword"
+                        placeholder="Password"
+                        v-model="frm.password"
+                      />
+                    </b-form-group>
+                    </b-row>
+                  </b-input-group>
+                </b-row>
+              </div>
+            </b-row>
+            <b-row>
+              <div id="course">
+                <h5>Curso</h5>
+                <p>{{ getUser.course }}</p>
+              </div>
+              <b-form>
+                <b-row>
+                  <h5>Interesses</h5>
+                  <b-form-checkbox-group
+                    id="checkboxes-4"
+                    v-model="frm.interests"
+                    :options="interests"
+                  >
+                  </b-form-checkbox-group>
                 </b-row>
               </b-form>
-            </div>
+            </b-row>
           </b-row>
-          <b-row>
-            <div id="course">
-              <h5>Curso</h5>
-              <p>{{ getUser.course }}</p>
-            </div>
-            <b-form>
-              <b-form-group class="mb-3 " id="input-group-4" v-slot="{ ariaDescribedby }" @submit.prevent="addInterests">
-                <b-row>
-                <h5>Interesses</h5>
-                <b-form-checkbox-group
-                  id="checkboxes-4"
-                  :aria-describedby="ariaDescribedby"
-                  v-model="myInterests"
-                  :options="interests"
-                >
-                </b-form-checkbox-group>
-                </b-row>
-                <b-button variant="outline-warning" type="submit" class="btn"
-                  >Guardar</b-button
-                >
-              </b-form-group>
-            </b-form>
-          </b-row>
-        </b-row>
+          <b-button variant="secondary" type="submit" class="btn"
+            >Atualizar</b-button
+          >
+        </b-form>
       </b-card>
       <b-card class="gamificationCard" id="gamification">
         <h1>GAMIFICAÇÃO</h1>
@@ -125,22 +116,23 @@
           centered
           title="TIPO DE PERFIL"
         >
-          <h6 slot="header" class="modal-title">Type your modal title</h6>
-
-  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
-    blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-    ocean.</p>
-  <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
-    paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-
-
-  <template slot="footer">
-    <base-button type="primary">Save changes</base-button>
-    <base-button type="link" class="ml-auto" @click="modals.classic = false">Close</base-button>
-  </template>
+          <h6 class="gray"><i class="far fa-gem"></i> Iniciante:</h6>
+          <p>Utilizador com menos de 1000 pontos inclusive.</p>
+          <h6 class="purple"><i class="far fa-gem"></i> Intermédio:</h6>
+          <p>Utilizador com mais de 1000 pontos e menos de 3500 inclusive.</p>
+          <h6 class="yellow"><i class="far fa-gem"></i> Avançado:</h6>
+          <p>Utilizador com mais de 3500 pontos.</p>
         </b-modal>
-        <b-modal id="modal-2" centered title="PONTOS ACUMULADOS">
-          <p class="my-4">Hello from modal!</p>
+        <b-modal
+          id="modal-2"
+          header-text-variant="warning"
+          centered
+          title="COMO GANHAR PONTOS? "
+        >
+          <p class="my-4">
+            A cada atividade que participes ganhas X pontos. Participa em várias
+            para conseguires subir de nível!
+          </p>
         </b-modal>
         <b-modal id="modal-3" centered title="CONQUISTAS">
           <p class="my-4">Hello from modal!</p>
@@ -158,34 +150,42 @@ export default {
   name: "Profile",
   data() {
     return {
-      password: "",
-      photo: "",
-      myInterests:[],
-      interests:["Animação","Design","Matemática","Multimédia", "Programação"],
+      interests: [
+        "Animação",
+        "Design",
+        "Matemática",
+        "Multimédia",
+        "Programação",
+      ],
+      frm: {
+        password: "",
+        photo: "",
+        interests: []
+      }
     };
   },
+  created() {
+    this.frm.password = this.getUser.password;
+    this.frm.photo = this.getUser.photo;
+    this.frm.interests = this.getUser.interests;
+    
+  },
   methods: {
-    editPassword() {
+    editProfile() {
       try {
-        this.$store.dispatch("editPassword", this.$data);
+        this.$store.dispatch("editProfile", this.$data);
+        console.log(this.getUser.photo);
       } catch (error) {
         alert(error);
       }
     },
-    editPhoto() {
-      try {
-        this.$store.dispatch("editPhoto", this.$data);
-      } catch (error) {
-        alert(error);
-      }
-    },
-    addInterests(){
+    addInterests() {
       try {
         this.$store.dispatch("addInterests", this.$data);
       } catch (error) {
         alert(error);
       }
-    }
+    },
   },
   computed: {
     getUser() {
@@ -195,11 +195,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #content {
   padding-top: 80px;
 }
-.gamificationCard{
+.gamificationCard {
   margin-top: 20px;
 }
 #info h1,
@@ -217,8 +217,7 @@ export default {
   text-align: left;
 }
 #foto {
-  height: 150px;
-  width: 150px;
+  width: 30%;
 }
 #gamification span {
   font-size: 12px;
@@ -238,5 +237,14 @@ export default {
   position: relative;
   border-radius: 100%;
   background: #fec107;
+}
+h6.gray {
+  color: #b8b9b9;
+}
+h6.purple {
+  color: #3c3641;
+}
+h6.yellow {
+  color: #f3b944;
 }
 </style>

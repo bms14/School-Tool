@@ -1,7 +1,10 @@
 <template>
   <div class="register">
     <b-container class="d-flex justify-content-center">
-      <b-card class="registerCard">
+      <b-card class="loginCard">
+        <b-card-title>
+            <img src="../assets/logo_sembg.png" class="logoImg" />
+          </b-card-title>
         <b-row>
           <b-form @submit.prevent="register">
             <b-row>
@@ -15,7 +18,7 @@
                   type="text"
                   id="txtName"
                   placeholder="Nome"
-                  v-model="name"
+                  v-model="name" required
                 >
                 </b-form-input>
               </b-input-group>
@@ -31,7 +34,7 @@
                   type="text"
                   id="txtEmail"
                   placeholder="Email"
-                  v-model="email"
+                  v-model="email" required
                 >
                 </b-form-input>
               </b-input-group>
@@ -47,7 +50,7 @@
                   type="password"
                   id="txtPassword"
                   placeholder="Password"
-                  v-model="password"
+                  v-model="password" required
                 ></b-form-input>
               </b-input-group>
             </b-row>
@@ -62,20 +65,15 @@
                   type="password"
                   id="txtPassword2"
                   placeholder="Confirmar Password"
-                  v-model="password2"
+                  v-model="password2" required
                 ></b-form-input>
               </b-input-group>
             </b-row>
             <b-row>
-              <b-form-group
-                id="input-group-3"
-                class="mb-3"
-                label="Curso:"
-                label-for="input-3"
-              >
+              <b-form-group id="input-group-3" class="mb-3">
                 <b-form-select id="input-3" v-model="course" required>
                   <b-form-select-option disabled value=""
-                    >Curso</b-form-select-option
+                    >Selecionar um curso</b-form-select-option
                   >
                   <b-form-select-option value="Design"
                     >Design</b-form-select-option
@@ -99,26 +97,24 @@
               </b-form-group>
             </b-row>
             <b-row class="mb-3">
-             
               <b-input-group class="mb-3">
                 <b-input-group-append>
-                  
-        <b-form-datepicker
-          v-model="birthDate"
-          button-only
-          aria-controls="birthDate"
-          left
-          class="iconPrepend"
-        ></b-form-datepicker>
-      </b-input-group-append>
-      <b-form-input
-        id="birthDate"
-        v-model="birthDate"
-        type="text"
-        placeholder="YYYY-MM-DD"
-        autocomplete="off"
-      ></b-form-input>
-    </b-input-group>
+                  <b-form-datepicker
+                    v-model="birthDate"
+                    button-only
+                    aria-controls="birthDate"
+                    left
+                    class="iconPrepend"
+                  ></b-form-datepicker>
+                </b-input-group-append>
+                <b-form-input
+                  id="birthDate"
+                  v-model="birthDate"
+                  type="text"
+                  placeholder="Data de nascimento"
+                  autocomplete="off" required
+                ></b-form-input>
+              </b-input-group>
             </b-row>
             <b-row>
               <b-input-group class="mb-3">
@@ -128,10 +124,10 @@
                   </b-input-group-text>
                 </b-input-group-prepend>
                 <b-form-input
-                  type="link"
+                  type="url"
                   id="txtLink"
-                  placeholder="Insira um link"
-                  v-model="photo"
+                  placeholder="Inserir o link da sua foto"
+                  v-model="photo" required
                 ></b-form-input>
               </b-input-group>
             </b-row>
@@ -149,7 +145,6 @@
 export default {
   name: "Register",
   data() {
-    
     return {
       id: this.$store.getters.getNextUserId,
       name: "",
@@ -167,19 +162,17 @@ export default {
       certificates: 0,
       blocked: false,
       options: [
-          { value: null, text: 'Please select some item', disabled: true },
-          { value: 'a', text: 'This is option a' },
-          { value: 'b', text: 'Default Selected Option b' },
-          { value: 'c', text: 'This is option c' },
-          { value: 'd', text: 'This one is disabled' },
-          { value: 'e', text: 'This is option e' },
-          { value: 'e', text: 'This is option f' }
-        ],
-     
+        { value: null, text: "Please select some item", disabled: true },
+        { value: "a", text: "This is option a" },
+        { value: "b", text: "Default Selected Option b" },
+        { value: "c", text: "This is option c" },
+        { value: "d", text: "This one is disabled" },
+        { value: "e", text: "This is option e" },
+        { value: "e", text: "This is option f" },
+      ],
     };
-    
   },
-   
+
   methods: {
     register() {
       try {

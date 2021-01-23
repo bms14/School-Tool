@@ -1,11 +1,17 @@
 <template>
   <div id="content">
     <div v-if="activity">
+<<<<<<< HEAD
       <b-button variant="light" type="button" @click="goBack"
         >Retroceder</b-button
       >
+=======
+>>>>>>> 56e149e2673939ab8fd0b75436b1b6e7fa2c166e
       <b-container id="activity">
         <b-card class="activityCard">
+          <b-button variant="light" class="goBack" type="button" @click="goBack"
+            ><i class="fas fa-arrow-left"></i
+          ></b-button>
           <h1>{{ activity.name }}</h1>
           <img :src="activity.image" width="300" height="220" /> <br />
           <h5>Descrição:</h5>
@@ -72,7 +78,11 @@ export default {
     return {
       activity: null,
       enrollments: this.$store.state.enrollments,
+<<<<<<< HEAD
       subscribed: "false",
+=======
+      subscribed: null,
+>>>>>>> 56e149e2673939ab8fd0b75436b1b6e7fa2c166e
     };
   },
   created() {
@@ -116,6 +126,7 @@ export default {
       /* let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
        enr.filter(enrollment => 
            enrollment.idActivity != payload.id) 
+<<<<<<< HEAD
          */
           try {
         this.$store.dispatch("cancelEnrollment", {
@@ -129,6 +140,11 @@ export default {
       }
      /*  this.subscribed = "false";
       this.$store.dispatch("cancelEnrollment", payload); */
+=======
+        
+            this.subscribed = "false"; */
+      this.$store.dispatch("cancelEnrollment", payload);
+>>>>>>> 56e149e2673939ab8fd0b75436b1b6e7fa2c166e
     },
   },
   /*  checkSubscription(payload){
@@ -166,5 +182,8 @@ export default {
 #activity p,
 #activity h5 {
   text-align: left;
+}
+#activity {
+  padding-top: 80px;
 }
 </style>

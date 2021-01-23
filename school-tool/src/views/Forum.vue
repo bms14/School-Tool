@@ -117,11 +117,11 @@
 
 <script>
 export default {
-  name: "AdminListUser",
+  name: "Forum",
   data() {
     return {
       filterActivity: "",
-      comment: [],
+      comments: [],
       activities: [],
       form: {
         id: "",
@@ -154,6 +154,9 @@ export default {
         );
       }
     },
+    getComment() {
+      return this.$store.state.comments;
+    }
   },
   created() {
     let activities = [];
