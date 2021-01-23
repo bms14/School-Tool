@@ -17,7 +17,9 @@
       ></b-carousel-slide>
     </b-carousel>
     <b-container>
+      <br><br>
       <h1>O que te apetece fazer hoje?</h1>
+      <br>
       <div>
         <b-row>
           <b-input-group class="mb-3 col-sm">

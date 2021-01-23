@@ -2,7 +2,8 @@
   <div id="content">
     <div v-if="activity">
       <b-button variant="light" type="button" @click="goBack"
-      >Retroceder</b-button>
+        >Retroceder</b-button
+      >
       <b-container id="activity">
         <b-card class="activityCard">
           <h1>{{ activity.name }}</h1>
@@ -39,13 +40,24 @@
               <p>{{ activity.numPeople }}</p>
             </div>
           </b-row>
-          <b-button
-            @click="newEnrollment(activity.id)"
-            variant="outline-warning"
-            class="btn"
-          >
-            Inscrever
-          </b-button>
+          <div v-if="subscripted = ''">
+            <b-button
+              @click="newEnrollment(activity.id)"
+              variant="outline-warning"
+              class="btn"
+            >
+              Inscrever
+            </b-button>
+          </div>
+          <div v-else>
+            <b-button
+              @click="removeEnrollment(activity.id)"
+              variant="outline-warning"
+              class="btn"
+            >
+              Desinscrever
+            </b-button>
+          </div>
         </b-card>
       </b-container>
     </div>
@@ -60,7 +72,7 @@ export default {
     return {
       activity: null,
       enrollments: this.$store.state.enrollments,
-      subscribed:null
+      subscribed: "false",
     };
   },
   created() {
@@ -86,24 +98,40 @@ export default {
         this.$store.dispatch("submitEnrollment", {
           idActivity: id,
           idUser: this.$store.getters.getLoggedUser.id,
+          
         });
+        this.subscribed = 'true';
       } catch (error) {
         alert(error);
       }
-      this.subscribed = "true";
+      
     },
     removeEnrollment(payload) {
+
+
+
+      console.log("idUser:", this.$store.getters.getLoggedUser.id);
+      console.log("idAtivity:", payload);
+
       /* let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
        enr.filter(enrollment => 
            enrollment.idActivity != payload.id) 
-        
-            this.subscribed = "false"; */
-             this.$store.dispatch("cancelEnrollment",payload)
-    }
+         */
+          try {
+        this.$store.dispatch("cancelEnrollment", {
+          idActivity: payload,
+          idUser: this.$store.getters.getLoggedUser.id,
           
-  
+        });
+        /* this.subscribed = 'true'; */
+      } catch (error) {
+        alert(error);
+      }
+     /*  this.subscribed = "false";
+      this.$store.dispatch("cancelEnrollment", payload); */
     },
-    /*  checkSubscription(payload){
+  },
+  /*  checkSubscription(payload){
        const enrollment = this.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
       if(enrollment == undefined){
         return this.subscribed="false"
@@ -111,7 +139,7 @@ export default {
       else{
         return this.subscribed= "true"
       }  */
-     /*  let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
+  /*  let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
       this.activities.filter(activity => {
         
         enr.forEach(enrollment => {
@@ -124,11 +152,8 @@ export default {
         });
       });
       return this.subscribed; */
-      
-      
-   
- 
- /*  }, */
+
+  /*  }, */
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;

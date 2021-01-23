@@ -99,9 +99,10 @@
               </b-form-group>
             </b-row>
             <b-row class="mb-3">
-              <label for="example-datepicker">Data de nascimento:</label>
+             
               <b-input-group class="mb-3">
                 <b-input-group-append>
+                  
         <b-form-datepicker
           v-model="birthDate"
           button-only
