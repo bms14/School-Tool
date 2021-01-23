@@ -43,7 +43,7 @@
               <p>{{ activity.numPeople }}</p>
             </div>
           </b-row>
-          <div v-if="subscripted = ''">
+          <div v-if="subscripted = 'false'">
             <b-button
               @click="newEnrollment(activity.id)"
               variant="outline-warning"
@@ -75,7 +75,7 @@ export default {
     return {
       activity: null,
       enrollments: this.$store.state.enrollments,
-      subscribed: null,
+      subscribed: "false",
     };
   },
   created() {
@@ -119,9 +119,19 @@ export default {
       /* let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
        enr.filter(enrollment => 
            enrollment.idActivity != payload.id) 
-        
-            this.subscribed = "false"; */
-      this.$store.dispatch("cancelEnrollment", payload);
+         */
+          try {
+        this.$store.dispatch("cancelEnrollment", {
+          idActivity: payload,
+          idUser: this.$store.getters.getLoggedUser.id,
+          
+        });
+        /* this.subscribed = 'true'; */
+      } catch (error) {
+        alert(error);
+      }
+     /*  this.subscribed = "false";
+      this.$store.dispatch("cancelEnrollment", payload); */
     },
   },
   /*  checkSubscription(payload){
