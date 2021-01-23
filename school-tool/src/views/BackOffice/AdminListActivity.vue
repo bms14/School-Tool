@@ -6,10 +6,46 @@
           <div id="listActivities">
             <div v-if="getNumActivities == 0">NÃO EXISTEM ATIVIDADES</div>
             <div v-else class="row justify-content-center">
-              <div id="filterActivities">
-                <label for="txtFilterName">NOME:</label>
-                <input type="text" v-model="filterName" id="txtFilterName" />
-              </div>
+              <b-input-group class="mb-3 col-sm">
+            <b-form-input
+              type="text"
+              id="txtName"
+              placeholder="Pesquise..."
+              v-model="filterName"
+            >
+            </b-form-input>
+          </b-input-group>
+          <b-form-group class="mb-3 col-sm">
+            <b-form-select id="input-3" v-model="filterType">
+              <b-form-select-option value="">
+                Selecionar um tipo
+              </b-form-select-option>
+              <b-form-select-option
+                :value="type"
+                :key="i"
+                v-for="(type, i) in getActivityType"
+                >{{ type.name }}</b-form-select-option
+              >
+            </b-form-select>
+          </b-form-group>
+          <b-form-group class="mb-3 col-sm">
+            <b-form-select id="input-3" v-model="filterLocal">
+              <b-form-select-option value=""
+                >Selecionar um local</b-form-select-option
+              >
+              <b-form-select-option
+                :value="local"
+                :key="i"
+                v-for="(local, i) in this.$store.getters.getLocals"
+                >{{ local }}</b-form-select-option
+              >
+            </b-form-select>
+          </b-form-group>
+
+          <b-button class="mb-3 col-sm" variant="secondary" @click="sortByDate"
+            >ORDENAR POR DATA</b-button
+          >
+          <hr>
               <br />
               <br />
               <table class="d-flex justify-content-center table-responsive">
@@ -56,7 +92,10 @@ export default {
   name: "AdminListActivities",
   data() {
     return {
+      activities:[],
       filterName: "",
+      filterType: "",
+      filterLocal: "",
     };
   },
   methods: {
@@ -68,12 +107,22 @@ export default {
         this.$store.dispatch("removeActivity", id);
       }
     },
+     sortByDate() {
+      this.activities = this.activities.sort(this.compareDates);
+    },
+    compareDates(a, b) {
+      if (a.date > b.date) return 1;
+      if (a.date < b.date) return -1;
+      if (a.date == b.date) return 0;
+    },
   },
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
     },
-    
+     getActivityType() {
+      return this.$store.getters.getActivityType;
+    },
     getNumActivities() {
       return this.$store.getters.getNumActivities;
     },

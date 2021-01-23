@@ -10,7 +10,7 @@
           name="person-outline"
         ></ion-icon>
         <b-card-text>{{ getNumUsers }}</b-card-text>
-        <b-button variant="outline-warning" @click="seeUsers">Ver detalhes</b-button>
+        <b-button variant="warning" @click="seeUsers">Ver detalhes</b-button>
       </b-card>
       <b-card border-variant="warning" align="center" title="Atividades"
         ><ion-icon
@@ -18,7 +18,7 @@
           name="clipboard-outline"
         ></ion-icon>
         <b-card-text>{{ getNumActivities }}</b-card-text>
-        <b-button variant="outline-warning" @click="seeActivities">Ver detalhes</b-button>
+        <b-button variant="warning" @click="seeActivities">Ver detalhes</b-button>
       </b-card>
       <b-card border-variant="warning" align="center" title="Comentários"
         ><ion-icon
@@ -26,7 +26,7 @@
             name="chatbubbles-outline"
           ></ion-icon>
         <b-card-text>{{ getNumComments }}</b-card-text>
-        <b-button variant="outline-warning" @click="seeComments">Ver detalhes</b-button>
+        <b-button variant="warning" @click="seeComments">Ver detalhes</b-button>
       </b-card>
     </b-card-group>
     </b-container>
