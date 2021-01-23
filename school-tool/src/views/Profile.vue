@@ -198,6 +198,8 @@ export default {
 <style scoped>
 #content {
   padding-top: 80px;
+  background-color: #dcdcdc;
+  min-height: 100vh;
 }
 .gamificationCard {
   margin-top: 20px;

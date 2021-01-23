@@ -1,5 +1,5 @@
 <template>
-  <!--   <div id="content">
+  <div id="content">
     <div v-if="activity">
       <b-button variant="light" type="button" @click="goBack"
         >Retroceder</b-button
@@ -65,89 +65,8 @@
       </b-container>
     </div>
     <p v-else>Atividade não se encontra disponível!</p>
-  </div> -->
-
-  <div id="Activity">
-    <div class="container-xl activityCard">
-      <div class="row">
-       
-        
-        <div class="col-lg-4 leftInfo">
-         
-          <img class="img-fluid imgActivity mt-3" :src="activity.image" />
-          <div class="eventDate mt-3">
-            <p>Data: {{ activity.date }}</p>
-            <p>Participantes: {{ activity.numPeople }}</p>
-            <p>Hora: {{ activity.hour }}</p>
-          </div>
-          <div v-if="subscripted = 'false'">
-           <b-button
-              @click="newEnrollment(activity.id)"
-              variant="outline-warning"
-              class="btn"
-            >
-              Inscrever
-            </b-button>
-          </div>
-          <div v-else>
-            <b-button
-              @click="removeEnrollment(activity.id)"
-              variant="outline-warning"
-              class="btn"
-            >
-              Cancelar Subscrição
-            </b-button>
-          </div>
-        </div>
-
-        <div class="col-lg-8 rightInfo">
-          <div class="text-left cardDetails">
-            <b-card title="Nome">
-              <div>
-                <p>
-                  {{ activity.name }}
-                </p>
-                <h4>Tipo</h4>
-                <p>
-                  {{ activity.type }}
-                </p>
-                <h4>Localização</h4>
-                <p>
-                   {{ activity.local }}
-                </p>
-                
-                <h4>Certificado</h4>
-                <p>
-                  {{ activity.certificate }}
-                </p>
-                <h4>Descrição</h4>
-                <p>
-                  {{ activity.description }}
-                </p>
-              
-              </div>
-            </b-card>
-          </div>
-          
-        </div>
-      </div>
-    </div>
   </div>
 </template>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script>
 export default {
@@ -182,13 +101,18 @@ export default {
         this.$store.dispatch("submitEnrollment", {
           idActivity: id,
           idUser: this.$store.getters.getLoggedUser.id,
+          
         });
-        this.subscribed = "true";
+        this.subscribed = 'true';
       } catch (error) {
         alert(error);
       }
+      
     },
     removeEnrollment(payload) {
+
+
+
       console.log("idUser:", this.$store.getters.getLoggedUser.id);
       console.log("idAtivity:", payload);
 
@@ -196,16 +120,17 @@ export default {
        enr.filter(enrollment => 
            enrollment.idActivity != payload.id) 
          */
-      try {
+          try {
         this.$store.dispatch("cancelEnrollment", {
           idActivity: payload,
           idUser: this.$store.getters.getLoggedUser.id,
+          
         });
         /* this.subscribed = 'true'; */
       } catch (error) {
         alert(error);
       }
-      /*  this.subscribed = "false";
+     /*  this.subscribed = "false";
       this.$store.dispatch("cancelEnrollment", payload); */
     },
   },
@@ -245,24 +170,7 @@ export default {
 #activity h5 {
   text-align: left;
 }
-/* #activity {
+#activity {
   padding-top: 80px;
-} */
-.imgActivity{
-  width: 90%;
-  border-radius: 5px;
-}
-.rightInfo {
-  margin-top: 20px;
-
-}
-
-
-.activityCard {
-  margin-top: 10rem;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 10px #665703;
-  padding-bottom: 1rem;
 }
 </style>

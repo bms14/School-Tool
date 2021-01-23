@@ -1,6 +1,7 @@
 <template>
 <div id="content">
   <b-container id="historic">
+     <h1>As minhas atividades</h1>
     <b-row class="mt-5">
           <b-input-group class="mb-3 col-sm">
             <b-form-input
@@ -42,6 +43,7 @@
             >ORDENAR POR DATA</b-button
           >
         </b-row>
+        <hr>
     <b-card-group deck v-if="filterActivities.length > 0">
     <ActivityCard
       v-for="(activity, i) in filterActivities"
@@ -83,6 +85,16 @@ export default {
         this.activities.push(helper[i]);
       }
     }
+  },
+  methods: {
+    sortByDate() {
+      this.activities = this.activities.sort(this.compareDates);
+    },
+    compareDates(a, b) {
+      if (a.date > b.date) return 1;
+      if (a.date < b.date) return -1;
+      if (a.date == b.date) return 0;
+    },
   },
   computed: {
     subActivity() {
@@ -208,7 +220,7 @@ export default {
 <style>
 #historic{
   padding-top: 80px;
-  height: 100vh;
+  height: 100%;
 }
 
 </style>
