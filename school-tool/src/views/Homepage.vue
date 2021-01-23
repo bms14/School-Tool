@@ -133,7 +133,7 @@ export default {
         this.search == ""
       ) {
         filter = this.activities.filter(
-          (activity) => activity.type === this.filterType
+          (activity) => activity.type === this.filterType.name
         );
         return filter;
       }
@@ -146,7 +146,7 @@ export default {
         filter = this.activities.filter(
           (activity) =>
             activity.local === this.filterLocal &&
-            activity.type === this.filterType
+            activity.type === this.filterType.name
         );
         return filter;
       }
@@ -158,7 +158,7 @@ export default {
       ) {
         filter = this.activities.filter(
           (activity) =>
-            activity.type === this.filterType &&
+            activity.type === this.filterType.name &&
             activity.name.match(this.search)
         );
         return filter;
@@ -172,7 +172,7 @@ export default {
         filter = this.activities.filter(
           (activity) =>
             activity.local === this.filterLocal &&
-            activity.type === this.filterType &&
+            activity.type === this.filterType.name &&
             activity.name.match(this.search)
         );
         return filter;
