@@ -1,6 +1,12 @@
 <template>
   <div id="content">
     <div v-if="activity">
+<<<<<<< HEAD
+      <b-button variant="light" type="button" @click="goBack"
+        >Retroceder</b-button
+      >
+=======
+>>>>>>> 56e149e2673939ab8fd0b75436b1b6e7fa2c166e
       <b-container id="activity">
         <b-card class="activityCard">
           <b-button variant="light" class="goBack" type="button" @click="goBack"
@@ -40,13 +46,24 @@
               <p>{{ activity.numPeople }}</p>
             </div>
           </b-row>
-          <b-button
-            @click="newEnrollment(activity.id)"
-            variant="secondary"
-            class="btn"
-          >
-            Inscrever
-          </b-button>
+          <div v-if="subscripted = ''">
+            <b-button
+              @click="newEnrollment(activity.id)"
+              variant="outline-warning"
+              class="btn"
+            >
+              Inscrever
+            </b-button>
+          </div>
+          <div v-else>
+            <b-button
+              @click="removeEnrollment(activity.id)"
+              variant="outline-warning"
+              class="btn"
+            >
+              Desinscrever
+            </b-button>
+          </div>
         </b-card>
       </b-container>
     </div>
@@ -61,7 +78,11 @@ export default {
     return {
       activity: null,
       enrollments: this.$store.state.enrollments,
+<<<<<<< HEAD
+      subscribed: "false",
+=======
       subscribed: null,
+>>>>>>> 56e149e2673939ab8fd0b75436b1b6e7fa2c166e
     };
   },
   created() {
@@ -87,19 +108,43 @@ export default {
         this.$store.dispatch("submitEnrollment", {
           idActivity: id,
           idUser: this.$store.getters.getLoggedUser.id,
+          
         });
+        this.subscribed = 'true';
       } catch (error) {
         alert(error);
       }
-      this.subscribed = "true";
+      
     },
     removeEnrollment(payload) {
+
+
+
+      console.log("idUser:", this.$store.getters.getLoggedUser.id);
+      console.log("idAtivity:", payload);
+
       /* let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
        enr.filter(enrollment => 
            enrollment.idActivity != payload.id) 
+<<<<<<< HEAD
+         */
+          try {
+        this.$store.dispatch("cancelEnrollment", {
+          idActivity: payload,
+          idUser: this.$store.getters.getLoggedUser.id,
+          
+        });
+        /* this.subscribed = 'true'; */
+      } catch (error) {
+        alert(error);
+      }
+     /*  this.subscribed = "false";
+      this.$store.dispatch("cancelEnrollment", payload); */
+=======
         
             this.subscribed = "false"; */
       this.$store.dispatch("cancelEnrollment", payload);
+>>>>>>> 56e149e2673939ab8fd0b75436b1b6e7fa2c166e
     },
   },
   /*  checkSubscription(payload){

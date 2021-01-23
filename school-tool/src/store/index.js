@@ -148,12 +148,13 @@ export default new Vuex.Store({
     },
      cancelEnrollment(context, payload) {
       
-      const enrollment = context.state.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
+     /*  const enrollment = context.state.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
       if (enrollment != undefined)
       {
-        context.commit('CANCEL_ENROLLMENT', payload)
-        localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
-      }
+       
+      } */
+      context.commit('CANCEL_ENROLLMENT', payload)
+      localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
     }, 
     editProfile(context, payload) {
       context.commit('PROFILE', payload)
@@ -209,9 +210,21 @@ export default new Vuex.Store({
       state.enrollments.push(payload)
       console.log('try');
     },
-    CANCEL_ENROLLMENT(state, id) {
+    CANCEL_ENROLLMENT(state, payload) {
       
-      state.enrollments = state.enrollments.filter(enrollment => enrollment.idActivity != id)
+      state.enrollments = state.enrollments.filter(enrollment => {
+        if(enrollment.idActivity == payload.idActivity){
+          if(enrollment.idUser == payload.idUser){
+            return false;
+          }
+          else {
+            return true;
+          }
+        }
+        else{
+          return true;
+        }
+      })
     },
     LASTENROLLMENT(state, payload) {
       state.enrollments.push(payload)
