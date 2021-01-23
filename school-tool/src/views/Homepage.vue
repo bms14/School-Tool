@@ -31,7 +31,7 @@
             >
             </b-form-input>
           </b-input-group>
-          <b-form-group class="mb-3 col-sm" >
+          <b-form-group class="mb-3 col-sm">
             <b-form-select id="input-3" v-model="filterType">
               <b-form-select-option value="">
                 Selecionar um tipo
@@ -39,14 +39,16 @@
               <b-form-select-option
                 :value="type"
                 :key="i"
-                v-for="(type, i) in this.$store.getters.getActivityType"
-                >{{ type }}</b-form-select-option
+                v-for="(type, i) in getActivityType"
+                >{{ type.name }}</b-form-select-option
               >
             </b-form-select>
           </b-form-group>
           <b-form-group class="mb-3 col-sm">
             <b-form-select id="input-3" v-model="filterLocal">
-              <b-form-select-option value="">Selecionar um local</b-form-select-option>
+              <b-form-select-option value=""
+                >Selecionar um local</b-form-select-option
+              >
               <b-form-select-option
                 :value="local"
                 :key="i"
@@ -61,7 +63,7 @@
           >
         </b-row>
         <hr />
-        
+
         <b-card-group deck v-if="filterActivities.length > 0">
           <ActivityCard
             v-for="(activity, i) in filterActivities"
@@ -119,7 +121,9 @@ export default {
     getUser() {
       return this.$store.getters.getLoggedUser.name;
     },
-
+    getActivityType() {
+      return this.$store.getters.getActivityType;
+    },
     filterActivities() {
       let filter;
 
@@ -226,4 +230,5 @@ export default {
   padding-top: 60px;
   background-color: #dcdcdc;
   min-height: 100vh;
-}</style>
+}
+</style>
