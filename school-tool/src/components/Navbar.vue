@@ -1,8 +1,8 @@
 <template>
   <div id="nav" >
     <div v-if="getUser.type == 'admin'">
-      <b-navbar class="nav" toggleable="lg" variant="secondary">
-          <b-img src="../assets/logo1.png" fluid
+      <b-navbar class="nav" toggleable="lg">
+          <b-img src="../assets/logo_sembg.png" class="img"
             ><router-link :to="{ name: 'Landing' }"></router-link
           ></b-img>
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -39,7 +39,7 @@
     </div>
     <div v-else-if="getUser.type == 'Estudante'">
         <b-navbar class="nav" toggleable="lg" fixed="top" >
-          <b-img src="../assets/logo1.png" fluid
+          <b-img src="../assets/logo_sembg.png" class="img"
             ><router-link :to="{ name: 'Landing' }"></router-link
           ></b-img>
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -76,7 +76,7 @@
     </div>
     <div v-else>
       <b-navbar class="nav" toggleable="lg" variant="secondary">
-          <b-img src="../assets/logo1.png" fluid
+          <b-img src="../assets/logo_sembg.png" class="img"
             ><router-link :to="{ name: 'Landing' }"></router-link
           ></b-img>
           <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -132,6 +132,9 @@ export default {
 </script>
 
 <style>
+.img{
+  width: 20%;
+}
 body {
   font-family: "Lato", sans-serif;
   background-color: #b8b9b9;

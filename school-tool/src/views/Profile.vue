@@ -195,7 +195,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #content {
   padding-top: 80px;
 }
@@ -217,8 +217,7 @@ export default {
   text-align: left;
 }
 #foto {
-  height: 150px;
-  width: 150px;
+  width: 30%;
 }
 #gamification span {
   font-size: 12px;

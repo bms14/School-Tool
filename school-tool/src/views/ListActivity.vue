@@ -1,6 +1,6 @@
 <template>
 <div id="content">
-  <b-container>
+  <b-container id="historic">
     <b-card-group deck v-if="activities.length > 0">
     <ActivityCard
       v-for="(activity, i) in subActivity"
@@ -61,7 +61,8 @@ export default {
 </script>
 
 <style>
-#content{
+#historic{
+  padding-top: 80px;
  background-color: #dcdcdc;
   height: 100%;
 }

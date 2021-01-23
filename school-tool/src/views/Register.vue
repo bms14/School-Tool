@@ -1,9 +1,9 @@
 <template>
   <div class="register">
     <b-container class="d-flex justify-content-center">
-      <b-card class="registerCard">
+      <b-card class="loginCard">
         <b-card-title>
-            <img src="../assets/logo1.png" class="logoImg" />
+            <img src="../assets/logo_sembg.png" class="logoImg" />
           </b-card-title>
         <b-row>
           <b-form @submit.prevent="register">
@@ -18,7 +18,7 @@
                   type="text"
                   id="txtName"
                   placeholder="Nome"
-                  v-model="name"
+                  v-model="name" required
                 >
                 </b-form-input>
               </b-input-group>
@@ -34,7 +34,7 @@
                   type="text"
                   id="txtEmail"
                   placeholder="Email"
-                  v-model="email"
+                  v-model="email" required
                 >
                 </b-form-input>
               </b-input-group>
@@ -50,7 +50,7 @@
                   type="password"
                   id="txtPassword"
                   placeholder="Password"
-                  v-model="password"
+                  v-model="password" required
                 ></b-form-input>
               </b-input-group>
             </b-row>
@@ -65,7 +65,7 @@
                   type="password"
                   id="txtPassword2"
                   placeholder="Confirmar Password"
-                  v-model="password2"
+                  v-model="password2" required
                 ></b-form-input>
               </b-input-group>
             </b-row>
@@ -73,7 +73,7 @@
               <b-form-group id="input-group-3" class="mb-3">
                 <b-form-select id="input-3" v-model="course" required>
                   <b-form-select-option disabled value=""
-                    >Selecione um curso</b-form-select-option
+                    >Selecionar um curso</b-form-select-option
                   >
                   <b-form-select-option value="Design"
                     >Design</b-form-select-option
@@ -112,7 +112,7 @@
                   v-model="birthDate"
                   type="text"
                   placeholder="Data de nascimento"
-                  autocomplete="off"
+                  autocomplete="off" required
                 ></b-form-input>
               </b-input-group>
             </b-row>
@@ -126,8 +126,8 @@
                 <b-form-input
                   type="url"
                   id="txtLink"
-                  placeholder="Insira um link"
-                  v-model="photo"
+                  placeholder="Inserir o link da sua foto"
+                  v-model="photo" required
                 ></b-form-input>
               </b-input-group>
             </b-row>
@@ -189,31 +189,4 @@ export default {
 };
 </script>
 
-<style>
-.registerCard {
-  box-shadow: 0 0 15px #917910;
-  margin-top: 10vw;
-}
-.logoImg {
-  width: 200px;
-  margin-bottom: 15px;
-  margin-top: 15px;
-}
-.iconPrepend {
-  background-color: #bb9a188a !important;
-  color: #332d2dd8 !important;
-}
-.loginInput:focus {
-  box-shadow: none !important;
-  border: 1px solid #bb9a188a !important;
-}
-.registerMsg {
-  padding-top: 15px;
-  font-size: 13px;
-}
-.registerAnchor:hover {
-  color: #b19001;
-  transition: 0.5s ease-in-out;
-  text-decoration: none !important;
-}
-</style>
+<style></style>

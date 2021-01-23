@@ -1,10 +1,11 @@
 <template>
   <div id="content">
     <div v-if="activity">
-      <b-button variant="light" type="button" @click="goBack"
-      >Retroceder</b-button>
       <b-container id="activity">
         <b-card class="activityCard">
+          <b-button variant="light" class="goBack" type="button" @click="goBack"
+            ><i class="fas fa-arrow-left"></i
+          ></b-button>
           <h1>{{ activity.name }}</h1>
           <img :src="activity.image" width="300" height="220" /> <br />
           <h5>Descrição:</h5>
@@ -60,7 +61,7 @@ export default {
     return {
       activity: null,
       enrollments: this.$store.state.enrollments,
-      subscribed:null
+      subscribed: null,
     };
   },
   created() {
@@ -98,12 +99,10 @@ export default {
            enrollment.idActivity != payload.id) 
         
             this.subscribed = "false"; */
-             this.$store.dispatch("cancelEnrollment",payload)
-    }
-          
-  
+      this.$store.dispatch("cancelEnrollment", payload);
     },
-    /*  checkSubscription(payload){
+  },
+  /*  checkSubscription(payload){
        const enrollment = this.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
       if(enrollment == undefined){
         return this.subscribed="false"
@@ -111,7 +110,7 @@ export default {
       else{
         return this.subscribed= "true"
       }  */
-     /*  let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
+  /*  let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
       this.activities.filter(activity => {
         
         enr.forEach(enrollment => {
@@ -124,11 +123,8 @@ export default {
         });
       });
       return this.subscribed; */
-      
-      
-   
- 
- /*  }, */
+
+  /*  }, */
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
@@ -141,5 +137,8 @@ export default {
 #activity p,
 #activity h5 {
   text-align: left;
+}
+#activity {
+  padding-top: 80px;
 }
 </style>
