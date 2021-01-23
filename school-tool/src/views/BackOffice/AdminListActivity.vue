@@ -24,7 +24,7 @@
                       />
                     </td>
                     <td>{{ activity.name }}</td>
-                    <td>{{ activity.type}}</td>
+                    <td>{{ activity.type.name}}</td>
                     <td>
                       <b-button
                         @click="seeActivity(activity.id)"

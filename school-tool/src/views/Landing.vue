@@ -7,7 +7,7 @@
         Procuramos incentivar os estudantes a participar em atividades<br />
         de modo a complementar os estudos.
       </p>
-     <!--  <b-button class="join"><router-link style="color: #ffffff" to="/login">Junta-te</router-link></b-button> -->
+      <b-button class="join"><router-link style="color: #ffffff" to="/login">Junta-te</router-link></b-button>
     </b-container>
   </div>
 </template>
@@ -42,7 +42,7 @@ text-align: left;
   top: 32rem;
   left: 2rem;
 }
-/* .triangle {
+.triangle {
   width: 2000px;
   height: 100vh;
   position: absolute;
@@ -55,6 +55,6 @@ text-align: left;
     rgba(254, 193, 7,0.5) 50%,
      rgba(254, 193, 7,0.5) 100%
   ); 
-} */
+}
 </style>
 

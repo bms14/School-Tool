@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div v-if="!this.$store.getters.isLoggedUser" class="navLanding">
-      <NavbarLanding />
+      <!-- <NavbarLanding /> -->
     </div>
     <div v-else>
       <Navbar />
@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import NavbarLanding from "@/components/NavbarLanding.vue";
+/* import NavbarLanding from "@/components/NavbarLanding.vue"; */
 import Navbar from "@/components/Navbar.vue";
 
 export default {
   name: "App",
   components: {
-    NavbarLanding,
+    /* NavbarLanding, */
     Navbar,
   },
   data: function () {
