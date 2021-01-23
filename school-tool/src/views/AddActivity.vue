@@ -19,18 +19,11 @@
             </b-row>
             <b-row>
               <b-form-group id="input-group-3" class="mb-3">
-                <b-form-select id="input-3" v-model="type" required>
+                <b-form-select id="input-3" v-model="type" :options="$store.getters.getActivitiesForSelect" required>
                   <b-form-select-option disabled value=""
-                    >Selecione um tipo</b-form-select-option
-                  >
-                  <b-form-select-option
-                    :value="type"
-                    :key="i"
-                    v-for="(type, i) in getActivityType"
-                    >{{ type.name }}</b-form-select-option
-                  >
-                </b-form-select>
+                    >Selecione um tipo</b-form-select-option></b-form-select>
               </b-form-group>
+              
             </b-row>
             <b-row>
               <b-form-group id="input-group-3" class="mb-3">
@@ -157,10 +150,16 @@ export default {
       image: "",
       concluded: false,
       full: false,
+      points: "",
     };
   },
   methods: {
     submitActivity() {
+      this.$store.state.activityType.map((tipo) => {
+        if(this.type==tipo.id){
+          this.points=tipo.points
+        }
+      })
       try {
         //this.$store.dispacth("login",{username: this.username, password: this.password});
         this.$store.dispatch("submitActivity", this.$data);
@@ -169,11 +168,6 @@ export default {
       } catch (error) {
         alert(error);
       }
-    },
-  },
-  computed: {
-    getActivityType() {
-      return this.$store.getters.getActivityType;
     },
   },
 };

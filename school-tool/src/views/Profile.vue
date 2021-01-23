@@ -135,10 +135,10 @@
           </p>
         </b-modal>
         <b-modal id="modal-3" centered title="CONQUISTAS">
-          <p class="my-4">Hello from modal!</p>
+          <p class="my-4">Não possui conquistas!</p>
         </b-modal>
         <b-modal id="modal-4" centered title="CERTIFICADOS">
-          <p class="my-4">Hello from modal!</p>
+          <p class="my-4">Não possui certificados!</p>
         </b-modal>
       </b-card>
     </b-container>

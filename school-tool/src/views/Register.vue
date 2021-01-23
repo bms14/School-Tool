@@ -2,6 +2,9 @@
   <div class="register">
     <b-container class="d-flex justify-content-center">
       <b-card class="loginCard">
+        <b-button variant="light" class="goBack" type="button" @click="goBack"
+            ><i class="fas fa-arrow-left"></i
+          ></b-button>
         <b-card-title>
             <img src="../assets/logo_sembg.png" class="logoImg" />
           </b-card-title>
@@ -131,7 +134,7 @@
                 ></b-form-input>
               </b-input-group>
             </b-row>
-            <b-button type="submit" variant="outline-warning" class="btn"
+            <b-button type="submit" variant="warning" class="btn"
               >Register</b-button
             >
           </b-form>
@@ -161,7 +164,8 @@ export default {
       achievements: 0,
       certificates: 0,
       blocked: false,
-      options: [
+      showSuccess:false,
+      /* options: [
         { value: null, text: "Please select some item", disabled: true },
         { value: "a", text: "This is option a" },
         { value: "b", text: "Default Selected Option b" },
@@ -169,7 +173,7 @@ export default {
         { value: "d", text: "This one is disabled" },
         { value: "e", text: "This is option e" },
         { value: "e", text: "This is option f" },
-      ],
+      ], */
     };
   },
 
@@ -184,6 +188,9 @@ export default {
       } catch (error) {
         alert(error);
       }
+    },
+    goBack() {
+      this.$router.go(-1);
     },
   },
 };

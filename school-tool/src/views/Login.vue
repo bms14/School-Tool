@@ -2,6 +2,9 @@
   <div class="login">
     <b-container class="d-flex justify-content-center">
       <b-card class="loginCard">
+        <b-button variant="light" class="goBack" type="button" @click="goBack"
+            ><i class="fas fa-arrow-left"></i
+          ></b-button>
          <b-card-title>
             <img src="../assets/logo_sembg.png" class="logoImg" />
           </b-card-title>
@@ -41,7 +44,7 @@
                 ></b-form-input>
               </b-input-group>
             </b-row>
-            <b-button type="submit" variant="outline-warning" class="btn btnSubmit">Login</b-button>
+            <b-button type="submit" variant="warning" class="btn btnSubmit">Login</b-button>
           </b-form>
            <p class="registerMsg">
               Ainda não tens conta?
@@ -80,6 +83,9 @@ export default {
         alert(error);
       }
     },
+    goBack() {
+      this.$router.push({ name: "Landing" });
+    },
   },
 };
 </script>
@@ -106,9 +112,4 @@ export default {
   padding-top: 15px;
   font-size: 13px;
 }
-.registerAnchor:hover {
-  color: #b19001;
-  transition: 0.5s ease-in-out;
-  text-decoration: none !important;
-} 
 </style>
