@@ -208,7 +208,7 @@ export default {
 <style>
 #historic{
   padding-top: 80px;
- background-color: #dcdcdc;
-  height: 100%;
+  height: 100vh;
 }
+
 </style>

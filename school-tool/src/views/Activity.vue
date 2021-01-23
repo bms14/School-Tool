@@ -1,6 +1,9 @@
 <template>
   <!--   <div id="content">
     <div v-if="activity">
+      <b-button variant="light" type="button" @click="goBack"
+        >Retroceder</b-button
+      >
       <b-container id="activity">
         <b-card class="activityCard">
           <b-button variant="light" class="goBack" type="button" @click="goBack"

@@ -6,11 +6,17 @@
         <b-row>
           <div id="listUsers">
             <div v-if="getNumUsers == 0">NÃO EXISTEM UTILIZADORES</div>
-            <div v-else class="justify-content-center row">
-              <div id="filterUsers">
-                <label for="txtFilterName">NOME:</label>
-                <input type="text" v-model="filterName" id="txtFilterName" />
-              </div>
+            <div v-else class="row justify-content-md-center">
+              <b-input-group class="mb-3 col-sm-3">
+            <b-form-input
+              type="text"
+              id="txtName"
+              placeholder="Pesquise o nome..."
+              v-model="filterName"
+            >
+            </b-form-input>
+          </b-input-group>
+          <hr>
               <br />
               <br />
               <table class="d-flex justify-content-center table-responsive">
