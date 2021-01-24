@@ -142,8 +142,12 @@ export default {
       this.$router.push({ name: "UpdateActivity", params: { id: id } });
     },
     concludeActivity(id) {
-      if (confirm("Tem a certeza que pretende concluir?")) {
+      try{
+if (confirm("Tem a certeza que pretende concluir?")) {
         this.$store.dispatch("concludeActivity", id);
+      }
+      }catch(error) {
+        alert(error)
       }
     },
     newEnrollment(id) {

@@ -273,6 +273,8 @@ export default new Vuex.Store({
             }
             else {
               activity.concluded = false
+              throw Error('Não é possivel concluir a atividade!')
+              
             }
           }
         }
