@@ -155,12 +155,6 @@ export default new Vuex.Store({
 
     },
      cancelEnrollment(context, payload) {
-      
-     /*  const enrollment = context.state.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
-      if (enrollment != undefined)
-      {
-       
-      } */
       context.commit('CANCEL_ENROLLMENT', payload)
       localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
     }, 
@@ -219,7 +213,6 @@ export default new Vuex.Store({
       console.log('try');
     },
     CANCEL_ENROLLMENT(state, payload) {
-      
       state.enrollments = state.enrollments.filter(enrollment => {
         if(enrollment.idActivity == payload.idActivity){
           if(enrollment.idUser == payload.idUser){

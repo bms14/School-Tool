@@ -1,8 +1,4 @@
 <template>
-
-    
-    
-
   <div id="Activity">
     <div class="container-xl activityCard">
       <div class="row">
@@ -107,11 +103,6 @@ export default {
   },
   methods: {
     goBack() {
-      //retroceder pagina anterior
-      //this.$router.go(-1)
-
-      //ir pagina listagem de jogos
-
       this.$router.push({ name: "ListActivity" });
     },
 
@@ -129,13 +120,9 @@ export default {
       
     },
     removeEnrollment(payload) {
-
-
-
       console.log("idUser:", this.$store.getters.getLoggedUser.id);
       console.log("idAtivity:", payload);
-
-  
+ 
       try {
         this.$store.dispatch("cancelEnrollment", {
           idActivity: payload,
