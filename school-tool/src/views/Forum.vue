@@ -1,118 +1,68 @@
 <template>
-  <div id="content">
-    <div id="content" class="container">
-      <div class="row justify-content-start">
-        <div class="col-4">
+  <div id="content" class="forum">
+    <b-container>
+      <b-row>
+        <b-container class="col-md-4">
           <table class="table" id="table">
-            <thead id="thead">
+            <thead id="thead" style="background-color: #707071">
               <tr>
                 <th scope="col">Atividades</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="activity in filteredActivities" :key="activity.id">
-                <button type="button" id="button" class="btn btn-outline-dark">
+                <b-button type="button" id="button" variant="dark">
                   {{ activity.name }}
-                </button>
+                </b-button>
               </tr>
               <tr>
                 <th scope="row" id="spacetosearch"></th>
               </tr>
               <tr>
-                <input
-                  class="form-control me-2"
-                  id="search"
-                  type="text"
-                  placeholder="Search"
-                  v-model="filterActivity"
-                />
+                <b-input-group class="col-sm">
+                  <b-form-input
+                    type="text"
+                    id="search"
+                    placeholder="Pesquise..."
+                    v-model="filterActivity"
+                  >
+                  </b-form-input>
+                </b-input-group>
               </tr>
             </tbody>
           </table>
-        </div>
-        <div
-          class="col-6 bg-white text-black"
+        </b-container>
+        <b-container
+          class="col-md-6 bg-white text-black"
           style="border: 3px solid #cecece"
           id="chat"
         >
-          <p id="message">Local onde entra a primeira mensagem</p>
-          <div class="row">
-            <div class="mb-3">
-              <form class="d-flex" @submit.prevent="sendComment()">
-                <input
-                  class="form-control me-2"
-                  type="search"
+          <b-row class="mb-3">
+            <b-form class="d-flex" @submit.prevent="sendComment()">
+              <b-input-group class="col-md-10">
+                <b-form-input
+                  type="text"
                   id="txtComment"
                   placeholder="Deixar comentário do workshop"
                   v-model="form.comment"
-                />
-                <button class="btn btn-outline-dark" type="submit">
-                  <ion-icon name="navigate"></ion-icon>
-                </button>
-              </form>
-              <form class="d-flex">
-                <ion-icon id="icon1" name="document-attach"></ion-icon>
-                <ion-icon id="icon2" name="happy"></ion-icon>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- 
-  <div class="row">
-    <div class="container col-xs-6 .col-md-4" id="main-container">
-      <table class="table" id="table">
-        <thead id="thead">
-          <tr>
-            <th scope="col">Atividades</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <button type="button" id="button" class="btn btn-outline-dark">
-              Workshop ##
-            </button>
-          </tr>
-          <tr>
-            <button type="button" id="button" class="btn btn-outline-dark">
-              Workshop ##
-            </button>
-          </tr>
-          <tr>
-            <button type="button" id="button" class="btn btn-outline-dark">
-              Workshop ##
-            </button>
-          </tr>
-          <tr>
-            <button type="button" id="button" class="btn btn-outline-dark">
-              Workshop ##
-            </button>
-          </tr>
-          <tr>
-            <th scope="row" id="spacetosearch"></th>
-          </tr>
-          <tr>
-            <input
-              class="form-control me-2"
-              id="search"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-xs-12 col-md-8 bg-white text-black" id="message">
-      <h1>My First Bootstrap Page</h1>
-      <p>
-        This container has a dark background color and a white text, and some
-        extra padding and margins.
-      </p>
-    </div>
+                >
+                </b-form-input>
+              </b-input-group>
+              <b-button variant="dark" type="submit">
+                <ion-icon name="navigate"></ion-icon>
+              </b-button>
+            </b-form>
+          </b-row>
+          <b-row class="mb-3">
+            <form class="d-flex">
+              <ion-icon id="icon1" name="document-attach"></ion-icon>
+              <ion-icon id="icon2" name="happy"></ion-icon>
+            </form>
+          </b-row>
+        </b-container>
+      </b-row>
+    </b-container>
   </div>
-  --></div>
 </template>
 
 <script>
@@ -150,13 +100,15 @@ export default {
         return this.$store.state.activities;
       } else {
         return this.$store.state.activities.filter((activity) =>
-          activity.name.toLowerCase().includes(this.filterActivity.toLowerCase())
+          activity.name
+            .toLowerCase()
+            .includes(this.filterActivity.toLowerCase())
         );
       }
     },
     getComment() {
       return this.$store.state.comments;
-    }
+    },
   },
   created() {
     let activities = [];
@@ -170,22 +122,18 @@ export default {
 </script>
 
 <style>
+#content.forum {
+  padding-top: 70px;
+  background-color: #dcdcdc;
+  min-height: 100vh;
+}
 #table {
   width: 250px;
   background-color: #b8b9b9;
   border-radius: 15px 15px 15px 15px;
 }
-#thead {
-  background-color: #707071;
-}
 #spacetosearch {
   height: 200px;
-}
-#search {
-  margin-left: 20px;
-  background-color: white;
-  width: 200px;
-  border-radius: 25px 25px 25px 25px;
 }
 #button {
   width: 250px;
@@ -199,7 +147,6 @@ export default {
   border-radius: 15px 15px 15px 15px;
   margin: 0;
   padding: 0;
-  height: 450px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
