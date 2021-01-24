@@ -56,6 +56,7 @@ export default new Vuex.Store({
     isLoggedUser: (state) => state.loggedUser == '' ? false : true,
     getActivityType: (state) => state.activityType,
     getActivities: (state) => state.activities,
+    getEnrollments: (state) => state.enrollments,
     getLocals: (state) => state.locals,
     getInterests: (state) => state.interests,
     getLoggedUserType: (state) => state.loggedUser.type,

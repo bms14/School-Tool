@@ -1,58 +1,58 @@
 <template>
-<div id="content">
-  <b-container id="historic">
-    <b-row class="mt-5">
-          <b-input-group class="mb-3 col-sm">
-            <b-form-input
-              type="text"
-              id="txtName"
-              placeholder="Pesquise..."
-              v-model="search"
-            >
-            </b-form-input>
-          </b-input-group>
-          <b-form-group class="mb-3 col-sm">
-            <b-form-select id="input-3" v-model="filterType">
-              <b-form-select-option value="">
-                Selecionar um tipo
-              </b-form-select-option>
-              <b-form-select-option
-                :value="type"
-                :key="i"
-                v-for="(type, i) in getActivityType"
-                >{{ type.name }}</b-form-select-option
-              >
-            </b-form-select>
-          </b-form-group>
-          <b-form-group class="mb-3 col-sm">
-            <b-form-select id="input-3" v-model="filterLocal">
-              <b-form-select-option value=""
-                >Selecionar um local</b-form-select-option
-              >
-              <b-form-select-option
-                :value="local"
-                :key="i"
-                v-for="(local, i) in this.$store.getters.getLocals"
-                >{{ local }}</b-form-select-option
-              >
-            </b-form-select>
-          </b-form-group>
-
-          <b-button class="mb-3 col-sm" variant="secondary" @click="sortByDate"
-            >ORDENAR POR DATA</b-button
+  <div id="content">
+    <b-container id="historic">
+      <b-row class="mt-5">
+        <b-input-group class="mb-3 col-sm">
+          <b-form-input
+            type="text"
+            id="txtName"
+            placeholder="Pesquise..."
+            v-model="search"
           >
-        </b-row>
-    <b-card-group deck v-if="filterActivities.length > 0">
-    <ActivityCard
-      v-for="(activity, i) in filterActivities"
-      :activity="activity"
-      :key="i"
-    ></ActivityCard>
-  </b-card-group>
-  <div v-else>
-    <p>NÃO ESTÁ INSCRITO EM ATIVIDADES!</p>
-  </div>
-  </b-container>
+          </b-form-input>
+        </b-input-group>
+        <b-form-group class="mb-3 col-sm">
+          <b-form-select id="input-3" v-model="filterType">
+            <b-form-select-option value="">
+              Selecionar um tipo
+            </b-form-select-option>
+            <b-form-select-option
+              :value="type"
+              :key="i"
+              v-for="(type, i) in getActivityType"
+              >{{ type.name }}</b-form-select-option
+            >
+          </b-form-select>
+        </b-form-group>
+        <b-form-group class="mb-3 col-sm">
+          <b-form-select id="input-3" v-model="filterLocal">
+            <b-form-select-option value=""
+              >Selecionar um local</b-form-select-option
+            >
+            <b-form-select-option
+              :value="local"
+              :key="i"
+              v-for="(local, i) in this.$store.getters.getLocals"
+              >{{ local }}</b-form-select-option
+            >
+          </b-form-select>
+        </b-form-group>
+
+        <b-button class="mb-3 col-sm" variant="secondary" @click="sortByDate"
+          >ORDENAR POR DATA</b-button
+        >
+      </b-row>
+      <b-card-group deck v-if="filterActivities.length > 0">
+        <ActivityCard
+          v-for="(activity, i) in filterActivities"
+          :activity="activity"
+          :key="i"
+        ></ActivityCard>
+      </b-card-group>
+      <div v-else>
+        <p>NÃO ESTÁ INSCRITO EM ATIVIDADES!</p>
+      </div>
+    </b-container>
   </div>
 </template>
 
@@ -66,41 +66,39 @@ export default {
   },
   data() {
     return {
-      activities: [],
+      activities: this.$store.state.activities,
+      subActivities: [],
       filterType: "",
       filterLocal: "",
       search: "",
-      enrollments: this.$store.state.enrollments,
+      enrollments: this.$store.getters.getEnrollments,
+     
     };
   },
   created() {
-    /* if (localStorage.getItem("activities")) {
-      this.activities = JSON.parse(localStorage.getItem("activities"));
-    } */
-    let helper = this.$store.state.activities;
-    for (let i = 0; i < helper.length; i++) {
-      if (helper[i].full == false) {
-        this.activities.push(helper[i]);
-      }
-    }
+    let enr = this.enrollments.filter(
+      (enrollment) => enrollment.idUser === this.$store.getters.getLoggedUser.id
+    );
+    this.activities.filter((activity) => {
+      enr.forEach((enrollment) => {
+        if (enrollment.idActivity == activity.id) {
+          this.subActivities.push(activity);
+        }
+      });
+    });
+  },
+  methods: {
+    sortByDate() {
+      this.subActivities = this.subActivities.sort(this.compareDates);
+    },
+    compareDates(a, b) {
+      if (a.date > b.date) return 1 ;
+      if (a.date < b.date) return -1 ;
+      if (a.date == b.date) return 0;
+    },
   },
   computed: {
-    subActivity() {
-      let arr = [];
-      let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
-      this.activities.filter(activity => {
-        
-        enr.forEach(enrollment => {
-          if (enrollment.idActivity == activity.id) {
-            arr.push(activity)
-          }
-        });
-      });
-      return arr;
-      
-      
-    },
-     getActivityType() {
+    getActivityType() {
       return this.$store.getters.getActivityType;
     },
     filterActivities() {
@@ -111,7 +109,7 @@ export default {
         this.filterLocal == "" &&
         this.search == ""
       ) {
-        filter = this.activities.filter(
+        filter = this.subActivities.filter(
           (activity) => activity.type === this.filterType.name
         );
         return filter;
@@ -122,7 +120,7 @@ export default {
         this.filterLocal != "" &&
         this.search == ""
       ) {
-        filter = this.activities.filter(
+        filter = this.subActivities.filter(
           (activity) =>
             activity.local === this.filterLocal &&
             activity.type === this.filterType.name
@@ -135,7 +133,7 @@ export default {
         this.filterLocal == "" &&
         this.search != ""
       ) {
-        filter = this.activities.filter(
+        filter = this.subActivities.filter(
           (activity) =>
             activity.type === this.filterType.name &&
             activity.name.match(this.search)
@@ -148,7 +146,7 @@ export default {
         this.filterLocal != "" &&
         this.search != ""
       ) {
-        filter = this.activities.filter(
+        filter = this.subActivities.filter(
           (activity) =>
             activity.local === this.filterLocal &&
             activity.type === this.filterType.name &&
@@ -162,7 +160,7 @@ export default {
         this.filterLocal != "" &&
         this.search == ""
       ) {
-        filter = this.activities.filter(
+        filter = this.subActivities.filter(
           (activity) => activity.local === this.filterLocal
         );
         return filter;
@@ -173,7 +171,7 @@ export default {
         this.filterLocal == "" &&
         this.search == ""
       ) {
-        filter = this.activities;
+        filter = this.subActivities;
         return filter;
       }
 
@@ -182,7 +180,7 @@ export default {
         this.filterLocal != "" &&
         this.search != ""
       ) {
-        filter = this.activities.filter(
+        filter = this.subActivities.filter(
           (activity) =>
             activity.local === this.filterLocal &&
             activity.name.match(this.search)
@@ -195,7 +193,7 @@ export default {
         this.filterLocal == "" &&
         this.search != ""
       ) {
-        filter = this.activities.filter((activity) =>
+        filter = this.subActivities.filter((activity) =>
           activity.name.match(this.search)
         );
       }
@@ -206,9 +204,8 @@ export default {
 </script>
 
 <style>
-#historic{
+#historic {
   padding-top: 80px;
   height: 100vh;
 }
-
 </style>

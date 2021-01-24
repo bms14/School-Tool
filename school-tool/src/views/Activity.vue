@@ -80,7 +80,7 @@
             <p>Participantes: {{ activity.numPeople }}</p>
             <p>Hora: {{ activity.hour }}</p>
           </div>
-          <div v-if="subscripted = 'false'">
+          <div v-if="subscribed == undefined ">
            <b-button
               @click="newEnrollment(activity.id)"
               variant="outline-warning"
@@ -136,19 +136,6 @@
 </template>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script>
 export default {
   name: "Activity",
@@ -156,7 +143,7 @@ export default {
     return {
       activity: null,
       enrollments: this.$store.state.enrollments,
-      subscribed: "false",
+      subscribed: undefined,
     };
   },
   created() {
@@ -166,6 +153,21 @@ export default {
     }
     this.activity = activities.find((g) => g.id == this.$route.params.id);
     console.log(this.activity);
+    this.subscribed = this.$store.state.enrollments.find(enrollment =>{
+      if(enrollment.idActivity == this.activity.id){
+        if(enrollment.idUser == this.$store.getters.getLoggedUser.id){
+          return true
+        }
+        else{
+          return false
+        }
+      }
+      else{
+        return false
+      }
+    })
+
+
   },
   methods: {
     goBack() {
@@ -192,46 +194,20 @@ export default {
       console.log("idUser:", this.$store.getters.getLoggedUser.id);
       console.log("idAtivity:", payload);
 
-      /* let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
-       enr.filter(enrollment => 
-           enrollment.idActivity != payload.id) 
-         */
+  
       try {
         this.$store.dispatch("cancelEnrollment", {
           idActivity: payload,
           idUser: this.$store.getters.getLoggedUser.id,
         });
-        /* this.subscribed = 'true'; */
+        this.subscribed= undefined
       } catch (error) {
         alert(error);
       }
-      /*  this.subscribed = "false";
-      this.$store.dispatch("cancelEnrollment", payload); */
+     
     },
   },
-  /*  checkSubscription(payload){
-       const enrollment = this.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
-      if(enrollment == undefined){
-        return this.subscribed="false"
-      }
-      else{
-        return this.subscribed= "true"
-      }  */
-  /*  let enr = this.enrollments.filter(enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id)
-      this.activities.filter(activity => {
-        
-        enr.forEach(enrollment => {
-          if (enrollment.idActivity == activity.id) {
-            this.subscribed="true"
-          }
-          else{
-            this.subscribed="false"
-          }
-        });
-      });
-      return this.subscribed; */
-
-  /*  }, */
+  
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
