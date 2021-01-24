@@ -175,11 +175,11 @@ export default {
     updateActivity() {
       this.$store.dispatch("updateActivity", {
         id: this.activity.id,
-        name: this.activity.name,
-        date:this.activity.date,
-        hour:this.activity.hour,
-        local: this.activity.local,
-        description: this.activity.description,
+        name: this.frm.name,
+        date:this.frm.date,
+        hour:this.frm.hour,
+        local: this.frm.local,
+        description: this.frm.description,
       });
       alert("Atividade editada com sucesso!");
     }

@@ -168,6 +168,7 @@ export default new Vuex.Store({
     },
     updateActivity(context, payload) {
       context.commit('UPDATE_ACTIVITY', payload)
+      console.log(payload);
       localStorage.setItem("activities", JSON.stringify(context.state.activities))
     },
     updateUser(context, payload) {
