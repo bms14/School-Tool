@@ -170,7 +170,7 @@ export default {
   },
   methods: {
     goBack() {
-      this.$router.push({ name: "Homepage" });
+      this.$router.go(-1);
     },
     updateActivity() {
       this.$store.dispatch("updateActivity", {
