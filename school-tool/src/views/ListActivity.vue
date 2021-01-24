@@ -206,6 +206,6 @@ export default {
 <style>
 #historic {
   padding-top: 80px;
-  height: 100%;
+  min-height: 100vh;
 }
 </style>

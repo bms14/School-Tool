@@ -1,16 +1,13 @@
 <template>
-  <div id="content">
-    <div v-if="activity">
-      <b-button variant="light" type="button" @click="goBack"
-        >Retroceder</b-button
-      >
+
+    
+    
 
   <div id="Activity">
     <div class="container-xl activityCard">
       <div class="row">
        
-        
-        <div class="col-lg-4 leftInfo">
+        <div class="col-lg-4 ">
          
           <img class="img-fluid imgActivity mt-3" :src="activity.image" />
           <div class="eventDate mt-3">
@@ -38,9 +35,9 @@
           </div>
         </div>
 
-        <div class="col-lg-8 rightInfo">
-          <div class="text-left cardDetails">
-            <b-card title="Nome">
+        <div class="col-lg-8 ">
+          <div class="text-left mt-4">
+            <b-card title="Nome" class="cardDetails">
               <div>
                 <p>
                   {{ activity.name }}
@@ -71,6 +68,7 @@
       </div>
     </div>
   </div>
+
 </template>
 
 
@@ -168,4 +166,20 @@ export default {
 #activity {
   padding-top: 80px;
 }
+.activityCard{
+  margin-top: 120px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #81790f;
+}
+.imgActivity{
+width: 300px;
+height: 300px;
+ border-radius: 10px;
+}
+
+.cardDetails{
+  border: none  !important;
+}
+
 </style>
