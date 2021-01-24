@@ -40,7 +40,8 @@ export default {
             {
               id: 1,
               name: "Ergonomia cognitiva",
-              type: "Workshop",
+              type: this.$store.getters.getActivityTypeById(2).name,
+              points: this.$store.getters.getActivityTypeById(2).points,
               local: "ESMAD",
               date: "2021-01-28",
               hour: "16:27",
@@ -54,7 +55,8 @@ export default {
             {
               id: 2,
               name: "Tudo sobre JavaScript",
-              type: "Seminário",
+              type: this.$store.getters.getActivityTypeById(4).name,
+              points:this.$store.getters.getActivityTypeById(4).points,
               local: "ESMAD",
               date: "2021-01-30",
               hour: "16:27",
@@ -68,7 +70,8 @@ export default {
             {
               id: 3,
               name: "EsmadPlus",
-              type: "Conferência",
+              type: this.$store.getters.getActivityTypeById(1).name,
+              points: this.$store.getters.getActivityTypeById(1).points,
               local: "Online",
               date: "2021-03-28",
               hour: "16:27",
@@ -84,6 +87,11 @@ export default {
       }
     },
   },
+  computed:{
+    getActivityType() {
+      return this.$store.getters.getActivityType;
+    },
+  }
 };
 </script>
 

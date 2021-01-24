@@ -70,10 +70,17 @@ export default new Vuex.Store({
         ? state.activities[state.activities.length - 1].id + 1
         : 1;
     },
+    getActivityTypeById: (state) => (id) => {
+      return state.activityType.find((type) => type.id == id);
+    },
     getNumUsers: (state) => { return state.users.length },
     getNumActivities: (state) => { return state.activities.length },
     getNumComments: (state) => { return state.comments.length },
-
+    getActivitiesForSelect: (state) =>
+    state.activityType.map((type) => ({
+      value: type.id,
+      text: type.name,
+    })),
   },
   actions: {
     login(context, payload) {

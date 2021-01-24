@@ -135,10 +135,10 @@
           </p>
         </b-modal>
         <b-modal id="modal-3" centered title="CONQUISTAS">
-          <p class="my-4">Hello from modal!</p>
+          <p class="my-4">Não possui conquistas!</p>
         </b-modal>
         <b-modal id="modal-4" centered title="CERTIFICADOS">
-          <p class="my-4">Hello from modal!</p>
+          <p class="my-4">Não possui certificados!</p>
         </b-modal>
       </b-card>
     </b-container>
@@ -198,6 +198,8 @@ export default {
 <style scoped>
 #content {
   padding-top: 80px;
+  background-color: #dcdcdc;
+  min-height: 100vh;
 }
 .gamificationCard {
   margin-top: 20px;
