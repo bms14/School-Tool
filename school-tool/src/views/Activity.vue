@@ -9,23 +9,34 @@
             <p>Participantes: {{ activity.numPeople }}</p>
             <p>Hora: {{ activity.hour }}</p>
           </div>
-          <div v-if="subscribed == undefined">
-            <b-button
-              @click="newEnrollment(activity.id)"
-              variant="outline-warning"
-              class="btn"
-            >
-              Inscrever
-            </b-button>
+          <div v-if="getUser.type == 'Estudante'">
+            <div v-if="subscribed == undefined">
+              <b-button
+                @click="newEnrollment(activity.id)"
+                variant="outline-warning"
+                class="btn"
+              >
+                Inscrever
+              </b-button>
+            </div>
+            <div v-else>
+              <b-button
+                @click="removeEnrollment(activity.id)"
+                variant="outline-warning"
+                class="btn"
+              >
+                Cancelar Subscrição
+              </b-button>
+            </div>
           </div>
           <div v-else>
-            <b-button
-              @click="removeEnrollment(activity.id)"
-              variant="outline-warning"
-              class="btn"
-            >
-              Cancelar Subscrição
+            <b-button class="mb-3" @click="removeActivity(activity.id)" variant="danger">
+              REMOVER
             </b-button>
+            
+             <b-button class="mb-3" @click="updateActivity(activity.id)" variant="info">
+                        <ion-icon name="create-outline"></ion-icon> EDITAR
+              </b-button>
           </div>
         </div>
 
@@ -96,7 +107,14 @@ export default {
     goBack() {
       this.$router.push({ name: "ListActivity" });
     },
-
+    removeActivity(id) {
+      if (confirm("Tem a certeza que pretende remover?")) {
+        this.$store.dispatch("removeActivity", id);
+      }
+    },
+    updateActivity(id) {
+      this.$router.push({ name: "UpdateActivity", params: { id: id } });
+    },
     newEnrollment(id) {
       try {
         this.$store.dispatch("submitEnrollment", {
