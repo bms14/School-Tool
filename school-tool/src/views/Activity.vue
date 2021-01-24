@@ -2,17 +2,15 @@
   <div id="Activity">
     <div class="container-xl activityCard">
       <div class="row">
-       
-        <div class="col-lg-4 ">
-         
+        <div class="col-lg-4">
           <img class="img-fluid imgActivity mt-3" :src="activity.image" />
           <div class="eventDate mt-3">
             <p>Data: {{ activity.date }}</p>
             <p>Participantes: {{ activity.numPeople }}</p>
             <p>Hora: {{ activity.hour }}</p>
           </div>
-          <div v-if="subscribed == undefined ">
-           <b-button
+          <div v-if="subscribed == undefined">
+            <b-button
               @click="newEnrollment(activity.id)"
               variant="outline-warning"
               class="btn"
@@ -31,7 +29,7 @@
           </div>
         </div>
 
-        <div class="col-lg-8 ">
+        <div class="col-lg-8">
           <div class="text-left mt-4">
             <b-card title="Nome" class="cardDetails">
               <div>
@@ -44,9 +42,9 @@
                 </p>
                 <h4>Localização</h4>
                 <p>
-                   {{ activity.local }}
+                  {{ activity.local }}
                 </p>
-                
+
                 <h4>Certificado</h4>
                 <p>
                   {{ activity.certificate }}
@@ -55,16 +53,13 @@
                 <p>
                   {{ activity.description }}
                 </p>
-              
               </div>
             </b-card>
           </div>
-          
         </div>
       </div>
     </div>
   </div>
-
 </template>
 
 
@@ -85,21 +80,17 @@ export default {
     }
     this.activity = activities.find((g) => g.id == this.$route.params.id);
     console.log(this.activity);
-    this.subscribed = this.$store.state.enrollments.find(enrollment =>{
-      if(enrollment.idActivity == this.activity.id){
-        if(enrollment.idUser == this.$store.getters.getLoggedUser.id){
-          return true
+    this.subscribed = this.$store.state.enrollments.find((enrollment) => {
+      if (enrollment.idActivity == this.activity.id) {
+        if (enrollment.idUser == this.$store.getters.getLoggedUser.id) {
+          return true;
+        } else {
+          return false;
         }
-        else{
-          return false
-        }
+      } else {
+        return false;
       }
-      else{
-        return false
-      }
-    })
-
-
+    });
   },
   methods: {
     goBack() {
@@ -111,32 +102,28 @@ export default {
         this.$store.dispatch("submitEnrollment", {
           idActivity: id,
           idUser: this.$store.getters.getLoggedUser.id,
-          
         });
-        this.subscribed = 'true';
+        this.subscribed = "true";
       } catch (error) {
         alert(error);
       }
-      
     },
     removeEnrollment(payload) {
       console.log("idUser:", this.$store.getters.getLoggedUser.id);
       console.log("idAtivity:", payload);
- 
+
       try {
         this.$store.dispatch("cancelEnrollment", {
           idActivity: payload,
           idUser: this.$store.getters.getLoggedUser.id,
-          
         });
-        this.subscribed= undefined
+        this.subscribed = undefined;
       } catch (error) {
         alert(error);
       }
-     
     },
   },
-  
+
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
@@ -153,20 +140,19 @@ export default {
 #activity {
   padding-top: 80px;
 }
-.activityCard{
+.activityCard {
   margin-top: 120px;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 0 10px #81790f;
 }
-.imgActivity{
-width: 300px;
-height: 300px;
- border-radius: 10px;
+.imgActivity {
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
 }
 
-.cardDetails{
-  border: none  !important;
+.cardDetails {
+  border: none !important;
 }
-
 </style>

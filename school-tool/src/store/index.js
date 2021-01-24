@@ -154,10 +154,14 @@ export default new Vuex.Store({
       }
 
     },
-     cancelEnrollment(context, payload) {
+    cancelEnrollment(context, payload) {
       context.commit('CANCEL_ENROLLMENT', payload)
       localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
     }, 
+    concludeActivity(context,payload){
+      context.commit('CONCLUDE_ACTIVITY', payload)
+      localStorage.setItem("activities", JSON.stringify(context.state.activities))
+    },
     editProfile(context, payload) {
       context.commit('PROFILE', payload)
       localStorage.setItem("users", JSON.stringify(context.state.users))
@@ -210,7 +214,6 @@ export default new Vuex.Store({
     },
     ENROLLMENT(state, payload) {
       state.enrollments.push(payload)
-      console.log('try');
     },
     CANCEL_ENROLLMENT(state, payload) {
       state.enrollments = state.enrollments.filter(enrollment => {
@@ -254,6 +257,22 @@ export default new Vuex.Store({
       state.loggedUser.password = payload.frm.password
       state.loggedUser.photo = payload.frm.photo
       state.loggedUser.interests = payload.frm.interests
+    },
+    CONCLUDE_ACTIVITY(state,payload){
+      let date1 = new Date();
+      let date2 = this.activity.date;
+      state.activities.map(
+        activity => {
+          if (activity.id === payload.id) {
+            if(date1.getTime() > date2){
+              activity.concluded = true
+            }
+            else{
+              activity.concluded = false
+            }
+          }
+        }
+      )
     },
     UPDATE_USER(state, payload) {
       state.users.map(
