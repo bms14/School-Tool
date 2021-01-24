@@ -30,13 +30,39 @@
             </div>
           </div>
           <div v-else>
-            <b-button class="mb-3" @click="removeActivity(activity.id)" variant="danger">
+            <b-button
+              class="mb-3"
+              @click="removeActivity(activity.id)"
+              variant="danger"
+            >
               REMOVER
             </b-button>
-            
-             <b-button class="mb-3" @click="updateActivity(activity.id)" variant="info">
-                        <ion-icon name="create-outline"></ion-icon> EDITAR
+
+            <b-button
+              class="mb-3"
+              @click="updateActivity(activity.id)"
+              variant="info"
+            >
+              <ion-icon name="create-outline"></ion-icon> EDITAR
+            </b-button>
+            <div v-if="activity.concluded == false">
+              <b-button
+                class="mb-3"
+                @click="concludeActivity(activity.id)"
+                variant="success"
+              >
+                <ion-icon name="create-outline"></ion-icon> CONCLUIR
               </b-button>
+            </div>
+             <div v-else>
+              <b-button
+                class="mb-3"
+                @click="concludeActivity(activity.id)"
+                variant="success" disabled
+              >
+                <ion-icon name="create-outline"></ion-icon> CONCLUIR
+              </b-button>
+            </div>
           </div>
         </div>
 
@@ -114,6 +140,11 @@ export default {
     },
     updateActivity(id) {
       this.$router.push({ name: "UpdateActivity", params: { id: id } });
+    },
+    concludeActivity(id) {
+      if (confirm("Tem a certeza que pretende concluir?")) {
+        this.$store.dispatch("concludeActivity", id);
+      }
     },
     newEnrollment(id) {
       try {

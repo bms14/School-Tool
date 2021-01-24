@@ -43,7 +43,7 @@ export default {
               type: this.$store.getters.getActivityTypeById(2).name,
               points: this.$store.getters.getActivityTypeById(2).points,
               local: "ESMAD",
-              date: "2021-01-28",
+              date: "2021-01-24",
               hour: "16:27",
               numPeople: 15,
               certificate: "Sim",

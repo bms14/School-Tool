@@ -72,7 +72,6 @@ export default {
       filterLocal: "",
       search: "",
       enrollments: this.$store.getters.getEnrollments,
-     
     };
   },
   created() {
@@ -92,8 +91,8 @@ export default {
       this.subActivities = this.subActivities.sort(this.compareDates);
     },
     compareDates(a, b) {
-      if (a.date > b.date) return 1 ;
-      if (a.date < b.date) return -1 ;
+      if (a.date > b.date) return 1;
+      if (a.date < b.date) return -1;
       if (a.date == b.date) return 0;
     },
   },
