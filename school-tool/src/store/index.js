@@ -264,18 +264,19 @@ export default new Vuex.Store({
       state.loggedUser.interests = payload.frm.interests
     },
     CONCLUDE_ACTIVITY(state, id) {
-      let date1 = new Date();
+      /* let date1 = new Date(); */
       state.activities.map(
         activity => {
           if (activity.id === id) {
-            if (date1.getTime() > activity.date) {
+            activity.concluded = true
+            /* if (date1.getTime() > activity.date) {
               activity.concluded = true
             }
             else {
               activity.concluded = false
               throw Error('Não é possivel concluir a atividade!')
               
-            }
+            } */
           }
         }
       )
