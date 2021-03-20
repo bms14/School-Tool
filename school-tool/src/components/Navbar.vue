@@ -1,115 +1,125 @@
 <template>
-  <div id="nav" >
+  <div id="nav">
     <div v-if="getUser.type == 'admin'">
       <b-navbar class="nav" toggleable="lg">
-          <b-img src="../assets/logo_sembg.png" class="img"
-            ><router-link :to="{ name: 'Landing' }"></router-link
-          ></b-img>
-          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-          <b-collapse id="nav-collapse" is-nav>
-            <b-navbar-nav>
-              <b-nav-item
-                ><router-link to="/homeadmin"
-                  >Página inicial</router-link
-                ></b-nav-item
-              >
-              <b-nav-item
-                ><router-link to="/adminlistuser"
-                  >Utilizadores</router-link
-                ></b-nav-item
-              >
-              <b-nav-item
-                ><router-link to="/adminlistactivity"
-                  >Atividades</router-link
-                ></b-nav-item
-              >
-              <b-nav-item
-                ><router-link to="/adminlistcomments"
-                  >Comentários</router-link
-                ></b-nav-item
-              >
-              <!-- <router-link >Notificações</router-link>
+        <b-img src="../assets/logo_sembg.png" class="img"
+          ><router-link :to="{ name: 'Landing' }"></router-link
+        ></b-img>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-item
+              ><router-link to="/homeadmin"
+                >Página inicial</router-link
+              ></b-nav-item
+            >
+            <b-nav-item
+              ><router-link to="/adminlistuser"
+                >Utilizadores</router-link
+              ></b-nav-item
+            >
+            <b-nav-item
+              ><router-link to="/adminlistactivity"
+                >Atividades</router-link
+              ></b-nav-item
+            >
+            <b-nav-item
+              ><router-link to="/adminlistcomments"
+                >Comentários</router-link
+              ></b-nav-item
+            >
+            <!-- <router-link >Notificações</router-link>
           <a id="bottom-item1" href="#contact">João Silva</a> -->
-              <b-nav-item id="bottom-item2" @click="logout()"
-                >Logout</b-nav-item
-              >
-            </b-navbar-nav>
-          </b-collapse>
-        </b-navbar>
+            <b-nav-item id="bottom-item2" @click="logout()">Logout</b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
     </div>
     <div v-else-if="getUser.type == 'Estudante'">
-        <b-navbar class="nav" toggleable="lg" fixed="top" >
-          <b-img src="../assets/logo_sembg.png" class="img"
-            ><router-link :to="{ name: 'Landing' }"></router-link
-          ></b-img>
-          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-          <b-collapse id="nav-collapse" is-nav>
-            <b-navbar-nav>
-              <b-nav-item
-                ><router-link :to="{ name: 'Homepage' }"
-                  >Página inicial</router-link
-                ></b-nav-item
-              >
-              <b-nav-item
-                ><router-link :to="{ name: 'Profile' }"
-                  >Perfil</router-link
-                ></b-nav-item
-              >
-              <b-nav-item
-                ><router-link :to="{ name: 'Forum' }"
-                  >Fórum</router-link
-                ></b-nav-item
-              >
-              <b-nav-item
-                ><router-link :to="{ name: 'ListActivity' }"
-                  >Minhas atividades</router-link
-                ></b-nav-item
-              >
-              <!-- <router-link >Notificações</router-link>
+      <b-navbar class="nav" toggleable="lg" fixed="top">
+        <b-img src="../assets/logo_sembg.png" class="img"
+          ><router-link :to="{ name: 'Landing' }"></router-link
+        ></b-img>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-item
+              ><router-link :to="{ name: 'Homepage' }"
+                >Página inicial</router-link
+              ></b-nav-item
+            >
+            <b-nav-item
+              ><router-link :to="{ name: 'Profile' }"
+                >Perfil</router-link
+              ></b-nav-item
+            >
+            <b-nav-item
+              ><router-link :to="{ name: 'Forum' }"
+                >Fórum</router-link
+              ></b-nav-item
+            >
+            <b-nav-item
+              ><router-link :to="{ name: 'ListActivity' }"
+                >Minhas atividades</router-link
+              ></b-nav-item
+            >
+            <b-nav-item id="bottom-item2"
+              ><router-link :to="{ name: 'Profile' }">
+                <b-img :src="getUser.photo" rounded="circle" width="40%"></b-img
+                >{{ getUser.name }}</router-link
+              ></b-nav-item
+            >
+            <!-- <router-link >Notificações</router-link>
           <a id="bottom-item1" href="#contact">João Silva</a> -->
-              <b-nav-item id="bottom-item2" @click="logout()"
-                >Logout</b-nav-item
-              >
-            </b-navbar-nav>
-          </b-collapse>
-        </b-navbar>
+            <b-nav-item id="bottom-item2" @click="logout()"
+              ><ion-icon name="log-out-outline"></ion-icon
+            ></b-nav-item>
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
     </div>
     <div v-else>
       <b-navbar class="nav" toggleable="lg" variant="secondary">
-          <b-img src="../assets/logo_sembg.png" class="img"
-            ><router-link :to="{ name: 'Landing' }"></router-link
-          ></b-img>
-          <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-          <b-collapse id="nav-collapse" is-nav>
-            <b-navbar-nav>
-              <b-nav-item
-                ><router-link :to="{ name: 'Homepage' }"
-                  >Página inicial</router-link
-                ></b-nav-item
-              >
-              <b-nav-item
-                ><router-link :to="{ name: 'Profile' }"
-                  >Perfil</router-link
-                ></b-nav-item
-              >
-              <b-nav-item
-                ><router-link :to="{ name: 'Forum' }"
-                  >Fórum</router-link
-                ></b-nav-item
-              >
-              <b-nav-item
-                ><router-link :to="{ name: 'AddActivity' }"
-                  >Adicionar atividade</router-link
-                ></b-nav-item
-              >
-              <!-- <router-link >Notificações</router-link>
+        <b-img src="../assets/logo_sembg.png" class="img"
+          ><router-link :to="{ name: 'Landing' }"></router-link
+        ></b-img>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-collapse id="nav-collapse" is-nav>
+          <b-navbar-nav>
+            <b-nav-item
+              ><router-link :to="{ name: 'Homepage' }"
+                >Página inicial</router-link
+              ></b-nav-item
+            >
+            <b-nav-item
+              ><router-link :to="{ name: 'Profile' }"
+                >Perfil</router-link
+              ></b-nav-item
+            >
+            <b-nav-item
+              ><router-link :to="{ name: 'Forum' }"
+                >Fórum</router-link
+              ></b-nav-item
+            >
+            <b-nav-item
+              ><router-link :to="{ name: 'AddActivity' }"
+                >Adicionar atividade</router-link
+              ></b-nav-item
+            >
+            <b-nav-item
+              ><router-link :to="{ name: 'Profile' }">
+                <b-img :src="getUser.photo" rounded="circle" width="40%"></b-img
+                >{{ getUser.name }}</router-link
+              ></b-nav-item
+            >
+            <!-- <router-link >Notificações</router-link>
           <a id="bottom-item1" href="#contact">João Silva</a> -->
-              <b-nav-item id="bottom-item2" @click="logout()"
-                >Logout</b-nav-item
-              >
-            </b-navbar-nav>
-          </b-collapse>
-        </b-navbar>
+            <b-nav-item id="bottom-item2" @click="logout()"
+              ><b-icon icon="arrow-up"></b-icon>Logout</b-nav-item
+            >
+          </b-navbar-nav>
+        </b-collapse>
+      </b-navbar>
     </div>
   </div>
 </template>
@@ -132,7 +142,7 @@ export default {
 </script>
 
 <style>
-.img{
+.img {
   width: 20%;
 }
 body {
@@ -152,6 +162,4 @@ body {
   background-position: center left;
   transition: top 0.5s;
 }
-
-
 </style>
