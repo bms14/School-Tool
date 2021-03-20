@@ -28,6 +28,10 @@
                 >Comentários</router-link
               ></b-nav-item
             >
+            <b-nav-item>
+              <ion-icon style="top: 80%;" name="person-circle-outline"></ion-icon
+              > {{ getUser.name }}</b-nav-item
+            >
             <!-- <router-link >Notificações</router-link>
           <a id="bottom-item1" href="#contact">João Silva</a> -->
             <b-nav-item id="bottom-item2" @click="logout()">Logout</b-nav-item>
