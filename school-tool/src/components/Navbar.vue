@@ -32,8 +32,6 @@
               <ion-icon style="top: 80%;" name="person-circle-outline"></ion-icon
               > {{ getUser.name }}</b-nav-item
             >
-            <!-- <router-link >Notificações</router-link>
-          <a id="bottom-item1" href="#contact">João Silva</a> -->
             <b-nav-item id="bottom-item2" @click="logout()">Logout</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
@@ -78,8 +76,6 @@
                 >{{ getUser.name }}</router-link
               ></b-nav-item
             >
-            <!-- <router-link >Notificações</router-link>
-          <a id="bottom-item1" href="#contact">João Silva</a> -->
             <b-nav-item id="bottom-item2" @click="logout()"
               ><ion-icon name="log-out-outline"></ion-icon
             ></b-nav-item>
@@ -126,8 +122,6 @@
                 >{{ getUser.name }}</router-link
               ></b-nav-item
             >
-            <!-- <router-link >Notificações</router-link>
-          <a id="bottom-item1" href="#contact">João Silva</a> -->
             <b-nav-item id="bottom-item2" @click="logout()"
               ><b-icon icon="arrow-up"></b-icon>Logout</b-nav-item
             >
