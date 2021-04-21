@@ -6,7 +6,10 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Homepage from "../views/Homepage.vue";
 import AddActivity from "../views/AddActivity.vue";
+import AddQuiz from "../views/AddQuiz.vue";
 import ListActivity from "../views/ListActivity.vue";
+import ListQuiz from "../views/ListQuiz.vue";
+import Quiz from "../views/Quiz.vue";
 import Activity from "../views/Activity.vue";
 import Profile from "../views/Profile.vue";
 import Forum from "../views/Forum.vue";
@@ -63,6 +66,15 @@ const routes = [
     }
   },
   {
+    path: "/addQuiz",
+    name: "AddQuiz",
+    component: AddQuiz,
+    meta: {
+      requiresAuth: true,
+      notAdmin: true
+    }
+  },
+  {
     path: "/list",
     name: "ListActivity",
     component: ListActivity,
@@ -71,6 +83,7 @@ const routes = [
       notAdmin: true
     }
   },
+  
   {
     path: "/activity/:id",
     name: "activity",
@@ -80,6 +93,26 @@ const routes = [
       notAdmin: true
     }
   },
+  {
+    path: "/quiz",
+    name: "ListQuiz",
+    component: ListQuiz,
+    meta: {
+      requiresAuth: true,
+      notAdmin: true
+    }
+  },
+
+  {
+    path: "/quiz/:id",
+    name: "quiz",
+    component: Quiz,
+    meta: {
+      requiresAuth: true,
+      notAdmin: true
+    }
+  },
+
   {
     path: "/profile",
     name: "Profile",

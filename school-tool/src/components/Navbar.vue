@@ -65,6 +65,11 @@
                   >Minhas atividades</router-link
                 ></b-nav-item
               >
+              <b-nav-item
+                ><router-link :to="{ name: 'ListQuiz' }"
+                  >Quizzes</router-link
+                ></b-nav-item
+              >
               <!-- <router-link >Notificações</router-link>
           <a id="bottom-item1" href="#contact">João Silva</a> -->
               <b-nav-item id="bottom-item2" @click="logout()"
@@ -102,6 +107,12 @@
                   >Adicionar atividade</router-link
                 ></b-nav-item
               >
+              <b-nav-item
+                ><router-link :to="{ name: 'AddQuiz' }"
+                  >Adicionar Quiz</router-link
+                ></b-nav-item
+              >
+              
               <!-- <router-link >Notificações</router-link>
           <a id="bottom-item1" href="#contact">João Silva</a> -->
               <b-nav-item id="bottom-item2" @click="logout()"

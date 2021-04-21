@@ -231,4 +231,5 @@ export default {
   background-color: #dcdcdc;
   min-height: 100vh;
 }
+
 </style>

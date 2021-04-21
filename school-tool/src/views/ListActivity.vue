@@ -1,6 +1,11 @@
 <template>
   <div id="content">
-    <b-container id="historic">
+    <div>
+<b-img id="header" class="headerImg" src="../assets/activities_bg.jpg" ></b-img>
+     <h2 class="title">ATIVIDADES</h2>
+    </div>
+     
+    <b-container id="historic" class="activities">
       <b-row class="mt-5">
         <b-input-group class="mb-3 col-sm">
           <b-form-input
@@ -207,5 +212,20 @@ export default {
 #historic {
   padding-top: 80px;
   min-height: 100vh;
+}
+.title{
+  position: relative;
+  top: -10rem;
+}
+
+.activities{
+  position: relative;
+  top: -5rem;
+}
+.headerImg {
+  max-width: 100%;
+
+  padding: 0;
+  margin: 0;
 }
 </style>

@@ -48,8 +48,10 @@ export default new Vuex.Store({
     ],
     locals: ["ESMAD", "Online", "Outros"], 
     activities: localStorage.getItem('activities') ? JSON.parse(localStorage.getItem('activities')) : [],
+    quizzes: localStorage.getItem('quizzes') ? JSON.parse(localStorage.getItem('quizzes')) : [],
     comments: localStorage.getItem('comments') ? JSON.parse(localStorage.getItem('comments')) : [],
-    enrollments: localStorage.getItem('enrollments') ? JSON.parse(localStorage.getItem('enrollments')) : []
+    enrollments: localStorage.getItem('enrollments') ? JSON.parse(localStorage.getItem('enrollments')) : [],
+    concluded_quizzes: localStorage.getItem('concluded_quizzes') ? JSON.parse(localStorage.getItem('concluded_quizzes')) : []
   },
   getters: {
     getLoggedUser: (state) => state.loggedUser,
@@ -57,6 +59,7 @@ export default new Vuex.Store({
     getActivityType: (state) => state.activityType,
     getActivities: (state) => state.activities,
     getEnrollments: (state) => state.enrollments,
+    getConcldedQuizzes: (state) => state.concluded_quizzes,
     getLocals: (state) => state.locals,
     getInterests: (state) => state.interests,
     getLoggedUserType: (state) => state.loggedUser.type,
@@ -68,6 +71,11 @@ export default new Vuex.Store({
     getNextActivityId: (state) => {
       return state.activities.length > 0
         ? state.activities[state.activities.length - 1].id + 1
+        : 1;
+    },
+    getNextQuizId: (state) => {
+      return state.quizzes.length > 0
+        ? state.quizzes[state.quizzes.length - 1].id + 1
         : 1;
     },
     getActivityTypeById: (state) => (id) => {
@@ -127,6 +135,23 @@ export default new Vuex.Store({
         localStorage.setItem("activities", JSON.stringify(context.state.activities))
       } else {
         throw Error('Atividade já inserida!')
+      }
+    },
+    submitQuiz(context, payload) {
+      const quiz = context.state.quizzes.find(quiz => quiz.theme === payload.theme)
+      if (quiz == undefined) {
+        context.commit('QUIZ', payload)
+        localStorage.setItem("quizzes", JSON.stringify(context.state.quizzes))
+      } else {
+        throw Error('Quiz já inserida!')
+      }
+    },
+    concludedQuiz(context,payload){
+
+      const concluded_quiz=context.state.concluded_quizzes.find(concluded_quiz => concluded_quiz.idUser === payload.idUser && concluded_quiz.idQuiz === payload.idQuiz)
+      if (concluded_quiz == undefined){
+        context.commit('CONCLUDED_QUIZZES', payload)
+        localStorage.setItem("concluded_quizzes", JSON.stringify(context.state.concluded_quizzes))
       }
     },
     submitEnrollment(context, payload) {
@@ -213,6 +238,12 @@ export default new Vuex.Store({
     },
     ACTIVITY(state, activity) {
       state.activities.push(activity)
+    },
+    QUIZ(state, quiz) {
+      state.quizzes.push(quiz)
+    },
+    CONCLUDED_QUIZZES(state,payload){
+      state.concluded_quizzes.push(payload)
     },
     ENROLLMENT(state, payload) {
       state.enrollments.push(payload)
