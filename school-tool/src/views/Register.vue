@@ -165,25 +165,13 @@ export default {
       certificates: 0,
       blocked: false,
       showSuccess:false,
-      /* options: [
-        { value: null, text: "Please select some item", disabled: true },
-        { value: "a", text: "This is option a" },
-        { value: "b", text: "Default Selected Option b" },
-        { value: "c", text: "This is option c" },
-        { value: "d", text: "This one is disabled" },
-        { value: "e", text: "This is option e" },
-        { value: "e", text: "This is option f" },
-      ], */
     };
   },
 
   methods: {
     register() {
       try {
-        //chamar a ação login que está na store
-        //this.$store.dispacth("login",{username: this.username, password: this.password});
         this.$store.dispatch("register", this.$data);
-        //saltar para a view home
         this.$router.push({ name: "Login" });
       } catch (error) {
         alert(error);

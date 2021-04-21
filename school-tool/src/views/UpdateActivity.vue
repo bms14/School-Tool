@@ -193,48 +193,4 @@ export default {
 </script>
 
 <style>
-/* #editUser {
-  max-width: 500px;
-  width: 100%;
-  background: #fff;
-  margin: 50px auto;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
-  padding: 30px;
-  border-radius: 25px;
-}
-#editUser h2 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 25px;
-  color: #fec107;
-  text-transform: uppercase;
-  text-align: center;
-}
-#editUser form {
-  width: 100%;
-}
-#editUser form .form-group {
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-}
-#editUser form label {
-  width: 200px;
-  color: #757575;
-  margin-right: 10px;
-  font-size: 14px;
-}
-#editUser form input.btn {
-  font-size: 15px;
-  border-color: #fec107;
-  border-width: 2px;
-  cursor: pointer;
-}
-#editUser form input.btn:hover {
-  font-size: 15px;
-  background-color: #fec107;
-  color: #ffff;
-  border-width: 2px;
-  cursor: pointer;
-} */
 </style>

@@ -1,13 +1,7 @@
-/* eslint-disable prettier/prettier */
 import Vue from "vue";
 import Vuex from "vuex";
 
 Vue.use(Vuex);
-
-/*{name: 'admin', email: 'admin', password: 'admin'},
-  {name: 'student', email: 'student@esmad.ipp.pt', password: 'pass', course: 'Design', birthDate: '2020-01-01',photo: "https://uniarea.com/wp-content/uploads/2019/09/img.jpg" ,type: 'student'},
-  {name: 'teacher', email: 'teacher@esmad.ipp.pt', password: 'pass', course: 'Design', birthDate: '2020-01-02',photo: "https://blog.academia.com.br/wp-content/uploads/2019/02/273098-entenda-qual-e-o-papel-do-professor-na-educacao-dos-alunos.jpg", type: 'teacher'}
-*/
 
 export default new Vuex.Store({
   state: {

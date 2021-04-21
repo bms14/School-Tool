@@ -161,7 +161,6 @@ export default {
         }
       })
       try {
-        //this.$store.dispacth("login",{username: this.username, password: this.password});
         this.$store.dispatch("submitActivity", this.$data);
         //saltar para a view home
         this.$router.push({ name: "Homepage" });
