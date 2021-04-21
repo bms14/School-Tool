@@ -67,6 +67,11 @@
                 >Minhas atividades</router-link
               ></b-nav-item
             >
+            <b-nav-item
+              ><router-link :to="{ name: 'ListQuiz' }"
+                >Quizzes</router-link
+              ></b-nav-item
+            >
             <b-nav-item id="bottom-item2"
               ><router-link :to="{ name: 'Profile' }">
                 <b-img :src="getUser.photo" rounded="circle" width="40%"></b-img
@@ -108,6 +113,11 @@
             <b-nav-item
               ><router-link :to="{ name: 'AddActivity' }"
                 >Adicionar atividade</router-link
+              ></b-nav-item
+            >
+            <b-nav-item
+              ><router-link :to="{ name: 'AddQuiz' }"
+                >Adicionar Quiz</router-link
               ></b-nav-item
             >
             <b-nav-item

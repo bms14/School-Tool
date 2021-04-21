@@ -153,7 +153,7 @@ input[type="radio"] {
   display: none;
 }
 
-label {
+.teste label {
   position: relative;
   color: #81790f;
   font-family: "Poppins", sans-serif;
