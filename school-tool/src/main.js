@@ -8,6 +8,7 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'bootstrap/scss/bootstrap.scss';
+import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css';
 
 Vue.use(BootstrapVue)
 Vue.use(VueSweetalert2);

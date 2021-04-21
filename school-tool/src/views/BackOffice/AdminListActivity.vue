@@ -70,6 +70,12 @@
                       </b-button>
                     </td>
                     <td>
+                      <b-button  @click="updateActivity(activity.id)" variant="warning">
+                        <ion-icon name="create-outline"></ion-icon> EDITAR
+              </b-button>
+                      
+                    </td>
+                    <td>
                       <b-button
                         @click="removeActivity(activity.id)"
                         variant="danger"
@@ -114,6 +120,9 @@ export default {
       if (a.date > b.date) return 1;
       if (a.date < b.date) return -1;
       if (a.date == b.date) return 0;
+    },
+    updateActivity(id) {
+      this.$router.push({ name: "UpdateActivity", params: { id: id } });
     },
   },
   computed: {

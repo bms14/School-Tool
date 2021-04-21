@@ -7,7 +7,7 @@
           <div id="listUsers">
             <div v-if="getNumUsers == 0">NÃO EXISTEM UTILIZADORES</div>
             <div v-else class="row justify-content-md-center">
-              <b-input-group class="mb-3 col-sm-3">
+              <b-input-group class="mb-3 col-sm-4">
             <b-form-input
               type="text"
               id="txtName"

@@ -13,40 +13,40 @@ export default new Vuex.Store({
   state: {
     users: localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [],
     loggedUser: sessionStorage.getItem('loggedUser') ? JSON.parse(sessionStorage.getItem('loggedUser')) : '',
-    activityType:[
+    activityType: [
       {
-        id:"1",
-        name:"Conferência",
-        points:100
+        id: "1",
+        name: "Conferência",
+        points: 100
       },
       {
-        id:"2",
-        name:"Workshop",
-        points:150
+        id: "2",
+        name: "Workshop",
+        points: 150
       },
       {
-        id:"3",
-        name:"Concurso",
-        points:150
+        id: "3",
+        name: "Concurso",
+        points: 150
       },
       {
-        id:"4",
-        name:"Seminário",
-        points:100
+        id: "4",
+        name: "Seminário",
+        points: 100
       },
       {
-        id:"5",
-        name:"Projeto Extracurricular",
-        points:200
+        id: "5",
+        name: "Projeto Extracurricular",
+        points: 200
       },
       {
-        id:"6",
-        name:"Visita a Empresa",
-        points:200
+        id: "6",
+        name: "Visita a Empresa",
+        points: 200
       },
 
     ],
-    locals: ["ESMAD", "Online", "Outros"], 
+    locals: ["ESMAD", "Online", "Outros"],
     activities: localStorage.getItem('activities') ? JSON.parse(localStorage.getItem('activities')) : [],
     quizzes: localStorage.getItem('quizzes') ? JSON.parse(localStorage.getItem('quizzes')) : [],
     comments: localStorage.getItem('comments') ? JSON.parse(localStorage.getItem('comments')) : [],
@@ -85,10 +85,10 @@ export default new Vuex.Store({
     getNumActivities: (state) => { return state.activities.length },
     getNumComments: (state) => { return state.comments.length },
     getActivitiesForSelect: (state) =>
-    state.activityType.map((type) => ({
-      value: type.id,
-      text: type.name,
-    })),
+      state.activityType.map((type) => ({
+        value: type.id,
+        text: type.name,
+      })),
   },
   actions: {
     login(context, payload) {
@@ -169,7 +169,7 @@ export default new Vuex.Store({
           context.commit('ENROLLMENT', payload)
           localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
         } else if (num == activity.numPeople - 1) {
-         
+
           context.commit('LASTENROLLMENT', payload)
           localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
           localStorage.setItem("activities", JSON.stringify(context.state.activities))
@@ -179,19 +179,22 @@ export default new Vuex.Store({
       }
 
     },
-     cancelEnrollment(context, payload) {
-      
-     /*  const enrollment = context.state.enrollments.find(enrollment => enrollment.idUser === payload.idUser && enrollment.idActivity === payload.idActivity)
-      if (enrollment != undefined)
-      {
-       
-      } */
+    cancelEnrollment(context, payload) {
       context.commit('CANCEL_ENROLLMENT', payload)
       localStorage.setItem("enrollments", JSON.stringify(context.state.enrollments))
-    }, 
+    },
+    concludeActivity(context, id) {
+      context.commit('CONCLUDE_ACTIVITY', id)
+      localStorage.setItem("activities", JSON.stringify(context.state.activities))
+    },
     editProfile(context, payload) {
       context.commit('PROFILE', payload)
       localStorage.setItem("users", JSON.stringify(context.state.users))
+    },
+    updateActivity(context, payload) {
+      context.commit('UPDATE_ACTIVITY', payload)
+      console.log(payload);
+      localStorage.setItem("activities", JSON.stringify(context.state.activities))
     },
     updateUser(context, payload) {
       context.commit('UPDATE_USER', payload)
@@ -247,20 +250,18 @@ export default new Vuex.Store({
     },
     ENROLLMENT(state, payload) {
       state.enrollments.push(payload)
-      console.log('try');
     },
     CANCEL_ENROLLMENT(state, payload) {
-      
       state.enrollments = state.enrollments.filter(enrollment => {
-        if(enrollment.idActivity == payload.idActivity){
-          if(enrollment.idUser == payload.idUser){
+        if (enrollment.idActivity == payload.idActivity) {
+          if (enrollment.idUser == payload.idUser) {
             return false;
           }
           else {
             return true;
           }
         }
-        else{
+        else {
           return true;
         }
       })
@@ -293,6 +294,24 @@ export default new Vuex.Store({
       state.loggedUser.photo = payload.frm.photo
       state.loggedUser.interests = payload.frm.interests
     },
+    CONCLUDE_ACTIVITY(state, id) {
+      /* let date1 = new Date(); */
+      state.activities.map(
+        activity => {
+          if (activity.id === id) {
+            activity.concluded = true
+            /* if (date1.getTime() > activity.date) {
+              activity.concluded = true
+            }
+            else {
+              activity.concluded = false
+              throw Error('Não é possivel concluir a atividade!')
+              
+            } */
+          }
+        }
+      )
+    },
     UPDATE_USER(state, payload) {
       state.users.map(
         user => {
@@ -301,6 +320,19 @@ export default new Vuex.Store({
             user.email = payload.email
             user.course = payload.course
             user.birthDate = payload.birthDate
+          }
+        }
+      )
+    },
+    UPDATE_ACTIVITY(state, payload) {
+      state.activities.map(
+        activity => {
+          if (activity.id === payload.id) {
+            activity.name = payload.name
+            activity.date = payload.date
+            activity.hour = payload.hour
+            activity.local = payload.local
+            activity.description = payload.description
           }
         }
       )
