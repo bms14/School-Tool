@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Store from "../store"
+import Store from "../store";
 import Landing from "../views/Landing.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
@@ -19,7 +19,7 @@ import AdminListActivity from "../views/BackOffice/AdminListActivity.vue";
 import AdminListComments from "../views/BackOffice/AdminListComments.vue";
 import EditUserAdmin from "../views/BackOffice/EditUserAdmin.vue";
 import SeeActivityAdmin from "../views/BackOffice/SeeActivityAdmin.vue";
-import UpdateActivity from "../views/UpdateActivity.vue"
+import UpdateActivity from "../views/UpdateActivity.vue";
 
 Vue.use(VueRouter);
 
@@ -84,7 +84,7 @@ const routes = [
       notAdmin: true
     }
   },
-  
+
   {
     path: "/activity/:id",
     name: "activity",
@@ -188,7 +188,6 @@ const routes = [
       requiresAuth: true
     }
   }
-
 ];
 
 const router = new VueRouter({
@@ -197,14 +196,14 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !Store.getters.isLoggedUser) {
-    next(to = '/login');
+    next((to = "/login"));
   } else {
     next();
   }
 });
 router.beforeEach((to, from, next) => {
   if (to.meta.userAuthDone && Store.getters.isLoggedUser) {
-    next(to = '/homepage');
+    next((to = "/homepage"));
   } else {
     next();
   }

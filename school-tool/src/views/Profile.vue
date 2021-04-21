@@ -43,17 +43,17 @@
                 <b-row>
                   <b-input-group class="mb-3">
                     <b-row>
-                    <h5>Deseja alterar a password? </h5>
+                      <h5>Deseja alterar a password?</h5>
                     </b-row>
                     <b-row>
-                    <b-form-group>
-                      <b-form-input
-                        type="password"
-                        id="txtPassword"
-                        placeholder="Password"
-                        v-model="frm.password"
-                      />
-                    </b-form-group>
+                      <b-form-group>
+                        <b-form-input
+                          type="password"
+                          id="txtPassword"
+                          placeholder="Password"
+                          v-model="frm.password"
+                        />
+                      </b-form-group>
                     </b-row>
                   </b-input-group>
                 </b-row>
@@ -155,7 +155,7 @@ export default {
         "Design",
         "Matemática",
         "Multimédia",
-        "Programação",
+        "Programação"
       ],
       frm: {
         password: "",
@@ -168,7 +168,6 @@ export default {
     this.frm.password = this.getUser.password;
     this.frm.photo = this.getUser.photo;
     this.frm.interests = this.getUser.interests;
-    
   },
   methods: {
     editProfile() {
@@ -185,13 +184,13 @@ export default {
       } catch (error) {
         alert(error);
       }
-    },
+    }
   },
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
-    },
-  },
+    }
+  }
 };
 </script>
 

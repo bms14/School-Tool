@@ -3,11 +3,11 @@
     <b-container class="d-flex justify-content-center">
       <b-card class="loginCard">
         <b-button variant="light" class="goBack" type="button" @click="goBack"
-            ><i class="fas fa-arrow-left"></i
-          ></b-button>
+          ><i class="fas fa-arrow-left"></i
+        ></b-button>
         <b-card-title>
-            <img src="../assets/logo_sembg.png" class="logoImg" />
-          </b-card-title>
+          <img src="../assets/logo_sembg.png" class="logoImg" />
+        </b-card-title>
         <b-row>
           <b-form @submit.prevent="register">
             <b-row>
@@ -21,7 +21,8 @@
                   type="text"
                   id="txtName"
                   placeholder="Nome"
-                  v-model="name" required
+                  v-model="name"
+                  required
                 >
                 </b-form-input>
               </b-input-group>
@@ -37,7 +38,8 @@
                   type="text"
                   id="txtEmail"
                   placeholder="Email"
-                  v-model="email" required
+                  v-model="email"
+                  required
                 >
                 </b-form-input>
               </b-input-group>
@@ -53,7 +55,8 @@
                   type="password"
                   id="txtPassword"
                   placeholder="Password"
-                  v-model="password" required
+                  v-model="password"
+                  required
                 ></b-form-input>
               </b-input-group>
             </b-row>
@@ -68,7 +71,8 @@
                   type="password"
                   id="txtPassword2"
                   placeholder="Confirmar Password"
-                  v-model="password2" required
+                  v-model="password2"
+                  required
                 ></b-form-input>
               </b-input-group>
             </b-row>
@@ -115,7 +119,8 @@
                   v-model="birthDate"
                   type="text"
                   placeholder="Data de nascimento"
-                  autocomplete="off" required
+                  autocomplete="off"
+                  required
                 ></b-form-input>
               </b-input-group>
             </b-row>
@@ -130,7 +135,8 @@
                   type="url"
                   id="txtLink"
                   placeholder="Inserir o link da sua foto"
-                  v-model="photo" required
+                  v-model="photo"
+                  required
                 ></b-form-input>
               </b-input-group>
             </b-row>
@@ -164,7 +170,7 @@ export default {
       achievements: 0,
       certificates: 0,
       blocked: false,
-      showSuccess:false,
+      showSuccess: false
     };
   },
 
@@ -179,8 +185,8 @@ export default {
     },
     goBack() {
       this.$router.go(-1);
-    },
-  },
+    }
+  }
 };
 </script>
 

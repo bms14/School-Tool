@@ -53,7 +53,6 @@
                     >Submit</b-button
                   >
                 </form>
-               
               </div>
             </b-card>
           </div>
@@ -63,15 +62,13 @@
   </div>
 </template>
 
-
 <script>
 export default {
   name: "Quiz",
   data() {
     return {
       quiz: null,
-      correct_answer: "",
-      
+      correct_answer: ""
     };
   },
   created() {
@@ -79,7 +76,7 @@ export default {
     if (localStorage.getItem("quizzes")) {
       quizzes = JSON.parse(localStorage.getItem("quizzes"));
     }
-    this.quiz = quizzes.find((g) => g.id == this.$route.params.id);
+    this.quiz = quizzes.find(g => g.id == this.$route.params.id);
   },
   methods: {
     goBack() {
@@ -100,28 +97,27 @@ export default {
           icon: "success",
           onClose: () => {
             try {
-        this.$store.dispatch("concludedQuiz", {
-          idQuiz: this.quiz.id,
-          idUser: this.$store.getters.getLoggedUser.id,
-          
-        });
-        this.subscribed = 'true';
-      } catch (error) {
-        alert(error);
-      }
+              this.$store.dispatch("concludedQuiz", {
+                idQuiz: this.quiz.id,
+                idUser: this.$store.getters.getLoggedUser.id
+              });
+              this.subscribed = "true";
+            } catch (error) {
+              alert(error);
+            }
             this.$router.push({ name: "ListQuiz" });
-          },
+          }
         });
       } else {
         this.$swal({
           icon: "error",
           title: "Oops...",
           text: "Wrong Answer!",
-          confirmButtonText: "Try Again",
+          confirmButtonText: "Try Again"
         });
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

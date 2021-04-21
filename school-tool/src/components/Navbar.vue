@@ -29,8 +29,11 @@
               ></b-nav-item
             >
             <b-nav-item>
-              <ion-icon style="top: 80%;" name="person-circle-outline"></ion-icon
-              > {{ getUser.name }}</b-nav-item
+              <ion-icon
+                style="top: 80%;"
+                name="person-circle-outline"
+              ></ion-icon>
+              {{ getUser.name }}</b-nav-item
             >
             <b-nav-item id="bottom-item2" @click="logout()">Logout</b-nav-item>
           </b-navbar-nav>
@@ -139,13 +142,13 @@ export default {
     logout() {
       this.$store.dispatch("logout");
       this.$router.push({ name: "Landing" });
-    },
+    }
   },
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
-    },
-  },
+    }
+  }
 };
 </script>
 

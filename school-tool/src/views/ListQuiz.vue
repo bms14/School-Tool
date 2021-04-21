@@ -40,7 +40,7 @@
                     </router-link>
                   </span>
                   <span v-else>
-                   <b-button disabled>Quiz Completo</b-button> 
+                    <b-button disabled>Quiz Completo</b-button>
                   </span>
                 </b-card>
               </b-col>
@@ -59,7 +59,7 @@ export default {
   data() {
     return {
       quizzes: this.$store.state.quizzes,
-      concluded_quizzes: this.$store.getters.getConcldedQuizzes,
+      concluded_quizzes: this.$store.getters.getConcldedQuizzes
     };
   },
   created() {
@@ -78,19 +78,20 @@ export default {
   methods: {
     teste(id) {
       let x = this.concluded_quizzes.findIndex(quiz => {
-        if(quiz.idUser == this.$store.getters.getLoggedUser.id && quiz.idQuiz == id){
+        if (
+          quiz.idUser == this.$store.getters.getLoggedUser.id &&
+          quiz.idQuiz == id
+        ) {
           return true;
         }
-      })
-      if(x != -1){
+      });
+      if (x != -1) {
         return false;
+      } else {
+        return true;
       }
-      else{
-        return true
-      }
-     
-    },
-  },
+    }
+  }
 };
 </script>
 

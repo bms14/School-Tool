@@ -17,9 +17,9 @@
       ></b-carousel-slide>
     </b-carousel>
     <b-container>
-      <br><br>
+      <br /><br />
       <h1>O que te apetece fazer hoje À noite?</h1>
-      <br>
+      <br />
       <div>
         <b-row>
           <b-input-group class="mb-3 col-sm">
@@ -84,14 +84,14 @@ import ActivityCard from "../components/ActivityCard";
 export default {
   name: "Homepage",
   components: {
-    ActivityCard,
+    ActivityCard
   },
   data() {
     return {
       activities: [],
       filterType: "",
       filterLocal: "",
-      search: "",
+      search: ""
     };
   },
 
@@ -111,7 +111,7 @@ export default {
       if (a.date > b.date) return 1;
       if (a.date < b.date) return -1;
       if (a.date == b.date) return 0;
-    },
+    }
   },
   computed: {
     getUser() {
@@ -129,7 +129,7 @@ export default {
         this.search == ""
       ) {
         filter = this.activities.filter(
-          (activity) => activity.type === this.filterType.name
+          activity => activity.type === this.filterType.name
         );
         return filter;
       }
@@ -140,7 +140,7 @@ export default {
         this.search == ""
       ) {
         filter = this.activities.filter(
-          (activity) =>
+          activity =>
             activity.local === this.filterLocal &&
             activity.type === this.filterType.name
         );
@@ -153,7 +153,7 @@ export default {
         this.search != ""
       ) {
         filter = this.activities.filter(
-          (activity) =>
+          activity =>
             activity.type === this.filterType.name &&
             activity.name.match(this.search)
         );
@@ -166,7 +166,7 @@ export default {
         this.search != ""
       ) {
         filter = this.activities.filter(
-          (activity) =>
+          activity =>
             activity.local === this.filterLocal &&
             activity.type === this.filterType.name &&
             activity.name.match(this.search)
@@ -180,7 +180,7 @@ export default {
         this.search == ""
       ) {
         filter = this.activities.filter(
-          (activity) => activity.local === this.filterLocal
+          activity => activity.local === this.filterLocal
         );
         return filter;
       }
@@ -200,7 +200,7 @@ export default {
         this.search != ""
       ) {
         filter = this.activities.filter(
-          (activity) =>
+          activity =>
             activity.local === this.filterLocal &&
             activity.name.match(this.search)
         );
@@ -212,13 +212,13 @@ export default {
         this.filterLocal == "" &&
         this.search != ""
       ) {
-        filter = this.activities.filter((activity) =>
+        filter = this.activities.filter(activity =>
           activity.name.match(this.search)
         );
       }
       return filter;
-    },
-  },
+    }
+  }
 };
 </script>
 <style>
@@ -227,5 +227,4 @@ export default {
   background-color: #dcdcdc;
   min-height: 100vh;
 }
-
 </style>

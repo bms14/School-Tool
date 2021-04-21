@@ -55,28 +55,28 @@ export default {
   name: "EditUserAdmin",
   data() {
     return {
-      activity: null,
+      activity: null
     };
   },
   created() {
     let activities = this.getActivities;
     this.activity = activities.find(
-      (activity) => activity.id == this.$route.params.id
+      activity => activity.id == this.$route.params.id
     );
   },
   methods: {
     goBack() {
       this.$router.push({ name: "AdminListActivity" });
-    },
+    }
   },
   computed: {
     getActivities() {
       return this.$store.state.activities;
-    },
-  },
+    }
+  }
 };
 </script>
-<style >
+<style>
 #seeActivity {
   padding-top: 20px;
 }

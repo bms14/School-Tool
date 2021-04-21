@@ -54,11 +54,12 @@
                 <ion-icon name="create-outline"></ion-icon> CONCLUIR
               </b-button>
             </div>
-             <div v-else>
+            <div v-else>
               <b-button
                 class="mb-3"
                 @click="concludeActivity(activity.id)"
-                variant="success" disabled
+                variant="success"
+                disabled
               >
                 <ion-icon name="create-outline"></ion-icon> CONCLUIR
               </b-button>
@@ -99,7 +100,6 @@
   </div>
 </template>
 
-
 <script>
 export default {
   name: "Activity",
@@ -107,7 +107,7 @@ export default {
     return {
       activity: null,
       enrollments: this.$store.state.enrollments,
-      subscribed: undefined,
+      subscribed: undefined
     };
   },
   created() {
@@ -115,9 +115,9 @@ export default {
     if (localStorage.getItem("activities")) {
       activities = JSON.parse(localStorage.getItem("activities"));
     }
-    this.activity = activities.find((g) => g.id == this.$route.params.id);
+    this.activity = activities.find(g => g.id == this.$route.params.id);
     console.log(this.activity);
-    this.subscribed = this.$store.state.enrollments.find((enrollment) => {
+    this.subscribed = this.$store.state.enrollments.find(enrollment => {
       if (enrollment.idActivity == this.activity.id) {
         if (enrollment.idUser == this.$store.getters.getLoggedUser.id) {
           return true;
@@ -142,19 +142,19 @@ export default {
       this.$router.push({ name: "UpdateActivity", params: { id: id } });
     },
     concludeActivity(id) {
-      try{
-if (confirm("Tem a certeza que pretende concluir?")) {
-        this.$store.dispatch("concludeActivity", id);
-      }
-      }catch(error) {
-        alert(error)
+      try {
+        if (confirm("Tem a certeza que pretende concluir?")) {
+          this.$store.dispatch("concludeActivity", id);
+        }
+      } catch (error) {
+        alert(error);
       }
     },
     newEnrollment(id) {
       try {
         this.$store.dispatch("submitEnrollment", {
           idActivity: id,
-          idUser: this.$store.getters.getLoggedUser.id,
+          idUser: this.$store.getters.getLoggedUser.id
         });
         this.subscribed = "true";
       } catch (error) {
@@ -168,20 +168,20 @@ if (confirm("Tem a certeza que pretende concluir?")) {
       try {
         this.$store.dispatch("cancelEnrollment", {
           idActivity: payload,
-          idUser: this.$store.getters.getLoggedUser.id,
+          idUser: this.$store.getters.getLoggedUser.id
         });
         this.subscribed = undefined;
       } catch (error) {
         alert(error);
       }
-    },
+    }
   },
 
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
-    },
-  },
+    }
+  }
 };
 </script>
 

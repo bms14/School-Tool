@@ -1,5 +1,6 @@
-module.exports = {   
-    css: {
-      modules: true,
-      extract: false
-    } }
+module.exports = {
+  css: {
+    modules: true,
+    extract: false
+  }
+};
