@@ -35,7 +35,7 @@
               ></ion-icon>
               {{ getUser.name }}</b-nav-item
             >
-            <b-nav-item id="bottom-item2" @click="logout()">Logout</b-nav-item>
+            <b-nav-item id="bottom-item2" @click="logout()"><i class="fas fa-sign-out-alt"></i></b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -80,8 +80,7 @@
               ></b-nav-item
             >
             <b-nav-item id="bottom-item2" @click="logout()"
-              ><ion-icon name="log-out-outline"></ion-icon
-            ></b-nav-item>
+              ><i class="fas fa-sign-out-alt"></i></b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -126,7 +125,7 @@
               ></b-nav-item
             >
             <b-nav-item id="bottom-item2" @click="logout()"
-              ><b-icon icon="arrow-up"></b-icon>Logout</b-nav-item
+              ><i class="fas fa-sign-out-alt"></i></b-nav-item
             >
           </b-navbar-nav>
         </b-collapse>
