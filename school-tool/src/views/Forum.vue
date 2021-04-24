@@ -75,8 +75,8 @@ export default {
       activities: [],
       form: {
         id: "",
-        comment: "",
-      },
+        comment: ""
+      }
     };
   },
   methods: {
@@ -84,9 +84,9 @@ export default {
       this.form.id = this.getLoggedUser.id;
       this.$store.commit("New_Comment", {
         id: this.form.id,
-        comment: this.form.comment,
+        comment: this.form.comment
       });
-    },
+    }
   },
   computed: {
     getUser() {
@@ -99,7 +99,7 @@ export default {
       if (!this.filterActivity) {
         return this.$store.state.activities;
       } else {
-        return this.$store.state.activities.filter((activity) =>
+        return this.$store.state.activities.filter(activity =>
           activity.name
             .toLowerCase()
             .includes(this.filterActivity.toLowerCase())
@@ -108,16 +108,16 @@ export default {
     },
     getComment() {
       return this.$store.state.comments;
-    },
+    }
   },
   created() {
     let activities = [];
     if (localStorage.getItem("activities")) {
       activities = JSON.parse(localStorage.getItem("activities"));
     }
-    this.activity = activities.find((g) => g.id == this.$route.params.id);
+    this.activity = activities.find(g => g.id == this.$route.params.id);
     console.log(this.activity);
-  },
+  }
 };
 </script>
 

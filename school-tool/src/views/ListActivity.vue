@@ -1,10 +1,14 @@
 <template>
   <div id="content">
     <div>
-<b-img id="header" class="headerImg" src="../assets/activities_bg.jpg" ></b-img>
-     <h2 class="title">ATIVIDADES</h2>
+      <b-img
+        id="header"
+        class="headerImg"
+        src="../assets/activities_bg.jpg"
+      ></b-img>
+      <h2 class="title">ATIVIDADES</h2>
     </div>
-     
+
     <b-container id="historic" class="activities">
       <b-row class="mt-5">
         <b-input-group class="mb-3 col-sm">
@@ -67,7 +71,7 @@ import ActivityCard from "../components/ActivityCard";
 export default {
   name: "ListActivity",
   components: {
-    ActivityCard,
+    ActivityCard
   },
   data() {
     return {
@@ -76,15 +80,15 @@ export default {
       filterType: "",
       filterLocal: "",
       search: "",
-      enrollments: this.$store.getters.getEnrollments,
+      enrollments: this.$store.getters.getEnrollments
     };
   },
   created() {
     let enr = this.enrollments.filter(
-      (enrollment) => enrollment.idUser === this.$store.getters.getLoggedUser.id
+      enrollment => enrollment.idUser === this.$store.getters.getLoggedUser.id
     );
-    this.activities.filter((activity) => {
-      enr.forEach((enrollment) => {
+    this.activities.filter(activity => {
+      enr.forEach(enrollment => {
         if (enrollment.idActivity == activity.id) {
           this.subActivities.push(activity);
         }
@@ -99,7 +103,7 @@ export default {
       if (a.date > b.date) return 1;
       if (a.date < b.date) return -1;
       if (a.date == b.date) return 0;
-    },
+    }
   },
   computed: {
     getActivityType() {
@@ -114,7 +118,7 @@ export default {
         this.search == ""
       ) {
         filter = this.subActivities.filter(
-          (activity) => activity.type === this.filterType.name
+          activity => activity.type === this.filterType.name
         );
         return filter;
       }
@@ -125,7 +129,7 @@ export default {
         this.search == ""
       ) {
         filter = this.subActivities.filter(
-          (activity) =>
+          activity =>
             activity.local === this.filterLocal &&
             activity.type === this.filterType.name
         );
@@ -138,7 +142,7 @@ export default {
         this.search != ""
       ) {
         filter = this.subActivities.filter(
-          (activity) =>
+          activity =>
             activity.type === this.filterType.name &&
             activity.name.match(this.search)
         );
@@ -151,7 +155,7 @@ export default {
         this.search != ""
       ) {
         filter = this.subActivities.filter(
-          (activity) =>
+          activity =>
             activity.local === this.filterLocal &&
             activity.type === this.filterType.name &&
             activity.name.match(this.search)
@@ -165,7 +169,7 @@ export default {
         this.search == ""
       ) {
         filter = this.subActivities.filter(
-          (activity) => activity.local === this.filterLocal
+          activity => activity.local === this.filterLocal
         );
         return filter;
       }
@@ -185,7 +189,7 @@ export default {
         this.search != ""
       ) {
         filter = this.subActivities.filter(
-          (activity) =>
+          activity =>
             activity.local === this.filterLocal &&
             activity.name.match(this.search)
         );
@@ -197,13 +201,13 @@ export default {
         this.filterLocal == "" &&
         this.search != ""
       ) {
-        filter = this.subActivities.filter((activity) =>
+        filter = this.subActivities.filter(activity =>
           activity.name.match(this.search)
         );
       }
       return filter;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -212,12 +216,12 @@ export default {
   padding-top: 80px;
   min-height: 100vh;
 }
-.title{
+.title {
   position: relative;
   top: -10rem;
 }
 
-.activities{
+.activities {
   position: relative;
   top: -5rem;
 }

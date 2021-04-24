@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <div v-if="!this.$store.getters.isLoggedUser" class="navLanding">
-    </div>
+    <div v-if="!this.$store.getters.isLoggedUser" class="navLanding"></div>
     <div v-else>
       <Navbar />
     </div>
@@ -15,11 +14,11 @@ import Navbar from "@/components/Navbar.vue";
 export default {
   name: "App",
   components: {
-    Navbar,
+    Navbar
   },
-  data: function () {
+  data: function() {
     return {
-      activities: [],
+      activities: []
     };
   },
   created() {
@@ -29,7 +28,7 @@ export default {
     setStorage() {
       if (JSON.parse(localStorage.getItem("activities"))) {
         this.$store.commit("SET_ACTIVITIES", {
-          activities: JSON.parse(localStorage.getItem("activities")),
+          activities: JSON.parse(localStorage.getItem("activities"))
         });
       } else {
         this.$store.commit("SET_ACTIVITIES", {
@@ -44,25 +43,29 @@ export default {
               hour: "16:27",
               numPeople: 15,
               certificate: "Sim",
-              description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-              image: "https://www2.ifsc.usp.br/portal-ifsc/site-antigo/images/stories/imagens/Seminario-_logo_geral.jpg",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+              image:
+                "https://www2.ifsc.usp.br/portal-ifsc/site-antigo/images/stories/imagens/Seminario-_logo_geral.jpg",
               concluded: false,
-              full: false,
+              full: false
             },
             {
               id: 2,
               name: "Tudo sobre JavaScript",
               type: this.$store.getters.getActivityTypeById(4).name,
-              points:this.$store.getters.getActivityTypeById(4).points,
+              points: this.$store.getters.getActivityTypeById(4).points,
               local: "ESMAD",
               date: "2021-01-30",
               hour: "16:27",
               numPeople: 30,
               certificate: "Não",
-              description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-              image: "https://www2.ifsc.usp.br/portal-ifsc/site-antigo/images/stories/imagens/Seminario-_logo_geral.jpg",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+              image:
+                "https://www2.ifsc.usp.br/portal-ifsc/site-antigo/images/stories/imagens/Seminario-_logo_geral.jpg",
               concluded: false,
-              full: false,
+              full: false
             },
             {
               id: 3,
@@ -74,20 +77,22 @@ export default {
               hour: "16:27",
               numPeople: 40,
               certificate: "Não",
-              description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-              image: "https://www2.ifsc.usp.br/portal-ifsc/site-antigo/images/stories/imagens/Seminario-_logo_geral.jpg",
+              description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+              image:
+                "https://www2.ifsc.usp.br/portal-ifsc/site-antigo/images/stories/imagens/Seminario-_logo_geral.jpg",
               concluded: false,
-              full: false,
-            },
-          ],
+              full: false
+            }
+          ]
         });
       }
-    },
+    }
   },
-  computed:{
+  computed: {
     getActivityType() {
       return this.$store.getters.getActivityType;
-    },
+    }
   }
 };
 </script>

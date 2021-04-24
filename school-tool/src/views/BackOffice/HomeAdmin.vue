@@ -1,34 +1,38 @@
 <template>
   <div id="adminHome">
     <b-container>
-    <h1>Admin</h1>
-    <h4 id="stats">Estatísticas atualizadas ao segundo!</h4>
-    <b-card-group deck>
-      <b-card border-variant="warning" align="center" title="Utilizadores"
-        ><ion-icon
-          style="color: #fec107; height: 50px; width: 50px"
-          name="person-outline"
-        ></ion-icon>
-        <b-card-text>{{ getNumUsers }}</b-card-text>
-        <b-button variant="warning" @click="seeUsers">Ver detalhes</b-button>
-      </b-card>
-      <b-card border-variant="warning" align="center" title="Atividades"
-        ><ion-icon
-          style="color: #fec107; height: 50px; width: 50px"
-          name="clipboard-outline"
-        ></ion-icon>
-        <b-card-text>{{ getNumActivities }}</b-card-text>
-        <b-button variant="warning" @click="seeActivities">Ver detalhes</b-button>
-      </b-card>
-      <b-card border-variant="warning" align="center" title="Comentários"
-        ><ion-icon
+      <h1>Admin</h1>
+      <h4 id="stats">Estatísticas atualizadas ao segundo!</h4>
+      <b-card-group deck>
+        <b-card border-variant="warning" align="center" title="Utilizadores"
+          ><ion-icon
+            style="color: #fec107; height: 50px; width: 50px"
+            name="person-outline"
+          ></ion-icon>
+          <b-card-text>{{ getNumUsers }}</b-card-text>
+          <b-button variant="warning" @click="seeUsers">Ver detalhes</b-button>
+        </b-card>
+        <b-card border-variant="warning" align="center" title="Atividades"
+          ><ion-icon
+            style="color: #fec107; height: 50px; width: 50px"
+            name="clipboard-outline"
+          ></ion-icon>
+          <b-card-text>{{ getNumActivities }}</b-card-text>
+          <b-button variant="warning" @click="seeActivities"
+            >Ver detalhes</b-button
+          >
+        </b-card>
+        <b-card border-variant="warning" align="center" title="Comentários"
+          ><ion-icon
             style="color: #fec107; height: 50px; width: 50px"
             name="chatbubbles-outline"
           ></ion-icon>
-        <b-card-text>{{ getNumComments }}</b-card-text>
-        <b-button variant="warning" @click="seeComments">Ver detalhes</b-button>
-      </b-card>
-    </b-card-group>
+          <b-card-text>{{ getNumComments }}</b-card-text>
+          <b-button variant="warning" @click="seeComments"
+            >Ver detalhes</b-button
+          >
+        </b-card>
+      </b-card-group>
     </b-container>
   </div>
 </template>
@@ -48,7 +52,7 @@ export default {
     },
     getNumComments() {
       return this.$store.getters.getNumComments;
-    },
+    }
   },
   methods: {
     seeUsers() {
@@ -59,8 +63,8 @@ export default {
     },
     seeComments() {
       this.$router.push({ name: "AdminListComments" });
-    },
-  },
+    }
+  }
 };
 </script>
 

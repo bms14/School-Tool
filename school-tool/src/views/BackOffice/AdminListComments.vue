@@ -16,8 +16,8 @@ export default {
     },
     getNumComments() {
       return this.$store.getters.getNumComments;
-    },
-  },
+    }
+  }
 };
 </script>
 

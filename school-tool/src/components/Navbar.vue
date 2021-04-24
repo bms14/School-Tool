@@ -2,7 +2,7 @@
   <div id="nav">
     <div v-if="getUser.type == 'admin'">
       <b-navbar class="nav" toggleable="lg">
-        <b-img src="../assets/logo_sembg.png" class="img"
+        <b-img src="../assets/logo_sembg.webp" class="img"
           ><router-link :to="{ name: 'Landing' }"></router-link
         ></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -29,11 +29,12 @@
               ></b-nav-item
             >
             <b-nav-item>
-              <ion-icon style="top: 80%;" name="person-circle-outline"></ion-icon
-              > {{ getUser.name }}</b-nav-item
+              <ion-icon
+                style="top: 80%;"
+                name="person-circle-outline"
+              ></ion-icon>
+              {{ getUser.name }}</b-nav-item
             >
-            <!-- <router-link >Notificações</router-link>
-          <a id="bottom-item1" href="#contact">João Silva</a> -->
             <b-nav-item id="bottom-item2" @click="logout()">Logout</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
@@ -41,7 +42,7 @@
     </div>
     <div v-else-if="getUser.type == 'Estudante'">
       <b-navbar class="nav" toggleable="lg" fixed="top">
-        <b-img src="../assets/logo_sembg.png" class="img"
+        <b-img src="../assets/logo_sembg.webp" class="img"
           ><router-link :to="{ name: 'Landing' }"></router-link
         ></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -74,12 +75,10 @@
             >
             <b-nav-item id="bottom-item2"
               ><router-link :to="{ name: 'Profile' }">
-                <b-img :src="getUser.photo" rounded="circle" width="40%"></b-img
+                <b-img :src="getUser.photo" rounded="circle" height="30px" width="30px"></b-img
                 >{{ getUser.name }}</router-link
               ></b-nav-item
             >
-            <!-- <router-link >Notificações</router-link>
-          <a id="bottom-item1" href="#contact">João Silva</a> -->
             <b-nav-item id="bottom-item2" @click="logout()"
               ><ion-icon name="log-out-outline"></ion-icon
             ></b-nav-item>
@@ -89,7 +88,7 @@
     </div>
     <div v-else>
       <b-navbar class="nav" toggleable="lg" variant="secondary">
-        <b-img src="../assets/logo_sembg.png" class="img"
+        <b-img src="../assets/logo_sembg.webp" class="img"
           ><router-link :to="{ name: 'Landing' }"></router-link
         ></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -122,12 +121,10 @@
             >
             <b-nav-item
               ><router-link :to="{ name: 'Profile' }">
-                <b-img :src="getUser.photo" rounded="circle" width="40%"></b-img
+                <b-img :src="getUser.photo" rounded="circle" height="30px" width="30px"></b-img
                 >{{ getUser.name }}</router-link
               ></b-nav-item
             >
-            <!-- <router-link >Notificações</router-link>
-          <a id="bottom-item1" href="#contact">João Silva</a> -->
             <b-nav-item id="bottom-item2" @click="logout()"
               ><b-icon icon="arrow-up"></b-icon>Logout</b-nav-item
             >
@@ -145,13 +142,13 @@ export default {
     logout() {
       this.$store.dispatch("logout");
       this.$router.push({ name: "Landing" });
-    },
+    }
   },
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
-    },
-  },
+    }
+  }
 };
 </script>
 

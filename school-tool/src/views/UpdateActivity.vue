@@ -1,8 +1,10 @@
 <template>
   <div id="updateActivity" class="center">
-      <b-container class=" justify-content-center">
+    <b-container class=" justify-content-center">
       <b-card class="ActivityCard">
-        <b-row><h2>Editar atividade: {{ activity.name }}</h2></b-row>
+        <b-row
+          ><h2>Editar atividade: {{ activity.name }}</h2></b-row
+        >
         <b-row>
           <b-form @submit.prevent="updateActivity">
             <b-row>
@@ -28,7 +30,6 @@
                 >
                 </b-form-input>
               </b-input-group>
-              
             </b-row>
             <b-row>
               <b-form-group id="input-group-3" class="mb-3">
@@ -94,7 +95,7 @@
                 label="Tem direito a certificado?"
                 v-slot="{ ariaDescribedby }"
                 readonly
-                  disabled
+                disabled
               >
                 <b-form-radio
                   v-model="activity.certificate"
@@ -134,12 +135,14 @@
                 </b-form-input>
               </b-input-group>
             </b-row>
-            <b-button type="submit" variant="secondary">ATUALIZAR ATIVIDADE</b-button>
+            <b-button type="submit" variant="secondary"
+              >ATUALIZAR ATIVIDADE</b-button
+            >
           </b-form>
         </b-row>
       </b-card>
     </b-container>
-   
+
     <a role="button" class="btn btn-outline-dark" @click="goBack">Retroceder</a>
   </div>
 </template>
@@ -152,16 +155,18 @@ export default {
       activity: null,
       frm: {
         name: "",
-        date:"",
-        hour:"",
-        local:"",
-        description:"",
+        date: "",
+        hour: "",
+        local: "",
+        description: ""
       }
     };
   },
   created() {
     let activities = this.getActivities;
-    this.activity = activities.find(activity => activity.id == this.$route.params.id);
+    this.activity = activities.find(
+      activity => activity.id == this.$route.params.id
+    );
     this.frm.name = this.activity.name;
     this.frm.date = this.activity.date;
     this.frm.hour = this.activity.hour;
@@ -176,10 +181,10 @@ export default {
       this.$store.dispatch("updateActivity", {
         id: this.activity.id,
         name: this.frm.name,
-        date:this.frm.date,
-        hour:this.frm.hour,
+        date: this.frm.date,
+        hour: this.frm.hour,
         local: this.frm.local,
-        description: this.frm.description,
+        description: this.frm.description
       });
       alert("Atividade editada com sucesso!");
     }
@@ -192,49 +197,4 @@ export default {
 };
 </script>
 
-<style>
-/* #editUser {
-  max-width: 500px;
-  width: 100%;
-  background: #fff;
-  margin: 50px auto;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
-  padding: 30px;
-  border-radius: 25px;
-}
-#editUser h2 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 25px;
-  color: #fec107;
-  text-transform: uppercase;
-  text-align: center;
-}
-#editUser form {
-  width: 100%;
-}
-#editUser form .form-group {
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-}
-#editUser form label {
-  width: 200px;
-  color: #757575;
-  margin-right: 10px;
-  font-size: 14px;
-}
-#editUser form input.btn {
-  font-size: 15px;
-  border-color: #fec107;
-  border-width: 2px;
-  cursor: pointer;
-}
-#editUser form input.btn:hover {
-  font-size: 15px;
-  background-color: #fec107;
-  color: #ffff;
-  border-width: 2px;
-  cursor: pointer;
-} */
-</style>
+<style></style>

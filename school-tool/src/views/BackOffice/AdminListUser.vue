@@ -8,15 +8,15 @@
             <div v-if="getNumUsers == 0">NÃO EXISTEM UTILIZADORES</div>
             <div v-else class="row justify-content-md-center">
               <b-input-group class="mb-3 col-sm-4">
-            <b-form-input
-              type="text"
-              id="txtName"
-              placeholder="Pesquise o nome..."
-              v-model="filterName"
-            >
-            </b-form-input>
-          </b-input-group>
-          <hr>
+                <b-form-input
+                  type="text"
+                  id="txtName"
+                  placeholder="Pesquise o nome..."
+                  v-model="filterName"
+                >
+                </b-form-input>
+              </b-input-group>
+              <hr />
               <br />
               <br />
               <table class="d-flex justify-content-center table-responsive">
@@ -43,7 +43,10 @@
                       </b-button>
                     </td>
                     <td v-else>
-                      <b-button @click="demoteUser(user.id)" variant="secondary">
+                      <b-button
+                        @click="demoteUser(user.id)"
+                        variant="secondary"
+                      >
                         <ion-icon name="analytics-outline"></ion-icon>
                         DESPROMOVER
                       </b-button>
@@ -80,7 +83,7 @@ export default {
   name: "AdminListUser",
   data() {
     return {
-      filterName: "",
+      filterName: ""
     };
   },
   methods: {
@@ -111,7 +114,7 @@ export default {
       if (confirm("Tem a certeza que pretende remover?")) {
         this.$store.dispatch("removeUser", id);
       }
-    },
+    }
   },
   computed: {
     getUser() {
@@ -124,15 +127,15 @@ export default {
       if (!this.filterName) {
         return this.$store.state.users;
       } else {
-        return this.$store.state.users.filter((user) =>
+        return this.$store.state.users.filter(user =>
           user.name.includes(this.filterName)
         );
       }
-    },
-  },
+    }
+  }
 };
 </script>
-    
+
 <style>
 #adminListUser {
   background-color: #dcdcdc;

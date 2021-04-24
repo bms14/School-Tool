@@ -3,11 +3,11 @@
     <b-container class="d-flex justify-content-center">
       <b-card class="loginCard">
         <b-button variant="light" class="goBack" type="button" @click="goBack"
-            ><i class="fas fa-arrow-left"></i
-          ></b-button>
-         <b-card-title>
-            <img src="../assets/logo_sembg.png" class="logoImg" />
-          </b-card-title>
+          ><i class="fas fa-arrow-left"></i
+        ></b-button>
+        <b-card-title>
+          <img src="../assets/logo_sembg.png" class="logoImg" />
+        </b-card-title>
         <b-row>
           <b-form @submit.prevent="login">
             <b-row>
@@ -23,7 +23,8 @@
                   class="loginInput"
                   prepend-icon="email"
                   placeholder="Introduza o Email"
-                  v-model="email" required
+                  v-model="email"
+                  required
                 >
                 </b-form-input>
               </b-input-group>
@@ -40,20 +41,23 @@
                   id="txtPassword"
                   class="loginInput"
                   placeholder="Introduza a Password"
-                  v-model="password" required
+                  v-model="password"
+                  required
                 ></b-form-input>
               </b-input-group>
             </b-row>
-            <b-button type="submit" variant="warning" class="btn btnSubmit">Login</b-button>
+            <b-button type="submit" variant="warning" class="btn btnSubmit"
+              >Login</b-button
+            >
           </b-form>
-           <p class="registerMsg">
-              Ainda não tens conta?
-              <span
-                ><router-link to="/register" class="registerAnchor"
-                  >Registar</router-link
-                ></span
-              >
-            </p>
+          <p class="registerMsg">
+            Ainda não tens conta?
+            <span
+              ><router-link to="/register" class="registerAnchor"
+                >Registar</router-link
+              ></span
+            >
+          </p>
         </b-row>
       </b-card>
     </b-container>
@@ -66,7 +70,7 @@ export default {
   data() {
     return {
       email: "",
-      password: "",
+      password: ""
     };
   },
   methods: {
@@ -85,13 +89,13 @@ export default {
     },
     goBack() {
       this.$router.push({ name: "Landing" });
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style>
- .loginCard {
+.loginCard {
   box-shadow: 0 0 15px #917910;
   margin-top: 5vw;
 }

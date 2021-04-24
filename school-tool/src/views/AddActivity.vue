@@ -2,7 +2,7 @@
   <div id="content">
     <b-container class=" justify-content-center">
       <b-card class="addActivityCard">
-        <b-row><h1> Nova Atividade</h1></b-row>
+        <b-row><h1>Nova Atividade</h1></b-row>
         <b-row>
           <b-form @submit.prevent="submitActivity">
             <b-row>
@@ -19,11 +19,17 @@
             </b-row>
             <b-row>
               <b-form-group id="input-group-3" class="mb-3">
-                <b-form-select id="input-3" v-model="type" :options="$store.getters.getActivitiesForSelect" required>
+                <b-form-select
+                  id="input-3"
+                  v-model="type"
+                  :options="$store.getters.getActivitiesForSelect"
+                  required
+                >
                   <b-form-select-option disabled value=""
-                    >Selecione um tipo</b-form-select-option></b-form-select>
+                    >Selecione um tipo</b-form-select-option
+                  ></b-form-select
+                >
               </b-form-group>
-              
             </b-row>
             <b-row>
               <b-form-group id="input-group-3" class="mb-3">
@@ -150,27 +156,25 @@ export default {
       image: "",
       concluded: false,
       full: false,
-      points: "",
+      points: ""
     };
   },
   methods: {
     submitActivity() {
-      this.$store.state.activityType.map((tipo) => {
-        if(this.type==tipo.id){
-          this.points=tipo.points
+      this.$store.state.activityType.map(tipo => {
+        if (this.type == tipo.id) {
+          this.points = tipo.points;
         }
-      })
+      });
       try {
-        //this.$store.dispacth("login",{username: this.username, password: this.password});
         this.$store.dispatch("submitActivity", this.$data);
         //saltar para a view home
         this.$router.push({ name: "Homepage" });
       } catch (error) {
         alert(error);
       }
-    },
-    
-  },
+    }
+  }
 };
 </script>
 
