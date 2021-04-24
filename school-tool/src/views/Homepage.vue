@@ -229,7 +229,8 @@ export default {
 }
 .carrosel{
   margin-left: 2.5%;
- max-width: 1800px;
- max-height: 450px;
+  margin-right: 2.5%;
+  max-width: 95%;
+  max-height: 450px;
 }
 </style>
