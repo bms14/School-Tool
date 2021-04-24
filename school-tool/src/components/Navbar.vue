@@ -169,7 +169,7 @@ body {
 }
 #nav .nav {
   padding: 10px;
-  background-image: url("../assets/fundo.png");
+  background-image: url("../assets/fundo.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
