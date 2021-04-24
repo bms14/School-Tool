@@ -7,16 +7,16 @@
     <b-container id="quiz" class="quiz">
       <b-row>
         <div class="event-deck">
-          <b-row class="d-flex justify-content-center">
+          <b-row class="d-flex justify-content-center ">
             <tr v-for="quiz in this.$store.state.quizzes" :key="quiz.id">
               <b-col
                 col
                 lg="12"
                 md="8"
-                class="d-flex justify-content-center mb-5 mr-auto ml-auto"
+                class="d-flex justify-content-center mb-5 mr-auto ml-auto "
               >
                 <b-card
-                  class="text-left mr-1 ml-3 mb-1"
+                  class="text-left mr-1 ml-3 mb-1 quiz_card"
                   tag="article"
                   :img-src="quiz.image"
                   img-alt="Image"
@@ -111,12 +111,10 @@ export default {
   margin: 0;
 }
 
-article {
+.quiz_card {
   box-shadow: 0 0 10px #81790f;
   max-width: 50rem;
   max-height: auto;
 }
-article img {
-  max-width: 20vw;
-}
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="justify-content-center">
+  <div class="justify-content-center ">
     <b-container>
       <b-card
         v-if="activity.concluded == true"
@@ -9,7 +9,7 @@
         img-top
         tag="article"
         style="max-width: 20rem;"
-        class="mb-4"
+        class="mb-4 activitie_card"
       >
         <b-card-text>
           {{ getDescription }}
@@ -29,7 +29,7 @@
         img-top
         tag="article"
         style="max-width: 20rem;"
-        class="mb-4"
+        class="mb-4 activitie_card"
       >
         <b-card-text>
           {{ getDescription }}
@@ -66,4 +66,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+.activitie_card {
+  box-shadow: 0 0 10px #81790f;
+  max-width: 50rem;
+  max-height: auto;
+}
+
+</style>

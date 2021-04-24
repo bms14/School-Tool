@@ -51,7 +51,7 @@
           >ORDENAR POR DATA</b-button
         >
       </b-row>
-      <b-card-group deck v-if="filterActivities.length > 0">
+      <b-card-group deck v-if="filterActivities.length > 0" >
         <ActivityCard
           v-for="(activity, i) in filterActivities"
           :activity="activity"
@@ -225,6 +225,8 @@ export default {
   position: relative;
   top: -5rem;
 }
+
+
 .headerImg {
   max-width: 100%;
 
