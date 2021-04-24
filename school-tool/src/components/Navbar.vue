@@ -1,8 +1,8 @@
 <template>
   <div id="nav">
     <div v-if="getUser.type == 'admin'">
-      <b-navbar class="nav" toggleable="lg">
-        <b-img src="../assets/logo_sembg.png" class="img"
+      <b-navbar class="nav" toggleable="lg" loading="eager">
+        <b-img src="../assets/logo_sembg.webp" class="img" 
           ><router-link :to="{ name: 'Landing' }"></router-link
         ></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -42,7 +42,7 @@
     </div>
     <div v-else-if="getUser.type == 'Estudante'">
       <b-navbar class="nav" toggleable="lg" fixed="top">
-        <b-img src="../assets/logo_sembg.png" class="img"
+        <b-img src="../assets/logo_sembg.webp" class="img"
           ><router-link :to="{ name: 'Landing' }"></router-link
         ></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -75,7 +75,7 @@
             >
             <b-nav-item id="bottom-item2"
               ><router-link :to="{ name: 'Profile' }">
-                <b-img :src="getUser.photo" rounded="circle" width="40%"></b-img
+                <b-img :src="getUser.photo" rounded="circle" height="30px" width="30px"></b-img
                 >{{ getUser.name }}</router-link
               ></b-nav-item
             >
@@ -88,7 +88,7 @@
     </div>
     <div v-else>
       <b-navbar class="nav" toggleable="lg" variant="secondary">
-        <b-img src="../assets/logo_sembg.png" class="img"
+        <b-img src="../assets/logo_sembg.webp" class="img"
           ><router-link :to="{ name: 'Landing' }"></router-link
         ></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -121,7 +121,7 @@
             >
             <b-nav-item
               ><router-link :to="{ name: 'Profile' }">
-                <b-img :src="getUser.photo" rounded="circle" width="40%"></b-img
+                <b-img :src="getUser.photo" rounded="circle" height="30px" width="30px"></b-img
                 >{{ getUser.name }}</router-link
               ></b-nav-item
             >
@@ -166,7 +166,7 @@ body {
 }
 #nav .nav {
   padding: 10px;
-  background-image: url("../assets/fundo.png");
+  background-image: url("../assets/fundo.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

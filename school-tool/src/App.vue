@@ -105,7 +105,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-image: url("./assets/fundo.png");
+  background-image: url("./assets/fundo.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
