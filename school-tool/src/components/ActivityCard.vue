@@ -11,6 +11,7 @@
         style="max-width: 20rem;"
         class="mb-4 activitie_card"
       >
+       <img class="img-fluid imgCard" :src="activity.image" />
         <b-card-text>
           {{ getDescription }}
         </b-card-text>
@@ -24,13 +25,13 @@
       <b-card
         v-else
         :title="activity.name"
-        :img-src="activity.image"
         img-alt="Image"
         img-top
         tag="article"
         style="max-width: 20rem;"
         class="mb-4 activitie_card"
       >
+       <img class="img-fluid imgCard" :src="activity.image" />
         <b-card-text>
           {{ getDescription }}
         </b-card-text>
@@ -74,4 +75,8 @@ export default {
   max-height: auto;
 }
 
+.imgCard{
+  width: 200px;
+  height: 200px;
+}
 </style>

@@ -4,7 +4,7 @@
       <b-img
         id="header"
         class="headerImg"
-        src="../assets/activities_bg.jpg"
+        src="../assets/activities_bg.webp"
       ></b-img>
       <h2 class="title">ATIVIDADES</h2>
     </div>
@@ -212,15 +212,17 @@ export default {
 </script>
 
 <style>
+#content{
+  padding-top: 60px;
+}
 #historic {
   padding-top: 80px;
   min-height: 100vh;
 }
 .title {
   position: relative;
-  top: -10rem;
+  top: -7rem;
 }
-
 .activities {
   position: relative;
   top: -5rem;
@@ -232,5 +234,8 @@ export default {
 
   padding: 0;
   margin: 0;
+}
+#header{
+  top: -10rem;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div id="content">
-    <b-img id="header" class="headerImg" src="../assets/quiz_bg.jpg"></b-img>
+    <b-img id="header" class="headerImg" src="../assets/quiz_bg.webp"></b-img>
     <h3 class="d-flex justify-content-center headerTxt mt-5 mb-5">
       Venha Participar
     </h3>
@@ -106,9 +106,9 @@ export default {
   top: -5rem;
 }
 .headerImg {
-  max-width: 100%;
-  padding: 0;
-  margin: 0;
+  margin-left: 2.5%;
+  max-width: 1800px;
+  max-height: 250px;
 }
 
 .quiz_card {
