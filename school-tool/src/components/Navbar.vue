@@ -75,7 +75,7 @@
             >
             <b-nav-item id="bottom-item2"
               ><router-link :to="{ name: 'Profile' }">
-                <b-img :src="getUser.photo" rounded="circle" width="40%"></b-img
+                <b-img :src="getUser.photo" rounded="circle" height="30px" width="30px"></b-img
                 >{{ getUser.name }}</router-link
               ></b-nav-item
             >
@@ -121,7 +121,7 @@
             >
             <b-nav-item
               ><router-link :to="{ name: 'Profile' }">
-                <b-img :src="getUser.photo" rounded="circle" width="40%"></b-img
+                <b-img :src="getUser.photo" rounded="circle" height="30px" width="30px"></b-img
                 >{{ getUser.name }}</router-link
               ></b-nav-item
             >
