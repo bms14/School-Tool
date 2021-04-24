@@ -18,7 +18,7 @@
     </b-carousel>
     <b-container>
       <br /><br />
-      <h1>O que te apetece fazer hoje À noite?</h1>
+      <h1>O que te apetece fazer hoje?</h1>
       <br />
       <div>
         <b-row>
