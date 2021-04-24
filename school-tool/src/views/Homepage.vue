@@ -228,7 +228,8 @@ export default {
   min-height: 100vh;
 }
 .carrosel{
- width: 100%;
- max-height: 350px;
+  margin-left: 2.5%;
+ max-width: 1800px;
+ max-height: 450px;
 }
 </style>
