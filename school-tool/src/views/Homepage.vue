@@ -7,13 +7,13 @@
       indicators
     >
       <b-carousel-slide
-        img-src="https://www.infofranchising.pt/wp-content/uploads/Healthcare-City-incubadora-de-startups-Infofranchising-1600x480.jpg"
+        img-src="https://www.infofranchising.pt/wp-content/uploads/Healthcare-City-incubadora-de-startups-Infofranchising-1600x480.jpg" loading="eager"
       ></b-carousel-slide>
       <b-carousel-slide
-        img-src="https://cdn-images-1.medium.com/fit/t/1600/480/1*x7aNvTeRRyDeT_retYd7NQ.jpeg"
+        img-src="https://cdn-images-1.medium.com/fit/t/1600/480/1*x7aNvTeRRyDeT_retYd7NQ.jpeg" loading="lazy"
       ></b-carousel-slide>
       <b-carousel-slide
-        img-src="https://dynamitesports.com/wp-content/uploads/2015/06/recruiting_seminar.jpg"
+        img-src="https://dynamitesports.com/wp-content/uploads/2015/06/recruiting_seminar.jpg" loading="lazy"
       ></b-carousel-slide>
     </b-carousel>
     <b-container>
