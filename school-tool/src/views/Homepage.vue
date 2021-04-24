@@ -229,6 +229,6 @@ export default {
 }
 .carrosel{
  width: 100%;
- max-height: 250px;
+ max-height: 350px;
 }
 </style>
