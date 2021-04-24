@@ -6,7 +6,7 @@
           ><i class="fas fa-arrow-left"></i
         ></b-button>
         <b-card-title>
-          <img src="../assets/logo_sembg.png" class="logoImg" />
+          <img src="../assets/logo_sembg.webp" class="logoImg" />
         </b-card-title>
         <b-row>
           <b-form @submit.prevent="login">

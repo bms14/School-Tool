@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container class="triangle">
-      <img src="../assets/logo_sembg.png" class="landingImg" />
+      <img src="../assets/logo_sembg.webp" class="landingImg" />
       <h4>NO FINAL DO DIA, <br />OS EVENTOS TORNAM-SE EXTRAORDINÁRIOS.</h4>
       <p>
         Procuramos incentivar os estudantes a participar em atividades<br />
