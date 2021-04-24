@@ -2,7 +2,7 @@
   <div id="nav">
     <div v-if="getUser.type == 'admin'">
       <b-navbar class="nav" toggleable="lg">
-        <b-img src="../assets/logo_sembg.png" class="img"
+        <b-img src="../assets/logo_sembg.webp" class="img"
           ><router-link :to="{ name: 'Landing' }"></router-link
         ></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -42,7 +42,7 @@
     </div>
     <div v-else-if="getUser.type == 'Estudante'">
       <b-navbar class="nav" toggleable="lg" fixed="top">
-        <b-img src="../assets/logo_sembg.png" class="img"
+        <b-img src="../assets/logo_sembg.webp" class="img"
           ><router-link :to="{ name: 'Landing' }"></router-link
         ></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -88,7 +88,7 @@
     </div>
     <div v-else>
       <b-navbar class="nav" toggleable="lg" variant="secondary">
-        <b-img src="../assets/logo_sembg.png" class="img"
+        <b-img src="../assets/logo_sembg.webp" class="img"
           ><router-link :to="{ name: 'Landing' }"></router-link
         ></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
