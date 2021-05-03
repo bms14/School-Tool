@@ -7,7 +7,7 @@
             ><i class="fas fa-arrow-left"></i
           ></b-button>
           <h1>{{ activity.name }}</h1>
-          <img :src="activity.image" width="300" height="220" /> <br />
+          <img :src="activity.image" width="300" height="220" alt=""/> <br />
           <h5>Descrição:</h5>
           <p>{{ activity.description }}</p>
           <b-row>

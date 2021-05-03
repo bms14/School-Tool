@@ -7,13 +7,13 @@
       indicators
     >
       <b-carousel-slide class="carrosel"
-        img-src= "../assets/carrosel1.webp"
+        img-src= "../assets/carrosel1.webp" img-alt="Carrosel image 1"
       ></b-carousel-slide>
       <b-carousel-slide class="carrosel"
-        img-src="../assets/carrosel2.webp"
+        img-src="../assets/carrosel2.webp" img-alt="Carrosel image 2"
       ></b-carousel-slide>
       <b-carousel-slide class="carrosel"
-        img-src="../assets/carrosel3.webp"
+        img-src="../assets/carrosel3.webp" img-alt="Carrosel image 3"
       ></b-carousel-slide>
     </b-carousel>
     <b-container>

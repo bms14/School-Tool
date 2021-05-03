@@ -3,7 +3,7 @@
     <div class="container-xl quizCard">
       <div class="row">
         <div class="col-lg-4">
-          <img class="img-fluid imgQuiz mt-3" :src="quiz.image" />
+          <img class="img-fluid imgQuiz mt-3" :src="quiz.image" alt="Quiz image"/>
           <div class="mt-3">
             <h6>{{ quiz.theme }}</h6>
             <p>Pontos: {{ quiz.points }}</p>

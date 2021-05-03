@@ -28,6 +28,7 @@
                         height="50px"
                         :src="user.photo"
                         class="rounded-circle"
+                        alt=""
                       />
                     </td>
                     <td>{{ user.name }}</td>

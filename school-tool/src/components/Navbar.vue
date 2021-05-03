@@ -2,7 +2,7 @@
   <div id="nav">
     <div v-if="getUser.type == 'admin'">
       <b-navbar class="nav" toggleable="lg" loading="eager">
-        <b-img src="../assets/logo_sembg.webp" class="img" 
+        <b-img src="../assets/logo_sembg.webp" class="img" width="80px" height="50px" alt="Logo"
           ><router-link :to="{ name: 'Landing' }"></router-link
         ></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -42,7 +42,7 @@
     </div>
     <div v-else-if="getUser.type == 'Estudante'">
       <b-navbar class="nav" toggleable="lg" fixed="top">
-        <b-img src="../assets/logo_sembg.webp" class="img" width="80px" height="50px"
+        <b-img src="../assets/logo_sembg.webp" class="img" width="80px" height="50px" alt="Logo"
           ><router-link :to="{ name: 'Landing' }"></router-link
         ></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -74,7 +74,7 @@
               ></b-nav-item
             >
             <b-nav-item id="bottom-item2"
-              ><b-img :src="getUser.photo" class="rounded" height="30px" width="45px"></b-img
+              ><b-img :src="getUser.photo" class="rounded" height="30px" width="45px" alt="Profile photo"></b-img
                 ><router-link :to="{ name: 'Profile' }">
                 {{ getUser.name }}</router-link
               ></b-nav-item
@@ -87,7 +87,7 @@
     </div>
     <div v-else>
       <b-navbar class="nav" toggleable="lg" variant="secondary">
-        <b-img src="../assets/logo_sembg.webp" class="img" width="80px" height="50px"
+        <b-img src="../assets/logo_sembg.webp" class="img" width="80px" height="50px" alt="Logo"
           ><router-link :to="{ name: 'Landing' }"></router-link
         ></b-img>
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -120,7 +120,7 @@
             >
             <b-nav-item
               ><router-link :to="{ name: 'Profile' }">
-                <b-img :src="getUser.photo" rounded="circle" height="30px" width="30px"></b-img
+                <b-img :src="getUser.photo" rounded="circle" height="30px" width="30px" alt="Profile photo"></b-img
                 >{{ getUser.name }}</router-link
               ></b-nav-item
             >

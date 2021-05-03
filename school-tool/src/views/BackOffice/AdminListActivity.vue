@@ -60,6 +60,7 @@
                       height="50px"
                       :src="activity.image"
                       class="rounded-circle"
+                      alt=""
                     />
                   </td>
                   <td>{{ activity.name }}</td>

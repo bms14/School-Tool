@@ -11,7 +11,7 @@
         style="max-width: 20rem;"
         class="mb-4"
       >
-       <img class="img-fluid imgCard" :src="activity.image" />
+       <img class="img-fluid imgCard" :src="activity.image" alt="" />
         <b-card-text>
           {{ getDescription }}
         </b-card-text>
@@ -31,7 +31,7 @@
         style="max-width: 20rem;"
         class="mb-4"
       >
-       <img class="img-fluid imgCard" :src="activity.image" />
+       <img class="img-fluid imgCard" :src="activity.image" alt="" />
         <b-card-text>
           {{ getDescription }}
         </b-card-text>
