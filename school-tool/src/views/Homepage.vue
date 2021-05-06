@@ -45,7 +45,7 @@
             </b-form-select>
           </b-form-group>
           <b-form-group class="mb-3 col-sm">
-            <b-form-select id="input-3" v-model="filterLocal">
+            <b-form-select id="input-4" v-model="filterLocal">
               <b-form-select-option value=""
                 >Selecionar um local</b-form-select-option
               >
