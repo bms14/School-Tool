@@ -46,7 +46,7 @@ export default {
               description:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
               image:
-                "../assets/seminario.webp",
+                "https://www2.ifsc.usp.br/portal-ifsc/wp-content/uploads/2018/05/seminario-logo-geral.jpg",
               concluded: false,
               full: false
             },
@@ -63,7 +63,7 @@ export default {
               description:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
               image:
-                "../assets/seminario.webp",
+                "https://www2.ifsc.usp.br/portal-ifsc/wp-content/uploads/2018/05/seminario-logo-geral.jpg",
               concluded: false,
               full: false
             },
@@ -80,7 +80,7 @@ export default {
               description:
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
              image:
-                "../assets/seminario.webp",
+                "https://www2.ifsc.usp.br/portal-ifsc/wp-content/uploads/2018/05/seminario-logo-geral.jpg",
               concluded: false,
               full: false
             }

@@ -6,7 +6,7 @@
         :title="activity.name"
         tag="article"
         style="max-width: 20rem;"
-        class="mb-4"
+        class="mb-2"
       >
            <img class="img-fluid imgCard" :src="activity.image" alt="Activity Image" />
         <b-card-text>
@@ -24,7 +24,7 @@
         :title="activity.name"
         tag="article"
         style="max-width: 20rem;"
-        class="mb-4"
+        class="mb-2"
       >
        <img class="img-fluid imgCard" :src="activity.image" alt="Activity Image" />
         <b-card-text>
