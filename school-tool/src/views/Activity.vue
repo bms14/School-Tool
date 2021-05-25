@@ -3,7 +3,7 @@
     <div class="container-xl activityCard">
       <div class="row">
         <div class="col-lg-4">
-          <img class="img-fluid imgActivity mt-3" :src="activity.image" />
+          <img class="img-fluid imgActivity mt-3" :src="activity.image" alt=""/>
           <div class="eventDate mt-3">
             <p>Data: {{ activity.date }}</p>
             <p>Participantes: {{ activity.numPeople }}</p>

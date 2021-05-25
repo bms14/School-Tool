@@ -10,6 +10,7 @@
               center
               :src="getUser.photo"
               rounded="circle"
+              alt="Profile photo"
             ></b-img>
             <b-row>
               <b-input-group class="mb-3 mt-3">

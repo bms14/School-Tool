@@ -4,7 +4,7 @@
       <b-img
         id="header"
         class="headerImg"
-        src="../assets/activities_bg.webp"
+        src="../assets/activities_bg.webp" alt=" List Activities"
       ></b-img>
       <h2 class="title">ATIVIDADES</h2>
     </div>

@@ -4,14 +4,15 @@
       <b-card
         v-if="activity.concluded == true"
         :title="activity.name"
-        :img-src="activity.image"
-        img-alt="Image"
-        img-top
         tag="article"
         style="max-width: 20rem;"
+<<<<<<< HEAD
         class="mb-4 activitie_card"
+=======
+        class="mb-2"
+>>>>>>> 5c9bad8d5b82f87dced7301c25a2d5a57b4393b4
       >
-       <img class="img-fluid imgCard" :src="activity.image" />
+           <img class="img-fluid imgCard" :src="activity.image" alt="Activity Image" />
         <b-card-text>
           {{ getDescription }}
         </b-card-text>
@@ -25,13 +26,15 @@
       <b-card
         v-else
         :title="activity.name"
-        img-alt="Image"
-        img-top
         tag="article"
         style="max-width: 20rem;"
+<<<<<<< HEAD
         class="mb-4 activitie_card"
+=======
+        class="mb-2"
+>>>>>>> 5c9bad8d5b82f87dced7301c25a2d5a57b4393b4
       >
-       <img class="img-fluid imgCard" :src="activity.image" />
+       <img class="img-fluid imgCard" :src="activity.image" alt="Activity Image" />
         <b-card-text>
           {{ getDescription }}
         </b-card-text>

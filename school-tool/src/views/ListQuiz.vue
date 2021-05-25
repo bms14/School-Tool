@@ -1,6 +1,6 @@
 <template>
   <div id="content">
-    <b-img id="header" class="headerImg" src="../assets/quiz_bg.webp"></b-img>
+    <b-img id="header" class="headerImg" src="../assets/quiz_bg.webp" alt=" List Quizzes"></b-img>
     <h3 class="d-flex justify-content-center headerTxt mt-5 mb-5">
       Venha Participar
     </h3>
@@ -21,6 +21,7 @@
                   :img-src="quiz.image"
                   img-alt="Image"
                   img-left
+                  alt=""
                 >
                   <b-card-text>
                     <h6 class="d-flex justify-content-left">

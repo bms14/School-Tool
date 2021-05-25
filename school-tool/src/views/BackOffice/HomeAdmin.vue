@@ -2,7 +2,7 @@
   <div id="adminHome">
     <b-container>
       <h1>Admin</h1>
-      <h4 id="stats">Estatísticas atualizadas ao segundo!</h4>
+      <h2 id="stats">Estatísticas atualizadas ao segundo!</h2>
       <b-card-group deck>
         <b-card border-variant="warning" align="center" title="Utilizadores"
           ><ion-icon

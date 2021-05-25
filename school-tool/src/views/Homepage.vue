@@ -7,13 +7,13 @@
       indicators
     >
       <b-carousel-slide class="carrosel"
-        img-src= "../assets/carrosel1.webp"
+        img-src= "../assets/carrosel1.webp" img-alt="Carrosel image 1" img-height="100%" img-width="100%"
       ></b-carousel-slide>
       <b-carousel-slide class="carrosel"
-        img-src="../assets/carrosel2.webp"
+        img-src="../assets/carrosel2.webp" img-alt="Carrosel image 2" img-height="100%" img-width="100%"
       ></b-carousel-slide>
       <b-carousel-slide class="carrosel"
-        img-src="../assets/carrosel3.webp"
+        img-src="../assets/carrosel3.webp" img-alt="Carrosel image 3" img-height="100%" img-width="100%"
       ></b-carousel-slide>
     </b-carousel>
     <b-container>
@@ -45,7 +45,7 @@
             </b-form-select>
           </b-form-group>
           <b-form-group class="mb-3 col-sm">
-            <b-form-select id="input-3" v-model="filterLocal">
+            <b-form-select id="input-4" v-model="filterLocal">
               <b-form-select-option value=""
                 >Selecionar um local</b-form-select-option
               >
@@ -228,9 +228,6 @@ export default {
   min-height: 100vh;
 }
 .carrosel{
-  margin-left: 2.5%;
-  margin-right: 2.5%;
-  max-width: 95%;
-  max-height: 450px;
+  max-width: 100%;
 }
 </style>
