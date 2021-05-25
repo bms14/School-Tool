@@ -15,22 +15,22 @@ export default new Vuex.Store({
       {
         id: "1",
         name: "Conferência",
-        points: 100
+        points: 200
       },
       {
         id: "2",
         name: "Workshop",
-        points: 150
+        points: 200
       },
       {
         id: "3",
         name: "Concurso",
-        points: 150
+        points: 200
       },
       {
         id: "4",
         name: "Seminário",
-        points: 100
+        points: 200
       },
       {
         id: "5",
@@ -190,7 +190,7 @@ export default new Vuex.Store({
       const concluded_quiz = context.state.concluded_quizzes.find(
         concluded_quiz =>
           concluded_quiz.idUser === payload.idUser &&
-          concluded_quiz.idQuiz === payload.idQuiz
+          concluded_quiz.idQuiz === payload.idQuiz 
       );
       if (concluded_quiz == undefined) {
         context.commit("CONCLUDED_QUIZZES", payload);
@@ -198,6 +198,9 @@ export default new Vuex.Store({
           "concluded_quizzes",
           JSON.stringify(context.state.concluded_quizzes)
         );
+        localStorage.setItem("users", JSON.stringify(context.state.users));
+        
+        
       }
     },
     submitEnrollment(context, payload) {
@@ -233,10 +236,12 @@ export default new Vuex.Store({
             "activities",
             JSON.stringify(context.state.activities)
           );
+          
         }
       } else {
         throw Error("Já está Inscrito na atividade!");
       }
+      localStorage.setItem("users", JSON.stringify(context.state.users));
     },
     cancelEnrollment(context, payload) {
       context.commit("CANCEL_ENROLLMENT", payload);
@@ -244,6 +249,7 @@ export default new Vuex.Store({
         "enrollments",
         JSON.stringify(context.state.enrollments)
       );
+      localStorage.setItem("users", JSON.stringify(context.state.users));
     },
     concludeActivity(context, id) {
       context.commit("CONCLUDE_ACTIVITY", id);
@@ -318,9 +324,21 @@ export default new Vuex.Store({
     },
     CONCLUDED_QUIZZES(state, payload) {
       state.concluded_quizzes.push(payload);
+      state.users.map(user => {
+        if (user.id === payload.idUser) {
+          user.points = user.points + 250
+          sessionStorage.setItem("loggedUser", JSON.stringify(user));
+        }})
+       /*  state.loggedUser.points = state.loggedUser.points + 250 */
     },
     ENROLLMENT(state, payload) {
       state.enrollments.push(payload);
+      state.users.map(user => {
+        if (user.id == payload.idUser) {
+            user.points = user.points + 200
+            sessionStorage.setItem("loggedUser", JSON.stringify(user));
+        }
+    })
     },
     CANCEL_ENROLLMENT(state, payload) {
       state.enrollments = state.enrollments.filter(enrollment => {
@@ -334,6 +352,12 @@ export default new Vuex.Store({
           return true;
         }
       });
+      state.users.map(user => {
+        if (user.id == payload.idUser) {
+            user.points = user.points - 200
+            sessionStorage.setItem("loggedUser", JSON.stringify(user));
+        }
+    })
     },
     LASTENROLLMENT(state, payload) {
       state.enrollments.push(payload);

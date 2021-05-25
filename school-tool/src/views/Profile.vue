@@ -86,13 +86,13 @@
         <h1>GAMIFICAÇÃO</h1>
         <b-row>
           <h6>
-            Tipo de perfil: <span>{{ getUser.profileType }} </span>
+            Tipo de perfil: <span>{{ getProfileType() }} </span>
             <b-button v-b-modal.modal-1 id="infobtn">
               <ion-icon name="information-circle-outline"></ion-icon>
             </b-button>
           </h6>
           <h6>
-            Pontos: <span>{{ getUser.points }} </span
+            Pontos: <span>{{ this.$store.getters.getLoggedUser.points }} </span
             ><button v-b-modal.modal-2 id="infobtn">
               <ion-icon name="information-circle-outline"></ion-icon>
             </button>
@@ -155,19 +155,29 @@ export default {
         "Design",
         "Matemática",
         "Multimédia",
-        "Programação"
+        "Programação",
       ],
       frm: {
         password: "",
         photo: "",
-        interests: []
-      }
+        interests: [],
+      },
+      current_user: this.$store.getters.getLoggedUser,
     };
   },
   created() {
     this.frm.password = this.getUser.password;
     this.frm.photo = this.getUser.photo;
     this.frm.interests = this.getUser.interests;
+
+    /*  this.quizzes= this.$store.getters.getConcldedQuizzes.filter( quiz => quiz.idUser == this.$store.getters.getLoggedUser); */
+
+    /*  if(quiz.idUser == this.$store.getters.getLoggedUser){
+
+        for( let i = 0 ; i < this.quizzes.lenght; i++ )
+        {
+          this.points += quiz.points
+        } */
   },
   methods: {
     editProfile() {
@@ -184,13 +194,28 @@ export default {
       } catch (error) {
         alert(error);
       }
-    }
+    },
+
+    getProfileType() {
+      let type = "";
+
+      if (this.current_user.points <= 1000) {
+        type = "Iniciante";
+      }
+
+      else if (this.current_user.points > 1000 && this.current_user.points <= 3500) {
+        type = "Intermédio";
+      } else {
+        type = "Avançado";
+      }
+      return type;
+    },
   },
   computed: {
     getUser() {
       return this.$store.getters.getLoggedUser;
-    }
-  }
+    },
+  },
 };
 </script>
 

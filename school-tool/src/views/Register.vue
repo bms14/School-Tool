@@ -164,7 +164,7 @@ export default {
       birthDate: "",
       photo: "",
       type: "Estudante",
-      profileType: "Iniciante",
+      profileType: "",
       points: 100,
       interests: [],
       achievements: 0,

@@ -137,7 +137,7 @@ export default {
       description: "",
       image: "",
       concluded: false,
-      points: "100"
+      points: "250"
     };
   },
   methods: {

@@ -68,7 +68,8 @@ export default {
   data() {
     return {
       quiz: null,
-      correct_answer: ""
+      correct_answer: "",
+      points: this.$store.getters.getLoggedUser.points
     };
   },
   created() {
@@ -99,8 +100,11 @@ export default {
             try {
               this.$store.dispatch("concludedQuiz", {
                 idQuiz: this.quiz.id,
-                idUser: this.$store.getters.getLoggedUser.id
+                idUser: this.$store.getters.getLoggedUser.id, 
+              
+                
               });
+              
               this.subscribed = "true";
             } catch (error) {
               alert(error);
