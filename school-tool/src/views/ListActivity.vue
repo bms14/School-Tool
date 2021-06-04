@@ -1,9 +1,9 @@
 <template>
   <div id="content">
-    <div>
+    <div class="H">
       <b-img
         id="header"
-        class="headerImg"
+        class="header_Img"
         src="../assets/activities_bg.webp" alt=" List Activities"
       ></b-img>
       <h2 class="title">ATIVIDADES</h2>
@@ -227,13 +227,8 @@ export default {
   position: relative;
   top: -5rem;
 }
-
-
-.headerImg {
-  max-width: 100%;
-
-  padding: 0;
-  margin: 0;
+.header_Img {
+  width: 100%;
 }
 #header{
   top: -10rem;

@@ -94,8 +94,8 @@ export default new Vuex.Store({
     getNumActivities: state => {
       return state.activities.length;
     },
-    getNumComments: state => {
-      return state.comments.length;
+    getNumQuizzes: state => {
+      return state.quizzes.length;
     },
     getActivitiesForSelect: state =>
       state.activityType.map(type => ({
@@ -300,7 +300,11 @@ export default new Vuex.Store({
         "activities",
         JSON.stringify(context.state.activities)
       );
-    }
+    },
+    removeQuiz(context, id) {
+      context.commit("REMOVE_QUIZ", id);
+      localStorage.setItem("quizzes", JSON.stringify(context.state.quizzes));
+    },
   },
   mutations: {
     SET_ACTIVITIES(state, payload) {
@@ -445,6 +449,10 @@ export default new Vuex.Store({
     },
     REMOVE_ACTIVITY(state, id) {
       state.activities = state.activities.filter(activity => activity.id != id);
-    }
-  }
+    },
+
+  REMOVE_QUIZ(state, id) {
+    state.quizzes = state.quizzes.filter(quiz => quiz.id != id);
+  },
+}
 });

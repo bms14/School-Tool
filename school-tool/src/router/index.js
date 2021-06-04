@@ -12,11 +12,11 @@ import ListQuiz from "../views/ListQuiz.vue";
 import Quiz from "../views/Quiz.vue";
 import Activity from "../views/Activity.vue";
 import Profile from "../views/Profile.vue";
-import Forum from "../views/Forum.vue";
+
 import HomeAdmin from "../views/BackOffice/HomeAdmin.vue";
 import AdminListUser from "../views/BackOffice/AdminListUser.vue";
 import AdminListActivity from "../views/BackOffice/AdminListActivity.vue";
-import AdminListComments from "../views/BackOffice/AdminListComments.vue";
+import AdminListQuizzes from "../views/BackOffice/AdminListQuizzes.vue";
 import EditUserAdmin from "../views/BackOffice/EditUserAdmin.vue";
 import SeeActivityAdmin from "../views/BackOffice/SeeActivityAdmin.vue";
 import UpdateActivity from "../views/UpdateActivity.vue";
@@ -123,15 +123,7 @@ const routes = [
       notAdmin: true
     }
   },
-  {
-    path: "/forum",
-    name: "Forum",
-    component: Forum,
-    meta: {
-      requiresAuth: true,
-      notAdmin: true
-    }
-  },
+  
   {
     path: "/homeadmin",
     name: "HomeAdmin",
@@ -157,9 +149,9 @@ const routes = [
     }
   },
   {
-    path: "/adminlistcomments",
-    name: "AdminListComments",
-    component: AdminListComments,
+    path: "/adminlistquizzes",
+    name: "AdminListQuizzes",
+    component: AdminListQuizzes,
     meta: {
       requiresAuth: true
     }

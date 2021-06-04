@@ -22,13 +22,13 @@
             >Ver detalhes</b-button
           >
         </b-card>
-        <b-card border-variant="warning" align="center" title="Comentários"
+        <b-card border-variant="warning" align="center" title="Quizzes"
           ><ion-icon
             style="color: #fec107; height: 50px; width: 50px"
             name="chatbubbles-outline"
           ></ion-icon>
-          <b-card-text>{{ getNumComments }}</b-card-text>
-          <b-button variant="warning" @click="seeComments"
+          <b-card-text>{{ getNumQuizzes }}</b-card-text>
+          <b-button variant="warning" @click="seeQuizzes"
             >Ver detalhes</b-button
           >
         </b-card>
@@ -50,8 +50,8 @@ export default {
     getNumActivities() {
       return this.$store.getters.getNumActivities;
     },
-    getNumComments() {
-      return this.$store.getters.getNumComments;
+    getNumQuizzes() {
+      return this.$store.getters.getNumQuizzes;
     }
   },
   methods: {
@@ -61,8 +61,8 @@ export default {
     seeActivities() {
       this.$router.push({ name: "AdminListActivity" });
     },
-    seeComments() {
-      this.$router.push({ name: "AdminListComments" });
+    seeQuizzes() {
+      this.$router.push({ name: "AdminListQuizzes" });
     }
   }
 };

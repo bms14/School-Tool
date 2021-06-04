@@ -24,8 +24,8 @@
               ></b-nav-item
             >
             <b-nav-item
-              ><router-link to="/adminlistcomments"
-                >Comentários</router-link
+              ><router-link to="/adminlistquizzes"
+                >Quizzes</router-link
               ></b-nav-item
             >
             <b-nav-item>
@@ -56,11 +56,6 @@
             <b-nav-item
               ><router-link :to="{ name: 'Profile' }"
                 >Perfil</router-link
-              ></b-nav-item
-            >
-            <b-nav-item
-              ><router-link :to="{ name: 'Forum' }"
-                >Fórum</router-link
               ></b-nav-item
             >
             <b-nav-item
@@ -101,11 +96,6 @@
             <b-nav-item
               ><router-link :to="{ name: 'Profile' }"
                 >Perfil</router-link
-              ></b-nav-item
-            >
-            <b-nav-item
-              ><router-link :to="{ name: 'Forum' }"
-                >Fórum</router-link
               ></b-nav-item
             >
             <b-nav-item
